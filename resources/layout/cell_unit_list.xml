@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cell_height"
+        android:layout_margin="@dimen/fragment_small_margin" >
+
+        <TextView
+            android:id="@+id/rare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:minWidth="80dp"
+            android:text="★★★★★" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fragment_small_margin"
+            android:layout_marginLeft="@dimen/fragment_medium_margin"
+            android:layout_toRightOf="@+id/rare"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="@dimen/fragment_medium_margin"
+            android:minWidth="56dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/default_avatar" />
+
+        <LinearLayout
+            android:id="@+id/text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="@dimen/fragment_small_margin"
+            android:layout_toLeftOf="@+id/element_layout"
+            android:layout_toRightOf="@+id/avatar" />
+
+        <FrameLayout
+            android:id="@+id/element_layout"
+            android:layout_width="@dimen/element_view_width"
+            android:layout_height="@dimen/cell_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|right" >
+
+            <com.kagami.merusuto.ElementView
+                android:id="@+id/element"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </RelativeLayout>
+
+</FrameLayout>
