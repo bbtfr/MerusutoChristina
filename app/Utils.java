@@ -1,29 +1,28 @@
 package com.kagami.merusuto;
 
-import java.io.InputStream;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.util.Log;
 
 public class Utils {
-	static public JSONObject readData(Context context) {
+	static public JSONObject readCompanionData(Context context) {
 		try {
-      InputStream is = context.getAssets().open("data/list.json");
-      int size = is.available();
-      byte[] bytes = new byte[size];
+      HttpClient client = new DefaultHttpClient();
+      HttpGet method = new HttpGet("https://raw.githubusercontent.com/bbtfr/MerusutoChristina/master/data/companions.json");
 
-      is.read(bytes);
-      is.close();
+      HttpResponse response = client.execute(method);
 
-      String str = new String(bytes, "UTF-8");
-
-			return new JSONObject(str);
-		} catch (Exception e) {
+      String json = EntityUtils.toString(response.getEntity());
+      return new JSONObject(json);
+    } catch (Exception e) {
       Log.e("com/kagami/merusuto", e.getMessage(), e);
-		}
-		
-		return null;
-	}
-
+  		return null;
+    }
+  }
 }

@@ -26,14 +26,14 @@
             android:text="TextView" />
 
         <ImageView
-            android:id="@+id/avatar"
+            android:id="@+id/thumbnail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@+id/name"
             android:layout_marginLeft="@dimen/fragment_medium_margin"
             android:minWidth="56dp"
             android:scaleType="fitStart"
-            android:src="@drawable/default_avatar" />
+            android:src="@drawable/default_thumbnail" />
 
         <LinearLayout
             android:id="@+id/text_layout"
@@ -42,7 +42,7 @@
             android:layout_below="@+id/name"
             android:layout_marginLeft="@dimen/fragment_small_margin"
             android:layout_toLeftOf="@+id/element_layout"
-            android:layout_toRightOf="@+id/avatar" />
+            android:layout_toRightOf="@+id/thumbnail" />
 
         <FrameLayout
             android:id="@+id/element_layout"

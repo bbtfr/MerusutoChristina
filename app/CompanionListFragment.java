@@ -15,6 +15,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +25,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.util.Log;
 
-public class UnitListFragment extends Fragment {
+public class CompanionListFragment extends Fragment {
 
   public final static int SORT_RARE = 1;
   public final static int SORT_ATK = 2;
@@ -37,11 +39,11 @@ public class UnitListFragment extends Fragment {
   public final static int SORT_MULT_DPS = 4;
   public final static int SORT_LIFE = 5;
 
-  private UnitListAdapter mAdapter;
+  private CompanionListAdapter mAdapter;
   private int mRare = 0, mElement = 0, mWeapon = 0, mLevel = 0;
   private int mSortMode = SORT_RARE;
 
-  public UnitListFragment() {
+  public CompanionListFragment() {
     super();
   }
 
@@ -80,9 +82,9 @@ public class UnitListFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, 
     Bundle savedInstanceState) {
     
-    View rootView = inflater.inflate(R.layout.fragment_unit_list, 
+    View rootView = inflater.inflate(R.layout.fragment_companion_list, 
       container, false);
-    ListView listview = (ListView) rootView.findViewById(R.id.unit_list);
+    ListView listview = (ListView) rootView.findViewById(R.id.companion_list);
     
     if (savedInstanceState != null) {
       mRare = savedInstanceState.getShort("rare");
@@ -92,7 +94,7 @@ public class UnitListFragment extends Fragment {
       mSortMode = savedInstanceState.getShort("mode", (short) SORT_RARE);
     }
 
-    mAdapter = new UnitListAdapter();
+    mAdapter = new CompanionListAdapter();
     // Log.i("com/kagami/merusuto", "mAdapter:" + mAdapter.toString());
 
     listview.setAdapter(mAdapter);
@@ -134,31 +136,43 @@ public class UnitListFragment extends Fragment {
     savedInstanceState.putShort("mode", (short) mSortMode);
   }
 
-  private class UnitListAdapter extends BaseAdapter {
+  private class CompanionListAdapter extends BaseAdapter {
 
-    List<UnitItem> mAllData;
-    List<UnitItem> mDisplayedData;
+    private List<CompanionItem> mAllData;
+    private List<CompanionItem> mDisplayedData;
 
-    public UnitListAdapter() {
-      mAllData=new ArrayList<UnitItem>();
-      mDisplayedData=new ArrayList<UnitItem>();
+    private class ReadCompanionDataTask extends AsyncTask<Void, Void, JSONObject> {  
+      @Override
+      protected JSONObject doInBackground(Void... params) {  
+        return Utils.readCompanionData(getActivity());
+      }  
 
-      JSONObject js = Utils.readData(getActivity());
+      @Override  
+      protected void onPostExecute(JSONObject json) { 
+        if (json != null) {
+          Iterator<?> keys = json.keys();
+          while (keys.hasNext()) {
+            String id = keys.next().toString();
+            CompanionItem item = new CompanionItem(Integer.valueOf(id), json.optJSONObject(id));
+            mAllData.add(item);
+          }
 
-      Iterator<?> keys=js.keys();
-      while (keys.hasNext()) {
-        String id = keys.next().toString();
-        UnitItem item = new UnitItem(Integer.valueOf(id), js.optJSONObject(id));
-        mAllData.add(item);
-      }
+          search();
+        }
+      }  
+    }
 
-      search();
+    public CompanionListAdapter() {
+      mAllData = new ArrayList<CompanionItem>();
+      mDisplayedData = new ArrayList<CompanionItem>();
+
+      new ReadCompanionDataTask().execute(); 
     }
     
     public void search() {
       mDisplayedData.clear();
       
-      for (UnitItem item:mAllData)
+      for (CompanionItem item:mAllData)
         if ((mRare == 0 || item.rare == mRare) && 
           (mElement == 0 || item.element == mElement) && 
           (mWeapon == 0 || item.weapon == mWeapon))
@@ -168,10 +182,10 @@ public class UnitListFragment extends Fragment {
     }
 
     public void sort() {
-      Collections.sort(mDisplayedData, new Comparator<UnitItem>() {
+      Collections.sort(mDisplayedData, new Comparator<CompanionItem>() {
 
         @Override
-        public int compare(UnitItem lhs, UnitItem rhs) {
+        public int compare(CompanionItem lhs, CompanionItem rhs) {
           int l = 0, r = 0;
 
           switch (mSortMode) {
@@ -225,10 +239,10 @@ public class UnitListFragment extends Fragment {
     public View getView(int position, View convertView, ViewGroup parent) {
       if (convertView == null) {
         convertView = LayoutInflater.from(parent.getContext())
-          .inflate(R.layout.cell_unit_list, null);
+          .inflate(R.layout.cell_companion_item, null);
       }
 
-      ImageView avatarView = (ImageView) convertView.findViewById(R.id.avatar);
+      ImageView thumbnailView = (ImageView) convertView.findViewById(R.id.thumbnail);
       TextView nameView = (TextView) convertView.findViewById(R.id.name);
       TextView rareView = (TextView) convertView.findViewById(R.id.rare);
       ElementView elementView = (ElementView) convertView.findViewById(R.id.element);
@@ -237,19 +251,19 @@ public class UnitListFragment extends Fragment {
       Bitmap bitmap = null;
       try {
         bitmap = BitmapFactory.decodeStream(
-          getResources().getAssets().open("avatar/" + getItemId(position) + ".png"));
+          getResources().getAssets().open("thumbnail/" + getItemId(position) + ".png"));
       } catch (IOException e) {
         Log.e("com/kagami/merusuto", "File Not Found: " + e.getMessage());
       }
 
       if (bitmap == null)
-        avatarView.setImageResource(R.drawable.default_avatar);
+        thumbnailView.setImageResource(R.drawable.default_thumbnail);
       else
-        avatarView.setImageBitmap(bitmap);
+        thumbnailView.setImageBitmap(bitmap);
 
-      UnitItem item = (UnitItem) getItem(position);
+      CompanionItem item = (CompanionItem) getItem(position);
 
-      nameView.setText(item.name1 + " " + item.name2);
+      nameView.setText(item.title + item.name);
       rareView.setText(item.getRareString());
       elementView.setElement(item.fire, item.aqua, item.wind, item.light, item.dark);
 
@@ -257,11 +271,11 @@ public class UnitListFragment extends Fragment {
 
       addUnitTextView(parent.getContext(), textLayout, String.format(
         "生命: %d\n攻击: %d\n射程: %d\n攻数: %d",
-        item.getLife(mLevel), item.getAtk(mLevel), item.reach, item.num));
+        item.getLife(mLevel), item.getAtk(mLevel), item.aarea, item.anum));
 
       addUnitTextView(parent.getContext(), textLayout, String.format(
         "攻速: %.2f\n韧性: %d\n移速: %d\n成长: %s",
-        item.quick, item.tough, item.speed, item.getTypeString()));
+        item.aspd, item.tenacity, item.mspd, item.getTypeString()));
 
       int textViewNum = parent.getResources().getInteger(R.integer.text_view_num);
       // Log.i("com/kagami/merusuto", "textViewNum:" + textViewNum);
@@ -286,7 +300,7 @@ public class UnitListFragment extends Fragment {
       LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
         LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f);
       View textLayout = LayoutInflater.from(context)
-          .inflate(R.layout.text_view_unit, null);
+          .inflate(R.layout.text_view_companion_item, null);
       TextView textView = (TextView) textLayout.findViewById(R.id.text_view);
       textView.setText(text);
       layout.addView(textLayout, params);

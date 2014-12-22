@@ -2,21 +2,21 @@ package com.kagami.merusuto;
 
 import org.json.JSONObject;
 
-public class UnitItem {
-  public String name1;
-  public String name2;
+public class CompanionItem {
+  public String title;
+  public String name;
   public int id;
   public int element;
   public int atk;
   public int life;
-  public int speed;
-  public float quick;
-  public int tough;
+  public int mspd;
+  public float aspd;
+  public int tenacity;
   public int rare;
   
   public int weapon; // 1斩击 2突击 3打击 4弓箭 5魔法 6铳弹 7回复
-  public int reach;
-  public int num;
+  public int aarea;
+  public int anum;
   public int type; // 1早熟 2平均 3晚成
 
   public float fire;
@@ -25,21 +25,21 @@ public class UnitItem {
   public float light;
   public float dark;
   
-  public UnitItem(int id, JSONObject json) {
+  public CompanionItem(int id, JSONObject json) {
     this.id = id;
-    this.name1 = json.optString("name1", "");
-    this.name2 = json.optString("name2", "");
+    this.title = json.optString("title", "");
+    this.name = json.optString("name", "");
     this.element = json.optInt("element", 0);
     this.life = json.optInt("life", 0);
     this.atk = json.optInt("atk", 0);
-    this.speed = json.optInt("speed", 0);
-    this.quick = (float) json.optDouble("quick", 0);
-    this.tough = json.optInt("tough", 0);
+    this.mspd = json.optInt("mspd", 0);
+    this.aspd = (float) json.optDouble("aspd", 0);
+    this.tenacity = json.optInt("tenacity", 0);
     this.rare = json.optInt("rare", 0);
     this.weapon = json.optInt("weapon", 0);
-    this.reach = json.optInt("reach", 0);
+    this.aarea = json.optInt("aarea", 0);
     this.type = json.optInt("type", 0);
-    this.num = json.optInt("num", 0);
+    this.anum = json.optInt("anum", 0);
     
     this.fire = (float)json.optDouble("fire", 0);
     this.aqua = (float)json.optDouble("aqua", 0);
@@ -109,7 +109,7 @@ public class UnitItem {
   }
 
   public float calcDPS(int level) {
-    return calcByLevel(level, atk) / quick;
+    return calcByLevel(level, atk) / aspd;
   }
 
   public int getDPS(int level) {
@@ -117,6 +117,6 @@ public class UnitItem {
   }
   
   public int getMultDPS(int level) {
-    return (int) calcDPS(level) * num;
+    return (int) calcDPS(level) * anum;
   }
 }
