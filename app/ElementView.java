@@ -18,6 +18,8 @@ public class ElementView extends View {
   private float light;
   private float dark;
 
+  private int mMode = 0;
+
   private Paint mPaint;
   private PointF[] mBoundPoints;
   private Path mBoundPath;
@@ -25,7 +27,9 @@ public class ElementView extends View {
   private Path mElementBoundPath;
   private float mElementBoundPointRadio;
   private float mElementViewTopPadding;
-  
+
+  private final static int[] COLORS = { 0xffe74c3c, 0xff3498db, 0xff2ecc71, 0xfff1c40f, 0xff9b59b6 };
+
   public ElementView(Context context) {
     super(context);
     initView();
@@ -54,6 +58,10 @@ public class ElementView extends View {
     PointF point = new PointF((float) (centerX + r * Math.cos((-i * 72 + 90) * th)),
       (float) (centerY - r * Math.sin((-i * 72 + 90) * th)) + mElementViewTopPadding);
     return point;
+  }
+
+  public void setMode(int mode) {
+    mMode = mode;
   }
 
   public void setElement(float fire, float aqua, float wind, float light, float dark) {
@@ -96,14 +104,15 @@ public class ElementView extends View {
     mPaint.setColor(0x11000000);
     canvas.drawPath(mBoundPath, mPaint);
     mPaint.setStyle(Style.FILL);
-    mPaint.setColor(0x22000000);
+    mPaint.setColor(0x11000000);
     canvas.drawPath(mHalfBoundPath, mPaint);
     
     //Element
     mPaint.setStyle(Style.FILL);
-    mPaint.setColor(0x882980b9);
-    float centerX  =  getWidth() / 2.0f;
-    float centerY  =  getHeight() / 2.0f;
+    int index = (mMode > 0 && mMode < 6) ? mMode - 1 : 0;
+    mPaint.setColor(COLORS[index] & 0x88FFFFFF);
+    float centerX = getWidth() / 2.0f;
+    float centerY = getHeight() / 2.0f;
     float r = Math.min(centerX, centerY) - mElementBoundPointRadio / 2;
 
     mElementBoundPath.reset();
@@ -122,20 +131,10 @@ public class ElementView extends View {
     
     //Circle
     mPaint.setStyle(Style.FILL);
-    mPaint.setColor(0xffe74c3c);
-    canvas.drawCircle(mBoundPoints[0].x, mBoundPoints[0].y, 
-      mElementBoundPointRadio, mPaint);
-    mPaint.setColor(0xff3498db);
-    canvas.drawCircle(mBoundPoints[1].x, mBoundPoints[1].y, 
-      mElementBoundPointRadio, mPaint);
-    mPaint.setColor(0xff2ecc71);
-    canvas.drawCircle(mBoundPoints[2].x, mBoundPoints[2].y, 
-      mElementBoundPointRadio, mPaint);
-    mPaint.setColor(0xfff1c40f);
-    canvas.drawCircle(mBoundPoints[3].x, mBoundPoints[3].y, 
-      mElementBoundPointRadio, mPaint);
-    mPaint.setColor(0xff9b59b6);
-    canvas.drawCircle(mBoundPoints[4].x, mBoundPoints[4].y, 
-      mElementBoundPointRadio, mPaint);
+    for (int i = 0; i < 5; i++) {
+      mPaint.setColor(COLORS[i]);
+      canvas.drawCircle(mBoundPoints[i].x, mBoundPoints[i].y, 
+        mElementBoundPointRadio, mPaint);
+    }
   }
 }

@@ -98,6 +98,18 @@ public class MainActivity extends Activity {
 		case R.id.menu_weapon_7:
 			mCompanionListFragment.setWeapon(7);
 			break;
+		case R.id.menu_type_0:
+			mCompanionListFragment.setType(0);
+			break;
+		case R.id.menu_type_1:
+			mCompanionListFragment.setType(1);
+			break;
+		case R.id.menu_type_2:
+			mCompanionListFragment.setType(2);
+			break;
+		case R.id.menu_type_3:
+			mCompanionListFragment.setType(3);
+			break;
 		case R.id.menu_sort_rare:
 			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_RARE);
 			break;
@@ -107,11 +119,26 @@ public class MainActivity extends Activity {
 		case R.id.menu_sort_mult_dps:
 			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_MULT_DPS);
 			break;
+		case R.id.menu_sort_life:
+			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_LIFE);
+			break;
 		case R.id.menu_sort_atk:
 			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_ATK);
 			break;
-		case R.id.menu_sort_life:
-			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_LIFE);
+		case R.id.menu_sort_aarea:
+			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_AAREA);
+			break;
+		case R.id.menu_sort_anum:
+			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_ANUM);
+			break;
+		case R.id.menu_sort_aspd:
+			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_ASPD);
+			break;
+		case R.id.menu_sort_tenacity:
+			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_TENACITY);
+			break;
+		case R.id.menu_sort_mspd:
+			mCompanionListFragment.setSortMode(CompanionListFragment.SORT_MSPD);
 			break;
 		case R.id.menu_level_0:
 			mCompanionListFragment.setLevel(0);

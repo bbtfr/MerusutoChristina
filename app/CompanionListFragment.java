@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -38,9 +39,14 @@ public class CompanionListFragment extends Fragment {
   public final static int SORT_DPS = 3;
   public final static int SORT_MULT_DPS = 4;
   public final static int SORT_LIFE = 5;
+  public final static int SORT_AAREA = 6;
+  public final static int SORT_ANUM = 7;
+  public final static int SORT_ASPD = 8;
+  public final static int SORT_TENACITY = 9;
+  public final static int SORT_MSPD = 10;
 
   private CompanionListAdapter mAdapter;
-  private int mRare = 0, mElement = 0, mWeapon = 0, mLevel = 0;
+  private int mRare = 0, mElement = 0, mWeapon = 0, mLevel = 0, mType = 0;
   private int mSortMode = SORT_RARE;
 
   public CompanionListFragment() {
@@ -62,6 +68,11 @@ public class CompanionListFragment extends Fragment {
     mAdapter.search();
   }
 
+  public void setType(int type) {
+    mType = type;
+    mAdapter.search();
+  }
+
   public void setLevel(int level) {
     mLevel = level;
     mAdapter.sort();
@@ -77,19 +88,22 @@ public class CompanionListFragment extends Fragment {
     mSortMode = SORT_RARE;
     mAdapter.search();
   }
-  
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, 
     Bundle savedInstanceState) {
-    
     View rootView = inflater.inflate(R.layout.fragment_companion_list, 
       container, false);
     ListView listview = (ListView) rootView.findViewById(R.id.companion_list);
     
-    if (savedInstanceState != null) {
+    if (savedInstanceState == null) {
+      Toast.makeText(getActivity(), "正在读取数据，请稍候...", 
+        Toast.LENGTH_SHORT).show();  
+    } else {
       mRare = savedInstanceState.getShort("rare");
       mElement = savedInstanceState.getShort("element");
       mWeapon = savedInstanceState.getShort("weapon");
+      mType = savedInstanceState.getShort("type");
       mLevel = savedInstanceState.getShort("level");
       mSortMode = savedInstanceState.getShort("mode", (short) SORT_RARE);
     }
@@ -100,26 +114,52 @@ public class CompanionListFragment extends Fragment {
     listview.setAdapter(mAdapter);
     listview.setOnItemClickListener(new OnItemClickListener() {
 
+      class ReadCompanionOriginalTask extends AsyncTask<Object, Void, Bitmap> {  
+
+        private ProgressDialog mProgressDialog;
+
+        @Override
+        protected void onPreExecute() {
+          mProgressDialog = ProgressDialog.show(getActivity(), 
+            "请稍后再舔", "正在读取图片，请稍后...");
+        }
+
+        @Override
+        protected Bitmap doInBackground(Object... params) {
+          return Utils.readRemoteBitmap(getActivity(), (String) params[0], 
+            (BitmapFactory.Options) params[1]);
+        }  
+
+        @Override  
+        protected void onPostExecute(Bitmap bitmap) { 
+          try { 
+            mProgressDialog.dismiss();
+            if (bitmap != null) {
+              ImageDialog dialog = new ImageDialog(getActivity(), bitmap);
+              dialog.show();
+            }
+          } catch (Exception e) {}
+        }  
+      }
+
       @Override
       public void onItemClick(AdapterView<?> parent, View view, 
         int position, long id) {
-        Bitmap bitmap = null;
-        try {
-          BitmapFactory.Options options = new BitmapFactory.Options();
-          options.inScaled = true;
-          options.inDensity = 100;
-          options.inTargetDensity = 150;
-          bitmap = BitmapFactory.decodeStream(
-            getResources().getAssets().open("original/" + id + ".png"),
-            null, options);
-        } catch (IOException e) {
-          Log.e("com/kagami/merusuto", "File Not Found: " + e.getMessage());
+        String bitmapPath = "companions/original/" + id + ".png";
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inScaled = true;
+        options.inDensity = 100;
+        options.inTargetDensity = 150;
+
+        Bitmap bitmap = Utils.readLocalBitmap(getActivity(), bitmapPath, options);
+
+        if (bitmap == null) {
+          new ReadCompanionOriginalTask().execute(bitmapPath, options);
+        } else {
+          ImageDialog dialog = new ImageDialog(getActivity(), bitmap);
+          dialog.show();
         }
 
-        if (bitmap == null) return;
-
-        ImageDialog dialog = new ImageDialog(getActivity(), bitmap);
-        dialog.show();
       }
     });
 
@@ -132,6 +172,7 @@ public class CompanionListFragment extends Fragment {
     savedInstanceState.putShort("rare", (short) mRare);
     savedInstanceState.putShort("element", (short) mElement);
     savedInstanceState.putShort("weapon", (short) mWeapon);
+    savedInstanceState.putShort("type", (short) mType);
     savedInstanceState.putShort("level", (short) mLevel);
     savedInstanceState.putShort("mode", (short) mSortMode);
   }
@@ -142,9 +183,10 @@ public class CompanionListFragment extends Fragment {
     private List<CompanionItem> mDisplayedData;
 
     private class ReadCompanionDataTask extends AsyncTask<Void, Void, JSONObject> {  
+      
       @Override
-      protected JSONObject doInBackground(Void... params) {  
-        return Utils.readCompanionData(getActivity());
+      protected JSONObject doInBackground(Void... params) {
+        return Utils.readRemoteJSONData(getActivity(), "companions.json");
       }  
 
       @Override  
@@ -153,11 +195,15 @@ public class CompanionListFragment extends Fragment {
           Iterator<?> keys = json.keys();
           while (keys.hasNext()) {
             String id = keys.next().toString();
-            CompanionItem item = new CompanionItem(Integer.valueOf(id), json.optJSONObject(id));
+            CompanionItem item = new CompanionItem(Integer.valueOf(id), 
+              json.optJSONObject(id));
             mAllData.add(item);
           }
 
           search();
+        } else {
+          Toast.makeText(getActivity(), "网络错误，请稍候重试...", 
+            Toast.LENGTH_SHORT).show();  
         }
       }  
     }
@@ -166,7 +212,20 @@ public class CompanionListFragment extends Fragment {
       mAllData = new ArrayList<CompanionItem>();
       mDisplayedData = new ArrayList<CompanionItem>();
 
-      new ReadCompanionDataTask().execute(); 
+      JSONObject json = Utils.readLocalJSONData(getActivity(), "companions.json");
+      if (json == null) {
+        new ReadCompanionDataTask().execute(); 
+      } else {
+        Iterator<?> keys = json.keys();
+        while (keys.hasNext()) {
+          String id = keys.next().toString();
+          CompanionItem item = new CompanionItem(Integer.valueOf(id), 
+            json.optJSONObject(id));
+          mAllData.add(item);
+        }
+
+        search();
+      }
     }
     
     public void search() {
@@ -175,7 +234,8 @@ public class CompanionListFragment extends Fragment {
       for (CompanionItem item:mAllData)
         if ((mRare == 0 || item.rare == mRare) && 
           (mElement == 0 || item.element == mElement) && 
-          (mWeapon == 0 || item.weapon == mWeapon))
+          (mWeapon == 0 || item.weapon == mWeapon) &&
+          (mType == 0 || item.type == mType))
           mDisplayedData.add(item);
 
       sort();
@@ -186,7 +246,7 @@ public class CompanionListFragment extends Fragment {
 
         @Override
         public int compare(CompanionItem lhs, CompanionItem rhs) {
-          int l = 0, r = 0;
+          float l = 0f, r = 0f;
 
           switch (mSortMode) {
           case SORT_RARE:
@@ -208,6 +268,27 @@ public class CompanionListFragment extends Fragment {
           case SORT_LIFE:
             l = lhs.getLife(mLevel);
             r = rhs.getLife(mLevel);
+            break;
+          case SORT_AAREA:
+            l = lhs.aarea;
+            r = rhs.aarea;
+            break;
+          case SORT_ANUM:
+            l = lhs.anum;
+            r = rhs.anum;
+            break;
+          case SORT_ASPD:
+            l = rhs.aspd;
+            l = l == 0f ? 9999f : l;
+            r = lhs.aspd;
+            break;
+          case SORT_TENACITY:
+            l = lhs.tenacity;
+            r = rhs.tenacity;
+            break;
+          case SORT_MSPD:
+            l = lhs.mspd;
+            r = rhs.mspd;
             break;
           }
           
@@ -235,9 +316,40 @@ public class CompanionListFragment extends Fragment {
       return mDisplayedData.get(position).id;
     }
 
+    private class ReadCompanionThumbnailTask extends AsyncTask<String, Void, Bitmap> {  
+      
+      private View mView;
+
+      public ReadCompanionThumbnailTask(View view) {
+        super();
+        mView = view;
+      }
+
+      @Override
+      protected void onPreExecute() {
+        mView.setTag(this);
+      }
+
+      @Override
+      protected Bitmap doInBackground(String... params) {
+        return Utils.readRemoteBitmap(getActivity(), params[0], null);
+      }  
+
+      @Override  
+      protected void onPostExecute(Bitmap bitmap) { 
+        try {
+          mView.setTag(null);
+          if (bitmap != null) {
+            ImageView thumbnailView = (ImageView) mView.findViewById(R.id.thumbnail);
+            thumbnailView.setImageBitmap(bitmap);
+          }
+        } catch (Exception e) {}
+      }  
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-      if (convertView == null) {
+      if (convertView == null || convertView.getTag() != null) {
         convertView = LayoutInflater.from(parent.getContext())
           .inflate(R.layout.cell_companion_item, null);
       }
@@ -248,32 +360,29 @@ public class CompanionListFragment extends Fragment {
       ElementView elementView = (ElementView) convertView.findViewById(R.id.element);
       LinearLayout textLayout = (LinearLayout) convertView.findViewById(R.id.text_layout);
 
-      Bitmap bitmap = null;
-      try {
-        bitmap = BitmapFactory.decodeStream(
-          getResources().getAssets().open("thumbnail/" + getItemId(position) + ".png"));
-      } catch (IOException e) {
-        Log.e("com/kagami/merusuto", "File Not Found: " + e.getMessage());
-      }
-
-      if (bitmap == null)
-        thumbnailView.setImageResource(R.drawable.default_thumbnail);
-      else
-        thumbnailView.setImageBitmap(bitmap);
-
       CompanionItem item = (CompanionItem) getItem(position);
+
+      String bitmapPath = "companions/thumbnail/" + item.id + ".png";
+      Bitmap bitmap = Utils.readLocalBitmap(getActivity(), bitmapPath, null);
+      if (bitmap == null) {
+        thumbnailView.setImageResource(R.drawable.default_thumbnail);
+        new ReadCompanionThumbnailTask(convertView).execute(bitmapPath);
+      } else {
+        thumbnailView.setImageBitmap(bitmap);
+      }
 
       nameView.setText(item.title + item.name);
       rareView.setText(item.getRareString());
+      elementView.setMode(item.element);
       elementView.setElement(item.fire, item.aqua, item.wind, item.light, item.dark);
 
       textLayout.removeAllViews();
 
-      addUnitTextView(parent.getContext(), textLayout, String.format(
-        "生命: %d\n攻击: %d\n射程: %d\n攻数: %d",
+      addUnitTextView(textLayout, String.format(
+        "生命: %d\n攻击: %d\n攻距: %d\n攻数: %d",
         item.getLife(mLevel), item.getAtk(mLevel), item.aarea, item.anum));
 
-      addUnitTextView(parent.getContext(), textLayout, String.format(
+      addUnitTextView(textLayout, String.format(
         "攻速: %.2f\n韧性: %d\n移速: %d\n成长: %s",
         item.aspd, item.tenacity, item.mspd, item.getTypeString()));
 
@@ -281,14 +390,14 @@ public class CompanionListFragment extends Fragment {
       // Log.i("com/kagami/merusuto", "textViewNum:" + textViewNum);
 
       if (textViewNum > 2) {
-        addUnitTextView(parent.getContext(), textLayout, String.format(
+        addUnitTextView(textLayout, String.format(
           "火: %.0f%%\n水: %.0f%%\n风: %.0f%%\n光: %.0f%%",
           item.fire * 100, item.aqua * 100, item.wind * 100, 
           item.light * 100, item.dark * 100));
       }
 
       if (textViewNum > 3) {
-        addUnitTextView(parent.getContext(), textLayout, String.format(
+        addUnitTextView(textLayout, String.format(
           "暗: %.0f%%\n\nDPS: %d\n总DPS: %d",
           item.dark * 100, item.getDPS(mLevel), item.getMultDPS(mLevel)));
       }
@@ -296,10 +405,10 @@ public class CompanionListFragment extends Fragment {
       return convertView;
     }
 
-    private void addUnitTextView(Context context, LinearLayout layout, String text) {
+    private void addUnitTextView(LinearLayout layout, String text) {
       LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
         LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f);
-      View textLayout = LayoutInflater.from(context)
+      View textLayout = LayoutInflater.from(getActivity())
           .inflate(R.layout.text_view_companion_item, null);
       TextView textView = (TextView) textLayout.findViewById(R.id.text_view);
       textView.setText(text);
