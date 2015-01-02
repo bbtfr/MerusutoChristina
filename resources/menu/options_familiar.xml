@@ -1,0 +1,147 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kagami.merusuto.MainActivity" >
+    <item
+        android:showAsAction="always|withText"
+        android:title="魔宠" >
+        <menu>
+            <item
+                android:id="@+id/menu_template_companion"
+                android:title="同伴" >
+            </item>
+            <item
+                android:id="@+id/menu_template_familiar"
+                android:title="魔宠" >
+            </item>
+        </menu>
+    </item>
+<!--     <item
+        android:showAsAction="always|withText"
+        android:title="等级" >
+        <menu>
+            <item
+                android:id="@+id/menu_level_0"
+                android:title="零觉零级" >
+            </item>
+            <item
+                android:id="@+id/menu_level_1"
+                android:title="零觉满级" >
+            </item>
+            <item
+                android:id="@+id/menu_level_2"
+                android:title="满觉满级" >
+            </item>
+        </menu>
+    </item> -->
+    <item
+        android:showAsAction="always|withText"
+        android:title="排序" >
+        <menu>
+            <item
+                android:id="@+id/menu_sort_rare"
+                android:title="稀有度" />
+            <item
+                android:id="@+id/menu_sort_dps"
+                android:title="单体DPS" />
+            <item
+                android:id="@+id/menu_sort_mult_dps"
+                android:title="多体DPS" />
+            <item
+                android:id="@+id/menu_sort_life"
+                android:title="生命力" />
+            <item
+                android:id="@+id/menu_sort_atk"
+                android:title="攻击" />
+            <item
+                android:id="@+id/menu_sort_aarea"
+                android:title="攻击距离" />
+            <item
+                android:id="@+id/menu_sort_anum"
+                android:title="攻击数量" />
+            <item
+                android:id="@+id/menu_sort_aspd"
+                android:title="攻击速度" />
+            <item
+                android:id="@+id/menu_sort_tenacity"
+                android:title="韧性" />
+            <item
+                android:id="@+id/menu_sort_mspd"
+                android:title="移动速度" />
+        </menu>
+    </item>
+    <item
+        android:showAsAction="always"
+        android:title="筛选" >
+        <menu>
+            <item
+                android:showAsAction="always|withText"
+                android:title="稀有度">
+                <menu>
+                    <item
+                        android:id="@+id/menu_rare_0"
+                        android:title="全部" />
+                    <item
+                        android:id="@+id/menu_rare_1"
+                        android:title="★" />
+                    <item
+                        android:id="@+id/menu_rare_2"
+                        android:title="★★" />
+                    <item
+                        android:id="@+id/menu_rare_3"
+                        android:title="★★★" />
+                    <item
+                        android:id="@+id/menu_rare_4"
+                        android:title="★★★★" />
+                    <item
+                        android:id="@+id/menu_rare_5"
+                        android:title="★★★★★" />
+                </menu>
+            </item>
+            <item
+                android:showAsAction="withText"
+                android:title="元素" >
+                <menu>
+                    <item
+                        android:id="@+id/menu_element_0"
+                        android:title="全部" />
+                    <item
+                        android:id="@+id/menu_element_1"
+                        android:title="火" />
+                    <item
+                        android:id="@+id/menu_element_2"
+                        android:title="水" />
+                    <item
+                        android:id="@+id/menu_element_3"
+                        android:title="风" />
+                    <item
+                        android:id="@+id/menu_element_4"
+                        android:title="光" />
+                    <item
+                        android:id="@+id/menu_element_5"
+                        android:title="暗" />
+                </menu>
+            </item>
+            <item
+                android:showAsAction="withText"
+                android:title="皮肤" >
+                <menu>
+                    <item
+                        android:id="@+id/menu_skin_0"
+                        android:title="全部" />
+                    <item
+                        android:id="@+id/menu_skin_1"
+                        android:title="坚硬" />
+                    <item
+                        android:id="@+id/menu_skin_2"
+                        android:title="常规" />
+                    <item
+                        android:id="@+id/menu_skin_3"
+                        android:title="柔软" />
+                </menu>
+            </item>
+            <item
+                android:id="@+id/menu_reset"
+                android:title="重置" />
+        </menu>
+    </item>
+</menu>

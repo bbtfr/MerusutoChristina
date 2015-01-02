@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
@@ -24,10 +26,18 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 public class Utils {
-  public final static long EXPIRATION = 86400000L;
+  public final static long EXPIRATION = 14400000L;
+
+  static public void ensureParentDirectoryExists(File file) {
+    File parent = file.getParentFile();
+    if (!parent.exists()) {
+      parent.mkdirs();
+    }
+  }
 
   static public void writeStringAsFile(File file, final String content) {
     try {
+      ensureParentDirectoryExists(file);
       FileWriter out = new FileWriter(file);
       out.write(content);
       out.close();
@@ -38,10 +48,7 @@ public class Utils {
 
   static public void writeBytesAsFile(File file, final byte[] content) {
     try {
-      File parent = file.getParentFile();
-      if (!parent.exists()) {
-        parent.mkdirs();
-      }
+      ensureParentDirectoryExists(file);
       FileOutputStream out = new FileOutputStream(file);
       out.write(content);
       out.close();
@@ -67,23 +74,47 @@ public class Utils {
     return stringBuilder.toString();
   }
 
-  static public HttpResponse getHttpResponse(String filename) throws IOException {
+  static public String readStreamAsString(InputStream stream) {
+    StringBuilder stringBuilder = new StringBuilder();
+    String line;
+    BufferedReader in = null;
+
+    try {
+      in = new BufferedReader(new InputStreamReader(stream));
+      while ((line = in.readLine()) != null) stringBuilder.append(line);
+    } catch (IOException e) {
+      Log.e("com/kagami/merusuto", "Can not read stream: " + e.toString());
+    } 
+
+    return stringBuilder.toString();
+  }
+
+  static public HttpResponse getHttpResponse(String url) throws IOException {
     HttpClient client = new DefaultHttpClient();
-    HttpGet method = new HttpGet("https://raw.githubusercontent.com/bbtfr/MerusutoChristina/master/data/" + filename);
+    HttpGet method = new HttpGet(url);
     return client.execute(method);
   }
 
   static public JSONObject readLocalJSONData(Context context, String filename) {
     try {
-      File local = new File(context.getFilesDir(), filename);
-      File cache = new File(local, ".cache");
+      InputStream stream = null;
+      try {
+        stream = context.getAssets().open("data/" + filename);
+      } catch (Exception e) {}
+      File local = new File(Environment.getExternalStorageDirectory(), 
+        "merusuto/" + filename);
+      File cache = new File(context.getFilesDir(), filename);
       long expiration = System.currentTimeMillis() - cache.lastModified();
-      if (local.exists()) {
-        Log.i("com/kagami/merusuto", "Read JSON from local file.");
+      if (stream != null) {
+        Log.i("com/kagami/merusuto", "Read JSON from internal stream.");
+        return new JSONObject(readStreamAsString(stream));
+      } else if (local.exists()) {
+        Log.i("com/kagami/merusuto", "Read JSON from local file: " + 
+          local.getAbsolutePath() + ".");
         return new JSONObject(readFileAsString(local));
       } else if (cache.exists() && expiration < EXPIRATION) {
-        Log.i("com/kagami/merusuto", "Read JSON from local cache file.");
-        Log.i("com/kagami/merusuto", "Expiration: " + expiration);
+        Log.i("com/kagami/merusuto", "Read JSON from local cache file: " + 
+          cache.getAbsolutePath() + ", expiration: " + expiration + ".");
         return new JSONObject(readFileAsString(cache));
       } else {
         return null;
@@ -96,14 +127,17 @@ public class Utils {
 
   static public JSONObject readRemoteJSONData(Context context, String filename) {
     try {
-      Log.i("com/kagami/merusuto", "Read JSON from github and write to local file.");
-      HttpResponse response = getHttpResponse(filename);
-
-      Log.i("com/kagami/merusuto", "Write JSON to local file.");
+      String url = "https://raw.githubusercontent.com/bbtfr/MerusutoChristina/master/data/" + filename;
+      Log.i("com/kagami/merusuto", "Read JSON from github: " + url + ".");
+      HttpResponse response = getHttpResponse(url);
       String json = EntityUtils.toString(response.getEntity());
-      File local = new File(context.getFilesDir(), filename);
-      writeStringAsFile(local, json);
-      return new JSONObject(json);
+      JSONObject jsonObj = new JSONObject(json);
+
+      File cache = new File(context.getFilesDir(), filename);
+      Log.i("com/kagami/merusuto", "Write JSON to local cache file: " + 
+        cache.getAbsolutePath() + ".");
+      writeStringAsFile(cache, json);
+      return jsonObj;
     } catch (Exception e) {
       Log.e("com/kagami/merusuto", e.getMessage(), e);
       return null;
@@ -115,7 +149,8 @@ public class Utils {
       File local = new File(Environment.getExternalStorageDirectory(), 
         "merusuto/" + filename);
       if (local.exists()) {
-        Log.i("com/kagami/merusuto", "Read Bitmap from local file.");
+        Log.i("com/kagami/merusuto", "Read Bitmap from local file: " + 
+          local.getAbsolutePath() + ".");
         return BitmapFactory.decodeStream(new FileInputStream(local), null, options);
       } else {
         return null;
@@ -128,15 +163,18 @@ public class Utils {
   
   static public Bitmap readRemoteBitmap(Context context, String filename, BitmapFactory.Options options) {
     try {
-      Log.i("com/kagami/merusuto", "Read Bitmap from github.");
-      HttpResponse response = getHttpResponse(filename);
-
-      Log.i("com/kagami/merusuto", "Write Bitmap to local file.");
+      String url = "https://raw.githubusercontent.com/bbtfr/MerusutoChristina/master/data/" + filename;
+      Log.i("com/kagami/merusuto", "Read Bitmap from github: " + url + ".");
+      HttpResponse response = getHttpResponse(url);
       byte[] bytes = EntityUtils.toByteArray(response.getEntity());
+      Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+
       File local = new File(Environment.getExternalStorageDirectory(), 
         "merusuto/" + filename);
+      Log.i("com/kagami/merusuto", "Write Bitmap to local file: " + 
+        local.getAbsolutePath() + ".");
       writeBytesAsFile(local, bytes);
-      return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+      return bitmap;
     } catch (Exception e) {
       Log.e("com/kagami/merusuto", e.getMessage(), e);
       return null;
