@@ -515,7 +515,7 @@
 "515":{"title":"[弄隷な傀儡士]","name":"リュナリュナ","country":"魔法之国","rare":4,"element":4,"weapon":2,"type":2,"anum":3,"life":2727,"atk":2727,"mspd":50,"aspd":3.21,"aarea":90,"tenacity":40,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1,"dark":1.4},
 "516":{"title":"[暂缺]","name":"暂缺","country":"暂缺","rare":"暂缺","element":"暂缺","weapon":"暂缺","type":"暂缺","anum":"暂缺","life":"暂缺","atk":"暂缺","mspd":"暂缺","aspd":"暂缺","aarea":"暂缺","tenacity":"暂缺","fire":"暂缺","aqua":"暂缺","wind":"暂缺","light":"暂缺","dark":"暂缺"},
 
-"109999":{"title":"㊥[神选中的战士]","name":"布伦希尔德","country":"国家","rare":4,"element":4,"weapon":2,"type":2,"anum":1,"life":3200,"atk":3500,"mspd":70,"aspd":2.50,"aarea":35,"tenacity":55,"fire":0.92,"aqua":0.92,"wind":0.92,"light":1,"dark":1.3},
+"119999":{"title":"㊥[神选中的战士]","name":"布伦希尔德","country":"国家","rare":4,"element":4,"weapon":2,"type":2,"anum":1,"life":3200,"atk":3500,"mspd":70,"aspd":2.50,"aarea":35,"tenacity":55,"fire":0.92,"aqua":0.92,"wind":0.92,"light":1,"dark":1.3},
 "110000":{"title":"㊥[坚韧的青春]","name":"琪亚娜","country":"国家","rare":5,"element":4,"weapon":3,"type":2,"anum":3,"life":4200,"atk":2670,"mspd":50,"aspd":3.2,"aarea":30,"tenacity":63,"fire":0.89,"aqua":0.89,"wind":0.89,"light":1,"dark":1.5},
 "110001":{"title":"㊥[雷电女王]","name":"芽衣","country":"崩坏之国","rare":4,"element":5,"weapon":6,"type":2,"anum":1,"life":1660,"atk":3620,"mspd":40,"aspd":2.1,"aarea":160,"tenacity":38,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1.4,"dark":1},
 "110002":{"title":"㊥[无口弹幕使]","name":"33娘","country":"弹幕之国","rare":4,"element":2,"weapon":5,"type":2,"anum":3,"life":1550,"atk":3000,"mspd":42,"aspd":3.1,"aarea":157,"tenacity":21,"fire":1.44,"aqua":1,"wind":0.63,"light":1,"dark":1.1},

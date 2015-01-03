@@ -77,11 +77,8 @@ public class UnitListFragment extends Fragment {
 
   public void setTemplate(int template) {
     mTemplate = template;
-    if (mTemplate == TEMPLATE_COMPANION) {
-      mSkin = 0;
-    } else if (mTemplate == TEMPLATE_FAMILIAR) {
-      mType = mLevelMode = 0;
-    }
+    mLevelMode = 0;
+    resetFilters();
     mAdapter.reload();
   }
 
@@ -107,7 +104,7 @@ public class UnitListFragment extends Fragment {
 
   public void setSkin(int skin) {
     mSkin = skin;
-    mAdapter.sort();
+    mAdapter.search();
   }
 
   public void setLevelMode(int mode) {
@@ -120,8 +117,12 @@ public class UnitListFragment extends Fragment {
     mAdapter.sort();
   }
 
+  private void resetFilters() {
+    mRare = mElement = mWeapon = mType = mSkin = 0;
+  }
+
   public void reset() {
-    mRare = mElement = mWeapon = mLevelMode = 0;
+    resetFilters();
     mAdapter.search();
   }
 

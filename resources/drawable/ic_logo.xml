@@ -3,6 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:drawable="@drawable/ic_launcher"
-        android:right="15dp"
-        android:left="20dp" />
+        android:right="25dp"
+        android:left="35dp" />
 </layer-list>
