@@ -8,4 +8,8 @@
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="activity_vertical_margin">64dp</dimen>
 
+    <dimen name="dialog_small_margin">16dp</dimen>
+    <dimen name="dialog_large_margin">64dp</dimen>
+    <dimen name="dialog_xlarge_margin">256dp</dimen>
+
 </resources>

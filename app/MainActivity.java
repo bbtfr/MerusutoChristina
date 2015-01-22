@@ -6,10 +6,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
 
 public class MainActivity extends Activity {
 
@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
     switch (item.getItemId()) {
     case android.R.id.home:
       mUnitListFragment.scrollToTop();
+      break;
     case R.id.menu_template_companion:
       mUnitListFragment.setTemplate(UnitListFragment.TEMPLATE_COMPANION);
       invalidateOptionsMenu();

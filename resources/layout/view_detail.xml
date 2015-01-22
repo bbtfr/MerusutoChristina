@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" >
+
+  <RelativeLayout
+    android:background="@drawable/dialog_text_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dialog_large_margin"
+    android:padding="@dimen/dialog_large_margin" >
+
+    <TextView
+      android:id="@+id/rare"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:minWidth="80dp"
+      android:text="★★★★★" />
+
+    <TextView
+      android:id="@+id/name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@+id/rare"
+      android:layout_marginBottom="@dimen/fragment_medium_margin"
+      android:layout_marginLeft="@dimen/fragment_medium_margin"
+      android:text="TextView" />
+
+    <LinearLayout
+      android:id="@+id/text_layout1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/name"
+      android:layout_marginBottom="@dimen/fragment_medium_margin" >
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/text_layout2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/text_layout1"
+      android:layout_marginBottom="@dimen/fragment_medium_margin" >
+
+    </LinearLayout>
+
+    <TextView
+      android:id="@+id/text_view1"
+      android:visibility="gone"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/text_layout2"
+      android:layout_marginBottom="@dimen/fragment_medium_margin" />
+
+    <TextView
+      android:id="@+id/text_view2"
+      android:visibility="gone"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/text_view1"
+      android:layout_marginBottom="@dimen/fragment_medium_margin" />
+
+  </RelativeLayout>
+
+</FrameLayout>

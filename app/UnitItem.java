@@ -39,8 +39,8 @@ public class UnitItem {
   public String skill;
   public String obtain;
   // =====
-  public UnitItem(int id, JSONObject json) {
-    this.id = id;
+  public UnitItem(JSONObject json) {
+    this.id = json.optInt("id", 0);
     this.name = json.optString("name", "");
     this.rare = json.optInt("rare", 0);
     this.element = json.optInt("element", 0);

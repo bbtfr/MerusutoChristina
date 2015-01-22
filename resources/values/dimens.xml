@@ -10,6 +10,7 @@
 
     <dimen name="dialog_small_margin">4dp</dimen>
     <dimen name="dialog_large_margin">16dp</dimen>
+    <dimen name="dialog_xlarge_margin">64dp</dimen>
 
     <dimen name="element_view_width">80dp</dimen>
     <dimen name="element_view_top_padding">10dp</dimen>

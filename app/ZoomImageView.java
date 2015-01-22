@@ -1,33 +1,33 @@
 package com.kagami.merusuto;
 
 import android.content.Context;
-import android.view.View;
-import android.view.MotionEvent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
 public class ZoomImageView extends View {
 
-    /** 
-     * 初始化状态常量 
+    /**
+     * 初始化状态常量
      */
     public static final int STATUS_INIT = 1;
 
-    /** 
-     * 图片放大状态常量 
+    /**
+     * 图片放大状态常量
      */
     public static final int STATUS_ZOOM_OUT = 2;
 
-    /** 
-     * 图片缩小状态常量 
+    /**
+     * 图片缩小状态常量
      */
     public static final int STATUS_ZOOM_IN = 3;
 
-    /** 
-     * 图片拖动状态常量 
+    /**
+     * 图片拖动状态常量
      */
     public static final int STATUS_MOVE = 4;
 
@@ -36,117 +36,117 @@ public class ZoomImageView extends View {
     private long startClickTime;
     private float startClickX, startClickY;
 
-    /** 
-     * 用于对图片进行移动和缩放变换的矩阵 
+    /**
+     * 用于对图片进行移动和缩放变换的矩阵
      */
     private Matrix matrix = new Matrix();
 
-    /** 
-     * 待展示的Bitmap对象 
+    /**
+     * 待展示的Bitmap对象
      */
     private Bitmap sourceBitmap;
 
-    /** 
-     * 记录当前操作的状态，可选值为STATUS_INIT、STATUS_ZOOM_OUT、STATUS_ZOOM_IN和STATUS_MOVE 
+    /**
+     * 记录当前操作的状态，可选值为STATUS_INIT、STATUS_ZOOM_OUT、STATUS_ZOOM_IN和STATUS_MOVE
      */
     private int currentStatus;
 
-    /** 
-     * ZoomImageView控件的宽度 
+    /**
+     * ZoomImageView控件的宽度
      */
     private int width;
 
-    /** 
-     * ZoomImageView控件的高度 
+    /**
+     * ZoomImageView控件的高度
      */
     private int height;
 
-    /** 
-     * 记录两指同时放在屏幕上时，中心点的横坐标值 
+    /**
+     * 记录两指同时放在屏幕上时，中心点的横坐标值
      */
     private float centerPointX;
 
-    /** 
-     * 记录两指同时放在屏幕上时，中心点的纵坐标值 
+    /**
+     * 记录两指同时放在屏幕上时，中心点的纵坐标值
      */
     private float centerPointY;
 
-    /** 
-     * 记录当前图片的宽度，图片被缩放时，这个值会一起变动 
+    /**
+     * 记录当前图片的宽度，图片被缩放时，这个值会一起变动
      */
     private float currentBitmapWidth;
 
-    /** 
-     * 记录当前图片的高度，图片被缩放时，这个值会一起变动 
+    /**
+     * 记录当前图片的高度，图片被缩放时，这个值会一起变动
      */
     private float currentBitmapHeight;
 
-    /** 
-     * 记录上次手指移动时的横坐标 
+    /**
+     * 记录上次手指移动时的横坐标
      */
     private float lastXMove = -1;
 
-    /** 
-     * 记录上次手指移动时的纵坐标 
+    /**
+     * 记录上次手指移动时的纵坐标
      */
     private float lastYMove = -1;
 
-    /** 
-     * 记录手指在横坐标方向上的移动距离 
+    /**
+     * 记录手指在横坐标方向上的移动距离
      */
     private float movedDistanceX;
 
-    /** 
-     * 记录手指在纵坐标方向上的移动距离 
+    /**
+     * 记录手指在纵坐标方向上的移动距离
      */
     private float movedDistanceY;
 
-    /** 
-     * 记录图片在矩阵上的横向偏移值 
+    /**
+     * 记录图片在矩阵上的横向偏移值
      */
     private float totalTranslateX;
 
-    /** 
-     * 记录图片在矩阵上的纵向偏移值 
+    /**
+     * 记录图片在矩阵上的纵向偏移值
      */
     private float totalTranslateY;
 
-    /** 
-     * 记录图片在矩阵上的总缩放比例 
+    /**
+     * 记录图片在矩阵上的总缩放比例
      */
     private float totalRatio;
 
-    /** 
-     * 记录手指移动的距离所造成的缩放比例 
+    /**
+     * 记录手指移动的距离所造成的缩放比例
      */
     private float scaledRatio;
 
-    /** 
-     * 记录图片初始化时的缩放比例 
+    /**
+     * 记录图片初始化时的缩放比例
      */
     private float initRatio;
 
-    /** 
-     * 记录上次两指之间的距离 
+    /**
+     * 记录上次两指之间的距离
      */
     private double lastFingerDis;
 
-    /** 
-     * ZoomImageView构造函数，将当前操作状态设为STATUS_INIT。 
+    /**
+     * ZoomImageView构造函数，将当前操作状态设为STATUS_INIT。
      *
-     * @param context 
-     * @param attrs 
+     * @param context
+     * @param attrs
      */
     public ZoomImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         currentStatus = STATUS_INIT;
     }
 
-    /** 
-     * 将待展示的图片设置进来。 
+    /**
+     * 将待展示的图片设置进来。
      *
-     * @param bitmap 
-     *            待展示的Bitmap对象 
+     * @param bitmap
+     *            待展示的Bitmap对象
      */
     public void setImageBitmap(Bitmap bitmap) {
         sourceBitmap = bitmap;
@@ -170,13 +170,14 @@ public class ZoomImageView extends View {
             startClickTime = System.currentTimeMillis();
             startClickX = event.getX();
             startClickY = event.getY();
-            break;
+            return false;
         case MotionEvent.ACTION_POINTER_DOWN:
             if (event.getPointerCount() == 2) {
                 // 当有两个手指按在屏幕上时，计算两指之间的距离
                 lastFingerDis = distanceBetweenFingers(event);
+                return true;
             }
-            break;
+            return false;
         case MotionEvent.ACTION_MOVE:
             if (event.getPointerCount() == 1) {
                 // 只有单指按在屏幕上移动时，为拖动状态
@@ -204,7 +205,12 @@ public class ZoomImageView extends View {
                 invalidate();
                 lastXMove = xMove;
                 lastYMove = yMove;
-            } else if (event.getPointerCount() == 2) {
+
+                if (currentBitmapWidth <= width) {
+                    return false;
+                }
+                return true;
+              } else if (event.getPointerCount() == 2) {
                 // 有两个手指按在屏幕上移动时，为缩放状态
                 centerPointBetweenFingers(event);
                 double fingerDis = distanceBetweenFingers(event);
@@ -227,39 +233,39 @@ public class ZoomImageView extends View {
                     invalidate();
                     lastFingerDis = fingerDis;
                 }
+                return true;
             }
-            break;
         case MotionEvent.ACTION_POINTER_UP:
             if (event.getPointerCount() == 2) {
                 // 手指离开屏幕时将临时值还原
                 startClickTime = -1;
                 lastXMove = -1;
                 lastYMove = -1;
+                return true;
             }
-            break;
+            return false;
         case MotionEvent.ACTION_UP:
             if (startClickTime > 0) {
                 long clickDuration = System.currentTimeMillis() - startClickTime;
-                double clickDistance = Math.sqrt(Math.pow(event.getX() - 
+                double clickDistance = Math.sqrt(Math.pow(event.getX() -
                     startClickX, 2) + Math.pow(event.getY() - startClickY, 2));
-                if(clickDuration < MAX_CLICK_DURATION && 
+                if(clickDuration < MAX_CLICK_DURATION &&
                     clickDistance < MAX_CLICK_DISTANCE) {
                     startClickTime = -1;
                     performClick();
+                    return true;
                 }
             }
             // 手指离开屏幕时将临时值还原
             lastXMove = -1;
             lastYMove = -1;
-            break;
-        default:
-            break;
+            return false;
         }
-        return true;
+        return false;
     }
 
-    /** 
-     * 根据currentStatus的值来决定对图片进行什么样的绘制操作。 
+    /**
+     * 根据currentStatus的值来决定对图片进行什么样的绘制操作。
      */
     @Override
     protected void onDraw(Canvas canvas) {
@@ -280,10 +286,10 @@ public class ZoomImageView extends View {
         }
     }
 
-    /** 
-     * 对图片进行缩放处理。 
+    /**
+     * 对图片进行缩放处理。
      *
-     * @param canvas 
+     * @param canvas
      */
     private void zoom(Canvas canvas) {
         matrix.reset();
@@ -326,10 +332,10 @@ public class ZoomImageView extends View {
         canvas.drawBitmap(sourceBitmap, matrix, null);
     }
 
-    /** 
-     * 对图片进行平移处理 
+    /**
+     * 对图片进行平移处理
      *
-     * @param canvas 
+     * @param canvas
      */
     private void move(Canvas canvas) {
         matrix.reset();
@@ -345,10 +351,10 @@ public class ZoomImageView extends View {
         canvas.drawBitmap(sourceBitmap, matrix, null);
     }
 
-    /** 
-     * 对图片进行初始化操作，包括让图片居中，以及当图片大于屏幕宽高时对图片进行压缩。 
+    /**
+     * 对图片进行初始化操作，包括让图片居中，以及当图片大于屏幕宽高时对图片进行压缩。
      *
-     * @param canvas 
+     * @param canvas
      */
     private void initBitmap(Canvas canvas) {
         if (sourceBitmap != null) {
@@ -392,11 +398,11 @@ public class ZoomImageView extends View {
         }
     }
 
-    /** 
-     * 计算两个手指之间的距离。 
+    /**
+     * 计算两个手指之间的距离。
      *
-     * @param event 
-     * @return 两个手指之间的距离 
+     * @param event
+     * @return 两个手指之间的距离
      */
     private double distanceBetweenFingers(MotionEvent event) {
         float disX = Math.abs(event.getX(0) - event.getX(1));
@@ -404,10 +410,10 @@ public class ZoomImageView extends View {
         return Math.sqrt(disX * disX + disY * disY);
     }
 
-    /** 
-     * 计算两个手指之间中心点的坐标。 
+    /**
+     * 计算两个手指之间中心点的坐标。
      *
-     * @param event 
+     * @param event
      */
     private void centerPointBetweenFingers(MotionEvent event) {
         float xPoint0 = event.getX(0);
