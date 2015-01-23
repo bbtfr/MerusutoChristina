@@ -14,7 +14,7 @@ public class UnitItem {
   public float wind;
   public float light;
   public float dark;
-  
+
   // =====
   // 同伴
   public String title;
@@ -24,7 +24,7 @@ public class UnitItem {
   public int tenacity;
   public float aspd;
   public String country;
-  
+
   public int weapon; // 1斩击 2突击 3打击 4弓箭 5魔法 6铳弹 7回复
   public int aarea;
   public int anum;
@@ -69,13 +69,13 @@ public class UnitItem {
     this.skill = json.optString("skill", "");
     this.obtain = json.optString("obtain", "");
   }
-  
+
   public String getRareString() {
     String[] elements = { "", "★", "★★", "★★★", "★★★★", "★★★★★" };
     int index = rare >= 0 && rare < 6 ? rare : 0;
     return elements[index];
   }
-  
+
   public String getElementString() {
     String[] elements = { "", "火", "水", "风", "光", "暗" };
     int index = element >= 0 && element < 6 ? element : 0;
@@ -103,7 +103,7 @@ public class UnitItem {
   private int calcMaxLvAndGrow(int value) {
     float f = calcF();
     int levelPart = (int) (value * f);
-    int growPart = ((int) (value * (f - 1) / (19 + 10 * rare))) * 
+    int growPart = ((int) (value * (f - 1) / (19 + 10 * rare))) *
       5 * (rare == 1 ? 5 : 15);
     return levelPart + growPart;
   }
@@ -119,7 +119,7 @@ public class UnitItem {
       return value;
     }
   }
-  
+
   public int getAtk(int mode) {
     return (int) calcByLevel(mode, atk);
   }
@@ -135,7 +135,7 @@ public class UnitItem {
   public int getDPS(int mode) {
     return (int) calcDPS(mode);
   }
-  
+
   public int getMultDPS(int mode) {
     return (int) calcDPS(mode) * anum;
   }

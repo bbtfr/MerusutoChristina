@@ -5,7 +5,7 @@
     android:layout_weight="1" >
 
     <TextView
-        android:id="@+id/text_view"  
+        android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="@dimen/text_view_line_spacing_extra" />

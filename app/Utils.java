@@ -27,7 +27,7 @@ import org.json.JSONArray;
 
 public class Utils {
   public final static long EXPIRATION = 14400000L;
-  private final static String BASEURL = 
+  private final static String BASEURL =
     "http://bbtfr.github.io/MerusutoChristina/data/";
 
   static public void ensureParentDirectoryExists(File file) {

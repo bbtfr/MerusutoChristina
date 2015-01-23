@@ -496,7 +496,7 @@ public class UnitListFragment extends Fragment {
         if (textViewNum > 2) {
           addUnitTextView(textLayout, String.format(
             "技能SP: %d\n技能CD: %d\nDPS: %d\n总DPS: %d",
-            item.sklsp, item.sklcd, 
+            item.sklsp, item.sklcd,
             item.getDPS(mLevelMode), item.getMultDPS(mLevelMode)));
         }
 

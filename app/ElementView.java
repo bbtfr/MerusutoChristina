@@ -52,7 +52,7 @@ public class ElementView extends View {
     mElementViewTopPadding = getContext().getResources()
       .getDimension(R.dimen.element_view_top_padding);
   }
-  
+
   private PointF getPoint(float centerX, float centerY, float r, int i) {
     double th = (Math.PI * 2) / 360;
     PointF point = new PointF((float) (centerX + r * Math.cos((-i * 72 + 90) * th)),
@@ -87,7 +87,7 @@ public class ElementView extends View {
     for (int i = 1; i < 5; i++)
       mBoundPath.lineTo(mBoundPoints[i].x, mBoundPoints[i].y);
     mBoundPath.close();
-    
+
     mHalfBoundPath.reset();
     PointF tmpPoint = getPoint(centerX, centerY, r / 2.0f, 0);
     mHalfBoundPath.moveTo(tmpPoint.x, tmpPoint.y);
@@ -106,7 +106,7 @@ public class ElementView extends View {
     mPaint.setStyle(Style.FILL);
     mPaint.setColor(0x11000000);
     canvas.drawPath(mHalfBoundPath, mPaint);
-    
+
     //Element
     mPaint.setStyle(Style.FILL);
     int index = (mMode > 0 && mMode < 6) ? mMode - 1 : 0;
@@ -128,12 +128,12 @@ public class ElementView extends View {
     mElementBoundPath.lineTo(tmpPoint.x, tmpPoint.y);
     mElementBoundPath.close();
     canvas.drawPath(mElementBoundPath, mPaint);
-    
+
     //Circle
     mPaint.setStyle(Style.FILL);
     for (int i = 0; i < 5; i++) {
       mPaint.setColor(COLORS[i]);
-      canvas.drawCircle(mBoundPoints[i].x, mBoundPoints[i].y, 
+      canvas.drawCircle(mBoundPoints[i].x, mBoundPoints[i].y,
         mElementBoundPointRadio, mPaint);
     }
   }

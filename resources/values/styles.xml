@@ -24,7 +24,7 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimAmount">0.5</item>
-    </style>  
+    </style>
 
     <style name="OverlayText">
         <item name="android:textColor">#eeeeee</item>
