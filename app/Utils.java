@@ -27,6 +27,8 @@ import org.json.JSONArray;
 
 public class Utils {
   public final static long EXPIRATION = 14400000L;
+  private final static String BASEURL = 
+    "http://bbtfr.github.io/MerusutoChristina/data/";
 
   static public void ensureParentDirectoryExists(File file) {
     File parent = file.getParentFile();
@@ -127,7 +129,7 @@ public class Utils {
 
   static public JSONArray readRemoteJSONData(Context context, String filename) {
     try {
-      String url = "https://raw.githubusercontent.com/bbtfr/MerusutoChristina/master/data/" + filename;
+      String url = BASEURL + filename;
       Log.i("com/kagami/merusuto", "Read JSON from github: " + url + ".");
       HttpResponse response = getHttpResponse(url);
       String json = EntityUtils.toString(response.getEntity());
@@ -170,7 +172,7 @@ public class Utils {
 
   static public Bitmap readRemoteBitmap(Context context, String filename, BitmapFactory.Options options) {
     try {
-      String url = "https://raw.githubusercontent.com/bbtfr/MerusutoChristina/master/data/" + filename;
+      String url = BASEURL + filename;
       Log.i("com/kagami/merusuto", "Read Bitmap from github: " + url + ".");
       HttpResponse response = getHttpResponse(url);
       byte[] bytes = EntityUtils.toByteArray(response.getEntity());
