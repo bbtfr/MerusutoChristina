@@ -58,6 +58,7 @@ public class UnitListFragment extends Fragment {
   private int mLevel = 0, mGrow = 0;
   private int mSortMode = 0, mLevelMode = 0;
   private int mTemplate = 0;
+  private String mQuery = null;
 
   private ListView mListView;
 
@@ -80,6 +81,11 @@ public class UnitListFragment extends Fragment {
     mLevelMode = 0;
     resetFilters();
     mAdapter.reload();
+  }
+
+  public void setSearchQuery(String query) {
+    mQuery = query;
+    mAdapter.search();
   }
 
   public void setRare(int rare) {
@@ -227,6 +233,7 @@ public class UnitListFragment extends Fragment {
     mLevelMode = savedInstanceState.getInt("levelMode");
     mSortMode = savedInstanceState.getInt("sortMode");
     mTemplate = savedInstanceState.getInt("template");
+    mQuery = savedInstanceState.getString("query");
   }
 
   @Override
@@ -238,6 +245,7 @@ public class UnitListFragment extends Fragment {
     savedInstanceState.putInt("levelMode", mLevelMode);
     savedInstanceState.putInt("sortMode", mSortMode);
     savedInstanceState.putInt("template", mTemplate);
+    savedInstanceState.putString("query", mQuery);
   }
 
   private class UnitListAdapter extends BaseAdapter {
@@ -303,7 +311,8 @@ public class UnitListFragment extends Fragment {
           (mElement == 0 || item.element == mElement) &&
           (mWeapon == 0 || item.weapon == mWeapon) &&
           (mType == 0 || item.type == mType) &&
-          (mSkin == 0 || item.skin == mSkin))
+          (mSkin == 0 || item.skin == mSkin) &&
+          (mQuery == null || item.name.indexOf(mQuery) > 0 || item.title.indexOf(mQuery) > 0))
           mDisplayedData.add(item);
 
       sort();

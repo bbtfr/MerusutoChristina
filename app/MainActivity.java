@@ -10,10 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.SearchView;
 
 public class MainActivity extends Activity {
 
   private UnitListFragment mUnitListFragment;
+  private MenuItem mSearchMenu;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class MainActivity extends Activity {
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
+  public boolean onCreateOptionsMenu(final Menu menu) {
     switch (mUnitListFragment.getTemplate()) {
     case UnitListFragment.TEMPLATE_COMPANION:
       getMenuInflater().inflate(R.menu.options_companion, menu);
@@ -47,6 +52,54 @@ public class MainActivity extends Activity {
       getMenuInflater().inflate(R.menu.options_familiar, menu);
       break;
     }
+
+    mSearchMenu = menu.findItem(R.id.menu_search);
+    mSearchMenu.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+
+      public void setMenuItemVisible(boolean visible) {
+        MenuItem menuItem;
+        menuItem = menu.findItem(R.id.menu_template);
+        menuItem.setVisible(visible);
+        menuItem = menu.findItem(R.id.menu_level_mode);
+        if (menuItem != null) menuItem.setVisible(visible);
+        menuItem = menu.findItem(R.id.menu_sort_mode);
+        menuItem.setVisible(visible);
+        menuItem = menu.findItem(R.id.menu_filters);
+        menuItem.setVisible(visible);
+        menuItem = menu.findItem(R.id.menu_close_search);
+        menuItem.setVisible(!visible);
+      }
+
+      @Override
+      public boolean onMenuItemActionCollapse(MenuItem item) {
+        mUnitListFragment.setSearchQuery(null);
+        setMenuItemVisible(true);
+        return true;
+      }
+
+      @Override
+      public boolean onMenuItemActionExpand(MenuItem item) {
+        setMenuItemVisible(false);
+        return true;
+      }
+    });
+
+    SearchView searchView = (SearchView) mSearchMenu.getActionView();
+    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+      @Override
+      public boolean onQueryTextChange(String query) {
+        if (query.isEmpty()) query = null;
+        mUnitListFragment.setSearchQuery(query);
+        return true;
+      }
+
+      @Override
+      public boolean  onQueryTextSubmit(String query) {
+        mUnitListFragment.setSearchQuery(query);
+        return true;
+      }
+    });
+
     return true;
   }
 
@@ -55,6 +108,9 @@ public class MainActivity extends Activity {
     switch (item.getItemId()) {
     case android.R.id.home:
       mUnitListFragment.scrollToTop();
+      break;
+    case R.id.menu_close_search:
+      mSearchMenu.collapseActionView();
       break;
     case R.id.menu_template_companion:
       mUnitListFragment.setTemplate(UnitListFragment.TEMPLATE_COMPANION);
