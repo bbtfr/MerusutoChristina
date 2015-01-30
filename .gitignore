@@ -13,3 +13,6 @@ nbproject
 .dat*.*
 
 *.bak
+
+asset/data
+data
