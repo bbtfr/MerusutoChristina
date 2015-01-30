@@ -28,7 +28,7 @@ import org.json.JSONArray;
 public class Utils {
   public final static long EXPIRATION = 14400000L;
   private final static String BASEURL =
-    "http://bbtfr.github.io/MerusutoChristina/data/";
+    "https://bbtfr.github.io/MerusutoChristina/data/";
 
   static public void ensureParentDirectoryExists(File file) {
     File parent = file.getParentFile();
@@ -132,7 +132,7 @@ public class Utils {
       String url = BASEURL + filename;
       Log.i("com/kagami/merusuto", "Read JSON from github: " + url + ".");
       HttpResponse response = getHttpResponse(url);
-      String json = EntityUtils.toString(response.getEntity());
+      String json = EntityUtils.toString(response.getEntity(), "UTF8");
       JSONArray jsonObj = new JSONArray(json);
 
       File cache = new File(context.getFilesDir(), filename);
