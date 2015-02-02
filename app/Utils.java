@@ -24,6 +24,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Utils {
   public final static long EXPIRATION = 86400000L;
@@ -129,17 +130,25 @@ public class Utils {
 
   static public JSONArray readRemoteJSONData(Context context, String filename) {
     try {
-      String url = BASEURL + filename;
-      Log.i("com/kagami/merusuto", "Read JSON from github: " + url + ".");
-      HttpResponse response = getHttpResponse(url);
-      String json = EntityUtils.toString(response.getEntity(), "UTF8");
-      JSONArray jsonObj = new JSONArray(json);
-
       File cache = new File(context.getFilesDir(), filename);
-      Log.i("com/kagami/merusuto", "Write JSON to local cache file: " +
-        cache.getAbsolutePath() + ".");
-      writeStringAsFile(cache, json);
-      return jsonObj;
+      if (needUpdate(context) || !cache.exists()) {
+        String url = BASEURL + filename;
+        Log.i("com/kagami/merusuto", "Read JSON from github: " + url + ".");
+        HttpResponse response = getHttpResponse(url);
+        String json = EntityUtils.toString(response.getEntity(), "UTF8");
+        JSONArray jsonObj = new JSONArray(json);
+
+        Log.i("com/kagami/merusuto", "Write JSON to local cache file: " +
+          cache.getAbsolutePath() + ".");
+        writeStringAsFile(cache, json);
+        return jsonObj;
+      } else {
+        Log.i("com/kagami/merusuto", "Read JSON from local cache file: " +
+          cache.getAbsolutePath() + ".");
+        cache.setLastModified(System.currentTimeMillis());
+        return new JSONArray(readFileAsString(cache));
+      }
+
     } catch (Exception e) {
       Log.e("com/kagami/merusuto", e.getMessage(), e);
       return null;
@@ -187,6 +196,32 @@ public class Utils {
     } catch (Exception e) {
       Log.e("com/kagami/merusuto", e.getMessage(), e);
       return null;
+    }
+  }
+
+  static public boolean needUpdate(Context context) {
+    try {
+      String url = BASEURL + "version";
+      Log.i("com/kagami/merusuto", "Read version from github: " + url + ".");
+      HttpResponse response = getHttpResponse(url);
+      String version = EntityUtils.toString(response.getEntity(), "UTF8");
+
+      File cache = new File(context.getFilesDir(), "version");
+      if (cache.exists()) {
+        Log.i("com/kagami/merusuto", "Compare version with local cache file: " +
+          cache.getAbsolutePath() + ".");
+        if (readFileAsString(cache).equals(version)) {
+          return false;
+        }
+      }
+
+      Log.i("com/kagami/merusuto", "Write version to local cache file: " +
+        cache.getAbsolutePath() + ".");
+      writeStringAsFile(cache, version);
+      return true;
+    } catch (Exception e) {
+      Log.e("com/kagami/merusuto", e.getMessage(), e);
+      return false;
     }
   }
 }
