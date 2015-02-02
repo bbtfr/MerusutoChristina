@@ -7,11 +7,11 @@
         android:title="同伴" >
         <menu>
             <item
-                android:id="@+id/menu_template_companion"
+                android:id="@+id/menu_template_unit"
                 android:title="同伴" >
             </item>
             <item
-                android:id="@+id/menu_template_familiar"
+                android:id="@+id/menu_template_monster"
                 android:title="魔宠" >
             </item>
         </menu>

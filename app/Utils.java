@@ -26,7 +26,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 
 public class Utils {
-  public final static long EXPIRATION = 14400000L;
+  public final static long EXPIRATION = 86400000L;
   private final static String BASEURL =
     "https://bbtfr.github.io/MerusutoChristina/data/";
 

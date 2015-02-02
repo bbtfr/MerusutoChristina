@@ -50,8 +50,8 @@ public class UnitListFragment extends Fragment {
   public final static int LEVEL_MAX_LV = 1;
   public final static int LEVEL_MAX_LV_GR = 2;
 
-  public final static int TEMPLATE_COMPANION = 0;
-  public final static int TEMPLATE_FAMILIAR = 1;
+  public final static int TEMPLATE_UNIT = 0;
+  public final static int TEMPLATE_MONSTER = 1;
 
   private UnitListAdapter mAdapter;
   private int mRare = 0, mElement = 0, mWeapon = 0, mType = 0, mSkin = 0;
@@ -71,7 +71,7 @@ public class UnitListFragment extends Fragment {
   }
 
   public String getTemplateString() {
-    String[] templates = { "companions", "familiars" };
+    String[] templates = { "units", "monsters" };
     int index = mTemplate >= 0 && mTemplate < 2 ? mTemplate : 0;
     return templates[index];
   }
@@ -146,9 +146,9 @@ public class UnitListFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
     Bundle savedInstanceState) {
-    View rootView = inflater.inflate(R.layout.fragment_companion_list,
+    View rootView = inflater.inflate(R.layout.fragment_unit_list,
       container, false);
-    mListView = (ListView) rootView.findViewById(R.id.companion_list);
+    mListView = (ListView) rootView.findViewById(R.id.unit_list);
 
     if (savedInstanceState != null) {
       onLoadInstanceState(savedInstanceState);
@@ -435,7 +435,7 @@ public class UnitListFragment extends Fragment {
     public View getView(int position, View convertView, ViewGroup parent) {
       if (convertView == null || convertView.getTag() != null) {
         convertView = LayoutInflater.from(parent.getContext())
-          .inflate(R.layout.cell_companion_item, null);
+          .inflate(R.layout.cell_unit_item, null);
       }
 
       ImageView thumbnailView = (ImageView) convertView.findViewById(R.id.thumbnail);
@@ -469,7 +469,7 @@ public class UnitListFragment extends Fragment {
         "生命: %d\n攻击: %d\n攻距: %d\n攻数: %d",
         item.getLife(mLevelMode), item.getAtk(mLevelMode), item.aarea, item.anum));
 
-      if (mTemplate == TEMPLATE_COMPANION) {
+      if (mTemplate == TEMPLATE_UNIT) {
         addUnitTextView(textLayout, String.format(
           "攻速: %.2f\n韧性: %d\n移速: %d\n成长: %s",
           item.aspd, item.tenacity, item.mspd, item.getTypeString()));
@@ -488,7 +488,7 @@ public class UnitListFragment extends Fragment {
             item.getMultDPS(mLevelMode)));
         }
 
-      } else if (mTemplate == TEMPLATE_FAMILIAR) {
+      } else if (mTemplate == TEMPLATE_MONSTER) {
         addUnitTextView(textLayout, String.format(
           "攻速: %.2f\n韧性: %d\n移速: %d\n皮肤: %s",
           item.aspd, item.tenacity, item.mspd, item.getSkinString()));
@@ -513,7 +513,7 @@ public class UnitListFragment extends Fragment {
       LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
         LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f);
       View textLayout = LayoutInflater.from(getActivity())
-          .inflate(R.layout.text_view_companion_item, null);
+          .inflate(R.layout.text_view_unit_item, null);
       TextView textView = (TextView) textLayout.findViewById(R.id.text_view);
       textView.setText(text);
       layout.addView(textLayout, params);

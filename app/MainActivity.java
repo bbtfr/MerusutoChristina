@@ -45,11 +45,11 @@ public class MainActivity extends Activity {
   @Override
   public boolean onCreateOptionsMenu(final Menu menu) {
     switch (mUnitListFragment.getTemplate()) {
-    case UnitListFragment.TEMPLATE_COMPANION:
-      getMenuInflater().inflate(R.menu.options_companion, menu);
+    case UnitListFragment.TEMPLATE_UNIT:
+      getMenuInflater().inflate(R.menu.options_unit, menu);
       break;
-    case UnitListFragment.TEMPLATE_FAMILIAR:
-      getMenuInflater().inflate(R.menu.options_familiar, menu);
+    case UnitListFragment.TEMPLATE_MONSTER:
+      getMenuInflater().inflate(R.menu.options_monster, menu);
       break;
     }
 
@@ -112,12 +112,12 @@ public class MainActivity extends Activity {
     case R.id.menu_close_search:
       mSearchMenu.collapseActionView();
       break;
-    case R.id.menu_template_companion:
-      mUnitListFragment.setTemplate(UnitListFragment.TEMPLATE_COMPANION);
+    case R.id.menu_template_unit:
+      mUnitListFragment.setTemplate(UnitListFragment.TEMPLATE_UNIT);
       invalidateOptionsMenu();
       break;
-    case R.id.menu_template_familiar:
-      mUnitListFragment.setTemplate(UnitListFragment.TEMPLATE_FAMILIAR);
+    case R.id.menu_template_monster:
+      mUnitListFragment.setTemplate(UnitListFragment.TEMPLATE_MONSTER);
       invalidateOptionsMenu();
       break;
     case R.id.menu_rare_0:

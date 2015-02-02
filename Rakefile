@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-$:.unshift("/Library/RubyMotionPre/lib")
+$:.unshift("/Library/RubyMotionCustom/lib")
 require 'motion/project/template/android'
 
 Motion::Project::App.setup do |app|

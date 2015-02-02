@@ -68,7 +68,7 @@ class ImageDialog extends Dialog {
 
     LinearLayout textLayout = (LinearLayout) detailView.findViewById(R.id.text_layout1);
 
-    if (mTemplate == UnitListFragment.TEMPLATE_COMPANION) {
+    if (mTemplate == UnitListFragment.TEMPLATE_UNIT) {
       addUnitTextView(textLayout, String.format(
         "初始生命: %d\n满级生命: %d\n满觉生命: %d\n初始攻击: %d\n满级攻击: %d\n满觉攻击: %d",
         item.getLife(0), item.getLife(1), item.getLife(2), item.getAtk(0), item.getAtk(1), item.getAtk(2)));
@@ -77,7 +77,8 @@ class ImageDialog extends Dialog {
         "攻距: %d\n攻数: %d\n攻速: %.2f\n韧性: %d\n移速: %d\n成长: %s",
         item.aarea, item.anum, item.aspd, item.tenacity, item.mspd, item.getTypeString()));
 
-    } else if (mTemplate == UnitListFragment.TEMPLATE_FAMILIAR) {
+    } else if (mTemplate == UnitListFragment.TEMPLATE_MONSTER) {
+
       addUnitTextView(textLayout, String.format(
         "生命: %d\n攻击: %d\n攻距: %d\n攻数: %d",
         item.getLife(0), item.getAtk(0), item.aarea, item.anum));
@@ -85,30 +86,29 @@ class ImageDialog extends Dialog {
       addUnitTextView(textLayout, String.format(
         "攻速: %.2f\n韧性: %d\n移速: %d\n皮肤: %s",
         item.aspd, item.tenacity, item.mspd, item.getSkinString()));
-
     }
 
     textLayout = (LinearLayout) detailView.findViewById(R.id.text_layout2);
 
-    if (mTemplate == UnitListFragment.TEMPLATE_COMPANION) {
+    if (mTemplate == UnitListFragment.TEMPLATE_UNIT) {
       addUnitTextView(textLayout, String.format(
-        "火: %.0f%%\n水: %.0f%%\n风: %.0f%%\n光: %.0f%%\n暗: %.0f%%",
-        item.fire * 100, item.aqua * 100, item.wind * 100,
+        "初始DPS: %d\n满级DPS: %d\n满觉DPS: %d\n初始总DPS: %d\n满级总DPS: %d\n满觉总DPS: %d",
+        item.getDPS(0), item.getDPS(1), item.getDPS(2), item.getMultDPS(0), item.getMultDPS(1), item.getMultDPS(2)));
+
+      addUnitTextView(textLayout, String.format(
+        "国家: %s\n火: %.0f%%\n水: %.0f%%\n风: %.0f%%\n光: %.0f%%\n暗: %.0f%%",
+        item.country, item.fire * 100, item.aqua * 100, item.wind * 100,
         item.light * 100, item.dark * 100));
 
-      addUnitTextView(textLayout, String.format(
-        "国家: %s\n\n\nDPS: %d\n总DPS: %d",
-        item.country, item.getDPS(0), item.getMultDPS(0)));
-
-    } else if (mTemplate == UnitListFragment.TEMPLATE_FAMILIAR) {
-      addUnitTextView(textLayout, String.format(
-        "火: %.0f%%\n水: %.0f%%\n风: %.0f%%\n光: %.0f%%\n暗: %.0f%%",
-        item.fire * 100, item.aqua * 100, item.wind * 100,
-        item.light * 100, item.dark * 100));
-
+    } else if (mTemplate == UnitListFragment.TEMPLATE_MONSTER) {
       addUnitTextView(textLayout, String.format(
         "\n\n\nDPS: %d\n总DPS: %d",
         item.getDPS(0), item.getMultDPS(0)));
+
+      addUnitTextView(textLayout, String.format(
+        "火: %.0f%%\n水: %.0f%%\n风: %.0f%%\n光: %.0f%%\n暗: %.0f%%",
+        item.fire * 100, item.aqua * 100, item.wind * 100,
+        item.light * 100, item.dark * 100));
 
       TextView textView = (TextView) detailView.findViewById(R.id.text_view1);
       textView.setVisibility(View.VISIBLE);
@@ -164,7 +164,7 @@ class ImageDialog extends Dialog {
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
     LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f);
     View textLayout = LayoutInflater.from(getContext())
-      .inflate(R.layout.text_view_companion_item, null);
+      .inflate(R.layout.text_view_unit_item, null);
     TextView textView = (TextView) textLayout.findViewById(R.id.text_view);
     textView.setText(text);
     layout.addView(textLayout, params);
