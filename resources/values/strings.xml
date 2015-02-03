@@ -3,4 +3,17 @@
 
     <string name="app_name">MerusutoChristina</string>
 
+
+    <string name="template">类别</string>
+    <string name="setting">设置</string>
+
+    <string-array name="template_array">
+        <item>同伴</item>
+        <item>魔宠</item>
+    </string-array>
+
+    <string-array name="setting_array">
+        <item>加载数据包</item>
+    </string-array>
+
 </resources>

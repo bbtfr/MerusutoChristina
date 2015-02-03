@@ -2,21 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.kagami.merusuto.MainActivity" >
     <item
-        android:id="@+id/menu_template"
-        android:showAsAction="always|withText"
-        android:title="同伴" >
-        <menu>
-            <item
-                android:id="@+id/menu_template_unit"
-                android:title="同伴" >
-            </item>
-            <item
-                android:id="@+id/menu_template_monster"
-                android:title="魔宠" >
-            </item>
-        </menu>
-    </item>
-    <item
         android:id="@+id/menu_level_mode"
         android:showAsAction="always|withText"
         android:title="等级" >

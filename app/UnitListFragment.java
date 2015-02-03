@@ -137,7 +137,9 @@ public class UnitListFragment extends Fragment {
 
       @Override
       public void run() {
-        mListView.setSelection(0);
+        if (mListView.getFirstVisiblePosition() > 10) {
+          mListView.setSelection(10);
+        }
         mListView.smoothScrollToPosition(0);
       }
     });
@@ -164,6 +166,10 @@ public class UnitListFragment extends Fragment {
         private ProgressDialog mProgressDialog;
         private UnitItem mItem;
 
+        ReadUnitOriginalTask(UnitItem item) {
+          mItem = item;
+        }
+
         @Override
         protected void onPreExecute() {
           mProgressDialog = new ProgressDialog(getActivity());
@@ -183,9 +189,8 @@ public class UnitListFragment extends Fragment {
 
         @Override
         protected Bitmap doInBackground(Object... params) {
-          mItem = (UnitItem) params[0];
-          return Utils.readRemoteBitmap(getActivity(), (String) params[1],
-            (BitmapFactory.Options) params[2]);
+          return Utils.readRemoteBitmap(getActivity(), (String) params[0],
+            (BitmapFactory.Options) params[1]);
         }
 
         @Override
@@ -213,7 +218,7 @@ public class UnitListFragment extends Fragment {
         UnitItem item = (UnitItem) mAdapter.getItemById((int) id);
 
         if (bitmap == null) {
-          new ReadUnitOriginalTask().execute(item, bitmapPath, options);
+          new ReadUnitOriginalTask(item).execute(bitmapPath, options);
         } else {
           ImageDialog dialog = new ImageDialog(getActivity(), item, bitmap, mTemplate);
           dialog.show();
