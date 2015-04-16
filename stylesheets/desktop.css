@@ -7006,32 +7006,33 @@ view {
 
 /* line 60, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .datatable .icon {
-  width: 40px; }
-/* line 63, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+  width: 40px;
+  margin: -5px; }
+/* line 64, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .datatable .glyphicon {
   text-decoration: none;
   margin-right: 5px; }
 
-/* line 70, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 71, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .detail .links, .editor .links {
   position: relative;
   z-index: 1; }
-/* line 75, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 76, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .detail .page-header, .editor .page-header {
   margin-top: 20px; }
 
-/* line 81, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 82, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .detail p {
   font-size: 1.2em; }
-/* line 86, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 87, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .detail .image img {
   width: 100%; }
 
-/* line 93, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 94, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .jumbotron .btn {
   margin-bottom: 6px; }
 
-/* line 98, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 99, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 .glyphicon-refresh-animate {
   -animation: spin .7s infinite linear;
   -webkit-animation: spin2 .7s infinite linear; }
@@ -7047,21 +7048,21 @@ view {
   to {
     transform: scale(1) rotate(360deg); } }
 @media (min-width: 992px) {
-  /* line 114, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+  /* line 115, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
   .detail-body {
     display: table;
     width: 100%; }
-    /* line 118, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+    /* line 119, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
     .detail-body .left-side {
       float: none;
       display: table-cell;
       vertical-align: middle; }
-    /* line 124, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+    /* line 125, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
     .detail-body .right-side {
       float: none;
       display: table-cell;
       vertical-align: top; } }
-/* line 132, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 133, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 #changelog {
   height: 450px;
   overflow: hidden; }

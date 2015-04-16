@@ -37,7 +37,9 @@
     }
     (function() {
       (function() {
-        __out.push('<view class="main">\n  ');
+        __out.push(_.renderTemplate("templates/mobile/mirror_info"));
+      
+        __out.push('\n\n<view class="main">\n  ');
       
         __out.push(_.renderTemplate("templates/mobile/sidebar"));
       

@@ -2223,89 +2223,202 @@ a[sref] {
     left: -100%;
     margin-left: 10px; }
 
-/* line 36, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 1, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px; }
+
+/* line 7, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert h4 {
+  margin-top: 0;
+  color: inherit; }
+
+/* line 11, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert .alert-link {
+  font-weight: bold; }
+
+/* line 14, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert > p,
+.alert > ul {
+  margin-bottom: 0; }
+
+/* line 18, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert > p + p {
+  margin-top: 5px; }
+
+/* line 21, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 35px; }
+
+/* line 25, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit; }
+
+/* line 32, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6; }
+
+/* line 37, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-success hr {
+  border-top-color: #c9e2b3; }
+
+/* line 40, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-success .alert-link {
+  color: #2b542c; }
+
+/* line 43, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1; }
+
+/* line 48, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-info hr {
+  border-top-color: #a6e1ec; }
+
+/* line 51, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-info .alert-link {
+  color: #245269; }
+
+/* line 54, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc; }
+
+/* line 59, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-warning hr {
+  border-top-color: #f7e1b5; }
+
+/* line 62, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-warning .alert-link {
+  color: #66512c; }
+
+/* line 65, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1; }
+
+/* line 70, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-danger hr {
+  border-top-color: #e4b9c0; }
+
+/* line 73, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.alert-danger .alert-link {
+  color: #843534; }
+
+/* line 76, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+button.close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0; }
+
+/* line 83, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/structure/_alert.scss */
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2; }
+
+/* line 37, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .media .media-object {
   max-height: 80px; }
-/* line 40, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 41, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .media .media-body .media-title {
   margin-top: 2px;
   margin-bottom: 5px;
   font-size: 14px; }
-/* line 45, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 46, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .media .media-body p, .media .media-body .media-title {
   color: #555; }
-/* line 48, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 49, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .media .media-body .media-info-group {
   position: relative;
   display: table;
   border-spacing: 20px 0;
   margin: 0 -20px; }
-  /* line 54, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 55, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .media .media-body .media-info-group .media-info {
     display: table-cell;
     width: 1%; }
-/* line 59, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 60, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .media .media-body .media-info {
   min-width: 80px;
   line-height: 15px; }
 
-/* line 66, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 67, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .element {
   margin-top: 5px; }
-  /* line 69, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 70, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-background {
     fill: #000000;
     opacity: 0.05; }
-  /* line 73, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 74, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-fire, .element .element-aqua, .element .element-wind,
   .element .element-light, .element .element-dark {
     opacity: 0.5; }
-  /* line 77, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 78, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-fire {
     fill: #e74c3c; }
-  /* line 80, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 81, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-aqua {
     fill: #3498db; }
-  /* line 83, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 84, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-wind {
     fill: #2ecc71; }
-  /* line 86, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 87, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-light {
     fill: #f1c40f; }
-  /* line 89, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 90, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .element .element-dark {
     fill: #9b59b6; }
 
-/* line 95, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 96, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .table-view-cell.unit .media-object {
   height: 80px;
   width: 56px; }
-/* line 99, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 100, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .table-view-cell.unit > a:not(.btn) {
   margin: -16px -120px -16px -20px; }
 
-/* line 105, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 106, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .bar .dropdown.pull-right {
   margin-right: 10px; }
 
-/* line 110, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 111, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .input-icon {
   position: relative; }
-  /* line 112, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 113, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .input-icon .icon {
     position: absolute;
     top: 0;
     color: #aaa;
     padding: 10px;
     font-size: 20px; }
-  /* line 119, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 120, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .input-icon input {
     padding-left: 40px; }
-  /* line 122, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 123, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .input-icon .pull-right {
     right: 0; }
 
-/* line 127, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 128, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .scroll-to-top {
   position: absolute;
   bottom: 20px;
@@ -2320,7 +2433,7 @@ a[sref] {
   -ms-transform: translate3d(300%, 0, 0);
   transform: translate3d(300%, 0, 0); }
 
-/* line 142, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 143, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .scroll-to-top.in {
   opacity: 0.7;
   -webkit-transition: -webkit-transform .25s;
@@ -2330,41 +2443,41 @@ a[sref] {
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
 
-/* line 152, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 153, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .content {
   overflow-x: hidden; }
 
-/* line 156, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 157, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal {
   -webkit-transition-property: opacity;
   -moz-transition-property: opacity;
   transition-property: opacity;
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 0; }
-  /* line 161, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 162, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .modal.active {
     -webkit-transition-property: opacity;
     -moz-transition-property: opacity;
     transition-property: opacity; }
-  /* line 165, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 166, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .modal .icon-close {
     color: #fff;
     padding: 10px;
     position: absolute;
     right: 0;
     z-index: 1; }
-  /* line 173, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 174, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .modal .content, .modal .slider {
     background-color: transparent; }
-  /* line 176, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 177, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .modal .slider, .modal .slide-group {
     height: 100%; }
-  /* line 179, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 180, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .modal .slide-handler {
     position: absolute;
     bottom: 0;
     width: 100%; }
-    /* line 184, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+    /* line 185, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
     .modal .slide-handler .icon {
       width: 50px;
       height: 50px;
@@ -2375,42 +2488,42 @@ a[sref] {
       color: #ddd;
       border: 1px solid #ddd;
       border-radius: 25px; }
-    /* line 195, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+    /* line 196, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
     .modal .slide-handler .icon-left-nav {
       float: left; }
-    /* line 198, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+    /* line 199, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
     .modal .slide-handler .icon-right-nav {
       float: right; }
 
-/* line 205, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 206, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media, .modal .disqus {
   overflow-x: hidden;
   overflow-y: scroll;
   padding-bottom: 75px; }
-/* line 210, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 211, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media-info-group, .modal .media-info {
   padding: 10px 25px; }
-/* line 213, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 214, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media-info-group .media-info {
   padding: 0; }
-/* line 216, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 217, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media-info-title {
   padding: 10px 25px 0; }
-/* line 219, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 220, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media-info, .modal .media-title, .modal .media-info-title {
   text-shadow: 1px 1px 5px #000, 1px -1px 5px #000, -1px 1px 5px #000, -1px -1px 5px #000;
   color: white !important;
   white-space: normal; }
-/* line 225, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 226, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal a.media-info {
   color: #007aff !important; }
-/* line 228, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 229, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media-title, .modal .media-info-title {
   font-size: 18px !important; }
-/* line 231, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 232, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .media-title {
   padding-top: 50px; }
-/* line 234, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 235, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 .modal .image {
   position: absolute;
   top: 0;
@@ -2420,21 +2533,33 @@ a[sref] {
   margin: auto; }
 
 @media (max-width: 440px) {
-  /* line 245, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 246, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .hidden-xs {
     display: none !important; } }
 @media (max-width: 550px) {
-  /* line 251, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+  /* line 252, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
   .hidden-sm {
     display: none !important; } }
-/* line 256, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 257, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 * {
   overflow-x: visible; }
 
-/* line 260, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+/* line 261, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
 #disqus_thread {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
   padding-bottom: 30px; }
+
+/* line 269, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/mobile.scss */
+.alert {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  margin-bottom: 0;
+  background-color: rgba(247, 247, 247, 0.98);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.85); }

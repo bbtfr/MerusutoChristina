@@ -5775,11 +5775,65 @@ window.$ === undefined && (window.$ = Zepto)
     }
     (function() {
       (function() {
-        __out.push('<view class="main">\n  ');
+        __out.push(_.renderTemplate("templates/mobile/mirror_info"));
+      
+        __out.push('\n\n<view class="main">\n  ');
       
         __out.push(_.renderTemplate("templates/mobile/sidebar"));
       
         __out.push('\n\n  <container class="content container"></container>\n</view>\n\n<modal class="modal"></modal>\n');
+      
+      }).call(this);
+      
+    }).call(__obj);
+    __obj.safe = __objSafe, __obj.escape = __escape;
+    return __out.join('');
+  };
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["templates/mobile/mirror_info"] = function(__obj) {
+    if (!__obj) __obj = {};
+    var __out = [], __capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return __safe(result);
+    }, __sanitize = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else if (typeof value !== 'undefined' && value != null) {
+        return __escape(value);
+      } else {
+        return '';
+      }
+    }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+    __safe = __obj.safe = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else {
+        if (!(typeof value !== 'undefined' && value != null)) value = '';
+        var result = new String(value);
+        result.ecoSafe = true;
+        return result;
+      }
+    };
+    if (!__escape) {
+      __escape = __obj.escape = function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      };
+    }
+    (function() {
+      (function() {
+        if (!(location.href.indexOf("gitcafe") >= 0 || location.href.indexOf("coding") >= 0 || (typeof localStorage !== "undefined" && localStorage !== null ? localStorage["mirror-info-disabled"] : void 0))) {
+          __out.push('\n  <div class="alert alert-dismissible fade in" id="mirror-alert">\n    <button type="button" class="close" data-dismiss="alert" id="mirror-dismiss-button"><span>×</span></button>\n    <h4>梅露可图鉴 国内镜像</h4>\n    <p>为保证服务质量，梅露可图鉴在国内服务器上部属了一份镜像网站，国内用户访问更快更稳定，避免网站偶尔由于不可抗力访问不到！</p>\n    <p>\n      <a href="http://merusuto.coding.io/mobile/" class="btn btn-primary">访问国内镜像</a>\n      <button type="button" class="btn" id="mirror-disable-button">不再显示这条消息</button>\n    </p>\n  </div>\n\n  <script type="text/javascript">\n    $("#mirror-disable-button").click(function() {\n      $("#mirror-alert").hide();\n      if (_.isObject(localStorage)) {\n        localStorage["mirror-info-disabled"] = true\n      }\n    })\n    $("#mirror-dismiss-button").click(function() {\n      $("#mirror-alert").hide();\n    })\n  </script>\n');
+        }
+      
+        __out.push('\n');
       
       }).call(this);
       

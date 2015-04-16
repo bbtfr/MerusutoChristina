@@ -39,7 +39,11 @@
       (function() {
         __out.push(_.renderTemplate("templates/desktop/navbar"));
       
-        __out.push('\n<div class=\'notifications top-right\'></div>\n\n<view class="container-fluid" id="collectionView">\n  ');
+        __out.push('\n\n');
+      
+        __out.push(_.renderTemplate("templates/desktop/mirror_info"));
+      
+        __out.push('\n\n<view class="container-fluid" id="collectionView">\n  ');
       
         __out.push(_.renderTemplate("templates/desktop/pages/loading"));
       
