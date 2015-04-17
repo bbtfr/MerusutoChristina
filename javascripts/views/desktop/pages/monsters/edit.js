@@ -29,13 +29,13 @@
       if (data.value == null) {
         return false;
       }
-      if (data.value !== "") {
+      if (data.value === "") {
         return false;
       }
       if (_.isNumber(value)) {
-        return parseFloat(data.value) === value;
+        return parseFloat(data.value) !== value;
       } else {
-        return data.value.replace("\r\n", "\n") === value;
+        return data.value.replace("\r\n", "\n") !== value;
       }
     };
 
@@ -55,7 +55,7 @@
         if (this.matchValue(data, value)) {
           this.changedData.push({
             name: data.name,
-            from: value,
+            from: value || "暂缺",
             to: this.formatValue(data)
           });
         }

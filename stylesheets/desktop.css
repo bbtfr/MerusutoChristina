@@ -7063,6 +7063,6 @@ view {
       display: table-cell;
       vertical-align: top; } }
 /* line 133, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
-#changelog {
+#changelog-md {
   height: 450px;
   overflow: hidden; }
