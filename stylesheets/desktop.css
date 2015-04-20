@@ -7065,4 +7065,5 @@ view {
 /* line 133, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
 #changelog-md {
   height: 450px;
+  margin-bottom: 10px;
   overflow: hidden; }
