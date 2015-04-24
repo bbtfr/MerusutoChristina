@@ -120,6 +120,16 @@
       }
     };
 
+    Unit.prototype.getAgeString = function() {
+      var value;
+      value = this.get("age");
+      if (_.isNumber(value)) {
+        return "" + value + "岁";
+      } else {
+        return "暂缺";
+      }
+    };
+
     Unit.prototype.getString = function(key) {
       return this.get(key) || "暂缺";
     };

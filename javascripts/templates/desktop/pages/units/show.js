@@ -159,7 +159,7 @@
       
         __out.push('<br>\n          年龄：');
       
-        __out.push(__sanitize(this.model.getString('age')));
+        __out.push(__sanitize(this.model.getAgeString()));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          职业：');
       

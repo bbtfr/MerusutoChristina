@@ -40773,6 +40773,16 @@ if (typeof String.prototype.includes != 'function') {
       }
     };
 
+    Unit.prototype.getAgeString = function() {
+      var value;
+      value = this.get("age");
+      if (_.isNumber(value)) {
+        return "" + value + "岁";
+      } else {
+        return "暂缺";
+      }
+    };
+
     Unit.prototype.getString = function(key) {
       return this.get(key) || "暂缺";
     };
@@ -42780,7 +42790,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('<br>\n          年龄：');
       
-        __out.push(__sanitize(this.model.getString('age')));
+        __out.push(__sanitize(this.model.getAgeString()));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          职业：');
       
