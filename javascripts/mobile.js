@@ -5352,7 +5352,8 @@ window.$ === undefined && (window.$ = Zepto)
     interest: "兴趣",
     nature: "性格",
     element: "元素",
-    weapon: "武器",
+    weapon: "武器类型",
+    arms: "武器",
     type: "成长",
     skin: "皮肤",
     life: "初始生命",
@@ -5588,6 +5589,12 @@ window.$ === undefined && (window.$ = Zepto)
 
     Unit.prototype.getString = function(key) {
       return this.get(key) || "暂缺";
+    };
+
+    Unit.prototype.getFormatString = function(key) {
+      return this.getString(key).replace(/ID(\d+)(\[[^\]]+\]\S+)?/g, function(text, id) {
+        return "<a href=\"#units/" + id + "\">" + text + "</a>";
+      });
     };
 
     Unit.prototype.getElementPolygonPointsString = function(l, r) {

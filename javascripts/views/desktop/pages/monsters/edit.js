@@ -16,6 +16,23 @@
       "click #confirm-button": "confirmSubmitForm"
     };
 
+    UnitsEdit.prototype.afterRender = function() {
+      var query;
+      query = new AV.Query("Suggestion");
+      query.equalTo("state", null);
+      query.equalTo("model.klass", this.model.klass);
+      query.equalTo("model.id", this.model.id);
+      return query.count({
+        success: (function(_this) {
+          return function(count) {
+            if (count > 0) {
+              return _this.$("#editing-warning").show();
+            }
+          };
+        })(this)
+      });
+    };
+
     UnitsEdit.prototype.formatValue = function(data) {
       var value, _ref;
       value = data.value;

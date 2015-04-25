@@ -175,13 +175,13 @@
       
         __out.push('<br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          获取方式：');
       
-        __out.push(__sanitize(this.model.getString('obtain')));
+        __out.push(this.model.getFormatString('obtain'));
       
         __out.push('<br>\n          ');
       
         if (this.model.get('remark')) {
           __out.push('\n            备注：');
-          __out.push(__sanitize(this.model.get('remark')));
+          __out.push(this.model.getFormatString('remark'));
           __out.push('<br>\n          ');
         }
       

@@ -40562,7 +40562,8 @@ else if ( jQuery && !jQuery.fn.dataTable.ColVis ) {
     interest: "兴趣",
     nature: "性格",
     element: "元素",
-    weapon: "武器",
+    weapon: "武器类型",
+    arms: "武器",
     type: "成长",
     skin: "皮肤",
     life: "初始生命",
@@ -40785,6 +40786,12 @@ if (typeof String.prototype.includes != 'function') {
 
     Unit.prototype.getString = function(key) {
       return this.get(key) || "暂缺";
+    };
+
+    Unit.prototype.getFormatString = function(key) {
+      return this.getString(key).replace(/ID(\d+)(\[[^\]]+\]\S+)?/g, function(text, id) {
+        return "<a href=\"#units/" + id + "\">" + text + "</a>";
+      });
     };
 
     Unit.prototype.getElementPolygonPointsString = function(l, r) {
@@ -41574,7 +41581,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="name" class="col-sm-4 control-label">');
+        __out.push('</small>\n        <small class="text-danger" id="editing-warning">已有其他人提交了相关数据，管理员正在审核中</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="name" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["name"]));
       
@@ -42184,7 +42191,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="title" class="col-sm-4 control-label">');
+        __out.push('</small>\n        <small class="text-danger" id="editing-warning">已有其他人提交了相关数据，管理员正在审核中</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="title" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["title"]));
       
@@ -42806,13 +42813,13 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('<br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          获取方式：');
       
-        __out.push(__sanitize(this.model.getString('obtain')));
+        __out.push(this.model.getFormatString('obtain'));
       
         __out.push('<br>\n          ');
       
         if (this.model.get('remark')) {
           __out.push('\n            备注：');
-          __out.push(__sanitize(this.model.get('remark')));
+          __out.push(this.model.getFormatString('remark'));
           __out.push('<br>\n          ');
         }
       
@@ -43176,6 +43183,23 @@ if (typeof String.prototype.includes != 'function') {
     UnitsEdit.prototype.events = {
       "submit form": "submitForm",
       "click #confirm-button": "confirmSubmitForm"
+    };
+
+    UnitsEdit.prototype.afterRender = function() {
+      var query;
+      query = new AV.Query("Suggestion");
+      query.equalTo("state", null);
+      query.equalTo("model.klass", this.model.klass);
+      query.equalTo("model.id", this.model.id);
+      return query.count({
+        success: (function(_this) {
+          return function(count) {
+            if (count > 0) {
+              return _this.$("#editing-warning").show();
+            }
+          };
+        })(this)
+      });
     };
 
     UnitsEdit.prototype.formatValue = function(data) {

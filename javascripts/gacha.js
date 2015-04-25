@@ -9316,19 +9316,26 @@ return jQuery;
 
 }(jQuery));
 (function() {
-  var CHANCE, CHANCESUM, LocalStorageSupport, e, i, initGacha, initStatistic, prepareGacha, randomPick, saveResult, shuffle, startGacha, sum, _i,
+  var Chance, Config, Configuration, LocalStorageSupport, Template, e, initGacha, initPage, initStatistic, prepareGacha, randomPick, saveResult, shuffle, startGacha,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  CHANCE = [0.78, 3.10, 12.01, 84.10];
-
-  CHANCESUM = [];
-
-  sum = 0;
-
-  for (i = _i = 0; _i <= 2; i = ++_i) {
-    sum += CHANCE[i];
-    CHANCESUM.push(sum / 100);
-  }
+  Configuration = {
+    "骑士契约书（钻石）": {
+      id: 1,
+      chance: [0.78, 3.10, 12.02, 84.10],
+      statistic: [2, 3, 4, 5]
+    },
+    "勇者契约书（金币2W）": {
+      id: 2,
+      chance: [0, 0.95, 2.95, 96.1],
+      statistic: [2, 3, 4]
+    },
+    "游侠契约书（金币2K）": {
+      id: 3,
+      chance: [0, 0, 0.18, 1.85, 97.97],
+      statistic: [1, 2, 3]
+    }
+  };
 
   LocalStorageSupport = (function() {
     try {
@@ -9340,6 +9347,12 @@ return jQuery;
       return false;
     }
   })();
+
+  Template = null;
+
+  Config = null;
+
+  Chance = [];
 
   shuffle = function(array) {
     var currentIndex, randomIndex, temporaryValue;
@@ -9355,25 +9368,27 @@ return jQuery;
   };
 
   randomPick = function(data) {
-    var d, groupedData, r, rare, resultData, _j, _k, _len, _name;
+    var d, groupedData, i, r, rare, resultData, _i, _j, _len, _name, _ref;
     groupedData = {};
-    for (_j = 0, _len = data.length; _j < _len; _j++) {
-      d = data[_j];
-      if (!(d.gacha && __indexOf.call(d.gacha, 1) >= 0)) {
+    for (_i = 0, _len = data.length; _i < _len; _i++) {
+      d = data[_i];
+      if (!(d.gacha && (_ref = Config.id, __indexOf.call(d.gacha, _ref) >= 0))) {
         continue;
       }
       (groupedData[_name = d.rare] || (groupedData[_name] = [])).push(d);
     }
     resultData = [];
-    for (i = _k = 0; _k <= 9; i = ++_k) {
+    for (i = _j = 0; _j <= 9; i = ++_j) {
       r = Math.random();
-      if (r < CHANCESUM[0]) {
+      if (r < Chance[0]) {
         rare = 5;
-      } else if (r < CHANCESUM[1]) {
+      } else if (r < Chance[1]) {
         rare = 4;
-      } else if (r < CHANCESUM[2]) {
+      } else if (r < Chance[2]) {
         rare = 3;
-      } else if (i < 2) {
+      } else if (r > Chance[3]) {
+        rare = 1;
+      } else if (Config.id === 0 && i < 2) {
         rare = 3;
       } else {
         rare = 2;
@@ -9389,66 +9404,97 @@ return jQuery;
     if (document.body.style.webkitFilter != null) {
       $body = $("body");
       $body.data("html", $body.html());
-      $.get("../data/units.json", function(data) {
+      return $.get("../data/units.json", function(data) {
         $body.data("data", data);
-        return initGacha(data);
+        return initPage(data);
       });
-      return initStatistic();
     } else {
       return alert("目前只支持webkit内核浏览器，请使用Chrome、Safari等浏览器再试");
     }
   });
+
+  initPage = function(data) {
+    var $background, $buttonGroup, $foreground;
+    $background = $("#background");
+    $background.find(".loading-bar").fadeOut(200);
+    $foreground = $("#foreground");
+    $buttonGroup = $foreground.find(".button-group-gacha");
+    $buttonGroup.fadeIn(200);
+    return $foreground.find(".button-gacha").click(function() {
+      var i, sum, _i;
+      Template = $(this).attr("alt");
+      Config = Configuration[Template];
+      sum = 0;
+      for (i = _i = 0; _i <= 4; i = ++_i) {
+        sum += Config.chance[i];
+        Chance.push(sum / 100);
+      }
+      $buttonGroup.fadeOut(200);
+      $background.find(".loading-bar").fadeIn(200);
+      initStatistic();
+      return initGacha(data);
+    });
+  };
 
   initStatistic = function() {
     var $foreground;
     $foreground = $("#foreground");
     $foreground.find(".button-statistics").fadeIn();
     return $foreground.on("click", ".button-statistics", function(event) {
-      var currentResult, generateText, text, totalResult;
+      var c, currentResult, generateText, i, ret, text, totalResult, _i, _len, _ref;
       event.stopPropagation();
       generateText = function(result, indexes) {
-        var count, ret, _j, _k, _len;
+        var count, i, ret, t, _i, _j, _len;
         count = 0;
-        for (i = _j = 1; _j <= 5; i = ++_j) {
+        for (i = _i = 1; _i <= 5; i = ++_i) {
           count += parseInt(result[i]) || 0;
         }
-        ret = "抽卡" + (count / 10) + "次，共获得：\n";
-        for (_k = 0, _len = indexes.length; _k < _len; _k++) {
-          i = indexes[_k];
-          ret += "" + [null, "一", "二", "三", "四", "五"][i] + "星：";
-          ret += "" + (parseInt(result[i]) || 0) + "个";
+        ret = [];
+        for (_j = 0, _len = indexes.length; _j < _len; _j++) {
+          i = indexes[_j];
+          t = "" + [null, "一", "二", "三", "四", "五"][i] + "星：";
+          t += "" + (parseInt(result[i]) || 0) + "个";
           if (count !== 0) {
-            ret += "，占" + (((parseInt(result[i]) || 0) / count * 100).toFixed(2)) + "%";
+            t += "，占" + (((parseInt(result[i]) || 0) / count * 100).toFixed(2)) + "%";
           }
-          ret += "\n";
+          ret.push(t);
         }
-        return ret;
+        return "抽卡" + (count / 10) + "次，共获得：\n" + (ret.join("；\n")) + "。";
       };
+      ret = [];
+      _ref = Config.chance;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        c = _ref[i];
+        if (c !== 0) {
+          ret.push("" + ["五", "四", "三", "二", "一"][i] + "星：" + c + "%");
+        }
+      }
+      text = "" + Template + "，模拟抽卡概率设置为：\n" + (ret.join("；")) + "。\n\n";
       currentResult = $("body").data("gachaResult") || {};
-      text = "本次" + (generateText(currentResult, [2, 3, 4, 5]));
+      text += "本次" + (generateText(currentResult, Config.statistic)) + "\n\n";
       if (LocalStorageSupport) {
-        totalResult = $.deparam(localStorage["gachaResult"] || "") || {};
-        text += "\n总计" + (generateText(totalResult, [2, 3, 4, 5]));
+        totalResult = $.deparam(localStorage["gachaResult" + Config.id] || "") || {};
+        text += "总计" + (generateText(totalResult, Config.statistic));
       }
       return alert(text);
     });
   };
 
   initGacha = function(data) {
-    var $preload, Result, background, d, item, maxRare, pickedData, preloadCallback, preloadCount, preloadImage, r, _j, _k, _len, _results;
+    var $preload, Result, background, d, i, item, maxRare, pickedData, preloadCallback, preloadCount, preloadImage, r, _i, _j, _len, _results;
     pickedData = randomPick(data);
     Result = (function() {
-      var _j, _len, _results;
+      var _i, _len, _results;
       _results = [];
-      for (_j = 0, _len = pickedData.length; _j < _len; _j++) {
-        d = pickedData[_j];
+      for (_i = 0, _len = pickedData.length; _i < _len; _i++) {
+        d = pickedData[_i];
         _results.push(d.id);
       }
       return _results;
     })();
     maxRare = null;
-    for (_j = 0, _len = pickedData.length; _j < _len; _j++) {
-      d = pickedData[_j];
+    for (_i = 0, _len = pickedData.length; _i < _len; _i++) {
+      d = pickedData[_i];
       if (maxRare < d.rare) {
         maxRare = d.rare;
       }
@@ -9486,7 +9532,7 @@ return jQuery;
     };
     preloadImage("../images/gacha/background_" + background + ".png");
     _results = [];
-    for (i = _k = 0; _k <= 9; i = ++_k) {
+    for (i = _j = 0; _j <= 9; i = ++_j) {
       item = pickedData[i];
       preloadImage("../data/units/original/" + item.id + ".png");
       _results.push(preloadImage("../data/units/thumbnail/" + item.id + ".png"));
@@ -9495,20 +9541,20 @@ return jQuery;
   };
 
   prepareGacha = function(background, pickedData) {
-    var $finish, $foreground, $stars, item, _j, _results;
+    var $finish, $foreground, $stars, i, item, _i, _results;
     $("#gacha-background .background-image").addClass(background);
     $foreground = $("#foreground");
     $finish = $foreground.find(".finish");
     _results = [];
-    for (i = _j = 0; _j <= 9; i = ++_j) {
+    for (i = _i = 0; _i <= 9; i = ++_i) {
       item = pickedData[i];
       $foreground.find(".gacha").eq(i).find(".unit, .unit-shadow").css("background-image", "url('../data/units/original/" + item.id + ".png')");
       $finish.find(".unit").eq(i).css("background-image", "url('../data/units/thumbnail/" + item.id + ".png')");
       $stars = $("<div class='stars'></div>").appendTo($foreground.find(".gacha").eq(i));
       _results.push((function() {
-        var _k, _ref, _results1;
+        var _j, _ref, _results1;
         _results1 = [];
-        for (i = _k = 0, _ref = item.rare; 0 <= _ref ? _k < _ref : _k > _ref; i = 0 <= _ref ? ++_k : --_k) {
+        for (i = _j = 0, _ref = item.rare; 0 <= _ref ? _j < _ref : _j > _ref; i = 0 <= _ref ? ++_j : --_j) {
           _results1.push($stars.append("<img class='star' src='../images/gacha/star.png' alt=''>"));
         }
         return _results1;
@@ -9518,7 +9564,7 @@ return jQuery;
   };
 
   startGacha = function(pickedData) {
-    var $background, $foreground, $lastActive, $page, busy, callbacks, makeCallback, _j;
+    var $background, $foreground, $lastActive, $page, busy, callbacks, i, makeCallback, _i;
     $page = $("#page");
     $background = $("#background");
     $foreground = $("#foreground");
@@ -9547,9 +9593,9 @@ return jQuery;
           return $lastActive.addClass("active");
         }, index === 0 ? 1000 : 0);
         return setTimeout(function() {
-          var _j;
+          var i, _i;
           $lastActive.addClass("active-1000");
-          for (i = _j = 0; _j <= 4; i = ++_j) {
+          for (i = _i = 0; _i <= 4; i = ++_i) {
             makeCallback = function(index) {
               return function() {
                 return $lastActive.find(".stars .star").eq(index).addClass("active");
@@ -9561,17 +9607,17 @@ return jQuery;
         }, index === 0 ? 2000 : 1000);
       };
     };
-    for (i = _j = 0; _j <= 9; i = ++_j) {
+    for (i = _i = 0; _i <= 9; i = ++_i) {
       callbacks.push(makeCallback(i));
     }
     callbacks.push(function() {
-      var _k;
+      var _j;
       saveResult(pickedData);
       $page.addClass("finish");
       $lastActive.fadeOut(200);
       $lastActive = $foreground.find(".finish");
       $lastActive.addClass("active");
-      for (i = _k = 0; _k <= 9; i = ++_k) {
+      for (i = _j = 0; _j <= 9; i = ++_j) {
         makeCallback = function(index) {
           return function() {
             return $lastActive.find(".unit").eq(index).fadeIn(200);
@@ -9611,7 +9657,7 @@ return jQuery;
   };
 
   saveResult = function(pickedData) {
-    var $body, appendResult, currentResult, d, result, totalResult, _j, _len;
+    var $body, appendResult, currentResult, d, result, totalResult, _i, _len;
     result = {
       1: 0,
       2: 0,
@@ -9619,15 +9665,15 @@ return jQuery;
       4: 0,
       5: 0
     };
-    for (_j = 0, _len = pickedData.length; _j < _len; _j++) {
-      d = pickedData[_j];
+    for (_i = 0, _len = pickedData.length; _i < _len; _i++) {
+      d = pickedData[_i];
       result[d.rare] += 1;
     }
     $body = $("body");
     appendResult = function(appendedResult, result) {
-      var _k, _results;
+      var i, _j, _results;
       _results = [];
-      for (i = _k = 1; _k <= 5; i = ++_k) {
+      for (i = _j = 1; _j <= 5; i = ++_j) {
         _results.push(appendedResult[i] = (result[i] || 0) + (parseInt(appendedResult[i]) || 0));
       }
       return _results;
@@ -9636,9 +9682,9 @@ return jQuery;
     appendResult(currentResult, result);
     $body.data("gachaResult", currentResult);
     if (LocalStorageSupport) {
-      totalResult = $.deparam(localStorage["gachaResult"] || "") || {};
+      totalResult = $.deparam(localStorage["gachaResult" + Config.id] || "") || {};
       appendResult(totalResult, result);
-      return localStorage["gachaResult"] = $.param(totalResult);
+      return localStorage["gachaResult" + Config.id] = $.param(totalResult);
     }
   };
 

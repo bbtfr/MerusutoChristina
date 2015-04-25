@@ -134,6 +134,12 @@
       return this.get(key) || "暂缺";
     };
 
+    Unit.prototype.getFormatString = function(key) {
+      return this.getString(key).replace(/ID(\d+)(\[[^\]]+\]\S+)?/g, function(text, id) {
+        return "<a href=\"#units/" + id + "\">" + text + "</a>";
+      });
+    };
+
     Unit.prototype.getElementPolygonPointsString = function(l, r) {
       var c, es, ps;
       es = [this.get("fire"), this.get("aqua"), this.get("wind"), this.get("light"), this.get("dark")];

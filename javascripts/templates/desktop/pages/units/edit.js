@@ -53,7 +53,7 @@
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="title" class="col-sm-4 control-label">');
+        __out.push('</small>\n        <small class="text-danger" id="editing-warning">已有其他人提交了相关数据，管理员正在审核中</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="title" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["title"]));
       

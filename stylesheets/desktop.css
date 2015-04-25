@@ -7067,3 +7067,7 @@ view {
   height: 450px;
   margin-bottom: 10px;
   overflow: hidden; }
+
+/* line 139, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/desktop.scss */
+#editing-warning {
+  display: none; }
