@@ -5114,9 +5114,7 @@ window.$ === undefined && (window.$ = Zepto)
           _ref = this.views;
           for (cid in _ref) {
             template = _ref[cid];
-            this.remove({
-              cid: cid
-            });
+            (template.$el || template).hide();
           }
           this.$container.scrollTop(0);
           this.infinite.length = 0;
@@ -5131,7 +5129,11 @@ window.$ === undefined && (window.$ = Zepto)
           return this.reset();
         },
         onScroll: function() {
-          var getHeight, _base, _results;
+          var getHeight, _base;
+          if (this.onScrollWorking) {
+            return;
+          }
+          this.onScrollWorking = true;
           getHeight = (function(_this) {
             return function() {
               var height;
@@ -5145,22 +5147,24 @@ window.$ === undefined && (window.$ = Zepto)
             };
           })(this);
           (_base = this.infinite).height || (_base.height = this.$selector.height() / this.infinite.length);
-          _results = [];
-          while (getHeight() < this.infinite.height * this.options.slice) {
-            _results.push(this.show(this.infinite.length + this.options.slice));
+          while (getHeight() < this.infinite.height * this.options.slice && this.infinite.length < this.infinite.models.length) {
+            this.show(this.infinite.length + this.options.slice);
           }
-          return _results;
+          return this.onScrollWorking = false;
         },
         onShow: function(length) {
-          var height, model, models, _i, _len;
-          if (length < this.infinite.length) {
-            return;
-          }
+          var height, model, models, template, _i, _len;
           models = this.infinite.models.slice(this.infinite.length, length);
           this.infinite.length = length;
           for (_i = 0, _len = models.length; _i < _len; _i++) {
             model = models[_i];
-            this.add(model);
+            template = this.views[model.cid];
+            if (template != null) {
+              template.$el.appendTo(this.$selector);
+              (template.$el || template).show();
+            } else {
+              this.add(model);
+            }
           }
           if (this.$suffix != null) {
             height = (this.infinite.models.length - this.infinite.length) * this.infinite.height;
@@ -5173,11 +5177,11 @@ window.$ === undefined && (window.$ = Zepto)
 
     function Collection2ViewBinder(collection, $el, options) {
       this.collection = arguments[0], this.$el = arguments[1];
+      this.infinite = options.infinite;
       this.options = _.defaults(options, this.defaults);
       this.template = _.required(this.options, "template");
       this.$selector = this.$el.find(_.required(this.options, 'selector'));
       this.views = {};
-      this.infinite = options.infinite;
       if (this.infinite != null) {
         this.options = _.extend(this.options, this.defaults.infinite, this.infinite);
       }

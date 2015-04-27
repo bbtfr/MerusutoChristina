@@ -9323,7 +9323,8 @@ return jQuery;
     "骑士契约书（钻石）": {
       id: 1,
       chance: [0.78, 3.10, 12.02, 84.10],
-      statistic: [2, 3, 4, 5]
+      statistic: [2, 3, 4, 5],
+      description: "双三星保底"
     },
     "勇者契约书（金币2W）": {
       id: 2,
@@ -9388,7 +9389,7 @@ return jQuery;
         rare = 3;
       } else if (r > Chance[3]) {
         rare = 1;
-      } else if (Config.id === 0 && i < 2) {
+      } else if (Config.id === 1 && i < 2) {
         rare = 3;
       } else {
         rare = 2;
@@ -9468,6 +9469,9 @@ return jQuery;
         if (c !== 0) {
           ret.push("" + ["五", "四", "三", "二", "一"][i] + "星：" + c + "%");
         }
+      }
+      if (Config.description != null) {
+        ret.push(Config.description);
       }
       text = "" + Template + "，模拟抽卡概率设置为：\n" + (ret.join("；")) + "。\n\n";
       currentResult = $("body").data("gachaResult") || {};
