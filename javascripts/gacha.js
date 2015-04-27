@@ -9405,7 +9405,7 @@ return jQuery;
     if (document.body.style.webkitFilter != null) {
       $body = $("body");
       $body.data("html", $body.html());
-      return $.get("../data/units.json", function(data) {
+      return $.getJSON("../data/units.json", function(data) {
         $body.data("data", data);
         return initPage(data);
       });
