@@ -242,7 +242,7 @@
     };
 
     Monster.prototype.getSkillShortString = function() {
-      return this.get("skill").split(": ")[0].split(/\s/g)[0];
+      return this.get("skill").split("：")[0].split(/\s/g)[0];
     };
 
     return Monster;

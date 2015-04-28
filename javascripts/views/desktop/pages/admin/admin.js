@@ -46,7 +46,7 @@
 
     Admin.prototype.afterRender = function() {
       var query;
-      query = new AV.Query("Suggestion");
+      query = new AV.Query("Suggestion").descending("createdAt").limit(1000);
       query.find({
         success: (function(_this) {
           return function(models) {

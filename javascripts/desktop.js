@@ -40900,7 +40900,7 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     Monster.prototype.getSkillShortString = function() {
-      return this.get("skill").split(": ")[0].split(/\s/g)[0];
+      return this.get("skill").split("：")[0].split(/\s/g)[0];
     };
 
     return Monster;
@@ -42965,7 +42965,7 @@ if (typeof String.prototype.includes != 'function') {
 
     Admin.prototype.afterRender = function() {
       var query;
-      query = new AV.Query("Suggestion");
+      query = new AV.Query("Suggestion").descending("createdAt").limit(1000);
       query.find({
         success: (function(_this) {
           return function(models) {
