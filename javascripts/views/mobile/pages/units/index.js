@@ -52,7 +52,7 @@
     };
 
     UnitsIndex.prototype.afterRender = function() {
-      var $content, $country, $scroll, appendCountryFilter;
+      var $content, $scroll;
       this.filters = {};
       this.binder.filter(this.filters);
       $content = this.$el.filter(".content");
@@ -66,6 +66,28 @@
         } else {
           return $scroll.removeClass("in");
         }
+      });
+      return this.appendFilters();
+    };
+
+    UnitsIndex.prototype.appendFilters = function() {
+      var $aarea, $country, appendCountryFilter;
+      $aarea = this.$("#aarea");
+      $aarea.find(".filter").each(function() {
+        var $target, max, min, original;
+        $target = $(this);
+        original = $target.data("value").split("-");
+        min = parseInt(original[0]);
+        max = parseInt(original[1]);
+        return $target.data("value", function(value) {
+          if (min > value) {
+            return false;
+          }
+          if (max < value) {
+            return false;
+          }
+          return true;
+        });
       });
       $country = this.$("#country");
       appendCountryFilter = function(collection) {
@@ -192,11 +214,13 @@
     };
 
     UnitsIndex.prototype.setFilter = function(event) {
-      var $target, key, value;
+      var $target, filters, key, value;
       $target = $(event.target);
       this.setActive($target);
       key = $target.data("key");
       value = $target.data("value");
+      filters = {};
+      filters[key] = value;
       this.filters[key] = value;
       return this.binder.filter(this.filters);
     };

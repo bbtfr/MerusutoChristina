@@ -1544,6 +1544,87 @@ window.$ === undefined && (window.$ = Zepto)
 
 
 
+//     Zepto.js
+//     (c) 2010-2015 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+// The following code is heavily inspired by jQuery's $.fn.data()
+
+;(function($){
+  var data = {}, dataAttr = $.fn.data, camelize = $.camelCase,
+    exp = $.expando = 'Zepto' + (+new Date()), emptyArray = []
+
+  // Get value from node:
+  // 1. first try key as given,
+  // 2. then try camelized key,
+  // 3. fall back to reading "data-*" attribute.
+  function getData(node, name) {
+    var id = node[exp], store = id && data[id]
+    if (name === undefined) return store || setData(node)
+    else {
+      if (store) {
+        if (name in store) return store[name]
+        var camelName = camelize(name)
+        if (camelName in store) return store[camelName]
+      }
+      return dataAttr.call($(node), name)
+    }
+  }
+
+  // Store value under camelized key on node
+  function setData(node, name, value) {
+    var id = node[exp] || (node[exp] = ++$.uuid),
+      store = data[id] || (data[id] = attributeData(node))
+    if (name !== undefined) store[camelize(name)] = value
+    return store
+  }
+
+  // Read all "data-*" attributes from a node
+  function attributeData(node) {
+    var store = {}
+    $.each(node.attributes || emptyArray, function(i, attr){
+      if (attr.name.indexOf('data-') == 0)
+        store[camelize(attr.name.replace('data-', ''))] =
+          $.zepto.deserializeValue(attr.value)
+    })
+    return store
+  }
+
+  $.fn.data = function(name, value) {
+    return value === undefined ?
+      // set multiple values via object
+      $.isPlainObject(name) ?
+        this.each(function(i, node){
+          $.each(name, function(key, value){ setData(node, key, value) })
+        }) :
+        // get value from first element
+        (0 in this ? getData(this[0], name) : undefined) :
+      // set value on all elements
+      this.each(function(){ setData(this, name, value) })
+  }
+
+  $.fn.removeData = function(names) {
+    if (typeof names == 'string') names = names.split(/\s+/)
+    return this.each(function(){
+      var id = this[exp], store = id && data[id]
+      if (store) $.each(names || store, function(key){
+        delete store[names ? camelize(this) : key]
+      })
+    })
+  }
+
+  // Generate extended `remove` and `empty` functions
+  ;['remove', 'empty'].forEach(function(methodName){
+    var origFn = $.fn[methodName]
+    $.fn[methodName] = function() {
+      var elements = this.find('*')
+      if (methodName === 'remove') elements = elements.add(this)
+      elements.removeData()
+      return origFn.call(this)
+    }
+  })
+})(Zepto)
+;
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -5009,15 +5090,7 @@ window.$ === undefined && (window.$ = Zepto)
 
 }).call(this);
 (function() {
-  var Collection2ViewBinder, _where;
-
-  _where = function(collection, attributes) {
-    if (_.isFunction(attributes)) {
-      return attributes(collection);
-    } else {
-      return collection.where(attributes);
-    }
-  };
+  var Collection2ViewBinder;
 
   Collection2ViewBinder = (function() {
     Collection2ViewBinder.prototype.defaults = {
@@ -5096,7 +5169,7 @@ window.$ === undefined && (window.$ = Zepto)
           eachTemplate(collection.models, function(template) {
             return template.hide();
           });
-          return eachTemplate(_where(collection, attributes), function(template) {
+          return eachTemplate(collection.where(attributes), function(template) {
             return template.show();
           });
         } else {
@@ -5118,7 +5191,7 @@ window.$ === undefined && (window.$ = Zepto)
           }
           this.$container.scrollTop(0);
           this.infinite.length = 0;
-          this.infinite.models = this.infinite.attributes != null ? _where(collection, this.infinite.attributes) : collection.models;
+          this.infinite.models = this.infinite.attributes != null ? collection.where(this.infinite.attributes) : collection.models;
           return this.show(this.options.slice);
         },
         onFilter: function(collection, attributes) {
@@ -5314,6 +5387,22 @@ window.$ === undefined && (window.$ = Zepto)
 }).call(this);
 
 
+// Return models with matching attributes. Useful for simple cases of
+// `filter`.
+Backbone.Collection.prototype.where = function(attrs, first) {
+  if (_.isEmpty(attrs)) return first ? void 0 : [];
+  return this[first ? 'find' : 'filter'](function(model) {
+    for (var key in attrs) {
+      var filter = attrs[key],
+        attr = model.get(key);
+      if (_.isFunction(filter) && filter(attr)) continue;
+      if (_.isArray(filter) && filter.indexOf(attr) >= 0) continue;
+      if (filter === attr) continue;
+      return false;
+    }
+    return true;
+  });
+};
 (function() {
   window.Ratchet = {};
 
@@ -5644,7 +5733,8 @@ window.$ === undefined && (window.$ = Zepto)
       };
       this.setLevelMode("sm");
       this.origin.dps = this.get('dps');
-      return this.origin.mdps = this.get('mdps');
+      this.origin.mdps = this.get('mdps');
+      return this.set("skill-sc", this.getSkillShortString());
     };
 
     Monster.prototype.calcBySize = function(value, size, mode) {
@@ -6434,7 +6524,7 @@ window.$ === undefined && (window.$ = Zepto)
     }
     (function() {
       (function() {
-        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      筛选\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">稀有度</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">全部</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="5">★★★★★</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">元素</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">全部</a></li>\n          <li><a class="filter" data-key="element" data-value="1">火</a></li>\n          <li><a class="filter" data-key="element" data-value="2">水</a></li>\n          <li><a class="filter" data-key="element" data-value="3">风</a></li>\n          <li><a class="filter" data-key="element" data-value="4">光</a></li>\n          <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">皮肤</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="skin">全部</a></li>\n          <li><a class="filter" data-key="skin" data-value="1">坚硬</a></li>\n          <li><a class="filter" data-key="skin" data-value="2">常规</a></li>\n          <li><a class="filter" data-key="skin" data-value="3">柔软</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">重置</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      排序\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">稀有度</a></li>\n      <li><a class="sort-mode" data-key="dps">单体DPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">多体DPS</a></li>\n      <li><a class="sort-mode" data-key="life">生命力</a></li>\n      <li><a class="sort-mode" data-key="atk">攻击</a></li>\n      <li><a class="sort-mode" data-key="aarea">攻击距离</a></li>\n      <li><a class="sort-mode" data-key="anum">攻击数量</a></li>\n      <li><a class="sort-mode" data-key="aspd">攻击速度</a></li>\n      <li><a class="sort-mode" data-key="tenacity">韧性</a></li>\n      <li><a class="sort-mode" data-key="mspd">移动速度</a></li>\n      <li><a class="sort-mode" data-key="id">新品上架</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      等级\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="level-mode" data-key="zero">零觉零级</a></li>\n      <li><a class="level-mode" data-key="mxlv">零觉满级</a></li>\n      <li><a class="level-mode" data-key="mxlvgr">满觉满级</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
+        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      筛选\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">稀有度</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">全部</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="[3,4]">★★★以上</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">元素</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">全部</a></li>\n          <li><a class="filter" data-key="element" data-value="1">火</a></li>\n          <li><a class="filter" data-key="element" data-value="2">水</a></li>\n          <li><a class="filter" data-key="element" data-value="3">风</a></li>\n          <li><a class="filter" data-key="element" data-value="4">光</a></li>\n          <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n          <li><a class="filter" data-key="element" data-value="[1,2,3]">火/水/风</a></li>\n          <li><a class="filter" data-key="element" data-value="[4,5]">光/暗</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">皮肤</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="skin">全部</a></li>\n          <li><a class="filter" data-key="skin" data-value="1">坚硬</a></li>\n          <li><a class="filter" data-key="skin" data-value="2">常规</a></li>\n          <li><a class="filter" data-key="skin" data-value="3">柔软</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">技能</a>\n        <ul class="dropdown-menu" id="skill">\n          <li><a class="filter-reset" data-key="skill-sc">全部</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">重置</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      排序\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">稀有度</a></li>\n      <li><a class="sort-mode" data-key="dps">单体DPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">多体DPS</a></li>\n      <li><a class="sort-mode" data-key="life">生命力</a></li>\n      <li><a class="sort-mode" data-key="atk">攻击</a></li>\n      <li><a class="sort-mode" data-key="aarea">攻击距离</a></li>\n      <li><a class="sort-mode" data-key="anum">攻击数量</a></li>\n      <li><a class="sort-mode" data-key="aspd">攻击速度</a></li>\n      <li><a class="sort-mode" data-key="tenacity">韧性</a></li>\n      <li><a class="sort-mode" data-key="mspd">移动速度</a></li>\n      <li><a class="sort-mode" data-key="id">新品上架</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      等级\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="level-mode" data-key="sm">幼年期（1.0）</a></li>\n      <li><a class="level-mode" data-key="md">成长期（1.35）</a></li>\n      <li><a class="level-mode" data-key="lg">成熟期（1.55）</a></li>\n      <li><a class="level-mode" data-key="xl">完全体（1.7）</a></li>\n      <li><a class="level-mode" data-key="xxl">天然完全体（1.8）</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
       
         __out.push(__sanitize(this.title));
       
@@ -6684,7 +6774,7 @@ window.$ === undefined && (window.$ = Zepto)
     }
     (function() {
       (function() {
-        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      筛选\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">稀有度</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">全部</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="5">★★★★★</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">元素</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">全部</a></li>\n          <li><a class="filter" data-key="element" data-value="1">火</a></li>\n          <li><a class="filter" data-key="element" data-value="2">水</a></li>\n          <li><a class="filter" data-key="element" data-value="3">风</a></li>\n          <li><a class="filter" data-key="element" data-value="4">光</a></li>\n          <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">武器</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="weapon">全部</a></li>\n          <li><a class="filter" data-key="weapon" data-value="1">斩击</a></li>\n          <li><a class="filter" data-key="weapon" data-value="2">突击</a></li>\n          <li><a class="filter" data-key="weapon" data-value="3">打击</a></li>\n          <li><a class="filter" data-key="weapon" data-value="4">弓箭</a></li>\n          <li><a class="filter" data-key="weapon" data-value="5">魔法</a></li>\n          <li><a class="filter" data-key="weapon" data-value="6">铳弹</a></li>\n          <li><a class="filter" data-key="weapon" data-value="7">回复</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">成长</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="type">全部</a></li>\n          <li><a class="filter" data-key="type" data-value="1">早熟</a></li>\n          <li><a class="filter" data-key="type" data-value="2">平均</a></li>\n          <li><a class="filter" data-key="type" data-value="3">晚成</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">性别</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="gender">全部</a></li>\n          <li><a class="filter" data-key="gender" data-value="1">不明</a></li>\n          <li><a class="filter" data-key="gender" data-value="2">男</a></li>\n          <li><a class="filter" data-key="gender" data-value="3">女</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">国别</a>\n        <ul class="dropdown-menu" id="country">\n          <li><a class="filter-reset" data-key="country">全部</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">重置</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      排序\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">稀有度</a></li>\n      <li><a class="sort-mode" data-key="dps">单体DPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">多体DPS</a></li>\n      <li><a class="sort-mode" data-key="life">生命力</a></li>\n      <li><a class="sort-mode" data-key="atk">攻击</a></li>\n      <li><a class="sort-mode" data-key="aarea">攻击距离</a></li>\n      <li><a class="sort-mode" data-key="anum">攻击数量</a></li>\n      <li><a class="sort-mode" data-key="aspd">攻击速度</a></li>\n      <li><a class="sort-mode" data-key="tenacity">韧性</a></li>\n      <li><a class="sort-mode" data-key="mspd">移动速度</a></li>\n      <li><a class="sort-mode" data-key="id">新品上架</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      等级\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="level-mode" data-key="zero">零觉零级</a></li>\n      <li><a class="level-mode" data-key="mxlv">零觉满级</a></li>\n      <li><a class="level-mode" data-key="mxlvgr">满觉满级</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
+        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      筛选\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">稀有度</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">全部</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="5">★★★★★</a></li>\n          <li><a class="filter" data-key="rare" data-value="[3,4,5]">★★★以上</a></li>\n          <li><a class="filter" data-key="rare" data-value="[4,5]">★★★★以上</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">元素</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">全部</a></li>\n          <li><a class="filter" data-key="element" data-value="1">火</a></li>\n          <li><a class="filter" data-key="element" data-value="2">水</a></li>\n          <li><a class="filter" data-key="element" data-value="3">风</a></li>\n          <li><a class="filter" data-key="element" data-value="4">光</a></li>\n          <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n          <li><a class="filter" data-key="element" data-value="[1,2,3]">火/水/风</a></li>\n          <li><a class="filter" data-key="element" data-value="[4,5]">光/暗</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">武器</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="weapon">全部</a></li>\n          <li><a class="filter" data-key="weapon" data-value="1">斩击</a></li>\n          <li><a class="filter" data-key="weapon" data-value="2">突击</a></li>\n          <li><a class="filter" data-key="weapon" data-value="3">打击</a></li>\n          <li><a class="filter" data-key="weapon" data-value="4">弓箭</a></li>\n          <li><a class="filter" data-key="weapon" data-value="5">魔法</a></li>\n          <li><a class="filter" data-key="weapon" data-value="6">铳弹</a></li>\n          <li><a class="filter" data-key="weapon" data-value="7">回复</a></li>\n          <li><a class="filter" data-key="weapon" data-value="[1,2,3]">斩/突/打</a></li>\n          <li><a class="filter" data-key="weapon" data-value="[4,5,6]">弓/魔/铳</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">成长</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="type">全部</a></li>\n          <li><a class="filter" data-key="type" data-value="1">早熟</a></li>\n          <li><a class="filter" data-key="type" data-value="2">平均</a></li>\n          <li><a class="filter" data-key="type" data-value="3">晚成</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">攻击距离</a>\n        <ul class="dropdown-menu" id="aarea">\n          <li><a class="filter-reset" data-key="aarea">全部</a></li>\n          <li><a class="filter" data-key="aarea" data-value="0-50">近程</a></li>\n          <li><a class="filter" data-key="aarea" data-value="50-150">中程</a></li>\n          <li><a class="filter" data-key="aarea" data-value="150-500">远程</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">攻击数量</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="anum">全部</a></li>\n          <li><a class="filter" data-key="anum" data-value="1">1体</a></li>\n          <li><a class="filter" data-key="anum" data-value="2">2体</a></li>\n          <li><a class="filter" data-key="anum" data-value="3">3体</a></li>\n          <li><a class="filter" data-key="anum" data-value="4">4体</a></li>\n          <li><a class="filter" data-key="anum" data-value="5">5体</a></li>\n          <li><a class="filter" data-key="anum" data-value="[2,3]">2/3体</a></li>\n          <li><a class="filter" data-key="anum" data-value="[4,5]">4/5体</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">性别</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="gender">全部</a></li>\n          <li><a class="filter" data-key="gender" data-value="1">不明</a></li>\n          <li><a class="filter" data-key="gender" data-value="2">男</a></li>\n          <li><a class="filter" data-key="gender" data-value="3">女</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">国别</a>\n        <ul class="dropdown-menu" id="country">\n          <li><a class="filter-reset" data-key="country">全部</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">重置</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      排序\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">稀有度</a></li>\n      <li><a class="sort-mode" data-key="dps">单体DPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">多体DPS</a></li>\n      <li><a class="sort-mode" data-key="life">生命力</a></li>\n      <li><a class="sort-mode" data-key="atk">攻击</a></li>\n      <li><a class="sort-mode" data-key="aarea">攻击距离</a></li>\n      <li><a class="sort-mode" data-key="anum">攻击数量</a></li>\n      <li><a class="sort-mode" data-key="aspd">攻击速度</a></li>\n      <li><a class="sort-mode" data-key="tenacity">韧性</a></li>\n      <li><a class="sort-mode" data-key="mspd">移动速度</a></li>\n      <li><a class="sort-mode" data-key="id">新品上架</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      等级\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="level-mode" data-key="zero">零觉零级</a></li>\n      <li><a class="level-mode" data-key="mxlv">零觉满级</a></li>\n      <li><a class="level-mode" data-key="mxlvgr">满觉满级</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
       
         __out.push(__sanitize(this.title));
       
@@ -6997,7 +7087,7 @@ window.$ === undefined && (window.$ = Zepto)
     };
 
     UnitsIndex.prototype.afterRender = function() {
-      var $content, $country, $scroll, appendCountryFilter;
+      var $content, $scroll;
       this.filters = {};
       this.binder.filter(this.filters);
       $content = this.$el.filter(".content");
@@ -7011,6 +7101,28 @@ window.$ === undefined && (window.$ = Zepto)
         } else {
           return $scroll.removeClass("in");
         }
+      });
+      return this.appendFilters();
+    };
+
+    UnitsIndex.prototype.appendFilters = function() {
+      var $aarea, $country, appendCountryFilter;
+      $aarea = this.$("#aarea");
+      $aarea.find(".filter").each(function() {
+        var $target, max, min, original;
+        $target = $(this);
+        original = $target.data("value").split("-");
+        min = parseInt(original[0]);
+        max = parseInt(original[1]);
+        return $target.data("value", function(value) {
+          if (min > value) {
+            return false;
+          }
+          if (max < value) {
+            return false;
+          }
+          return true;
+        });
       });
       $country = this.$("#country");
       appendCountryFilter = function(collection) {
@@ -7137,11 +7249,13 @@ window.$ === undefined && (window.$ = Zepto)
     };
 
     UnitsIndex.prototype.setFilter = function(event) {
-      var $target, key, value;
+      var $target, filters, key, value;
       $target = $(event.target);
       this.setActive($target);
       key = $target.data("key");
       value = $target.data("value");
+      filters = {};
+      filters[key] = value;
       this.filters[key] = value;
       return this.binder.filter(this.filters);
     };
@@ -7175,6 +7289,26 @@ window.$ === undefined && (window.$ = Zepto)
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
+  App.Pages.MonstersItem = (function(_super) {
+    __extends(MonstersItem, _super);
+
+    function MonstersItem() {
+      return MonstersItem.__super__.constructor.apply(this, arguments);
+    }
+
+    MonstersItem.prototype.template = _.loadTemplate("templates/mobile/pages/monsters/item");
+
+    MonstersItem.prototype.bindings = {
+      "#life": "life",
+      "#atk": "atk",
+      "#dps": "dps",
+      "#mdps": "mdps"
+    };
+
+    return MonstersItem;
+
+  })(Backbone.View);
+
   App.Pages.MonstersIndex = (function(_super) {
     __extends(MonstersIndex, _super);
 
@@ -7185,8 +7319,37 @@ window.$ === undefined && (window.$ = Zepto)
     MonstersIndex.prototype.template = _.loadTemplate("templates/mobile/pages/monsters/index");
 
     MonstersIndex.prototype.store = _.extend({}, App.Pages.UnitsIndex.prototype.store, {
-      template: _.loadTemplate("templates/mobile/pages/monsters/item")
+      template: App.Pages.MonstersItem
     });
+
+    MonstersIndex.prototype.appendFilters = function() {
+      var $skill, appendSkillFilter;
+      $skill = this.$("#skill");
+      appendSkillFilter = function(collection) {
+        var skill, skills, _i, _len, _results;
+        skills = collection.map(function(model) {
+          return model.get("skill-sc");
+        });
+        skills = _.uniq(skills);
+        _results = [];
+        for (_i = 0, _len = skills.length; _i < _len; _i++) {
+          skill = skills[_i];
+          _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill-sc\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
+        }
+        return _results;
+      };
+      if ($skill.length > 0) {
+        if (this.collection.length === 0) {
+          return this.collection.once("reset", (function(_this) {
+            return function(collection) {
+              return appendSkillFilter(collection);
+            };
+          })(this));
+        } else {
+          return appendSkillFilter(this.collection);
+        }
+      }
+    };
 
     return MonstersIndex;
 
@@ -7875,6 +8038,8 @@ window.$ === undefined && (window.$ = Zepto)
   })(Backbone.Router);
 
 }).call(this);
+
+
 
 
 

@@ -50,7 +50,24 @@
     };
 
     UnitsNavbarExtra.prototype.initDropdown = function() {
-      var $country, countries, country, _i, _len, _results;
+      var $aarea, $country, countries, country, _i, _len, _results;
+      $aarea = this.$("#aarea");
+      $aarea.find(".filter").each(function() {
+        var $target, max, min, original;
+        $target = $(this);
+        original = $target.data("value").split("-");
+        min = parseInt(original[0]);
+        max = parseInt(original[1]);
+        return $target.data("value", function(value) {
+          if (min > value) {
+            return false;
+          }
+          if (max < value) {
+            return false;
+          }
+          return true;
+        });
+      });
       $country = this.$("#country");
       countries = this.index.collection.map(function(model) {
         return model.get("country");

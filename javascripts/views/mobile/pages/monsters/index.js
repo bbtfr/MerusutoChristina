@@ -52,7 +52,7 @@
     };
 
     UnitsIndex.prototype.afterRender = function() {
-      var $content, $country, $scroll, appendCountryFilter;
+      var $content, $scroll;
       this.filters = {};
       this.binder.filter(this.filters);
       $content = this.$el.filter(".content");
@@ -66,6 +66,28 @@
         } else {
           return $scroll.removeClass("in");
         }
+      });
+      return this.appendFilters();
+    };
+
+    UnitsIndex.prototype.appendFilters = function() {
+      var $aarea, $country, appendCountryFilter;
+      $aarea = this.$("#aarea");
+      $aarea.find(".filter").each(function() {
+        var $target, max, min, original;
+        $target = $(this);
+        original = $target.data("value").split("-");
+        min = parseInt(original[0]);
+        max = parseInt(original[1]);
+        return $target.data("value", function(value) {
+          if (min > value) {
+            return false;
+          }
+          if (max < value) {
+            return false;
+          }
+          return true;
+        });
       });
       $country = this.$("#country");
       appendCountryFilter = function(collection) {
@@ -192,11 +214,13 @@
     };
 
     UnitsIndex.prototype.setFilter = function(event) {
-      var $target, key, value;
+      var $target, filters, key, value;
       $target = $(event.target);
       this.setActive($target);
       key = $target.data("key");
       value = $target.data("value");
+      filters = {};
+      filters[key] = value;
       this.filters[key] = value;
       return this.binder.filter(this.filters);
     };
@@ -230,6 +254,26 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
+  App.Pages.MonstersItem = (function(_super) {
+    __extends(MonstersItem, _super);
+
+    function MonstersItem() {
+      return MonstersItem.__super__.constructor.apply(this, arguments);
+    }
+
+    MonstersItem.prototype.template = _.loadTemplate("templates/mobile/pages/monsters/item");
+
+    MonstersItem.prototype.bindings = {
+      "#life": "life",
+      "#atk": "atk",
+      "#dps": "dps",
+      "#mdps": "mdps"
+    };
+
+    return MonstersItem;
+
+  })(Backbone.View);
+
   App.Pages.MonstersIndex = (function(_super) {
     __extends(MonstersIndex, _super);
 
@@ -240,8 +284,37 @@
     MonstersIndex.prototype.template = _.loadTemplate("templates/mobile/pages/monsters/index");
 
     MonstersIndex.prototype.store = _.extend({}, App.Pages.UnitsIndex.prototype.store, {
-      template: _.loadTemplate("templates/mobile/pages/monsters/item")
+      template: App.Pages.MonstersItem
     });
+
+    MonstersIndex.prototype.appendFilters = function() {
+      var $skill, appendSkillFilter;
+      $skill = this.$("#skill");
+      appendSkillFilter = function(collection) {
+        var skill, skills, _i, _len, _results;
+        skills = collection.map(function(model) {
+          return model.get("skill-sc");
+        });
+        skills = _.uniq(skills);
+        _results = [];
+        for (_i = 0, _len = skills.length; _i < _len; _i++) {
+          skill = skills[_i];
+          _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill-sc\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
+        }
+        return _results;
+      };
+      if ($skill.length > 0) {
+        if (this.collection.length === 0) {
+          return this.collection.once("reset", (function(_this) {
+            return function(collection) {
+              return appendSkillFilter(collection);
+            };
+          })(this));
+        } else {
+          return appendSkillFilter(this.collection);
+        }
+      }
+    };
 
     return MonstersIndex;
 

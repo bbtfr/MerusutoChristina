@@ -31223,15 +31223,7 @@ else if ( jQuery && !jQuery.fn.dataTable.ColVis ) {
 
 }).call(this);
 (function() {
-  var Collection2ViewBinder, _where;
-
-  _where = function(collection, attributes) {
-    if (_.isFunction(attributes)) {
-      return attributes(collection);
-    } else {
-      return collection.where(attributes);
-    }
-  };
+  var Collection2ViewBinder;
 
   Collection2ViewBinder = (function() {
     Collection2ViewBinder.prototype.defaults = {
@@ -31310,7 +31302,7 @@ else if ( jQuery && !jQuery.fn.dataTable.ColVis ) {
           eachTemplate(collection.models, function(template) {
             return template.hide();
           });
-          return eachTemplate(_where(collection, attributes), function(template) {
+          return eachTemplate(collection.where(attributes), function(template) {
             return template.show();
           });
         } else {
@@ -31332,7 +31324,7 @@ else if ( jQuery && !jQuery.fn.dataTable.ColVis ) {
           }
           this.$container.scrollTop(0);
           this.infinite.length = 0;
-          this.infinite.models = this.infinite.attributes != null ? _where(collection, this.infinite.attributes) : collection.models;
+          this.infinite.models = this.infinite.attributes != null ? collection.where(this.infinite.attributes) : collection.models;
           return this.show(this.options.slice);
         },
         onFilter: function(collection, attributes) {
@@ -31528,6 +31520,22 @@ else if ( jQuery && !jQuery.fn.dataTable.ColVis ) {
 }).call(this);
 
 
+// Return models with matching attributes. Useful for simple cases of
+// `filter`.
+Backbone.Collection.prototype.where = function(attrs, first) {
+  if (_.isEmpty(attrs)) return first ? void 0 : [];
+  return this[first ? 'find' : 'filter'](function(model) {
+    for (var key in attrs) {
+      var filter = attrs[key],
+        attr = model.get(key);
+      if (_.isFunction(filter) && filter(attr)) continue;
+      if (_.isArray(filter) && filter.indexOf(attr) >= 0) continue;
+      if (filter === attr) continue;
+      return false;
+    }
+    return true;
+  });
+};
 (function(root) {
   root.AV = root.AV || {};
   root.AV.VERSION = "js0.5.1";
@@ -40841,7 +40849,8 @@ if (typeof String.prototype.includes != 'function') {
       };
       this.setLevelMode("sm");
       this.origin.dps = this.get('dps');
-      return this.origin.mdps = this.get('mdps');
+      this.origin.mdps = this.get('mdps');
+      return this.set("skill-sc", this.getSkillShortString());
     };
 
     Monster.prototype.calcBySize = function(value, size, mode) {
@@ -41901,7 +41910,7 @@ if (typeof String.prototype.includes != 'function') {
     }
     (function() {
       (function() {
-        __out.push('<li class="navbar-form">\n  <input type="text" class="form-control" placeholder="搜索同伴" id="search">\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">等级 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="active"><a class="level-mode" data-key="sm">幼年期（1.0）</a></li>\n    <li><a class="level-mode" data-key="md">成长期（1.35）</a></li>\n    <li><a class="level-mode" data-key="lg">成熟期（1.55）</a></li>\n    <li><a class="level-mode" data-key="xl">完全体（1.7）</a></li>\n    <li><a class="level-mode" data-key="xxl">天然完全体（1.8）</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">筛选 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="dropdown-submenu">\n      <a class="">稀有度</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="rare">全部</a></li>\n        <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n        <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">元素</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="element">全部</a></li>\n        <li><a class="filter" data-key="element" data-value="1">火</a></li>\n        <li><a class="filter" data-key="element" data-value="2">水</a></li>\n        <li><a class="filter" data-key="element" data-value="3">风</a></li>\n        <li><a class="filter" data-key="element" data-value="4">光</a></li>\n        <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">皮肤</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="skin">全部</a></li>\n        <li><a class="filter" data-key="skin" data-value="1">坚硬</a></li>\n        <li><a class="filter" data-key="skin" data-value="2">常规</a></li>\n        <li><a class="filter" data-key="skin" data-value="3">柔软</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">技能</a>\n      <ul class="dropdown-menu" id="skill">\n        <li><a class="filter-reset" data-key="skill">全部</a></li>\n      </ul>\n    </li>\n    <li class="divider"></li>\n    <li><a class="filter-reset">重置</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示 / 隐藏项目 <span class="caret"></span></a>\n  <ul class="dropdown-menu" id="colvis"></ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">每页显示条目数 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li><a class="page" data-key="10">10</a></li>\n    <li><a class="page" data-key="25">25</a></li>\n    <li class="active"><a class="page" data-key="50">50</a></li>\n    <li><a class="page" data-key="100">100</a></li>\n    <li><a class="page" data-key="200">200</a></li>\n    <li><a class="page" data-key="-1">全部</a></li>\n  </ul>\n</li>\n');
+        __out.push('<li class="navbar-form">\n  <input type="text" class="form-control" placeholder="搜索同伴" id="search">\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">等级 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="active"><a class="level-mode" data-key="sm">幼年期（1.0）</a></li>\n    <li><a class="level-mode" data-key="md">成长期（1.35）</a></li>\n    <li><a class="level-mode" data-key="lg">成熟期（1.55）</a></li>\n    <li><a class="level-mode" data-key="xl">完全体（1.7）</a></li>\n    <li><a class="level-mode" data-key="xxl">天然完全体（1.8）</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">筛选 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="dropdown-submenu">\n      <a class="">稀有度</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="rare">全部</a></li>\n        <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n        <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="[3,4]">★★★以上</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">元素</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="element">全部</a></li>\n        <li><a class="filter" data-key="element" data-value="1">火</a></li>\n        <li><a class="filter" data-key="element" data-value="2">水</a></li>\n        <li><a class="filter" data-key="element" data-value="3">风</a></li>\n        <li><a class="filter" data-key="element" data-value="4">光</a></li>\n        <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n        <li><a class="filter" data-key="element" data-value="[1,2,3]">火/水/风</a></li>\n        <li><a class="filter" data-key="element" data-value="[4,5]">光/暗</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">皮肤</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="skin">全部</a></li>\n        <li><a class="filter" data-key="skin" data-value="1">坚硬</a></li>\n        <li><a class="filter" data-key="skin" data-value="2">常规</a></li>\n        <li><a class="filter" data-key="skin" data-value="3">柔软</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">技能</a>\n      <ul class="dropdown-menu" id="skill">\n        <li><a class="filter-reset" data-key="skill-sc">全部</a></li>\n      </ul>\n    </li>\n    <li class="divider"></li>\n    <li><a class="filter-reset">重置</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示 / 隐藏项目 <span class="caret"></span></a>\n  <ul class="dropdown-menu" id="colvis"></ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">每页显示条目数 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li><a class="page" data-key="10">10</a></li>\n    <li><a class="page" data-key="25">25</a></li>\n    <li class="active"><a class="page" data-key="50">50</a></li>\n    <li><a class="page" data-key="100">100</a></li>\n    <li><a class="page" data-key="200">200</a></li>\n    <li><a class="page" data-key="-1">全部</a></li>\n  </ul>\n</li>\n');
       
       }).call(this);
       
@@ -42631,7 +42640,7 @@ if (typeof String.prototype.includes != 'function') {
     }
     (function() {
       (function() {
-        __out.push('<li class="navbar-form">\n  <input type="text" class="form-control" placeholder="搜索同伴" id="search">\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">等级 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="active"><a class="level-mode" data-key="zero">零觉零级</a></li>\n    <li><a class="level-mode" data-key="mxlv">零觉满级</a></li>\n    <li><a class="level-mode" data-key="mxlvgr">满觉满级</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">筛选 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="dropdown-submenu">\n      <a class="">稀有度</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="rare">全部</a></li>\n        <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n        <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="5">★★★★★</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">元素</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="element">全部</a></li>\n        <li><a class="filter" data-key="element" data-value="1">火</a></li>\n        <li><a class="filter" data-key="element" data-value="2">水</a></li>\n        <li><a class="filter" data-key="element" data-value="3">风</a></li>\n        <li><a class="filter" data-key="element" data-value="4">光</a></li>\n        <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">武器</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="weapon">全部</a></li>\n        <li><a class="filter" data-key="weapon" data-value="1">斩击</a></li>\n        <li><a class="filter" data-key="weapon" data-value="2">突击</a></li>\n        <li><a class="filter" data-key="weapon" data-value="3">打击</a></li>\n        <li><a class="filter" data-key="weapon" data-value="4">弓箭</a></li>\n        <li><a class="filter" data-key="weapon" data-value="5">魔法</a></li>\n        <li><a class="filter" data-key="weapon" data-value="6">铳弹</a></li>\n        <li><a class="filter" data-key="weapon" data-value="7">回复</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">成长</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="type">全部</a></li>\n        <li><a class="filter" data-key="type" data-value="1">早熟</a></li>\n        <li><a class="filter" data-key="type" data-value="2">平均</a></li>\n        <li><a class="filter" data-key="type" data-value="3">晚成</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">性别</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="gender">全部</a></li>\n        <li><a class="filter" data-key="gender" data-value="1">不明</a></li>\n        <li><a class="filter" data-key="gender" data-value="2">男</a></li>\n        <li><a class="filter" data-key="gender" data-value="3">女</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">国别</a>\n      <ul class="dropdown-menu" id="country">\n        <li><a class="filter-reset" data-key="country">全部</a></li>\n      </ul>\n    </li>\n    <li class="divider"></li>\n    <li><a class="filter-reset">重置</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示 / 隐藏项目 <span class="caret"></span></a>\n  <ul class="dropdown-menu" id="colvis"></ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">每页显示条目数 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li><a class="page" data-key="10">10</a></li>\n    <li><a class="page" data-key="25">25</a></li>\n    <li class="active"><a class="page" data-key="50">50</a></li>\n    <li><a class="page" data-key="100">100</a></li>\n    <li><a class="page" data-key="200">200</a></li>\n    <li><a class="page" data-key="-1">全部</a></li>\n  </ul>\n</li>\n');
+        __out.push('<li class="navbar-form">\n  <input type="text" class="form-control" placeholder="搜索同伴" id="search">\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">等级 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="active"><a class="level-mode" data-key="zero">零觉零级</a></li>\n    <li><a class="level-mode" data-key="mxlv">零觉满级</a></li>\n    <li><a class="level-mode" data-key="mxlvgr">满觉满级</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">筛选 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="dropdown-submenu">\n      <a class="">稀有度</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="rare">全部</a></li>\n        <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n        <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="5">★★★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="[3,4,5]">★★★以上</a></li>\n        <li><a class="filter" data-key="rare" data-value="[4,5]">★★★★以上</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">元素</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="element">全部</a></li>\n        <li><a class="filter" data-key="element" data-value="1">火</a></li>\n        <li><a class="filter" data-key="element" data-value="2">水</a></li>\n        <li><a class="filter" data-key="element" data-value="3">风</a></li>\n        <li><a class="filter" data-key="element" data-value="4">光</a></li>\n        <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n        <li><a class="filter" data-key="element" data-value="[1,2,3]">火/水/风</a></li>\n        <li><a class="filter" data-key="element" data-value="[4,5]">光/暗</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">武器</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="weapon">全部</a></li>\n        <li><a class="filter" data-key="weapon" data-value="1">斩击</a></li>\n        <li><a class="filter" data-key="weapon" data-value="2">突击</a></li>\n        <li><a class="filter" data-key="weapon" data-value="3">打击</a></li>\n        <li><a class="filter" data-key="weapon" data-value="4">弓箭</a></li>\n        <li><a class="filter" data-key="weapon" data-value="5">魔法</a></li>\n        <li><a class="filter" data-key="weapon" data-value="6">铳弹</a></li>\n        <li><a class="filter" data-key="weapon" data-value="7">回复</a></li>\n        <li><a class="filter" data-key="weapon" data-value="[1,2,3]">斩/突/打</a></li>\n        <li><a class="filter" data-key="weapon" data-value="[4,5,6]">弓/魔/铳</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">成长</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="type">全部</a></li>\n        <li><a class="filter" data-key="type" data-value="1">早熟</a></li>\n        <li><a class="filter" data-key="type" data-value="2">平均</a></li>\n        <li><a class="filter" data-key="type" data-value="3">晚成</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">攻击距离</a>\n      <ul class="dropdown-menu" id="aarea">\n        <li><a class="filter-reset" data-key="aarea">全部</a></li>\n        <li><a class="filter" data-key="aarea" data-value="0-50">近程</a></li>\n        <li><a class="filter" data-key="aarea" data-value="50-150">中程</a></li>\n        <li><a class="filter" data-key="aarea" data-value="150-500">远程</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">攻击数量</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="anum">全部</a></li>\n        <li><a class="filter" data-key="anum" data-value="1">1体</a></li>\n        <li><a class="filter" data-key="anum" data-value="2">2体</a></li>\n        <li><a class="filter" data-key="anum" data-value="3">3体</a></li>\n        <li><a class="filter" data-key="anum" data-value="4">4体</a></li>\n        <li><a class="filter" data-key="anum" data-value="5">5体</a></li>\n        <li><a class="filter" data-key="anum" data-value="[2,3]">2/3体</a></li>\n        <li><a class="filter" data-key="anum" data-value="[4,5]">4/5体</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">性别</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="gender">全部</a></li>\n        <li><a class="filter" data-key="gender" data-value="1">不明</a></li>\n        <li><a class="filter" data-key="gender" data-value="2">男</a></li>\n        <li><a class="filter" data-key="gender" data-value="3">女</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">国别</a>\n      <ul class="dropdown-menu" id="country">\n        <li><a class="filter-reset" data-key="country">全部</a></li>\n      </ul>\n    </li>\n    <li class="divider"></li>\n    <li><a class="filter-reset">重置</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示 / 隐藏项目 <span class="caret"></span></a>\n  <ul class="dropdown-menu" id="colvis"></ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">每页显示条目数 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li><a class="page" data-key="10">10</a></li>\n    <li><a class="page" data-key="25">25</a></li>\n    <li class="active"><a class="page" data-key="50">50</a></li>\n    <li><a class="page" data-key="100">100</a></li>\n    <li><a class="page" data-key="200">200</a></li>\n    <li><a class="page" data-key="-1">全部</a></li>\n  </ul>\n</li>\n');
       
       }).call(this);
       
@@ -43389,7 +43398,24 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     UnitsNavbarExtra.prototype.initDropdown = function() {
-      var $country, countries, country, _i, _len, _results;
+      var $aarea, $country, countries, country, _i, _len, _results;
+      $aarea = this.$("#aarea");
+      $aarea.find(".filter").each(function() {
+        var $target, max, min, original;
+        $target = $(this);
+        original = $target.data("value").split("-");
+        min = parseInt(original[0]);
+        max = parseInt(original[1]);
+        return $target.data("value", function(value) {
+          if (min > value) {
+            return false;
+          }
+          if (max < value) {
+            return false;
+          }
+          return true;
+        });
+      });
       $country = this.$("#country");
       countries = this.index.collection.map(function(model) {
         return model.get("country");
@@ -43496,21 +43522,22 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     UnitsIndex.prototype.matchValue = function() {
-      var filter, filters, key, model, value;
+      var attr, filter, filters, key, model;
       model = arguments[3];
       filters = model.collection.filters;
       for (key in filters) {
         filter = filters[key];
-        value = model.get(key);
-        if (_.isString(filter)) {
-          if (!(value && value.startsWith(filter))) {
-            return false;
-          }
-        } else {
-          if (value !== filter) {
-            return false;
-          }
+        attr = model.get(key);
+        if (_.isFunction(filter) && filter(attr)) {
+          continue;
         }
+        if (_.isArray(filter) && filter.indexOf(attr) >= 0) {
+          continue;
+        }
+        if (filter === attr) {
+          continue;
+        }
+        return false;
       }
       return true;
     };
@@ -43782,13 +43809,13 @@ if (typeof String.prototype.includes != 'function') {
       var $skill, skill, skills, _i, _len, _results;
       $skill = this.$("#skill");
       skills = this.index.collection.map(function(model) {
-        return model.getSkillShortString();
+        return model.get("skill-sc");
       });
       skills = _.uniq(skills);
       _results = [];
       for (_i = 0, _len = skills.length; _i < _len; _i++) {
         skill = skills[_i];
-        _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
+        _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill-sc\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
       }
       return _results;
     };
@@ -43906,7 +43933,7 @@ if (typeof String.prototype.includes != 'function') {
         }, {
           title: "技能",
           data: function(model) {
-            return model.getSkillShortString();
+            return model.get("skill-sc");
           }
         }, {
           title: "技能CD",
@@ -44293,6 +44320,7 @@ if (typeof String.prototype.includes != 'function') {
   })(Backbone.Router);
 
 }).call(this);
+
 
 
 

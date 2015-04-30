@@ -50,7 +50,24 @@
     };
 
     UnitsNavbarExtra.prototype.initDropdown = function() {
-      var $country, countries, country, _i, _len, _results;
+      var $aarea, $country, countries, country, _i, _len, _results;
+      $aarea = this.$("#aarea");
+      $aarea.find(".filter").each(function() {
+        var $target, max, min, original;
+        $target = $(this);
+        original = $target.data("value").split("-");
+        min = parseInt(original[0]);
+        max = parseInt(original[1]);
+        return $target.data("value", function(value) {
+          if (min > value) {
+            return false;
+          }
+          if (max < value) {
+            return false;
+          }
+          return true;
+        });
+      });
       $country = this.$("#country");
       countries = this.index.collection.map(function(model) {
         return model.get("country");
@@ -157,21 +174,22 @@
     };
 
     UnitsIndex.prototype.matchValue = function() {
-      var filter, filters, key, model, value;
+      var attr, filter, filters, key, model;
       model = arguments[3];
       filters = model.collection.filters;
       for (key in filters) {
         filter = filters[key];
-        value = model.get(key);
-        if (_.isString(filter)) {
-          if (!(value && value.startsWith(filter))) {
-            return false;
-          }
-        } else {
-          if (value !== filter) {
-            return false;
-          }
+        attr = model.get(key);
+        if (_.isFunction(filter) && filter(attr)) {
+          continue;
         }
+        if (_.isArray(filter) && filter.indexOf(attr) >= 0) {
+          continue;
+        }
+        if (filter === attr) {
+          continue;
+        }
+        return false;
       }
       return true;
     };
@@ -443,13 +461,13 @@
       var $skill, skill, skills, _i, _len, _results;
       $skill = this.$("#skill");
       skills = this.index.collection.map(function(model) {
-        return model.getSkillShortString();
+        return model.get("skill-sc");
       });
       skills = _.uniq(skills);
       _results = [];
       for (_i = 0, _len = skills.length; _i < _len; _i++) {
         skill = skills[_i];
-        _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
+        _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill-sc\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
       }
       return _results;
     };
@@ -567,7 +585,7 @@
         }, {
           title: "技能",
           data: function(model) {
-            return model.getSkillShortString();
+            return model.get("skill-sc");
           }
         }, {
           title: "技能CD",

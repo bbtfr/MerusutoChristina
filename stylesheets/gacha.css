@@ -107,23 +107,23 @@
   100% {
     opacity: 0;
     -webkit-transform: rotate(0deg); } }
-/* line 99, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 99, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 body {
   background-color: black;
   -webkit-tap-highlight-color: transparent; }
 
-/* line 104, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 104, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #preload {
   display: none; }
 
-/* line 108, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 108, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #background {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0; }
-  /* line 112, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 112, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #background .loading-bar {
     position: absolute;
     top: 5%;
@@ -131,7 +131,7 @@ body {
     max-width: 20%;
     min-width: 150px;
     opacity: 0.9; }
-  /* line 121, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 121, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #background .image {
     position: absolute;
     top: 0;
@@ -139,10 +139,10 @@ body {
     right: 0;
     bottom: 0;
     margin: auto; }
-  /* line 125, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 125, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #background #gacha-background {
     -webkit-filter: blur(5px); }
-  /* line 129, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 129, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #background .spin {
     position: absolute;
     top: -50%;
@@ -150,7 +150,7 @@ body {
     right: -50%;
     bottom: -50%;
     display: none; }
-    /* line 137, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 137, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #background .spin .spin-1 {
       position: absolute;
       top: 0;
@@ -163,7 +163,7 @@ body {
       height: 150%;
       opacity: 0.7;
       -webkit-transform-origin: 40% 50%; }
-    /* line 147, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 147, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #background .spin .spin-2 {
       position: absolute;
       top: 0;
@@ -178,10 +178,10 @@ body {
       left: 10%;
       right: -10%;
       -webkit-transform-origin: 5% 150%; }
-  /* line 160, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 160, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #background .effect {
     display: none; }
-    /* line 163, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 163, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #background .effect .effect-1 {
       position: absolute;
       background-position: center center;
@@ -192,7 +192,7 @@ body {
       right: 0;
       bottom: 0;
       background-image: url("../images/gacha/effect_1.png"); }
-    /* line 169, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 169, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #background .effect .effect-2 {
       position: absolute;
       background-position: center center;
@@ -204,31 +204,31 @@ body {
       bottom: 0;
       background-image: url("../images/gacha/effect_2.png"); }
 
-/* line 177, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 177, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #foreground {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; }
-  /* line 185, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 185, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .pick .button-group-gacha {
     display: none;
     position: absolute;
     top: 0;
     left: 50%;
     bottom: 0; }
-  /* line 194, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 194, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .pick .button-gacha-1, #foreground .pick .button-gacha-2, #foreground .pick .button-gacha-3 {
     display: block;
     height: 15%;
     max-height: 80px;
     margin-left: -50%;
     margin-bottom: 10%; }
-  /* line 202, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 202, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .pick .button-gacha-1 {
     margin-top: 75%; }
-  /* line 208, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 208, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .welcome .button-statistics {
     display: none;
     position: absolute;
@@ -236,10 +236,10 @@ body {
     max-height: 80px;
     right: 5%;
     bottom: 5%; }
-  /* line 219, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 219, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .ready {
     display: none; }
-    /* line 222, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 222, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .ready .scout-book {
       position: absolute;
       background-position: center center;
@@ -250,24 +250,24 @@ body {
       right: 10%;
       bottom: 10%;
       background-image: url("../images/gacha/scout_book.png"); }
-    /* line 228, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 228, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .ready .click {
       position: absolute;
       height: 6%;
       top: 8%;
       left: 18%;
       opacity: 0; }
-    /* line 236, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 236, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .ready .arrow {
       position: absolute;
       height: 10%;
       top: 15%;
       left: 25%;
       opacity: 0; }
-  /* line 245, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 245, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .gacha {
     display: none; }
-    /* line 248, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 248, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .gacha .unit {
       position: absolute;
       background-position: center center;
@@ -277,7 +277,7 @@ body {
       left: 5%;
       right: 5%;
       bottom: 5%; }
-    /* line 253, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 253, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .gacha .unit-shadow {
       position: absolute;
       background-position: center center;
@@ -288,14 +288,14 @@ body {
       right: 5%;
       bottom: 5%;
       opacity: 0; }
-    /* line 259, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 259, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .gacha .new {
       position: absolute;
       height: 10%;
       top: 15%;
       left: 30%;
       opacity: 0; }
-    /* line 267, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 267, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .gacha .skip {
       position: absolute;
       height: 15%;
@@ -303,7 +303,7 @@ body {
       right: 10%;
       opacity: 0;
       z-index: 1; }
-    /* line 277, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 277, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .gacha .stars {
       position: absolute;
       top: 0;
@@ -314,11 +314,11 @@ body {
       text-align: center;
       height: 10%;
       top: 70%; }
-      /* line 283, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+      /* line 283, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
       #foreground .gacha .stars .star {
         height: 100%;
         opacity: 0; }
-  /* line 290, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 290, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .finish {
     display: none;
     position: absolute;
@@ -326,7 +326,7 @@ body {
     left: 10%;
     width: 87%;
     height: 83%; }
-    /* line 299, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 299, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .finish .unit {
       background-position: center center;
       background-repeat: no-repeat;
@@ -338,83 +338,83 @@ body {
       margin-bottom: 2%;
       float: left; }
 
-/* line 315, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 315, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #page.ready #background {
   -webkit-animation: brightness-in 0.5s linear; }
-  /* line 318, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 318, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #background .loading {
     -webkit-animation: fade-out 0.2s linear;
     opacity: 0; }
-  /* line 323, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 323, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #background .effect {
     display: block; }
-    /* line 326, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 326, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #page.ready #background .effect .effect-1 {
       -webkit-animation: zoom-out 0.3s linear;
       -webkit-animation-delay: 0.2s;
       opacity: 0; }
-    /* line 332, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 332, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #page.ready #background .effect .effect-2 {
       -webkit-animation: zoom-out 0.7s linear;
       opacity: 0; }
-/* line 340, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 340, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #page.ready #foreground .ready {
   display: block; }
-  /* line 343, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 343, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #foreground .ready .scout-book {
     -webkit-animation: zoom-in 0.5s linear; }
-  /* line 348, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 348, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #foreground .ready.active-300 .click {
     -webkit-animation: fade-in 0.2s linear;
     opacity: 1; }
-  /* line 353, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 353, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #foreground .ready.active-300 .arrow {
     -webkit-animation: fade-in 0.2s linear;
     opacity: 1; }
-  /* line 360, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 360, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #foreground .ready.active-500 .scout-book {
     -webkit-animation: floating 5s ease-in-out;
     -webkit-animation-iteration-count: infinite; }
-  /* line 365, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 365, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.ready #foreground .ready.active-500 .arrow {
     -webkit-animation: arrowing 5s ease-in-out;
     -webkit-animation-iteration-count: infinite; }
 
-/* line 375, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 375, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #page.gacha #background {
   -webkit-animation: brightness-blink 1s linear;
   -webkit-filter: brightness(0.5); }
-  /* line 379, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 379, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.gacha #background .spin {
     display: block; }
-    /* line 382, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 382, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #page.gacha #background .spin .spin-1 {
       -webkit-animation: spin 3s linear;
       -webkit-animation-iteration-count: infinite; }
-    /* line 387, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 387, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #page.gacha #background .spin .spin-2 {
       -webkit-animation: spin-2 5s linear;
       -webkit-animation-iteration-count: infinite; }
-/* line 396, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 396, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #page.gacha #foreground .gacha.active {
   display: block; }
-  /* line 399, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 399, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.gacha #foreground .gacha.active .unit {
     -webkit-animation: bounce-in 0.8s ease-in; }
-  /* line 403, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 403, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #page.gacha #foreground .gacha.active .unit-shadow {
     -webkit-animation: bounce-shadow 0.2s linear;
     -webkit-animation-delay: 0.8s; }
-/* line 410, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 410, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #page.gacha #foreground .gacha.active-1000 .new, #page.gacha #foreground .gacha.active-1000 .skip, #page.gacha #foreground .gacha.active-1000 .text, #page.gacha #foreground .gacha.active-1000 .star.active {
   -webkit-animation: fade-in 0.1s linear;
   opacity: 1; }
 
-/* line 422, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 422, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 #page.finish #foreground .finish.active {
   display: block; }
 
-/* line 429, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 429, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 .background-image {
   position: absolute;
   background-position: center center;
@@ -426,52 +426,52 @@ body {
   bottom: 0;
   background-size: cover; }
 
-/* line 435, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 435, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 .background-image.morning {
   background-color: black;
   background-image: url("../images/gacha/background_morning.png"); }
 
-/* line 439, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 439, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 .background-image.evening {
   background-image: url("../images/gacha/background_evening.png"); }
 
-/* line 442, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+/* line 442, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
 .background-image.night {
   background-image: url("../images/gacha/background_night.png"); }
 
 @media (max-aspect-ratio: 3 / 4) {
-  /* line 449, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 449, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .ready .click {
     left: 5%; }
-  /* line 453, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 453, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .ready .arrow {
     left: 15%; }
-  /* line 459, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 459, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .gacha .new {
     top: 25%;
     left: 15%; }
-  /* line 464, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 464, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .gacha .skip {
     top: 80%;
     right: 5%; }
-  /* line 469, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 469, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .gacha .stars {
     top: 55%; } }
 @media (max-aspect-ratio: 1 / 1) {
-  /* line 477, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 477, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .finish {
     width: 87%;
     height: 83%; }
-    /* line 481, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 481, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .finish .unit {
       width: 29%;
       height: 25%; } }
 @media (min-aspect-ratio: 1 / 1) and (max-aspect-ratio: 4 / 3) {
-  /* line 489, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+  /* line 489, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .finish {
     width: 87%;
     height: 83%; }
-    /* line 493, /Users/amber/Workspace/Handbook/Merusuto/website/source/stylesheets/gacha.scss */
+    /* line 493, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .finish .unit {
       width: 20%;
       height: 33%; } }

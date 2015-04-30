@@ -183,7 +183,8 @@
       };
       this.setLevelMode("sm");
       this.origin.dps = this.get('dps');
-      return this.origin.mdps = this.get('mdps');
+      this.origin.mdps = this.get('mdps');
+      return this.set("skill-sc", this.getSkillShortString());
     };
 
     Monster.prototype.calcBySize = function(value, size, mode) {
