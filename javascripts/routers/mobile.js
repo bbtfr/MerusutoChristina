@@ -47,7 +47,8 @@
       view = new App.Pages[page]({
         collection: App[key]
       });
-      return App.main.openPage(view.render());
+      App.main.openPage(view.render());
+      return this.track();
     };
 
     Router.prototype.openModelPage = function(key, collection, page, id) {
@@ -59,7 +60,8 @@
       view = new App.Pages[page]({
         model: model
       });
-      return App.main.openModal(view.render());
+      App.main.openModal(view.render());
+      return this.track();
     };
 
     Router.prototype.openUnitsIndexPage = function() {
@@ -76,6 +78,20 @@
 
     Router.prototype.openMonstersShowPage = function(id) {
       return this.openModelPage("monsters", "Monsters", "MonstersShow", id);
+    };
+
+    Router.prototype.track = function() {
+      var url;
+      if (typeof ga !== "undefined" && ga !== null) {
+        url = Backbone.history.getFragment();
+        if (!/^\//.test(url)) {
+          url = '/' + url;
+        }
+        return ga('send', {
+          hitType: 'pageview',
+          page: url
+        });
+      }
     };
 
     return Router;

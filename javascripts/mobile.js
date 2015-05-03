@@ -6628,7 +6628,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       (function() {
         var key;
       
-        __out.push('<li class="table-view-cell media unit">\n  <a sref="#monsters/');
+        __out.push('<li class="table-view-cell media unit">\n  <a href="#monsters/');
       
         __out.push(__sanitize(this.model.id));
       
@@ -6878,7 +6878,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       (function() {
         var key;
       
-        __out.push('<li class="table-view-cell media unit">\n  <a sref="#units/');
+        __out.push('<li class="table-view-cell media unit">\n  <a href="#units/');
       
         __out.push(__sanitize(this.model.id));
       
@@ -8002,7 +8002,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       view = new App.Pages[page]({
         collection: App[key]
       });
-      return App.main.openPage(view.render());
+      App.main.openPage(view.render());
+      return this.track();
     };
 
     Router.prototype.openModelPage = function(key, collection, page, id) {
@@ -8014,7 +8015,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       view = new App.Pages[page]({
         model: model
       });
-      return App.main.openModal(view.render());
+      App.main.openModal(view.render());
+      return this.track();
     };
 
     Router.prototype.openUnitsIndexPage = function() {
@@ -8031,6 +8033,20 @@ Backbone.Collection.prototype.where = function(attrs, first) {
 
     Router.prototype.openMonstersShowPage = function(id) {
       return this.openModelPage("monsters", "Monsters", "MonstersShow", id);
+    };
+
+    Router.prototype.track = function() {
+      var url;
+      if (typeof ga !== "undefined" && ga !== null) {
+        url = Backbone.history.getFragment();
+        if (!/^\//.test(url)) {
+          url = '/' + url;
+        }
+        return ga('send', {
+          hitType: 'pageview',
+          page: url
+        });
+      }
     };
 
     return Router;

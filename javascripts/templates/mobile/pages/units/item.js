@@ -39,7 +39,7 @@
       (function() {
         var key;
       
-        __out.push('<li class="table-view-cell media unit">\n  <a sref="#units/');
+        __out.push('<li class="table-view-cell media unit">\n  <a href="#units/');
       
         __out.push(__sanitize(this.model.id));
       

@@ -44254,9 +44254,9 @@ if (typeof String.prototype.includes != 'function') {
 
     Router.prototype.openCollectionPage = function(key, collection, page) {
       if (this.currCollection === collection) {
-        return App.main.resumeCollectionPage();
+        App.main.resumeCollectionPage();
       } else {
-        return this.ensureCollection(key, collection, (function(_this) {
+        this.ensureCollection(key, collection, (function(_this) {
           return function() {
             var view;
             view = new App.Pages[page]({
@@ -44267,10 +44267,11 @@ if (typeof String.prototype.includes != 'function') {
           };
         })(this));
       }
+      return this.track();
     };
 
     Router.prototype.openModelPage = function(key, collection, page, id) {
-      return this.ensureCollection(key, collection, function() {
+      this.ensureCollection(key, collection, function() {
         var model, view;
         model = App[key].get(id);
         view = new App.Pages[page]({
@@ -44278,6 +44279,7 @@ if (typeof String.prototype.includes != 'function') {
         }).render();
         return App.main.openModelPage(view);
       });
+      return this.track();
     };
 
     Router.prototype.openAdminPage = function() {
@@ -44285,10 +44287,11 @@ if (typeof String.prototype.includes != 'function') {
       this.currCollection = null;
       if (AV.User.current()) {
         view = new App.Pages.Admin().render();
-        return App.main.openCollectionPage(view);
+        App.main.openCollectionPage(view);
       } else {
-        return App.main.openLoginModal(this.openAdminPage);
+        App.main.openLoginModal(this.openAdminPage);
       }
+      return this.track();
     };
 
     Router.prototype.openUnitsIndexPage = function() {
@@ -44313,6 +44316,20 @@ if (typeof String.prototype.includes != 'function') {
 
     Router.prototype.openMonstersEditPage = function(id) {
       return this.openModelPage("monsters", "Monsters", "MonstersEdit", id);
+    };
+
+    Router.prototype.track = function() {
+      var url;
+      if (typeof ga !== "undefined" && ga !== null) {
+        url = Backbone.history.getFragment();
+        if (!/^\//.test(url)) {
+          url = '/' + url;
+        }
+        return ga('send', {
+          hitType: 'pageview',
+          page: url
+        });
+      }
     };
 
     return Router;
