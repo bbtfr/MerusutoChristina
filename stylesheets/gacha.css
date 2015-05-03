@@ -291,7 +291,7 @@ body {
     /* line 259, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
     #foreground .gacha .new {
       position: absolute;
-      height: 10%;
+      height: 12%;
       top: 15%;
       left: 30%;
       opacity: 0; }
@@ -449,7 +449,7 @@ body {
   /* line 459, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .gacha .new {
     top: 25%;
-    left: 15%; }
+    left: 10%; }
   /* line 464, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/gacha.scss */
   #foreground .gacha .skip {
     top: 80%;
