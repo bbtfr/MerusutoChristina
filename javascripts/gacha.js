@@ -9369,7 +9369,7 @@ return jQuery;
   };
 
   randomPick = function(data) {
-    var d, groupedData, i, r, rare, resultData, _i, _j, _len, _name, _ref;
+    var d, groupedData, i, r, rare, rare2Count, resultData, _i, _j, _len, _name, _ref;
     groupedData = {};
     for (_i = 0, _len = data.length; _i < _len; _i++) {
       d = data[_i];
@@ -9379,6 +9379,7 @@ return jQuery;
       (groupedData[_name = d.rare] || (groupedData[_name] = [])).push(d);
     }
     resultData = [];
+    rare2Count = 0;
     for (i = _j = 0; _j <= 9; i = ++_j) {
       r = Math.random();
       if (r < Chance[0]) {
@@ -9389,9 +9390,10 @@ return jQuery;
         rare = 3;
       } else if (r > Chance[3]) {
         rare = 1;
-      } else if (Config.id === 1 && i < 2) {
+      } else if (Config.id === 1 && i > 7 && rare2Count + 1 >= i) {
         rare = 3;
       } else {
+        rare2Count += 1;
         rare = 2;
       }
       d = groupedData[rare];
@@ -9441,7 +9443,7 @@ return jQuery;
     var $foreground;
     $foreground = $("#foreground");
     $foreground.find(".button-statistics").fadeIn();
-    return $foreground.on("click", ".button-statistics", function(event) {
+    $foreground.on("click", ".button-statistics", function(event) {
       var c, currentResult, generateText, i, ret, text, totalResult, _i, _len, _ref;
       event.stopPropagation();
       generateText = function(result, indexes) {
@@ -9482,6 +9484,11 @@ return jQuery;
       }
       return alert(text);
     });
+    return typeof ga === "function" ? ga('send', {
+      hitType: 'event',
+      eventCategory: 'gacha',
+      eventAction: 'reload'
+    }) : void 0;
   };
 
   initGacha = function(data) {
@@ -9505,9 +9512,9 @@ return jQuery;
     }
     r = Math.random();
     if (maxRare === 5) {
-      if (r < 0.1) {
+      if (r < 0.05) {
         background = "morning";
-      } else if (r < 0.3) {
+      } else if (r < 0.1) {
         background = "evening";
       } else {
         background = "night";
