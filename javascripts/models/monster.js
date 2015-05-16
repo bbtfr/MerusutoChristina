@@ -25,14 +25,17 @@
       return this.f || (this.f = 1.8 + 0.1 * this.get("type"));
     };
 
-    Unit.prototype.calcMaxLv = function(value) {
+    Unit.prototype.calcMaxLv = function(key) {
+      var value;
+      value = this.origin[key];
       return Math.floor(value * this.calcF());
     };
 
-    Unit.prototype.calcMaxLvAndGrow = function(value) {
-      var f, growPart, levelPart, rare;
+    Unit.prototype.calcMaxLvAndGrow = function(key) {
+      var f, growPart, levelPart, rare, value;
       f = this.calcF();
       rare = this.get("rare");
+      value = this.origin[key];
       levelPart = Math.floor(value * f);
       growPart = Math.floor(value * (f - 1) / (19 + 10 * rare)) * 5 * (rare === 1 ? 5 : 15);
       return levelPart + growPart;

@@ -41,7 +41,11 @@
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('/edit">数据补全 / 报错</a></li>\n    <li><a href="#units">返回列表页</a></li>\n  </ul>\n\n  <div class="row detail-body">\n    <div class="col-md-5 left-side image">\n      <img src="');
+        __out.push('/edit">数据补全 / 报错</a></li>\n    <li><a href="#units/');
+      
+        __out.push(__sanitize(this.model.id));
+      
+        __out.push('/compare">数据比较</a></li>\n    <li><a href="#units">返回列表页</a></li>\n  </ul>\n\n  <div class="row detail-body">\n    <div class="col-md-5 left-side image">\n      <img src="');
       
         __out.push(__sanitize(this.model.originalUrl()));
       
@@ -63,11 +67,11 @@
       
         __out.push('<br>\n          满级生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLv('life')));
       
         __out.push('<br>\n          满觉生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('life')));
       
         __out.push('<br>\n          初始攻击：');
       
@@ -75,11 +79,11 @@
       
         __out.push('<br>\n          满级攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLv('atk')));
       
         __out.push('<br>\n          满觉攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('atk')));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻距：');
       
@@ -111,11 +115,11 @@
       
         __out.push('<br>\n          满级DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('dps'))));
       
         __out.push('<br>\n          满觉DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('dps'))));
       
         __out.push('<br>\n          初始总DPS：');
       
@@ -123,11 +127,11 @@
       
         __out.push('<br>\n          满级总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('mdps'))));
       
         __out.push('<br>\n          满觉总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          火：');
       

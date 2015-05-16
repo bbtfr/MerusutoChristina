@@ -40691,14 +40691,17 @@ if (typeof String.prototype.includes != 'function') {
       return this.f || (this.f = 1.8 + 0.1 * this.get("type"));
     };
 
-    Unit.prototype.calcMaxLv = function(value) {
+    Unit.prototype.calcMaxLv = function(key) {
+      var value;
+      value = this.origin[key];
       return Math.floor(value * this.calcF());
     };
 
-    Unit.prototype.calcMaxLvAndGrow = function(value) {
-      var f, growPart, levelPart, rare;
+    Unit.prototype.calcMaxLvAndGrow = function(key) {
+      var f, growPart, levelPart, rare, value;
       f = this.calcF();
       rare = this.get("rare");
+      value = this.origin[key];
       levelPart = Math.floor(value * f);
       growPart = Math.floor(value * (f - 1) / (19 + 10 * rare)) * 5 * (rare === 1 ? 5 : 15);
       return levelPart + growPart;
@@ -42149,6 +42152,160 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/compare"] = function(__obj) {
+    if (!__obj) __obj = {};
+    var __out = [], __capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return __safe(result);
+    }, __sanitize = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else if (typeof value !== 'undefined' && value != null) {
+        return __escape(value);
+      } else {
+        return '';
+      }
+    }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+    __safe = __obj.safe = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else {
+        if (!(typeof value !== 'undefined' && value != null)) value = '';
+        var result = new String(value);
+        result.ecoSafe = true;
+        return result;
+      }
+    };
+    if (!__escape) {
+      __escape = __obj.escape = function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      };
+    }
+    (function() {
+      (function() {
+        __out.push('<ul class="list-inline pull-right links">\n  <li><a href="#units/');
+      
+        __out.push(__sanitize(this.model.id));
+      
+        __out.push('">返回详情页</a></li>\n  <li><a href="#units">返回列表页</a></li>\n</ul>\n<h3>请选择与 <span class="text-danger">');
+      
+        __out.push(__sanitize(this.model.getTitleString()));
+      
+        __out.push('</span> 对比的卡片：</h3>\n<div class="datatable">\n  <table class="table table-striped table-hover"></table>\n</div>\n');
+      
+      }).call(this);
+      
+    }).call(__obj);
+    __obj.safe = __objSafe, __obj.escape = __escape;
+    return __out.join('');
+  };
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/double_compare"] = function(__obj) {
+    if (!__obj) __obj = {};
+    var __out = [], __capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return __safe(result);
+    }, __sanitize = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else if (typeof value !== 'undefined' && value != null) {
+        return __escape(value);
+      } else {
+        return '';
+      }
+    }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+    __safe = __obj.safe = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else {
+        if (!(typeof value !== 'undefined' && value != null)) value = '';
+        var result = new String(value);
+        result.ecoSafe = true;
+        return result;
+      }
+    };
+    if (!__escape) {
+      __escape = __obj.escape = function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      };
+    }
+    (function() {
+      (function() {
+        __out.push('<div class="compare">\n  <ul class="list-inline pull-right links">\n    <li><a href="#units/');
+      
+        __out.push(__sanitize(this.collection[1].id));
+      
+        __out.push('">返回详情页</a></li>\n    <li><a href="#units">返回列表页</a></li>\n  </ul>\n\n  <div class="row compare-body">\n    <div class="clearfix col-xs-12"></div>\n    <div class="col-xs-6">\n      <div class="page-header">\n        <h2>\n          ');
+      
+        __out.push(__sanitize(this.collection[1].getTitleString()));
+      
+        __out.push('\n          <br class="visible-xs-block">\n          <small>');
+      
+        __out.push(__sanitize(this.collection[1].getRareString()));
+      
+        __out.push('</small>\n          <small>ID: ');
+      
+        __out.push(__sanitize(this.collection[1].get("id")));
+      
+        __out.push('</small>\n        </h2>\n      </div>\n    </div>\n    <div class="col-xs-6">\n      <div class="page-header">\n        <h2>\n          ');
+      
+        __out.push(__sanitize(this.collection[0].getTitleString()));
+      
+        __out.push('\n          <br class="visible-xs-block">\n          <small>');
+      
+        __out.push(__sanitize(this.collection[0].getRareString()));
+      
+        __out.push('</small>\n          <small>ID: ');
+      
+        __out.push(__sanitize(this.collection[0].get("id")));
+      
+        __out.push('</small>\n        </h2>\n      </div>\n    </div>\n\n    <div class="clearfix col-xs-12"></div>\n    <div class="col-xs-6">\n      ');
+      
+        __out.push(_.renderTemplate("templates/desktop/pages/units/part_compare", {
+          model: this.collection[1],
+          other_model: this.collection[0]
+        }));
+      
+        __out.push('\n    </div>\n    <div class="col-xs-6">\n      ');
+      
+        __out.push(_.renderTemplate("templates/desktop/pages/units/part_compare", {
+          model: this.collection[0],
+          other_model: this.collection[1]
+        }));
+      
+        __out.push('\n    </div>\n\n    <div class="clearfix col-xs-12"></div>\n    <div class="col-xs-6 image">\n      <img src="');
+      
+        __out.push(__sanitize(this.collection[1].originalUrl()));
+      
+        __out.push('">\n    </div>\n    <div class="col-xs-6 image">\n      <img src="');
+      
+        __out.push(__sanitize(this.collection[0].originalUrl()));
+      
+        __out.push('">\n    </div>\n\n  </div>\n</div>\n');
+      
+      }).call(this);
+      
+    }).call(__obj);
+    __obj.safe = __objSafe, __obj.escape = __escape;
+    return __out.join('');
+  };
+}).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/edit"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
@@ -42649,6 +42806,300 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/part_compare"] = function(__obj) {
+    if (!__obj) __obj = {};
+    var __out = [], __capture = function(callback) {
+      var out = __out, result;
+      __out = [];
+      callback.call(this);
+      result = __out.join('');
+      __out = out;
+      return __safe(result);
+    }, __sanitize = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else if (typeof value !== 'undefined' && value != null) {
+        return __escape(value);
+      } else {
+        return '';
+      }
+    }, __safe, __objSafe = __obj.safe, __escape = __obj.escape;
+    __safe = __obj.safe = function(value) {
+      if (value && value.ecoSafe) {
+        return value;
+      } else {
+        if (!(typeof value !== 'undefined' && value != null)) value = '';
+        var result = new String(value);
+        result.ecoSafe = true;
+        return result;
+      }
+    };
+    if (!__escape) {
+      __escape = __obj.escape = function(value) {
+        return ('' + value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      };
+    }
+    (function() {
+      (function() {
+        var compareObject, compareValue;
+      
+        compareValue = function(v1, v2) {
+          if (v1.toString() === "NaN" && v2.toString() === "NaN" || v1 === v2) {
+            return 'text-default';
+          } else if (v2.toString() === "NaN" || v1 > v2) {
+            return 'text-danger';
+          } else {
+            return 'text-success';
+          }
+        };
+      
+        __out.push('\n');
+      
+        compareObject = function(o1, o2, func, args) {
+          return compareValue(o1[func].call(o1, args), o2[func].call(o2, args));
+        };
+      
+        __out.push('\n\n<div class="row">\n  <p class="col-sm-6">\n    <span class="');
+      
+        __out.push(__sanitize(compareValue(this.model.origin.life, this.other_model.origin.life)));
+      
+        __out.push('">初始生命：');
+      
+        __out.push(__sanitize(this.model.origin.life));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLv", "life")));
+      
+        __out.push('">满级生命：');
+      
+        __out.push(__sanitize(this.model.calcMaxLv("life")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLvAndGrow", "life")));
+      
+        __out.push('">满觉生命：');
+      
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow("life")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareValue(this.model.origin.atk, this.other_model.origin.atk)));
+      
+        __out.push('">初始攻击：');
+      
+        __out.push(__sanitize(this.model.origin.atk));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLv", "atk")));
+      
+        __out.push('">满级攻击：');
+      
+        __out.push(__sanitize(this.model.calcMaxLv("atk")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLvAndGrow", "atk")));
+      
+        __out.push('">满觉攻击：');
+      
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow("atk")));
+      
+        __out.push('</span><br>\n  </p>\n  <p class="col-sm-6">\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "aarea")));
+      
+        __out.push('">攻距：');
+      
+        __out.push(__sanitize(this.model.getString("aarea")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "anum")));
+      
+        __out.push('">攻数：');
+      
+        __out.push(__sanitize(this.model.getString("anum")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.other_model, this.model, "get", "aarea")));
+      
+        __out.push('">攻速：');
+      
+        __out.push(__sanitize(this.model.getString("aspd")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "tenacity")));
+      
+        __out.push('">韧性：');
+      
+        __out.push(__sanitize(this.model.getString("tenacity")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "mspd")));
+      
+        __out.push('">移速：');
+      
+        __out.push(__sanitize(this.model.getString("mspd")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "type")));
+      
+        __out.push('">成长：');
+      
+        __out.push(__sanitize(this.model.getTypeString()));
+      
+        __out.push('</span><br>\n  </p>\n</div>\n<div class="row">\n  <p class="col-sm-6">\n    <span class="');
+      
+        __out.push(__sanitize(compareValue(this.model.origin.dps, this.other_model.origin.dps)));
+      
+        __out.push('">初始DPS：');
+      
+        __out.push(__sanitize(Math.round(this.model.origin.dps)));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLv", "dps")));
+      
+        __out.push('">满级DPS：');
+      
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv("dps"))));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLvAndGrow", "dps")));
+      
+        __out.push('">满觉DPS：');
+      
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow("dps"))));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareValue(this.model.origin.mdps, this.other_model.origin.mdps)));
+      
+        __out.push('">初始总DPS：');
+      
+        __out.push(__sanitize(Math.round(this.model.origin.mdps)));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLv", "mdps")));
+      
+        __out.push('">满级总DPS：');
+      
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv("mdps"))));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "calcMaxLvAndGrow", "mdps")));
+      
+        __out.push('">满觉总DPS：');
+      
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow("mdps"))));
+      
+        __out.push('</span><br>\n  </p>\n  <p class="col-sm-6">\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "fire")));
+      
+        __out.push('">火：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("fire")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "aqua")));
+      
+        __out.push('">水：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("aqua")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "wind")));
+      
+        __out.push('">风：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("wind")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "light")));
+      
+        __out.push('">光：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("light")));
+      
+        __out.push('</span><br>\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "dark")));
+      
+        __out.push('">暗：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("dark")));
+      
+        __out.push('</span><br>\n  </p>\n</div>\n<div class="row">\n  <p class="col-sm-6">\n    国家：');
+      
+        __out.push(__sanitize(this.model.getString('country')));
+      
+        __out.push('<br>\n    性别：');
+      
+        __out.push(__sanitize(this.model.getGenderString()));
+      
+        __out.push('<br>\n    年龄：');
+      
+        __out.push(__sanitize(this.model.getAgeString()));
+      
+        __out.push('<br>\n  </p>\n  <p class="col-sm-6">\n    职业：');
+      
+        __out.push(__sanitize(this.model.getString('career')));
+      
+        __out.push('<br>\n    兴趣：');
+      
+        __out.push(__sanitize(this.model.getString('interest')));
+      
+        __out.push('<br>\n    性格：');
+      
+        __out.push(__sanitize(this.model.getString('nature')));
+      
+        __out.push('<br>\n  </p>\n</div>\n<div class="row">\n  <p class="col-sm-12">\n    获取方式：');
+      
+        __out.push(this.model.getFormatString('obtain'));
+      
+        __out.push('<br>\n    ');
+      
+        if (this.model.get('remark')) {
+          __out.push('\n      备注：');
+          __out.push(this.model.getFormatString('remark'));
+          __out.push('<br>\n    ');
+        }
+      
+        __out.push('\n  </p>\n</div>\n');
+      
+        if (this.model.get('contributors')) {
+          __out.push('\n  <div class="row">\n    <p class="col-sm-12">\n      数据提供者：');
+          __out.push(__sanitize(this.model.get('contributors').join("、")));
+          __out.push('<br>\n    </p>\n  </div>\n');
+        }
+      
+        __out.push('\n');
+      
+      }).call(this);
+      
+    }).call(__obj);
+    __obj.safe = __objSafe, __obj.escape = __escape;
+    return __out.join('');
+  };
+}).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/show"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
@@ -42692,7 +43143,11 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('/edit">数据补全 / 报错</a></li>\n    <li><a href="#units">返回列表页</a></li>\n  </ul>\n\n  <div class="row detail-body">\n    <div class="col-md-5 left-side image">\n      <img src="');
+        __out.push('/edit">数据补全 / 报错</a></li>\n    <li><a href="#units/');
+      
+        __out.push(__sanitize(this.model.id));
+      
+        __out.push('/compare">数据比较</a></li>\n    <li><a href="#units">返回列表页</a></li>\n  </ul>\n\n  <div class="row detail-body">\n    <div class="col-md-5 left-side image">\n      <img src="');
       
         __out.push(__sanitize(this.model.originalUrl()));
       
@@ -42714,11 +43169,11 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('<br>\n          满级生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLv('life')));
       
         __out.push('<br>\n          满觉生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('life')));
       
         __out.push('<br>\n          初始攻击：');
       
@@ -42726,11 +43181,11 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('<br>\n          满级攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLv('atk')));
       
         __out.push('<br>\n          满觉攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('atk')));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻距：');
       
@@ -42762,11 +43217,11 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('<br>\n          满级DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('dps'))));
       
         __out.push('<br>\n          满觉DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('dps'))));
       
         __out.push('<br>\n          初始总DPS：');
       
@@ -42774,11 +43229,11 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('<br>\n          满级总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('mdps'))));
       
         __out.push('<br>\n          满觉总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          火：');
       
@@ -43544,6 +43999,9 @@ if (typeof String.prototype.includes != 'function') {
 
     UnitsIndex.prototype.openShowPage = function(event) {
       var href;
+      if ($(event.target).is("a[href]")) {
+        return;
+      }
       this.$target = $(event.currentTarget);
       href = this.$target.find(".action-show").attr("href");
       return App.router.navigate(href, true);
@@ -43702,13 +44160,13 @@ if (typeof String.prototype.includes != 'function') {
           data: null,
           colvis: false,
           orderable: false,
-          render: (function(_this) {
-            return function(data, type, model) {
-              return "<a class='glyphicon glyphicon-search action-show' " + ("href='#units/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='查看详细信息'></a>" + "<a class='glyphicon glyphicon-pencil action-edit' " + ("href='#units/" + model.id + "/edit' data-toggle='tooltip' ") + "data-placement='top' title='数据补全 / 报错'></a>";
-            };
-          })(this)
+          render: this.renderActions
         }
       ];
+    };
+
+    UnitsIndex.prototype.renderActions = function(data, type, model) {
+      return "<a class='glyphicon glyphicon-search action-show' " + ("href='#units/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='查看详细信息'></a>" + "<a class='glyphicon glyphicon-pencil action-edit' " + ("href='#units/" + model.id + "/edit' data-toggle='tooltip' ") + "data-placement='top' title='数据补全 / 报错'></a>" + "<a class='glyphicon glyphicon-stats action-compare' " + ("href='#units/" + model.id + "/compare' data-toggle='tooltip' ") + "data-placement='top' title='数据比较'></a>";
     };
 
     UnitsIndex.prototype.afterRender = function() {
@@ -44029,6 +44487,58 @@ if (typeof String.prototype.includes != 'function') {
 
 }).call(this);
 (function() {
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  App.Pages.UnitsCompare = (function(_super) {
+    __extends(UnitsCompare, _super);
+
+    function UnitsCompare() {
+      this.renderActions = __bind(this.renderActions, this);
+      return UnitsCompare.__super__.constructor.apply(this, arguments);
+    }
+
+    UnitsCompare.prototype.template = _.loadTemplate("templates/desktop/pages/units/compare");
+
+    UnitsCompare.prototype.renderActions = function(data, type, model) {
+      return "<a class='glyphicon glyphicon-stats action-compare' " + ("href='#units/" + this.model.id + "/compare/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='数据比较'></a>";
+    };
+
+    UnitsCompare.prototype.openShowPage = function(event) {
+      var href;
+      if ($(event.target).is("a[href]")) {
+        return;
+      }
+      this.$target = $(event.currentTarget);
+      href = this.$target.find(".action-compare").attr("href");
+      return App.router.navigate(href, true);
+    };
+
+    return UnitsCompare;
+
+  })(App.Pages.UnitsIndex);
+
+}).call(this);
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  App.Pages.UnitsDoubleCompare = (function(_super) {
+    __extends(UnitsDoubleCompare, _super);
+
+    function UnitsDoubleCompare() {
+      return UnitsDoubleCompare.__super__.constructor.apply(this, arguments);
+    }
+
+    UnitsDoubleCompare.prototype.template = _.loadTemplate("templates/desktop/pages/units/double_compare");
+
+    return UnitsDoubleCompare;
+
+  })(Backbone.View);
+
+}).call(this);
+(function() {
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -44188,6 +44698,7 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     Main.prototype.openModelPage = function(view) {
+      this.$el.scrollTop(0);
       this.views["#modelView"].render(view);
       return this.pauseCollectionPage();
     };
@@ -44218,9 +44729,13 @@ if (typeof String.prototype.includes != 'function') {
       "units": "openUnitsIndexPage",
       "units/:id": "openUnitsShowPage",
       "units/:id/edit": "openUnitsEditPage",
+      "units/:id/compare": "openUnitsComparePage",
+      "units/:id1/compare/:id2": "openUnitsDoubleComparePage",
       "monsters": "openMonstersIndexPage",
       "monsters/:id": "openMonstersShowPage",
       "monsters/:id/edit": "openMonstersEditPage",
+      "monsters/:id/compare": "openMonstersComparePage",
+      "monsters/:id1/compare/:id2": "openMonstersDoubleComparePage",
       "admin": "openAdminPage",
       "!*otherwise": "removeExclamationMark",
       "*otherwise": "index"
@@ -44275,7 +44790,22 @@ if (typeof String.prototype.includes != 'function') {
         var model, view;
         model = App[key].get(id);
         view = new App.Pages[page]({
-          model: model
+          model: model,
+          collection: App[key]
+        }).render();
+        return App.main.openModelPage(view);
+      });
+      return this.track();
+    };
+
+    Router.prototype.openDoubleModelPage = function(key, collection, page, id1, id2) {
+      this.ensureCollection(key, collection, function() {
+        var models, view;
+        models = [];
+        models.push(App[key].get(id2));
+        models.push(App[key].get(id1));
+        view = new App.Pages[page]({
+          collection: models
         }).render();
         return App.main.openModelPage(view);
       });
@@ -44306,6 +44836,14 @@ if (typeof String.prototype.includes != 'function') {
       return this.openModelPage("units", "Units", "UnitsEdit", id);
     };
 
+    Router.prototype.openUnitsComparePage = function(id) {
+      return this.openModelPage("units", "Units", "UnitsCompare", id);
+    };
+
+    Router.prototype.openUnitsDoubleComparePage = function(id1, id2) {
+      return this.openDoubleModelPage("units", "Units", "UnitsDoubleCompare", id1, id2);
+    };
+
     Router.prototype.openMonstersIndexPage = function() {
       return this.openCollectionPage("monsters", "Monsters", "MonstersIndex");
     };
@@ -44316,6 +44854,14 @@ if (typeof String.prototype.includes != 'function') {
 
     Router.prototype.openMonstersEditPage = function(id) {
       return this.openModelPage("monsters", "Monsters", "MonstersEdit", id);
+    };
+
+    Router.prototype.openMonstersComparePage = function(id) {
+      return this.openModelPage("monsters", "Monsters", "MonstersCompare", id);
+    };
+
+    Router.prototype.openMonstersDoubleComparePage = function(id1, id2) {
+      return this.openDoubleModelPage("monsters", "Monsters", "MonstersDoubleCompare", id1, id2);
     };
 
     Router.prototype.track = function() {

@@ -448,219 +448,35 @@
 
 }).call(this);
 (function() {
-  var __hasProp = {}.hasOwnProperty,
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  App.Pages.MonstersNavbarExtra = (function(_super) {
-    __extends(MonstersNavbarExtra, _super);
+  App.Pages.UnitsCompare = (function(_super) {
+    __extends(UnitsCompare, _super);
 
-    function MonstersNavbarExtra() {
-      return MonstersNavbarExtra.__super__.constructor.apply(this, arguments);
+    function UnitsCompare() {
+      this.renderActions = __bind(this.renderActions, this);
+      return UnitsCompare.__super__.constructor.apply(this, arguments);
     }
 
-    MonstersNavbarExtra.prototype.template = _.loadTemplate("templates/desktop/pages/monsters/navbar_extra");
+    UnitsCompare.prototype.template = _.loadTemplate("templates/desktop/pages/units/compare");
 
-    MonstersNavbarExtra.prototype.initDropdown = function() {
-      var $skill, skill, skills, _i, _len, _results;
-      $skill = this.$("#skill");
-      skills = this.index.collection.map(function(model) {
-        return model.get("skill-sc");
-      });
-      skills = _.uniq(skills);
-      _results = [];
-      for (_i = 0, _len = skills.length; _i < _len; _i++) {
-        skill = skills[_i];
-        _results.push($skill.append("<li><a class=\"filter\" data-key=\"skill-sc\" data-value=\"" + skill + "\">" + skill + "</a></li>"));
+    UnitsCompare.prototype.renderActions = function(data, type, model) {
+      return "<a class='glyphicon glyphicon-stats action-compare' " + ("href='#units/" + this.model.id + "/compare/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='数据比较'></a>";
+    };
+
+    UnitsCompare.prototype.openShowPage = function(event) {
+      var href;
+      if ($(event.target).is("a[href]")) {
+        return;
       }
-      return _results;
+      this.$target = $(event.currentTarget);
+      href = this.$target.find(".action-compare").attr("href");
+      return App.router.navigate(href, true);
     };
 
-    return MonstersNavbarExtra;
-
-  })(App.Pages.UnitsNavbarExtra);
-
-}).call(this);
-(function() {
-  var __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  App.Pages.MonstersIndex = (function(_super) {
-    __extends(MonstersIndex, _super);
-
-    function MonstersIndex() {
-      return MonstersIndex.__super__.constructor.apply(this, arguments);
-    }
-
-    MonstersIndex.prototype.template = _.loadTemplate("templates/desktop/pages/units/index");
-
-    MonstersIndex.prototype.navbarExtraClass = App.Pages.MonstersNavbarExtra;
-
-    MonstersIndex.prototype.initDataTableColumns = function() {
-      return this.columns = [
-        {
-          data: null,
-          colvis: false,
-          orderable: false,
-          render: (function(_this) {
-            return function(data, type, model) {
-              return "<img class='icon' src='" + (model.iconUrl()) + "' />";
-            };
-          })(this)
-        }, {
-          title: "稀有度",
-          data: function(model) {
-            return model.get("rare");
-          },
-          render: function(data, type, model) {
-            return model.getRareString();
-          }
-        }, {
-          title: "ID",
-          data: function(model) {
-            return model.id;
-          }
-        }, {
-          title: "名称",
-          data: function(model) {
-            return model.getTitleString();
-          }
-        }, {
-          title: "属性",
-          data: function(model) {
-            return model.get("element");
-          },
-          render: function(data, type, model) {
-            return model.getElementString();
-          }
-        }, {
-          title: "生命",
-          data: function(model) {
-            return model.get("life");
-          }
-        }, {
-          title: "攻击",
-          data: function(model) {
-            return model.get("atk");
-          }
-        }, {
-          title: "攻距",
-          data: function(model) {
-            return model.get("aarea");
-          }
-        }, {
-          title: "攻数",
-          data: function(model) {
-            return model.get("anum");
-          }
-        }, {
-          title: "攻速",
-          data: function(model) {
-            return model.get("aspd");
-          }
-        }, {
-          title: "韧性",
-          data: function(model) {
-            return model.get("tenacity");
-          }
-        }, {
-          title: "移速",
-          data: function(model) {
-            return model.get("mspd");
-          }
-        }, {
-          title: "皮肤",
-          data: function(model) {
-            return model.get("skin");
-          },
-          render: function(data, type, model) {
-            return model.getSkinString();
-          }
-        }, {
-          title: "DPS",
-          data: function(model) {
-            return model.get("dps");
-          }
-        }, {
-          title: "总DPS",
-          data: function(model) {
-            return model.get("mdps");
-          }
-        }, {
-          title: "技能",
-          data: function(model) {
-            return model.get("skill-sc");
-          }
-        }, {
-          title: "技能CD",
-          data: function(model) {
-            return model.get("sklcd");
-          },
-          visible: false
-        }, {
-          title: "技能消耗",
-          data: function(model) {
-            return model.get("sklsp");
-          },
-          visible: false
-        }, {
-          title: "火",
-          data: function(model) {
-            return Math.round(model.get("fire") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "水",
-          data: function(model) {
-            return Math.round(model.get("aqua") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "风",
-          data: function(model) {
-            return Math.round(model.get("wind") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "光",
-          data: function(model) {
-            return Math.round(model.get("light") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "暗",
-          data: function(model) {
-            return Math.round(model.get("dark") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          data: null,
-          colvis: false,
-          orderable: false,
-          render: (function(_this) {
-            return function(data, type, model) {
-              return "<a class='glyphicon glyphicon-search action-show' " + ("href='#monsters/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='查看详细信息'></a>" + "<a class='glyphicon glyphicon-pencil action-edit' " + ("href='#monsters/" + model.id + "/edit' data-toggle='tooltip' ") + "data-placement='top' title='数据补全 / 报错'></a>";
-            };
-          })(this)
-        }
-      ];
-    };
-
-    return MonstersIndex;
+    return UnitsCompare;
 
   })(App.Pages.UnitsIndex);
 

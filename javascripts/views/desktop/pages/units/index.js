@@ -196,6 +196,9 @@
 
     UnitsIndex.prototype.openShowPage = function(event) {
       var href;
+      if ($(event.target).is("a[href]")) {
+        return;
+      }
       this.$target = $(event.currentTarget);
       href = this.$target.find(".action-show").attr("href");
       return App.router.navigate(href, true);
@@ -354,13 +357,13 @@
           data: null,
           colvis: false,
           orderable: false,
-          render: (function(_this) {
-            return function(data, type, model) {
-              return "<a class='glyphicon glyphicon-search action-show' " + ("href='#units/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='查看详细信息'></a>" + "<a class='glyphicon glyphicon-pencil action-edit' " + ("href='#units/" + model.id + "/edit' data-toggle='tooltip' ") + "data-placement='top' title='数据补全 / 报错'></a>";
-            };
-          })(this)
+          render: this.renderActions
         }
       ];
+    };
+
+    UnitsIndex.prototype.renderActions = function(data, type, model) {
+      return "<a class='glyphicon glyphicon-search action-show' " + ("href='#units/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='查看详细信息'></a>" + "<a class='glyphicon glyphicon-pencil action-edit' " + ("href='#units/" + model.id + "/edit' data-toggle='tooltip' ") + "data-placement='top' title='数据补全 / 报错'></a>" + "<a class='glyphicon glyphicon-stats action-compare' " + ("href='#units/" + model.id + "/compare' data-toggle='tooltip' ") + "data-placement='top' title='数据比较'></a>";
     };
 
     UnitsIndex.prototype.afterRender = function() {

@@ -14,9 +14,13 @@
       "units": "openUnitsIndexPage",
       "units/:id": "openUnitsShowPage",
       "units/:id/edit": "openUnitsEditPage",
+      "units/:id/compare": "openUnitsComparePage",
+      "units/:id1/compare/:id2": "openUnitsDoubleComparePage",
       "monsters": "openMonstersIndexPage",
       "monsters/:id": "openMonstersShowPage",
       "monsters/:id/edit": "openMonstersEditPage",
+      "monsters/:id/compare": "openMonstersComparePage",
+      "monsters/:id1/compare/:id2": "openMonstersDoubleComparePage",
       "admin": "openAdminPage",
       "!*otherwise": "removeExclamationMark",
       "*otherwise": "index"
@@ -71,7 +75,22 @@
         var model, view;
         model = App[key].get(id);
         view = new App.Pages[page]({
-          model: model
+          model: model,
+          collection: App[key]
+        }).render();
+        return App.main.openModelPage(view);
+      });
+      return this.track();
+    };
+
+    Router.prototype.openDoubleModelPage = function(key, collection, page, id1, id2) {
+      this.ensureCollection(key, collection, function() {
+        var models, view;
+        models = [];
+        models.push(App[key].get(id2));
+        models.push(App[key].get(id1));
+        view = new App.Pages[page]({
+          collection: models
         }).render();
         return App.main.openModelPage(view);
       });
@@ -102,6 +121,14 @@
       return this.openModelPage("units", "Units", "UnitsEdit", id);
     };
 
+    Router.prototype.openUnitsComparePage = function(id) {
+      return this.openModelPage("units", "Units", "UnitsCompare", id);
+    };
+
+    Router.prototype.openUnitsDoubleComparePage = function(id1, id2) {
+      return this.openDoubleModelPage("units", "Units", "UnitsDoubleCompare", id1, id2);
+    };
+
     Router.prototype.openMonstersIndexPage = function() {
       return this.openCollectionPage("monsters", "Monsters", "MonstersIndex");
     };
@@ -112,6 +139,14 @@
 
     Router.prototype.openMonstersEditPage = function(id) {
       return this.openModelPage("monsters", "Monsters", "MonstersEdit", id);
+    };
+
+    Router.prototype.openMonstersComparePage = function(id) {
+      return this.openModelPage("monsters", "Monsters", "MonstersCompare", id);
+    };
+
+    Router.prototype.openMonstersDoubleComparePage = function(id1, id2) {
+      return this.openDoubleModelPage("monsters", "Monsters", "MonstersDoubleCompare", id1, id2);
     };
 
     Router.prototype.track = function() {

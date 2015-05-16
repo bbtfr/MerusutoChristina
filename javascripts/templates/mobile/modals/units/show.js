@@ -61,11 +61,11 @@
       
         __out.push('<br>\n              满级生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLv('life')));
       
         __out.push('<br>\n              满觉生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('life')));
       
         __out.push('<br>\n              初始攻击：');
       
@@ -73,11 +73,11 @@
       
         __out.push('<br>\n              满级攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLv('atk')));
       
         __out.push('<br>\n              满觉攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('atk')));
       
         __out.push('<br>\n            </p>\n            <p class="media-info">\n              攻距：');
       
@@ -109,11 +109,11 @@
       
         __out.push('<br>\n              满级DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('dps'))));
       
         __out.push('<br>\n              满觉DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('dps'))));
       
         __out.push('<br>\n              初始总DPS：');
       
@@ -121,11 +121,11 @@
       
         __out.push('<br>\n              满级总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('mdps'))));
       
         __out.push('<br>\n              满觉总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
       
         __out.push('<br>\n            </p>\n            <p class="media-info">\n              火：');
       

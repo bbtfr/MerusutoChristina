@@ -5575,14 +5575,17 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       return this.f || (this.f = 1.8 + 0.1 * this.get("type"));
     };
 
-    Unit.prototype.calcMaxLv = function(value) {
+    Unit.prototype.calcMaxLv = function(key) {
+      var value;
+      value = this.origin[key];
       return Math.floor(value * this.calcF());
     };
 
-    Unit.prototype.calcMaxLvAndGrow = function(value) {
-      var f, growPart, levelPart, rare;
+    Unit.prototype.calcMaxLvAndGrow = function(key) {
+      var f, growPart, levelPart, rare, value;
       f = this.calcF();
       rare = this.get("rare");
+      value = this.origin[key];
       levelPart = Math.floor(value * f);
       growPart = Math.floor(value * (f - 1) / (19 + 10 * rare)) * 5 * (rare === 1 ? 5 : 15);
       return levelPart + growPart;
@@ -6292,11 +6295,11 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n              满级生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLv('life')));
       
         __out.push('<br>\n              满觉生命：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.life)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('life')));
       
         __out.push('<br>\n              初始攻击：');
       
@@ -6304,11 +6307,11 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n              满级攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLv(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLv('atk')));
       
         __out.push('<br>\n              满觉攻击：');
       
-        __out.push(__sanitize(this.model.calcMaxLvAndGrow(this.model.origin.atk)));
+        __out.push(__sanitize(this.model.calcMaxLvAndGrow('atk')));
       
         __out.push('<br>\n            </p>\n            <p class="media-info">\n              攻距：');
       
@@ -6340,11 +6343,11 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n              满级DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('dps'))));
       
         __out.push('<br>\n              满觉DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.dps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('dps'))));
       
         __out.push('<br>\n              初始总DPS：');
       
@@ -6352,11 +6355,11 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n              满级总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLv(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLv('mdps'))));
       
         __out.push('<br>\n              满觉总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow(this.model.origin.mdps))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
       
         __out.push('<br>\n            </p>\n            <p class="media-info">\n              火：');
       

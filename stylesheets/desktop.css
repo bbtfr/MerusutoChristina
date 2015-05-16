@@ -1,4 +1,4 @@
-/*!
+@charset "UTF-8";/*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -6916,6 +6916,7 @@ div.DTFC_LeftFootWrapper table {
 div.FixedHeader_Cloned table {
   margin: 0 !important
 }
+
 /* line 2, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/structure/_dropdown_submenu.scss */
 .dropdown-submenu {
   position: relative; }
@@ -7022,17 +7023,24 @@ view {
   margin-top: 20px; }
 
 /* line 82, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
-.detail p {
+.detail p, .compare p {
   font-size: 1.2em; }
 /* line 87, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
-.detail .image img {
+.detail .image img, .compare .image img {
   width: 100%; }
 
 /* line 94, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+.compare .text-danger:after {
+  content: ' ▲'; }
+/* line 97, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+.compare .text-success:after {
+  content: ' ▼'; }
+
+/* line 103, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
 .jumbotron .btn {
   margin-bottom: 6px; }
 
-/* line 99, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 108, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
 .glyphicon-refresh-animate {
   -animation: spin .7s infinite linear;
   -webkit-animation: spin2 .7s infinite linear; }
@@ -7048,26 +7056,26 @@ view {
   to {
     transform: scale(1) rotate(360deg); } }
 @media (min-width: 992px) {
-  /* line 115, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+  /* line 124, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
   .detail-body {
     display: table;
     width: 100%; }
-    /* line 119, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+    /* line 128, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
     .detail-body .left-side {
       float: none;
       display: table-cell;
       vertical-align: middle; }
-    /* line 125, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+    /* line 134, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
     .detail-body .right-side {
       float: none;
       display: table-cell;
       vertical-align: top; } }
-/* line 133, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 142, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
 #changelog-md {
   height: 450px;
   margin-bottom: 10px;
   overflow: hidden; }
 
-/* line 139, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
+/* line 148, /Users/amber/Workspace/HANDBOOK/Merusuto/website/source/stylesheets/desktop.scss */
 #editing-warning {
   display: none; }

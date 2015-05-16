@@ -140,6 +140,7 @@
     };
 
     Main.prototype.openModelPage = function(view) {
+      this.$el.scrollTop(0);
       this.views["#modelView"].render(view);
       return this.pauseCollectionPage();
     };
