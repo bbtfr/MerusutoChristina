@@ -5599,12 +5599,12 @@ Backbone.Collection.prototype.where = function(attrs, first) {
           life = this.origin.life;
           break;
         case "mxlv":
-          atk = this.calcMaxLv(this.origin.atk);
-          life = this.calcMaxLv(this.origin.life);
+          atk = this.calcMaxLv("atk");
+          life = this.calcMaxLv("life");
           break;
         case "mxlvgr":
-          atk = this.calcMaxLvAndGrow(this.origin.atk);
-          life = this.calcMaxLvAndGrow(this.origin.life);
+          atk = this.calcMaxLvAndGrow("atk");
+          life = this.calcMaxLvAndGrow("life");
       }
       dps = atk / this.get("aspd");
       mdps = Math.round(dps * this.get("anum"));
