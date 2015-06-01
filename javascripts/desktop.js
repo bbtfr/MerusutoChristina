@@ -43359,9 +43359,9 @@ if (typeof String.prototype.includes != 'function') {
         var compareObject, compareValue;
       
         compareValue = function(v1, v2) {
-          if (v1.toString() === "NaN" && v2.toString() === "NaN" || v1 === v2) {
+          if ((v1 != null ? v1.toString() : void 0) === "NaN" && (v2 != null ? v2.toString() : void 0) === "NaN" || v1 === v2) {
             return 'text-default';
-          } else if (v2.toString() === "NaN" || v1 > v2) {
+          } else if ((v2 != null ? v2.toString() : void 0) === "NaN" || v1 > v2) {
             return 'text-danger';
           } else {
             return 'text-success';
