@@ -106,14 +106,14 @@
             return model.get("state") || 0;
           },
           render: function(data) {
-            return ["等待审核", "审核通过", "审核拒绝", "数据已合并"][data];
+            return ["等待审核", "审核通过", "审核拒绝", "数据已合并", "数据已作废"][data];
           }
         }, {
           data: null,
           orderable: false,
           render: (function(_this) {
             return function(data, type, model) {
-              if (model.get("state") === 3) {
+              if (model.get("state") === 3 || model.get("state") === 4) {
                 return "";
               }
               return ("<a class='glyphicon glyphicon-ok action-accept' data-model-id='" + model.id + "'") + "data-toggle='tooltip' data-placement='top' title='审核通过'></a>" + ("<a class='glyphicon glyphicon-remove action-reject'  data-model-id='" + model.id + "'") + "data-toggle='tooltip' data-placement='top' title='审核拒绝'></a>";
