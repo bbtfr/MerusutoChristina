@@ -5863,7 +5863,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
-    multistage: "多段攻击"
+    hits: "多段攻击"
   };
 
 }).call(this);

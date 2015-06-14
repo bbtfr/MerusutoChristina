@@ -253,13 +253,13 @@
       
         __out.push(__sanitize(this.model.get("mspd")));
       
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="multistage" class="col-sm-4 control-label">');
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="hits" class="col-sm-4 control-label">');
       
-        __out.push(__sanitize(App.KeyMap["multistage"]));
+        __out.push(__sanitize(App.KeyMap["hits"]));
       
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" class="form-control" name="multistage" id="multistage" value="');
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" class="form-control" name="hits" id="hits" value="');
       
-        __out.push(__sanitize(this.model.get("multistage")));
+        __out.push(__sanitize(this.model.get("hits")));
       
         __out.push('">\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="fire" class="col-sm-4 control-label">');
       
