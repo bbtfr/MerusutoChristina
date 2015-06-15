@@ -105,11 +105,15 @@
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n          成长：');
+        __out.push('<br>\n          多段：');
+      
+        __out.push(__sanitize(this.model.getString("hits")));
+      
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-xs">\n          成长：');
       
         __out.push(__sanitize(this.model.getTypeString()));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info hidden-xs">\n          火：');
+        __out.push('<br>\n          火：');
       
         __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
@@ -121,15 +125,15 @@
       
         __out.push(__sanitize(this.model.getElementPercentString("wind")));
       
-        __out.push('<br>\n          光：');
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">\n          光：');
       
         __out.push(__sanitize(this.model.getElementPercentString("light")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">\n          暗：');
+        __out.push('<br>\n          暗：');
       
         __out.push(__sanitize(this.model.getElementPercentString("dark")));
       
-        __out.push('<br><br>\n          DPS：<span id="dps">');
+        __out.push('<br>\n          DPS：<span id="dps">');
       
         __out.push(__sanitize(this.model.get("dps")));
       

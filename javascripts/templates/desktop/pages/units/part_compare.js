@@ -42,7 +42,7 @@
         compareValue = function(v1, v2) {
           if ((v1 != null ? v1.toString() : void 0) === "NaN" && (v2 != null ? v2.toString() : void 0) === "NaN" || v1 === v2) {
             return 'text-default';
-          } else if ((v2 != null ? v2.toString() : void 0) === "NaN" || v1 > v2) {
+          } else if ((v2 != null ? v2.toString() : void 0) === "NaN" || (v2 == null) || v1 > v2) {
             return 'text-danger';
           } else {
             return 'text-success';
@@ -145,11 +145,11 @@
       
         __out.push('</span><br>\n    <span class="');
       
-        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "type")));
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "hits")));
       
-        __out.push('">成长：');
+        __out.push('">多段：');
       
-        __out.push(__sanitize(this.model.getTypeString()));
+        __out.push(__sanitize(this.model.getString("hits")));
       
         __out.push('</span><br>\n  </p>\n</div>\n<div class="row">\n  <p class="col-sm-6">\n    <span class="');
       
@@ -200,6 +200,14 @@
         __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow("mdps"))));
       
         __out.push('</span><br>\n  </p>\n  <p class="col-sm-6">\n    <span class="');
+      
+        __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "type")));
+      
+        __out.push('">成长：');
+      
+        __out.push(__sanitize(this.model.getTypeString()));
+      
+        __out.push('</span><br>\n    <span class="');
       
         __out.push(__sanitize(compareObject(this.model, this.other_model, "get", "fire")));
       

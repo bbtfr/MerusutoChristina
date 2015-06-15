@@ -231,7 +231,13 @@
       this.setActive($target);
       key = $target.data("key");
       return this.binder.sort(function(model) {
-        return -model.get(key);
+        var value;
+        value = model.get(key);
+        if ((value != null ? value.toString() : void 0) === "NaN" || (value == null)) {
+          return 0;
+        } else {
+          return -value;
+        }
       });
     };
 

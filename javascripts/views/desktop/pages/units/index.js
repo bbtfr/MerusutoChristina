@@ -285,13 +285,19 @@
             return model.get("mspd");
           }
         }, {
+          title: "多段",
+          data: function(model) {
+            return model.get("hits");
+          }
+        }, {
           title: "成长",
           data: function(model) {
             return model.get("type");
           },
           render: function(data, type, model) {
             return model.getTypeString();
-          }
+          },
+          visible: false
         }, {
           title: "DPS",
           data: function(model) {

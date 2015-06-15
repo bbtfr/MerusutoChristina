@@ -99,9 +99,9 @@
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n              成长：');
+        __out.push('<br>\n              多段：');
       
-        __out.push(__sanitize(this.model.getTypeString()));
+        __out.push(__sanitize(this.model.getString("hits")));
       
         __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              初始DPS：');
       
@@ -127,7 +127,11 @@
       
         __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
       
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              火：');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              成长：');
+      
+        __out.push(__sanitize(this.model.getTypeString()));
+      
+        __out.push('<br>\n              火：');
       
         __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
