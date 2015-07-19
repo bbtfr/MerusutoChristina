@@ -119,7 +119,7 @@
       
         __out.push('<br>\n          满觉DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('dps'))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrowDPS())));
       
         __out.push('<br>\n          初始总DPS：');
       
@@ -131,7 +131,7 @@
       
         __out.push('<br>\n          满觉总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrowMDPS())));
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          成长：');
       

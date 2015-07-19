@@ -17,8 +17,8 @@
         life: attributes.life
       };
       this.setLevelMode("zero");
-      this.origin.dps = this.get('dps');
-      return this.origin.mdps = this.get('mdps');
+      this.origin.dps = this.get("dps");
+      return this.origin.mdps = this.get("mdps");
     };
 
     Unit.prototype.calcF = function() {
@@ -39,6 +39,14 @@
       levelPart = Math.floor(value * f);
       growPart = Math.floor(value * (f - 1) / (19 + 10 * rare)) * 5 * (rare === 1 ? 5 : 15);
       return levelPart + growPart;
+    };
+
+    Unit.prototype.calcMaxLvAndGrowDPS = function() {
+      return this.calcMaxLvAndGrow("atk") / this.get("aspd");
+    };
+
+    Unit.prototype.calcMaxLvAndGrowMDPS = function() {
+      return this.calcMaxLvAndGrowDPS() * this.get("anum");
     };
 
     Unit.prototype.setLevelMode = function(mode) {

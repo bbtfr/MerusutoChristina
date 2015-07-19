@@ -5963,8 +5963,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         life: attributes.life
       };
       this.setLevelMode("zero");
-      this.origin.dps = this.get('dps');
-      return this.origin.mdps = this.get('mdps');
+      this.origin.dps = this.get("dps");
+      return this.origin.mdps = this.get("mdps");
     };
 
     Unit.prototype.calcF = function() {
@@ -5985,6 +5985,14 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       levelPart = Math.floor(value * f);
       growPart = Math.floor(value * (f - 1) / (19 + 10 * rare)) * 5 * (rare === 1 ? 5 : 15);
       return levelPart + growPart;
+    };
+
+    Unit.prototype.calcMaxLvAndGrowDPS = function() {
+      return this.calcMaxLvAndGrow("atk") / this.get("aspd");
+    };
+
+    Unit.prototype.calcMaxLvAndGrowMDPS = function() {
+      return this.calcMaxLvAndGrowDPS() * this.get("anum");
     };
 
     Unit.prototype.setLevelMode = function(mode) {
@@ -6743,7 +6751,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n              满觉DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('dps'))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrowDPS())));
       
         __out.push('<br>\n              初始总DPS：');
       
@@ -6755,7 +6763,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n              满觉总DPS：');
       
-        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrow('mdps'))));
+        __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrowMDPS())));
       
         __out.push('<br>\n            </p>\n            <p class="media-info">\n              成长：');
       
