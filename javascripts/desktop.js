@@ -43176,10 +43176,6 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(App.KeyMap["age"]));
       
-        __out.push('</label>\n        <div class="col-sm-8">\n        <label for="age" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["age"]));
-      
         __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="age" id="age" value="');
       
         __out.push(__sanitize(this.model.get("age")));
