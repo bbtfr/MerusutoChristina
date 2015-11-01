@@ -44400,6 +44400,9 @@ if (typeof String.prototype.includes != 'function') {
           if (max < value) {
             return false;
           }
+		  if ("暂缺" == value || "??" == value || "" == value || undefined == value) {
+            return false;
+          }
           return true;
         });
       });
