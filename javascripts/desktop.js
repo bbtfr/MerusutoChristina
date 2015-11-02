@@ -41427,7 +41427,7 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     Monster.prototype.getSkinString = function() {
-      return this.getIndexString(["坚硬", "常规", "柔软"], "skin");
+      return this.getIndexString(["坚硬", "常规", "柔软", "极软", "极硬"], "skin");
     };
 
     Monster.prototype.getSkillShortString = function() {
@@ -42200,7 +42200,19 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>柔软</option>\n          </select>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="life" class="col-sm-4 control-label">');
+        __out.push('>柔软</option>\n          <option value="4" ');
+      
+        if (this.model.get("skin") === 4) {
+          __out.push(__sanitize("selected"));
+        }
+      
+        __out.push('>极软</option>\n          <option value="5" ');
+      
+        if (this.model.get("skin") === 5) {
+          __out.push(__sanitize("selected"));
+        }
+      
+        __out.push('>极硬</option>\n          </select>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="life" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["life"]));
       
