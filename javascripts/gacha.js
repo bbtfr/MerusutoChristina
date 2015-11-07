@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
@@ -9327,7 +9327,7 @@ return jQuery;
   Configuration = {
     "骑士契约书（钻石）": {
       id: 1,
-      chance: [0.78, 3.10, 12.02, 84.10],
+      chance: [1.25, 5.58, 23.89, 69.28],
       statistic: [2, 3, 4, 5],
       description: "双三星保底"
     },
