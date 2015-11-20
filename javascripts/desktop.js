@@ -41093,6 +41093,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
+    sarea: "溅射范围",
+    parts: "部位",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -42236,6 +42238,27 @@ if (typeof String.prototype.includes != 'function') {
         __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="aarea" id="aarea" value="');
       
         __out.push(__sanitize(this.model.get("aarea")));
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="sarea" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["sarea"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="sarea" id="sarea" value="');
+      
+        __out.push(__sanitize(this.model.get("sarea")));
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="parts" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["parts"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="parts" id="parts" value="');
+      
+        __out.push(__sanitize(this.model.get("parts")));
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="hits" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["hits"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="hits" id="hits" value="');
+      
+        __out.push(__sanitize(this.model.get("hits")));
       
         __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="anum" class="col-sm-4 control-label">');
       
