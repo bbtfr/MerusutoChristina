@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
   App.KeyMap = {
     title: "称号",
     name: "姓名",
@@ -33,6 +33,8 @@
     obtain: "获取方式",
     remark: "备注",
     hits: "多段攻击"
+    parts: "部位"
+    sarea: "溅射距离"
   };
 
 }).call(this);

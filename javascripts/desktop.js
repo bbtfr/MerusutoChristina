@@ -41378,48 +41378,6 @@ if (typeof String.prototype.includes != 'function') {
       return this.set("skill-sc", this.getSkillShortString());
     };
 
-    Monster.prototype.calcBySize = function(value, size, mode) {
-      switch (mode) {
-        case 1:
-          return Math.floor(value * Math.pow(size, 2.36));
-        case 2:
-          return Math.floor(value * size);
-        default:
-          return value;
-      }
-    };
-
-    Monster.prototype.setLevelMode = function(mode) {
-      var atk, dps, life, mdps;
-      switch (mode) {
-        case "sm":
-          atk = this.origin.atk;
-          life = this.origin.life;
-          break;
-        case "md":
-          atk = this.calcBySize(this.origin.atk, 1.35, 1);
-          life = this.calcBySize(this.origin.life, 1.35, 2);
-          break;
-        case "lg":
-          atk = this.calcBySize(this.origin.atk, 1.55, 1);
-          life = this.calcBySize(this.origin.life, 1.55, 2);
-          break;
-        case "xl":
-          atk = this.calcBySize(this.origin.atk, 1.7, 1);
-          life = this.calcBySize(this.origin.life, 1.7, 2);
-          break;
-        case "xxl":
-          atk = this.calcBySize(this.origin.atk, 1.8, 1);
-          life = this.calcBySize(this.origin.life, 1.8, 2);
-      }
-      dps = atk / this.get("aspd");
-      mdps = Math.round(dps * this.get("anum"));
-      dps = Math.round(dps);
-      this.set("atk", atk);
-      this.set("life", life);
-      this.set("dps", dps);
-      return this.set("mdps", mdps);
-    };
 
     Monster.prototype.imageUrl = function(type) {
       return "../data/monsters/" + type + "/" + this.id + ".png";
@@ -42217,20 +42175,6 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('>极硬</option>\n          </select>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="life" class="col-sm-4 control-label">');
       
-        __out.push(__sanitize(App.KeyMap["life"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" class="form-control" name="life" id="life" value="');
-      
-        __out.push(__sanitize(this.model.get("life")));
-      
-        __out.push('">\n          <span class="help-block"><a class="calculator">魔宠计算器</a>，计算初始生命、体力</span>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="atk" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["atk"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" class="form-control" name="atk" id="atk" value="');
-      
-        __out.push(__sanitize(this.model.get("atk")));
-      
         __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="aarea" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["aarea"]));
@@ -42293,44 +42237,6 @@ if (typeof String.prototype.includes != 'function') {
         __out.push(__sanitize(this.model.get("mspd")));
       
         __out.push('">\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="fire" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["fire"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="fire" id="fire" value="');
-      
-        __out.push(__sanitize(this.model.get("fire")));
-      
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="aqua" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["aqua"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="aqua" id="aqua" value="');
-      
-        __out.push(__sanitize(this.model.get("aqua")));
-      
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="wind" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["wind"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="wind" id="wind" value="');
-      
-        __out.push(__sanitize(this.model.get("wind")));
-      
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="light" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["light"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="light" id="light" value="');
-      
-        __out.push(__sanitize(this.model.get("light")));
-      
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="dark" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["dark"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="dark" id="dark" value="');
-      
-        __out.push(__sanitize(this.model.get("dark")));
       
         __out.push('">\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="skill" class="col-sm-4 control-label">');
       
@@ -44376,21 +44282,6 @@ if (typeof String.prototype.includes != 'function') {
       return this.$calculatorModal = this.$("#calculator-modal").modal();
     };
 
-    MonstersEdit.prototype.calculateSize = function() {
-      var atk, life, size;
-      size = this.$("#csize").val();
-      life = this.$("#clife").val();
-      atk = this.$("#catk").val();
-      this.$("#rlife").val(Math.round(life / size));
-      return this.$("#ratk").val(Math.round(atk / Math.pow(size, 2.36)));
-    };
-
-    MonstersEdit.prototype.insertForm = function(event) {
-      event.preventDefault();
-      this.$("#life").val(this.$("#rlife").val());
-      this.$("#atk").val(this.$("#ratk").val());
-      return this.$calculatorModal.modal("hide");
-    };
 
     return MonstersEdit;
 
