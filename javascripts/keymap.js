@@ -5,6 +5,7 @@
     rare: "稀有度",
     country: "国家",
     gender: "性别",
+    server: "服务器",
     age: "年龄",
     career: "职业",
     interest: "兴趣",
@@ -17,6 +18,7 @@
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
+    sarea: "溅射距离",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -32,6 +34,7 @@
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
-    hits: "多段攻击"
+    hits: "多段攻击",
+    parts: "部位"
   };
 }).call(this);
