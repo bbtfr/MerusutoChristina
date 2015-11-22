@@ -5846,6 +5846,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     arms: "武器",
     type: "成长",
     skin: "皮肤",
+    sarea: "溅射距离",
+    parts: "部位",
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
@@ -7089,8 +7091,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         __out.push('</span>          攻距：');
 
         __out.push(__sanitize(this.model.getString("aarea")));
-		
-		__out.push('<br>\n          韧性：');
+    
+    __out.push('<br>\n          韧性：');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
@@ -7100,24 +7102,24 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n          溅射距离：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
+        __out.push(__sanitize(this.model.getString("sarea")));
       
         __out.push('<br>\n        </p>\n        <p class="media-info">');
-		
-		__out.push('          攻数：');
+    
+    __out.push('          攻数：');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
-		__out.push('<br>\n          多段：');
-		
+    __out.push('<br>\n          多段：');
+    
         __out.push(__sanitize(this.model.getString("hits")));
-		
-		__out.push('<br>\n          部位：');
-		
+    
+    __out.push('<br>\n          部位：');
+    
         __out.push(__sanitize(this.model.getString("parts")));
-	  
-		__out.push('<br>\n          攻速：');
-		
+    
+    __out.push('<br>\n          攻速：');
+    
         __out.push(__sanitize(this.model.getString("aspd")));
       
         __out.push('<br>\n        </p>\n        <p style="display: none;" class="media-info hidden-xs">\n          火：');
@@ -7137,22 +7139,22 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         __out.push(__sanitize(this.model.getElementPercentString("light")));
       
         __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">');
-		
-		__out.push('          皮肤：');
+    
+    __out.push('          皮肤：');
       
         __out.push(__sanitize(this.model.getSkinString()));
-		
-		__out.push('<br>\n          技能：');
+    
+    __out.push('<br>\n          技能：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
-		
-		__out.push('<br>\n          技能CD：');
+        __out.push(__sanitize(this.model.getString("skill-sc")));
+    
+    __out.push('<br>\n          技能CD：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
-		
-		__out.push('<br>\n          技能SP：');
+        __out.push(__sanitize(this.model.getString("sklcd")));
+    
+    __out.push('<br>\n          技能SP：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
+        __out.push(__sanitize(this.model.getString("sklsp")));
       
         __out.push('<span style="display: none;" id="dps">');
       
