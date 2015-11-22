@@ -41093,8 +41093,6 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
-    sarea: "溅射范围",
-    parts: "部位",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -41378,6 +41376,48 @@ if (typeof String.prototype.includes != 'function') {
       return this.set("skill-sc", this.getSkillShortString());
     };
 
+    Monster.prototype.calcBySize = function(value, size, mode) {
+      switch (mode) {
+        case 1:
+          return Math.floor(value * Math.pow(size, 2.36));
+        case 2:
+          return Math.floor(value * size);
+        default:
+          return value;
+      }
+    };
+
+    Monster.prototype.setLevelMode = function(mode) {
+      var atk, dps, life, mdps;
+      switch (mode) {
+        case "sm":
+          atk = this.origin.atk;
+          life = this.origin.life;
+          break;
+        case "md":
+          atk = this.calcBySize(this.origin.atk, 1.35, 1);
+          life = this.calcBySize(this.origin.life, 1.35, 2);
+          break;
+        case "lg":
+          atk = this.calcBySize(this.origin.atk, 1.55, 1);
+          life = this.calcBySize(this.origin.life, 1.55, 2);
+          break;
+        case "xl":
+          atk = this.calcBySize(this.origin.atk, 1.7, 1);
+          life = this.calcBySize(this.origin.life, 1.7, 2);
+          break;
+        case "xxl":
+          atk = this.calcBySize(this.origin.atk, 1.8, 1);
+          life = this.calcBySize(this.origin.life, 1.8, 2);
+      }
+      dps = atk / this.get("aspd");
+      mdps = Math.round(dps * this.get("anum"));
+      dps = Math.round(dps);
+      this.set("atk", atk);
+      this.set("life", life);
+      this.set("dps", dps);
+      return this.set("mdps", mdps);
+    };
 
     Monster.prototype.imageUrl = function(type) {
       return "../data/monsters/" + type + "/" + this.id + ".png";
@@ -42175,6 +42215,20 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('>极硬</option>\n          </select>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="life" class="col-sm-4 control-label">');
       
+        __out.push(__sanitize(App.KeyMap["life"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" class="form-control" name="life" id="life" value="');
+      
+        __out.push(__sanitize(this.model.get("life")));
+      
+        __out.push('">\n          <span class="help-block"><a class="calculator">魔宠计算器</a>，计算初始生命、体力</span>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="atk" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["atk"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" class="form-control" name="atk" id="atk" value="');
+      
+        __out.push(__sanitize(this.model.get("atk")));
+      
         __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="aarea" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["aarea"]));
@@ -42182,27 +42236,6 @@ if (typeof String.prototype.includes != 'function') {
         __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="aarea" id="aarea" value="');
       
         __out.push(__sanitize(this.model.get("aarea")));
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="sarea" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["sarea"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="sarea" id="sarea" value="');
-      
-        __out.push(__sanitize(this.model.get("sarea")));
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="parts" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["parts"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="parts" id="parts" value="');
-      
-        __out.push(__sanitize(this.model.get("parts")));
-        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="hits" class="col-sm-4 control-label">');
-      
-        __out.push(__sanitize(App.KeyMap["hits"]));
-      
-        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="hits" id="hits" value="');
-      
-        __out.push(__sanitize(this.model.get("hits")));
       
         __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="anum" class="col-sm-4 control-label">');
       
@@ -42237,6 +42270,44 @@ if (typeof String.prototype.includes != 'function') {
         __out.push(__sanitize(this.model.get("mspd")));
       
         __out.push('">\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="fire" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["fire"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="fire" id="fire" value="');
+      
+        __out.push(__sanitize(this.model.get("fire")));
+      
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="aqua" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["aqua"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="aqua" id="aqua" value="');
+      
+        __out.push(__sanitize(this.model.get("aqua")));
+      
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="wind" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["wind"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="wind" id="wind" value="');
+      
+        __out.push(__sanitize(this.model.get("wind")));
+      
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="light" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["light"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="light" id="light" value="');
+      
+        __out.push(__sanitize(this.model.get("light")));
+      
+        __out.push('">\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="dark" class="col-sm-4 control-label">');
+      
+        __out.push(__sanitize(App.KeyMap["dark"]));
+      
+        __out.push('</label>\n        <div class="col-sm-8">\n          <input type="number" step="any" class="form-control" name="dark" id="dark" value="');
+      
+        __out.push(__sanitize(this.model.get("dark")));
       
         __out.push('">\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="skill" class="col-sm-4 control-label">');
       
@@ -42374,7 +42445,7 @@ if (typeof String.prototype.includes != 'function') {
     }
     (function() {
       (function() {
-        __out.push('<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">筛选 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="dropdown-submenu">\n      <a class="">稀有度</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="rare">全部</a></li>\n        <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n        <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="[3,4]">★★★以上</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">元素</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="element">全部</a></li>\n        <li><a class="filter" data-key="element" data-value="1">火</a></li>\n        <li><a class="filter" data-key="element" data-value="2">水</a></li>\n        <li><a class="filter" data-key="element" data-value="3">风</a></li>\n        <li><a class="filter" data-key="element" data-value="4">光</a></li>\n        <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n        <li><a class="filter" data-key="element" data-value="[1,2,3]">火/水/风</a></li>\n        <li><a class="filter" data-key="element" data-value="[4,5]">光/暗</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">皮肤</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="skin">全部</a></li>\n        <li><a class="filter" data-key="skin" data-value="1">坚硬</a></li>\n        <li><a class="filter" data-key="skin" data-value="2">常规</a></li>\n        <li><a class="filter" data-key="skin" data-value="3">柔软</a></li>\n        <li><a class="filter" data-key="skin" data-value="4">极软</a></li>\n        <li><a class="filter" data-key="skin" data-value="1">极硬</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">技能</a>\n      <ul class="dropdown-menu" id="skill">\n        <li><a class="filter-reset" data-key="skill-sc">全部</a></li>\n      </ul>\n    </li>\n    <li class="divider"></li>\n    <li><a class="filter-reset">重置</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示 / 隐藏项目 <span class="caret"></span></a>\n  <ul class="dropdown-menu" id="colvis"></ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">每页显示条目数 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li><a class="page" data-key="10">10</a></li>\n    <li><a class="page" data-key="25">25</a></li>\n    <li class="active"><a class="page" data-key="50">50</a></li>\n    <li><a class="page" data-key="100">100</a></li>\n    <li><a class="page" data-key="200">200</a></li>\n    <li><a class="page" data-key="-1">全部</a></li>\n  </ul>\n</li>\n');
+        __out.push('<li class="navbar-form">\n  <input type="text" class="form-control" placeholder="搜索同伴" id="search">\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">等级 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="active"><a class="level-mode" data-key="sm">幼年期（1.0）</a></li>\n    <li><a class="level-mode" data-key="md">成长期（1.35）</a></li>\n    <li><a class="level-mode" data-key="lg">成熟期（1.55）</a></li>\n    <li><a class="level-mode" data-key="xl">完全体（1.7）</a></li>\n    <li><a class="level-mode" data-key="xxl">天然完全体（1.8）</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">筛选 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li class="dropdown-submenu">\n      <a class="">稀有度</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="rare">全部</a></li>\n        <li><a class="filter" data-key="rare" data-value="1">★</a></li>\n        <li><a class="filter" data-key="rare" data-value="2">★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="3">★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="4">★★★★</a></li>\n        <li><a class="filter" data-key="rare" data-value="[3,4]">★★★以上</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">元素</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="element">全部</a></li>\n        <li><a class="filter" data-key="element" data-value="1">火</a></li>\n        <li><a class="filter" data-key="element" data-value="2">水</a></li>\n        <li><a class="filter" data-key="element" data-value="3">风</a></li>\n        <li><a class="filter" data-key="element" data-value="4">光</a></li>\n        <li><a class="filter" data-key="element" data-value="5">暗</a></li>\n        <li><a class="filter" data-key="element" data-value="[1,2,3]">火/水/风</a></li>\n        <li><a class="filter" data-key="element" data-value="[4,5]">光/暗</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">皮肤</a>\n      <ul class="dropdown-menu">\n        <li><a class="filter-reset" data-key="skin">全部</a></li>\n        <li><a class="filter" data-key="skin" data-value="1">坚硬</a></li>\n        <li><a class="filter" data-key="skin" data-value="2">常规</a></li>\n        <li><a class="filter" data-key="skin" data-value="3">柔软</a></li>\n        <li><a class="filter" data-key="skin" data-value="4">极软</a></li>\n        <li><a class="filter" data-key="skin" data-value="1">极硬</a></li>\n      </ul>\n    </li>\n    <li class="dropdown-submenu">\n      <a class="">技能</a>\n      <ul class="dropdown-menu" id="skill">\n        <li><a class="filter-reset" data-key="skill-sc">全部</a></li>\n      </ul>\n    </li>\n    <li class="divider"></li>\n    <li><a class="filter-reset">重置</a></li>\n  </ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示 / 隐藏项目 <span class="caret"></span></a>\n  <ul class="dropdown-menu" id="colvis"></ul>\n</li>\n<li class="dropdown">\n  <a href="#" class="dropdown-toggle" data-toggle="dropdown">每页显示条目数 <span class="caret"></span></a>\n  <ul class="dropdown-menu">\n    <li><a class="page" data-key="10">10</a></li>\n    <li><a class="page" data-key="25">25</a></li>\n    <li class="active"><a class="page" data-key="50">50</a></li>\n    <li><a class="page" data-key="100">100</a></li>\n    <li><a class="page" data-key="200">200</a></li>\n    <li><a class="page" data-key="-1">全部</a></li>\n  </ul>\n</li>\n');
       
       }).call(this);
       
@@ -44282,6 +44353,21 @@ if (typeof String.prototype.includes != 'function') {
       return this.$calculatorModal = this.$("#calculator-modal").modal();
     };
 
+    MonstersEdit.prototype.calculateSize = function() {
+      var atk, life, size;
+      size = this.$("#csize").val();
+      life = this.$("#clife").val();
+      atk = this.$("#catk").val();
+      this.$("#rlife").val(Math.round(life / size));
+      return this.$("#ratk").val(Math.round(atk / Math.pow(size, 2.36)));
+    };
+
+    MonstersEdit.prototype.insertForm = function(event) {
+      event.preventDefault();
+      this.$("#life").val(this.$("#rlife").val());
+      this.$("#atk").val(this.$("#ratk").val());
+      return this.$calculatorModal.modal("hide");
+    };
 
     return MonstersEdit;
 
@@ -44850,6 +44936,16 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
             return model.getElementString();
           }
         }, {
+          title: "生命",
+          data: function(model) {
+            return model.get("life");
+          }
+        }, {
+          title: "攻击",
+          data: function(model) {
+            return model.get("atk");
+          }
+        }, {
           title: "攻距",
           data: function(model) {
             return model.get("aarea");
@@ -44887,22 +44983,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
           data: function(model) {
             return model.get("dps");
           }
-        },  {
-          title: "溅射范围",
-          data: function(model) {
-            return model.get("sarea");
-          }
         }, {
-          title: "部位",
-          data: function(model) {
-            return model.get("parts");
-          }
-        },{
-          title: "多段",
-          data: function(model) {
-            return model.get("hits");
-          }
-        },{
           title: "总DPS",
           data: function(model) {
             return model.get("mdps");
@@ -44924,7 +45005,52 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
             return model.get("sklsp");
           },
           visible: false
-        },  {
+        }, {
+          title: "火",
+          data: function(model) {
+            return Math.round(model.get("fire") * 100);
+          },
+          render: function(data) {
+            return data + "%";
+          },
+          visible: false
+        }, {
+          title: "水",
+          data: function(model) {
+            return Math.round(model.get("aqua") * 100);
+          },
+          render: function(data) {
+            return data + "%";
+          },
+          visible: false
+        }, {
+          title: "风",
+          data: function(model) {
+            return Math.round(model.get("wind") * 100);
+          },
+          render: function(data) {
+            return data + "%";
+          },
+          visible: false
+        }, {
+          title: "光",
+          data: function(model) {
+            return Math.round(model.get("light") * 100);
+          },
+          render: function(data) {
+            return data + "%";
+          },
+          visible: false
+        }, {
+          title: "暗",
+          data: function(model) {
+            return Math.round(model.get("dark") * 100);
+          },
+          render: function(data) {
+            return data + "%";
+          },
+          visible: false
+        }, {
           data: null,
           colvis: false,
           orderable: false,
