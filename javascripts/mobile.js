@@ -5849,6 +5849,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
+    sarea: "溅射距离",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -5864,6 +5865,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
+    parts: "部位",
     hits: "多段攻击"
   };
 
@@ -7078,27 +7080,19 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getRareString()));
       
-        __out.push('</small>\n      </h4>\n      <div class="media-info-group">\n        <p class="media-info">\n          生命：<span id="life">');
+        __out.push('</small>\n      </h4>\n      <div class="media-info-group"><p class="media-info"><span style="display: none;" id="life">');
       
         __out.push(__sanitize(this.model.get("life")));
       
-        __out.push('</span><br>\n          攻击：<span id="atk">');
+        __out.push('</span><span style="display: none;" id="atk">');
       
         __out.push(__sanitize(this.model.get("atk")));
       
-        __out.push('</span><br>\n          攻距：');
-      
+        __out.push('</span>          攻距：');
+
         __out.push(__sanitize(this.model.getString("aarea")));
-      
-        __out.push('<br>\n          攻数：');
-      
-        __out.push(__sanitize(this.model.getString("anum")));
-      
-        __out.push('<br>\n        </p>\n        <p class="media-info">\n          攻速：');
-      
-        __out.push(__sanitize(this.model.getString("aspd")));
-      
-        __out.push('<br>\n          韧性：');
+    
+    __out.push('<br>\n          韧性：');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
@@ -7106,11 +7100,29 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n          皮肤：');
+        __out.push('<br>\n          溅射距离：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
+        __out.push(__sanitize(this.model.getString("sarea")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info hidden-xs">\n          火：');
+        __out.push('<br>\n        </p>\n        <p class="media-info">');
+    
+    __out.push('          攻数：');
+      
+        __out.push(__sanitize(this.model.getString("anum")));
+      
+    __out.push('<br>\n          多段：');
+    
+        __out.push(__sanitize(this.model.getString("hits")));
+    
+    __out.push('<br>\n          部位：');
+    
+        __out.push(__sanitize(this.model.getString("parts")));
+    
+    __out.push('<br>\n          攻速：');
+    
+        __out.push(__sanitize(this.model.getString("aspd")));
+      
+        __out.push('<br>\n        </p>\n        <p style="display: none;" class="media-info hidden-xs">\n          火：');
       
         __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
@@ -7126,15 +7138,29 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getElementPercentString("light")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">\n          暗：');
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">');
+    
+    __out.push('          皮肤：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("dark")));
+        __out.push(__sanitize(this.model.getSkinString()));
+    
+    __out.push('<br>\n          技能：');
       
-        __out.push('<br><br>\n          DPS：<span id="dps">');
+        __out.push(__sanitize(this.model.getSkillshortString()));
+    
+    __out.push('<br>\n          技能CD：');
+      
+        __out.push(__sanitize(this.model.getString("sklcd")));
+    
+    __out.push('<br>\n          技能SP：');
+      
+        ___out.push(__sanitize(this.model.getString("sklsp")));
+      
+        __out.push('<span style="display: none;" id="dps">');
       
         __out.push(__sanitize(this.model.get("dps")));
       
-        __out.push('</span><br>\n          总DPS：<span id="mdps">');
+        __out.push('</span><span style="display: none;" id="mdps">');
       
         __out.push(__sanitize(this.model.get("mdps")));
       
