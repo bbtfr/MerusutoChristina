@@ -41093,6 +41093,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
+    sarea: "溅射距离",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -41108,7 +41109,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
-    hits: "多段攻击"
+    hits: "多段攻击",
+    parts: "部位"
   };
 
 }).call(this);
@@ -42513,131 +42515,44 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n        </h2>\n      </div>\n      <div class="row">\n        <p class="col-xs-6">\n          幼年期生命：');
+        __out.push('</small>\n        </h2>\n      </div>\n      <div class="row">\n        <p class="col-xs-6">\n          攻距：');
       
-        __out.push(__sanitize(this.model.origin.life));
+         __out.push(__sanitize(this.model.getString("aarea")));
       
-        __out.push('<br>\n          成长期生命：');
+        __out.push('<br>\n          韧性：');
       
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.life, 1.35, 2)));
+         __out.push(__sanitize(this.model.getString("tenacity")));
       
-        __out.push('<br>\n          成熟期生命：');
+        __out.push('<br>\n          移速：');
       
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.life, 1.55, 2)));
+         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n          完全体生命：');
+        __out.push('<br>\n          溅射距离：');
       
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.life, 1.7, 2)));
+         __out.push(__sanitize(this.model.getString("sarea")));
       
-        __out.push('<br>\n          天然完全体生命：');
       
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.life, 1.8, 2)));
-      
-        __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻距：');
-      
-        __out.push(__sanitize(this.model.getString("aarea")));
-      
-        __out.push('<br>\n          攻数：');
+        __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻数：');
       
         __out.push(__sanitize(this.model.getString("anum")));
+      
+        __out.push('<br>\n          多段：');
+      
+        __out.push(__sanitize(this.model.getString("hits")));
+      
+        __out.push('<br>\n          部位：');
+      
+        __out.push(__sanitize(this.model.getString("parts")));
       
         __out.push('<br>\n          攻速：');
       
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n          韧性：');
-      
-        __out.push(__sanitize(this.model.getString("tenacity")));
-      
-        __out.push('<br>\n          移速：');
-      
-        __out.push(__sanitize(this.model.getString("mspd")));
-      
         __out.push('<br>\n          皮肤：');
       
         __out.push(__sanitize(this.model.getSkinString()));
       
-        __out.push('<br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-6">\n          幼年期攻击：');
-      
-        __out.push(__sanitize(this.model.origin.atk));
-      
-        __out.push('<br>\n          成长期攻击：');
-      
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.atk, 1.35, 1)));
-      
-        __out.push('<br>\n          成熟期攻击：');
-      
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.atk, 1.55, 1)));
-      
-        __out.push('<br>\n          完全体攻击：');
-      
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.atk, 1.7, 1)));
-      
-        __out.push('<br>\n          天然完全体攻击：');
-      
-        __out.push(__sanitize(this.model.calcBySize(this.model.origin.atk, 1.8, 1)));
-      
-        __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          幼年期DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.origin.dps)));
-      
-        __out.push('<br>\n          成长期DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.dps, 1.35, 1))));
-      
-        __out.push('<br>\n          成熟期DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.dps, 1.55, 1))));
-      
-        __out.push('<br>\n          完全体DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.dps, 1.7, 1))));
-      
-        __out.push('<br>\n          天然完全体DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.dps, 1.8, 1))));
-      
-        __out.push('<br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-6">\n          幼年期总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.origin.mdps)));
-      
-        __out.push('<br>\n          成长期总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.mdps, 1.35, 1))));
-      
-        __out.push('<br>\n          成熟期总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.mdps, 1.55, 1))));
-      
-        __out.push('<br>\n          完全体总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.mdps, 1.7, 1))));
-      
-        __out.push('<br>\n          天然完全体总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.calcBySize(this.model.origin.mdps, 1.8, 1))));
-      
-        __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          火：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("fire")));
-      
-        __out.push('<br>\n          水：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("aqua")));
-      
-        __out.push('<br>\n          风：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("wind")));
-      
-        __out.push('<br>\n          光：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("light")));
-      
-        __out.push('<br>\n          暗：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("dark")));
-      
-        __out.push('<br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          技能：');
+        __out.push('<br><br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          技能：');
       
         __out.push(__sanitize(this.model.getString("skill")));
       
@@ -42649,14 +42564,14 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.getString("sklcd")));
       
-        __out.push('<br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          获取方式：');
+        __out.push('<br><br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          获取方式：');
       
         __out.push(__sanitize(this.model.getString('obtain')));
       
-        __out.push('<br>\n          ');
+        __out.push('<br><br>\n          ');
       
         if (this.model.get('remark')) {
-          __out.push('\n            备注：');
+          __out.push('\n            简介：');
           __out.push(__sanitize(this.model.get('remark')));
           __out.push('<br>\n          ');
         }
