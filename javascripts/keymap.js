@@ -17,6 +17,7 @@
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
+    sarea: "溅射距离",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -32,9 +33,8 @@
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
-    hits: "多段攻击"
+    hits: "多段攻击",
     parts: "部位"
-    sarea: "溅射距离"
   };
 
 }).call(this);
