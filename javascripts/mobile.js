@@ -7093,12 +7093,12 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         __out.push(__sanitize(this.model.getString("aspd")));
       
         __out.push('<br>\n        </p>\n        <p class="media-info">\n          皮肤：');
-      
-        __out.push(__sanitize(this.model.getSkinString());
+       
+        __out.push(__sanitize(this.model.getSkinString()));
       
         __out.push('<br>\n          技能：');
       
-        __out.push(__sanitize(this.model.getSkillShortString()));
+        __out.push(__sanitize(this.model.getString("skill-sc")));
       
         __out.push('<br>\n          技能CD：');
       
