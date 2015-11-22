@@ -5849,7 +5849,6 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
-    sarea: "溅射距离",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -5865,7 +5864,6 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
-    parts: "部位",
     hits: "多段攻击"
   };
 
@@ -7050,7 +7048,27 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.thumbnailUrl()));
       
+        __out.push('">\n    <svg class="media-graphics element pull-right" width="80" height="80">\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
+      
+        __out.push(__sanitize(App.Utils.SVG.getBackgroundPolygonPointsString(80, 40)));
+      
+        __out.push('" class="element-background"/>\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
+      
+        __out.push(__sanitize(App.Utils.SVG.getBackgroundPolygonPointsString(80, 26.7)));
+      
+        __out.push('" class="element-background"/>\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
+      
+        __out.push(__sanitize(App.Utils.SVG.getBackgroundPolygonPointsString(80, 13.3)));
+      
+        __out.push('" class="element-background"/>\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
+      
+        __out.push(__sanitize(this.model.getElementPolygonPointsString(80, 20)));
+      
         __out.push('" class="');
+      
+        if (key = this.model.getElementKey()) {
+          __out.push(__sanitize("element-" + key));
+        }
       
         __out.push('"/>\n    </svg>\n    <div class="media-body">\n      <h4 class="media-title">\n        ');
       
@@ -7060,54 +7078,65 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getRareString()));
       
-        __out.push('</small>\n      </h4>\n      <div class="media-info-group">\n        <p class="media-info">\n          攻距：<span id="aarea">');
+        __out.push('</small>\n      </h4>\n      <div class="media-info-group">\n        <p class="media-info">\n          生命：<span id="life">');
       
-        __out.push(__sanitize(this.model.get("aarea")));
+        __out.push(__sanitize(this.model.get("life")));
       
-        __out.push('</span><br>\n          韧性：<span id="tenacity">');
+        __out.push('</span><br>\n          攻击：<span id="atk">');
       
-        __out.push(__sanitize(this.model.get("tenacity")));
+        __out.push(__sanitize(this.model.get("atk")));
       
-        __out.push('</span><br>\n          移速：');
+        __out.push('</span><br>\n          攻距：');
       
-        __out.push(__sanitize(this.model.getString("mspd")));
+        __out.push(__sanitize(this.model.getString("aarea")));
       
-        __out.push('<br>\n          溅射距离：');
-      
-        __out.push(__sanitize(this.model.getString("sarea")));
-      
-        __out.push('<br>\n        </p>\n        <p class="media-info">\n          攻数：');
+        __out.push('<br>\n          攻数：');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
-        __out.push('<br>\n          多段：');
-      
-        __out.push(__sanitize(this.model.getString("hits")));
-      
-        __out.push('<br>\n          部位：');
-      
-        __out.push(__sanitize(this.model.getString("parts")));
-      
-        __out.push('<br>\n          攻速：');
+        __out.push('<br>\n        </p>\n        <p class="media-info">\n          攻速：');
       
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info">\n          皮肤：');
-       
+        __out.push('<br>\n          韧性：');
+      
+        __out.push(__sanitize(this.model.getString("tenacity")));
+      
+        __out.push('<br>\n          移速：');
+      
+        __out.push(__sanitize(this.model.getString("mspd")));
+      
+        __out.push('<br>\n          皮肤：');
+      
         __out.push(__sanitize(this.model.getSkinString()));
       
-        __out.push('<br>\n          技能：');
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-xs">\n          火：');
       
-        __out.push(__sanitize(this.model.getString("skill-sc")));
+        __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
-        __out.push('<br>\n          技能CD：');
+        __out.push('<br>\n          水：');
       
-        __out.push(__sanitize(this.model.getString("sklcd")));
+        __out.push(__sanitize(this.model.getElementPercentString("aqua")));
       
-        __out.push('<br>\n          技能SP：');
+        __out.push('<br>\n          风：');
       
-        __out.push(__sanitize(this.model.getString("sklsp")));
+        __out.push(__sanitize(this.model.getElementPercentString("wind")));
       
+        __out.push('<br>\n          光：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("light")));
+      
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">\n          暗：');
+      
+        __out.push(__sanitize(this.model.getElementPercentString("dark")));
+      
+        __out.push('<br><br>\n          DPS：<span id="dps">');
+      
+        __out.push(__sanitize(this.model.get("dps")));
+      
+        __out.push('</span><br>\n          总DPS：<span id="mdps">');
+      
+        __out.push(__sanitize(this.model.get("mdps")));
       
         __out.push('</span><br>\n        </p>\n\n      </div>\n    </div>\n  </a>\n</li>\n');
       
