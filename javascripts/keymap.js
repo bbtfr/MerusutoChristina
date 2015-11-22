@@ -32,6 +32,6 @@
     sklsp: "技能消耗",
     obtain: "获取方式",
     remark: "备注",
+    hits: "多段攻击"
   };
-
 }).call(this);
