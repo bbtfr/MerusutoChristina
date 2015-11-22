@@ -5849,6 +5849,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     life: "初始生命",
     atk: "初始攻击",
     aarea: "攻距",
+    sarea: "溅射范围",
     anum: "攻数",
     aspd: "攻速",
     tenacity: "韧性",
@@ -5865,6 +5866,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     obtain: "获取方式",
     remark: "备注",
     hits: "多段攻击"
+    parts: "部位"
   };
 
 }).call(this);
@@ -6532,25 +6534,9 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              生命：');
-      
-        __out.push(__sanitize(this.model.origin.life));
-      
-        __out.push('<br>\n              攻击：');
-      
-        __out.push(__sanitize(this.model.origin.atk));
-      
-        __out.push('<br>\n              攻距：');
+        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              攻距：');
       
         __out.push(__sanitize(this.model.getString("aarea")));
-      
-        __out.push('<br>\n              攻数：');
-      
-        __out.push(__sanitize(this.model.getString("anum")));
-      
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              攻速：');
-      
-        __out.push(__sanitize(this.model.getString("aspd")));
       
         __out.push('<br>\n              韧性：');
       
@@ -6560,37 +6546,25 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n              皮肤：');
+        __out.push('<br>\n              溅射距离：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
+        __out.push(__sanitize(this.model.getString("sarea")));
       
-        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              火：');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              攻数：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("fire")));
+        __out.push(__sanitize(this.model.getString("anum")));
       
-        __out.push('<br>\n              水：');
+        __out.push('<br>\n              多段：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("aqua")));
+        __out.push(__sanitize(this.model.getString("hits")));
       
-        __out.push('<br>\n              风：');
+        __out.push('<br>\n              部位：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("wind")));
+        __out.push(__sanitize(this.model.getString("parts")));
       
-        __out.push('<br>\n              光：');
+        __out.push('<br>\n              攻速：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("light")));
-      
-        __out.push('<br>\n              暗：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("dark")));
-      
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.get("dps"))));
-      
-        __out.push('<br>\n              总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.get("mdps"))));
+        __out.push(__sanitize(this.model.getString("mspd")));
       
         __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-title">技能</div>\n          <p class="media-info">\n            ');
       
@@ -8498,7 +8472,6 @@ Backbone.Collection.prototype.where = function(attrs, first) {
   })(Backbone.Router);
 
 }).call(this);
-
 
 
 
