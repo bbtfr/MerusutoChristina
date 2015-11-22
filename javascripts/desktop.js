@@ -44936,16 +44936,6 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
             return model.getElementString();
           }
         }, {
-          title: "生命",
-          data: function(model) {
-            return model.get("life");
-          }
-        }, {
-          title: "攻击",
-          data: function(model) {
-            return model.get("atk");
-          }
-        }, {
           title: "攻距",
           data: function(model) {
             return model.get("aarea");
@@ -44979,16 +44969,6 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
             return model.getSkinString();
           }
         }, {
-          title: "DPS",
-          data: function(model) {
-            return model.get("dps");
-          }
-        }, {
-          title: "总DPS",
-          data: function(model) {
-            return model.get("mdps");
-          }
-        }, {
           title: "技能",
           data: function(model) {
             return model.get("skill-sc");
@@ -45003,51 +44983,6 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
           title: "技能消耗",
           data: function(model) {
             return model.get("sklsp");
-          },
-          visible: false
-        }, {
-          title: "火",
-          data: function(model) {
-            return Math.round(model.get("fire") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "水",
-          data: function(model) {
-            return Math.round(model.get("aqua") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "风",
-          data: function(model) {
-            return Math.round(model.get("wind") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "光",
-          data: function(model) {
-            return Math.round(model.get("light") * 100);
-          },
-          render: function(data) {
-            return data + "%";
-          },
-          visible: false
-        }, {
-          title: "暗",
-          data: function(model) {
-            return Math.round(model.get("dark") * 100);
-          },
-          render: function(data) {
-            return data + "%";
           },
           visible: false
         }, {
