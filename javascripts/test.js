@@ -6534,25 +6534,9 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              生命：');
-      
-        __out.push(__sanitize(this.model.origin.life));
-      
-        __out.push('<br>\n              攻击：');
-      
-        __out.push(__sanitize(this.model.origin.atk));
-      
-        __out.push('<br>\n              攻距：');
+        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              攻距：');
       
         __out.push(__sanitize(this.model.getString("aarea")));
-      
-        __out.push('<br>\n              攻数：');
-      
-        __out.push(__sanitize(this.model.getString("anum")));
-      
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              攻速：');
-      
-        __out.push(__sanitize(this.model.getString("aspd")));
       
         __out.push('<br>\n              韧性：');
       
@@ -6562,39 +6546,27 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n              皮肤：');
+        __out.push('<br>\n              溅射距离：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
+        __out.push(__sanitize(this.model.getString("sarea")));
       
-        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              火：');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              攻数：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("fire")));
+        __out.push(__sanitize(this.model.getString("anum")));
       
-        __out.push('<br>\n              水：');
+        __out.push('<br>\n              多段：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("aqua")));
+        __out.push(__sanitize(this.model.getString("hits")));
       
-        __out.push('<br>\n              风：');
+        __out.push('<br>\n              部位：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("wind")));
+        __out.push(__sanitize(this.model.getString("parts")));
       
-        __out.push('<br>\n              光：');
+        __out.push('<br>\n              攻速：');
       
-        __out.push(__sanitize(this.model.getElementPercentString("light")));
+        __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n              暗：');
-      
-        __out.push(__sanitize(this.model.getElementPercentString("dark")));
-      
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.get("dps"))));
-      
-        __out.push('<br>\n              总DPS：');
-      
-        __out.push(__sanitize(Math.round(this.model.get("mdps"))));
-      
-        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-title">技能</div>\n          <p class="media-info">\n            ');
+        __out.push('<br>\n            </p>\n          </div>\n                   <div class="media-info-title">技能</div>\n          <p class="media-info">\n            ');
       
         __out.push(__sanitize(this.model.getString("skill")));
       
@@ -6613,7 +6585,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         __out.push('\n          </p>\n\n          ');
       
         if (this.model.get('remark')) {
-          __out.push('\n            <div class="media-info-title">备注</div>\n            <p class="media-info">\n              ');
+          __out.push('\n            <div class="media-info-title">简介</div>\n            <p class="media-info">\n              ');
           __out.push(__sanitize(this.model.get("remark")));
           __out.push('\n            </p>\n          ');
         }
