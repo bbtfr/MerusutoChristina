@@ -750,7 +750,6 @@
 {"id":760,"title":"[水精霊の喚手]","server":1,"age":17,"gender":3,"name":"プリム","country":"聖剣伝説の国","rare":3,"element":2,"type":2,"weapon":7,"anum":1,"hits":3,"life":1510,"mspd":54,"aarea":150,"atk":2490,"aspd":2.9,"tenacity":52,"fire":1.1,"aqua":1.3,"wind":1.1,"light":1.0,"dark":1,"remark":"暂缺","obtain":"復刻コラボイベント「光樹の天使と闇根の悪魔」の報酬","name_jp":"プリム","title_jp":"[水精霊の喚手]"},
 
 
-
 {"id":109999,"title":"㊥[神选中的战士]","name":"布伦希尔德","country":"空之国","rare":4,"element":4,"weapon":2,"type":2,"anum":1,"life":3200,"atk":3500,"mspd":70,"aspd":2.5,"aarea":35,"tenacity":55,"fire":0.92,"aqua":0.92,"wind":0.92,"light":1.0,"dark":1.3,"gender":3},
 {"id":110000,"title":"㊥[坚韧的青春]","name":"琪亚娜","country":"崩坏之国","rare":5,"element":4,"weapon":3,"type":2,"anum":3,"life":4200,"atk":2670,"mspd":50,"aspd":3.2,"aarea":30,"tenacity":63,"fire":0.89,"aqua":0.89,"wind":0.89,"light":1.0,"dark":1.5,"gacha":[1],"remark":"CP芽衣。","obtain":"骑士契约书（钻石）","gender":3,"age":18,"career":"棒球手","interest":"芽衣","nature":"勇敢","contributors":["贰"]},
 {"id":110001,"title":"㊥[雷电女王]","name":"芽衣","country":"崩坏之国","rare":4,"element":5,"weapon":6,"type":2,"anum":1,"life":1660,"atk":3620,"mspd":40,"aspd":2.1,"aarea":160,"tenacity":38,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1.4,"dark":1.0,"gacha":[1,2],"obtain":"骑士契约书（钻石）、勇者契约书（金币2W）","gender":3,"age":18,"career":"枪手","interest":"琪亚娜","nature":"高贵","remark":"CP琪亚娜。","contributors":["Burial_Doll"]},
