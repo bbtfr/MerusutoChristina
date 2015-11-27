@@ -41080,7 +41080,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     rare: "稀有度",
     country: "国家",
     gender: "性别",
-    server: "服务器",
+    server: "新品上架",
     age: "年龄",
     career: "职业",
     interest: "兴趣",
@@ -43102,21 +43102,21 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('></option>\n            <option value="1" ');
+        __out.push('></option>\n            <option value="0" ');
       
         if (this.model.get("server") === 0) {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>全部</option>\n            <option value="2" ');
+        __out.push('>全部</option>\n            <option value="1" ');
       
-        if (this.model.get("server") === 2) {
+        if (this.model.get("server") === 1) {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>日服</option>\n            <option value="3" ');
+        __out.push('>日服</option>\n            <option value="2" ');
       
-        if (this.model.get("server") === 3) {
+        if (this.model.get("server") === 2) {
           __out.push(__sanitize("selected"));
         }
       
