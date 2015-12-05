@@ -41107,6 +41107,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     skill: "技能",
     sklcd: "技能CD",
     sklsp: "技能消耗",
+	sklmax: "极限值",
     obtain: "获取方式",
     remark: "备注",
     hits: "多段攻击",
@@ -41431,6 +41432,16 @@ if (typeof String.prototype.includes != 'function') {
 
     Monster.prototype.getSkinString = function() {
       return this.getIndexString(["坚硬", "常规", "柔软", "极软", "极硬"], "skin");
+    };
+	
+	Monster.prototype.getSklmaxString = function() {
+      var value;
+      value = this.get("sklmax");
+      if (_.isNumber(value)) {
+        return "" + (Math.round(value * 10) / 10) + "%";
+      } else {
+        return "暂缺";
+      }
     };
 
     Monster.prototype.getSkillShortString = function() {
@@ -42517,19 +42528,23 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('</small>\n        </h2>\n      </div>\n      <div class="row">\n        <p class="col-xs-6">\n          攻距：');
       
-         __out.push(__sanitize(this.model.getString("aarea")));
+        __out.push(__sanitize(this.model.getString("aarea")));
       
         __out.push('<br>\n          韧性：');
       
-         __out.push(__sanitize(this.model.getString("tenacity")));
+        __out.push(__sanitize(this.model.getString("tenacity")));
       
         __out.push('<br>\n          移速：');
       
-         __out.push(__sanitize(this.model.getString("mspd")));
-      
+        __out.push(__sanitize(this.model.getString("mspd")));
+     
         __out.push('<br>\n          溅射距离：');
       
-         __out.push(__sanitize(this.model.getString("sarea")));
+        __out.push(__sanitize(this.model.getString("sarea")));
+		 
+		__out.push('<br>\n          极限值：');
+      
+        __out.push(__sanitize(this.model.getSklmaxString()));
       
       
         __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻数：');
@@ -44887,6 +44902,11 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
           title: "技能",
           data: function(model) {
             return model.get("skill-sc");
+          }
+        },{
+          title: "极限值",
+          data: function(model) {
+            return model.getSklmaxString();
           }
         }, {
           title: "技能CD",

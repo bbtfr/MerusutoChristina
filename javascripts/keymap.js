@@ -32,6 +32,7 @@
     skill: "技能",
     sklcd: "技能CD",
     sklsp: "技能消耗",
+    sklmax: "极限数值",
     obtain: "获取方式",
     remark: "备注",
     hits: "多段攻击",

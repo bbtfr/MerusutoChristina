@@ -5864,6 +5864,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     skill: "技能",
     sklcd: "技能CD",
     sklsp: "技能消耗",
+	sklmax: "极限值",
     obtain: "获取方式",
     remark: "备注",
     hits: "多段攻击"
@@ -6200,6 +6201,16 @@ Backbone.Collection.prototype.where = function(attrs, first) {
 
     Monster.prototype.getSkinString = function() {
       return this.getIndexString(["坚硬", "常规", "柔软", "极软", "极硬"], "skin");
+    };
+	
+	Monster.prototype.getSklmaxString = function() {
+      var value;
+      value = this.get("sklmax");
+      if (_.isNumber(value)) {
+        return "" + (Math.round(value * 10) / 10) + "%";
+      } else {
+        return "暂缺";
+      }
     };
 
     Monster.prototype.getSkillShortString = function() {
@@ -7112,19 +7123,23 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">');
     
-    __out.push('          皮肤：');
+        //__out.push('          皮肤：');
       
-        __out.push(__sanitize(this.model.getSkinString()));
+        //__out.push(__sanitize(this.model.getSkinString()));
+		
+		__out.push('          极限值：');
+      
+        __out.push(__sanitize(this.model.getSklmaxString()));
     
-    __out.push('<br>\n          技能：');
+        __out.push('<br>\n          技能：');
       
         __out.push(__sanitize(this.model.getString("skill-sc")));
     
-    __out.push('<br>\n          技能CD：');
+		__out.push('<br>\n          技能CD：');
       
         __out.push(__sanitize(this.model.getString("sklcd")));
     
-    __out.push('<br>\n          技能SP：');
+		__out.push('<br>\n          技能SP：');
       
         __out.push(__sanitize(this.model.getString("sklsp")));
       
