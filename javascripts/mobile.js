@@ -7033,7 +7033,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.thumbnailUrl()));
       
-        __out.push('">\n    <svg class="media-graphics element pull-right" width="80" height="80">\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
+        /*__out.push('">\n    <svg class="media-graphics element pull-right" width="80" height="80">\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
       
         __out.push(__sanitize(App.Utils.SVG.getBackgroundPolygonPointsString(80, 40)));
       
@@ -7047,7 +7047,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push('" class="element-background"/>\n      <polygon xmlns="http://www.w3.org/2000/svg" points="');
       
-        __out.push(__sanitize(this.model.getElementPolygonPointsString(80, 20)));
+        __out.push(__sanitize(this.model.getElementPolygonPointsString(80, 20)));*/
       
         __out.push('" class="');
       
