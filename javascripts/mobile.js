@@ -1,4 +1,4 @@
-//     Zepto.js
+﻿//     Zepto.js
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
@@ -6361,7 +6361,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     }
     (function() {
       (function() {
-        if (!(location.href.indexOf("gitcafe") >= 0 || location.href.indexOf("coding") >= 0 || (typeof localStorage !== "undefined" && localStorage !== null ? localStorage["mirror-info-disabled"] : void 0))) {
+        if (!(location.href.indexOf("gitcafe") >= 0 || location.href.indexOf("merusuto") >= 0 || (typeof localStorage !== "undefined" && localStorage !== null ? localStorage["mirror-info-disabled"] : void 0))) {
           __out.push('\n  <div class="alert alert-dismissible fade in" id="mirror-alert">\n    <button type="button" class="close" data-dismiss="alert" id="mirror-dismiss-button"><span>×</span></button>\n    <h4>梅露可图鉴 国内镜像</h4>\n    <p>为保证服务质量，梅露可图鉴在国内服务器上部属了一份镜像网站，国内用户访问更快更稳定，避免网站偶尔由于不可抗力访问不到！</p>\n    <p>\n      <a href="http://merusuto.gitcafe.io/mobile/" class="btn btn-primary">访问国内镜像</a>\n      <button type="button" class="btn" id="mirror-disable-button">不再显示这条消息</button>\n    </p>\n  </div>\n\n  <script type="text/javascript">\n    $("#mirror-disable-button").click(function() {\n      $("#mirror-alert").hide();\n      if (_.isObject(localStorage)) {\n        localStorage["mirror-info-disabled"] = true\n      }\n    })\n    $("#mirror-dismiss-button").click(function() {\n      $("#mirror-alert").hide();\n    })\n  </script>\n');
         }
       
