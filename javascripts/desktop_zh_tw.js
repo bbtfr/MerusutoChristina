@@ -41276,7 +41276,7 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     Unit.prototype.getIndexString = function(strs, key) {
-      return strs[this.get(key) - 1] || "暂缺";
+      return strs[this.get(key) - 1] || "暫缺";
     };
 
     Unit.prototype.getRareString = function() {
@@ -41288,11 +41288,11 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     Unit.prototype.getElementString = function() {
-      return this.getIndexString(["火", "水", "风", "光", "暗"], "element");
+      return this.getIndexString(["火", "水", "風", "光", "暗"], "element");
     };
 
     Unit.prototype.getWeaponString = function() {
-      return this.getIndexString(["斩击", "突击", "打击", "弓箭", "魔法", "铳弹", "回复"], "weapon");
+      return this.getIndexString(["斬擊", "突擊", "打擊", "弓箭", "魔法", "銃彈", "恢復"], "weapon");
     };
 
     Unit.prototype.getTypeString = function() {
@@ -41309,7 +41309,7 @@ if (typeof String.prototype.includes != 'function') {
       if (_.isNumber(value)) {
         return "" + (Math.round(value * 100)) + "%";
       } else {
-        return "暂缺";
+        return "暫缺";
       }
     };
 
@@ -41317,14 +41317,14 @@ if (typeof String.prototype.includes != 'function') {
       var value;
       value = this.get("age");
       if (_.isNumber(value)) {
-        return "" + value + "岁";
+        return "" + value + "歲";
       } else {
-        return "暂缺";
+        return "暫缺";
       }
     };
 
     Unit.prototype.getString = function(key) {
-      return this.get(key) || "暂缺";
+      return this.get(key) || "暫缺";
     };
 
     Unit.prototype.getFormatString = function(key) {
@@ -41432,7 +41432,7 @@ if (typeof String.prototype.includes != 'function') {
     };
 
     Monster.prototype.getSkinString = function() {
-      return this.getIndexString(["坚硬", "常规", "柔软", "极软", "极硬"], "skin");
+      return this.getIndexString(["堅硬", "常規", "柔軟", "極軟", "極硬"], "skin");
     };
 	
 	Monster.prototype.getSklmaxString = function() {
@@ -41441,7 +41441,7 @@ if (typeof String.prototype.includes != 'function') {
       if (_.isNumber(value)) {
         return "" + (Math.round(value * 10) / 10) + "%";
       } else {
-        return "暂缺";
+        return "暫缺";
       }
     };
 
@@ -41500,7 +41500,7 @@ if (typeof String.prototype.includes != 'function') {
   })(App.Collections.Units);
 
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/main"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/main"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41539,15 +41539,15 @@ if (typeof String.prototype.includes != 'function') {
     }
     (function() {
       (function() {
-        __out.push(_.renderTemplate("templates/desktop/navbar"));
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/navbar"));
       
         __out.push('\n\n');
       
-        __out.push(_.renderTemplate("templates/desktop/mirror_info"));
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/mirror_info"));
       
         __out.push('\n\n<view class="container-fluid" id="collectionView">\n  ');
       
-        __out.push(_.renderTemplate("templates/desktop/pages/loading"));
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/pages/loading"));
       
         __out.push('\n</view>\n\n<view class="container-fluid" id="modelView"></view>\n\n<modal class="modal fade"></modal>\n');
       
@@ -41558,7 +41558,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/mirror_info"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/mirror_info"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41610,7 +41610,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/modals/info"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/modals/info"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41658,7 +41658,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/modals/login"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/modals/login"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41706,7 +41706,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/navbar"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/navbar"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41754,7 +41754,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/navbar_links"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/navbar_links"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41814,7 +41814,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/admin/index"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/admin/index"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41862,7 +41862,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/admin/navbar_extra"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/admin/navbar_extra"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41910,7 +41910,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/changyan"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/changyan"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -41966,7 +41966,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/disqus"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/disqus"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42019,7 +42019,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(window.location.href.replace("#", "#!")));
       
-        __out.push('\';\n  var disqus_config = function () {\n    this.language = "zh";\n  };\n\n  if (typeof DISQUS === "undefined") {\n    /* * * DON\'T EDIT BELOW THIS LINE * * */\n    (function() {\n      var dsq = document.createElement(\'script\');\n      dsq.type = \'text/javascript\'; dsq.async = true;\n      dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';\n      (document.getElementsByTagName(\'head\')[0] || document.getElementsByTagName(\'body\')[0]).appendChild(dsq);\n    })();\n  } else {\n    DISQUS.reset({\n      reload: true,\n      config: function () {\n        this.page.identifier = disqus_identifier;\n        this.page.title = disqus_title;\n        this.page.url = disqus_url;\n        this.language = "zh";\n      }\n    });\n  }\n</script>\n');
+        __out.push('\';\n  var disqus_config = function () {\n    this.language = "zh_tw";\n  };\n\n  if (typeof DISQUS === "undefined") {\n    /* * * DON\'T EDIT BELOW THIS LINE * * */\n    (function() {\n      var dsq = document.createElement(\'script\');\n      dsq.type = \'text/javascript\'; dsq.async = true;\n      dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';\n      (document.getElementsByTagName(\'head\')[0] || document.getElementsByTagName(\'body\')[0]).appendChild(dsq);\n    })();\n  } else {\n    DISQUS.reset({\n      reload: true,\n      config: function () {\n        this.page.identifier = disqus_identifier;\n        this.page.title = disqus_title;\n        this.page.url = disqus_url;\n        this.language = "zh";\n      }\n    });\n  }\n</script>\n');
       
       }).call(this);
       
@@ -42028,7 +42028,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/loading"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/loading"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42076,7 +42076,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/monsters/edit"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/monsters/edit"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42372,7 +42372,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/monsters/index"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/monsters/index"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42420,7 +42420,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/monsters/navbar_extra"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/monsters/navbar_extra"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42468,7 +42468,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/monsters/show"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/monsters/show"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42511,7 +42511,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('/edit">数据补全 / 报错</a></li>\n    <li><a href="#monsters">返回列表页</a></li>\n  </ul>\n\n  <div class="row detail-body">\n    <div class="col-md-5 left-side image">\n      <img src="');
+        __out.push('/edit">數據補全 / 報錯</a></li>\n    <li><a href="#monsters">返回列表頁</a></li>\n  </ul>\n\n  <div class="row detail-body">\n    <div class="col-md-5 left-side image">\n      <img src="');
       
         __out.push(__sanitize(this.model.originalUrl()));
       
@@ -42531,7 +42531,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.getString("aarea")));
       
-        __out.push('<br>\n          韧性：');
+        __out.push('<br>\n          韌性：');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
@@ -42539,16 +42539,16 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.getString("mspd")));
      
-        __out.push('<br>\n          溅射距离：');
+        __out.push('<br>\n          溅射距離：');
       
         __out.push(__sanitize(this.model.getString("sarea")));
 		 
-		__out.push('<br>\n          极限值：');
+		__out.push('<br>\n          極限：');
       
         __out.push(__sanitize(this.model.getSklmaxString()));
       
       
-        __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻数：');
+        __out.push('<br>\n        </p>\n        <p class="col-xs-6">\n          攻數：');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
@@ -42564,7 +42564,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n          皮肤：');
+        __out.push('<br>\n          皮膚：');
       
         __out.push(__sanitize(this.model.getSkinString()));
       
@@ -42580,14 +42580,14 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.getString("sklcd")));
       
-        __out.push('<br><br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          获取方式：');
+        __out.push('<br><br>\n        </p>\n      </div>\n      <div class="row">\n        <p class="col-xs-12">\n          獲取方式：');
       
         __out.push(__sanitize(this.model.getString('obtain')));
       
         __out.push('<br><br>\n          ');
       
         if (this.model.get('remark')) {
-          __out.push('\n            简介：');
+          __out.push('\n            簡介：');
           __out.push(__sanitize(this.model.get('remark')));
           __out.push('<br>\n          ');
         }
@@ -42595,14 +42595,14 @@ if (typeof String.prototype.includes != 'function') {
         __out.push('\n        </p>\n      </div>\n      ');
       
         if (this.model.get('contributors')) {
-          __out.push('\n        <div class="row">\n          <p class="col-xs-12">\n            数据提供者：');
+          __out.push('\n        <div class="row">\n          <p class="col-xs-12">\n            數據提供者：');
           __out.push(__sanitize(this.model.get('contributors').join("、")));
           __out.push('<br>\n          </p>\n        </div>\n      ');
         }
       
         __out.push('\n    </div>\n  </div>\n\n  <div class="row">\n    <div class="col-md-offset-5 col-md-5">\n      ');
       
-        __out.push(_.renderTemplate("templates/desktop/pages/disqus", {
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/pages/disqus", {
           model: this.model
         }));
       
@@ -42615,7 +42615,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/compare"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/compare"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42658,11 +42658,11 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('">返回详情页</a></li>\n  <li><a href="#units">返回列表页</a></li>\n</ul>\n<h3>请选择与 <span class="text-danger">');
+        __out.push('">返回詳情頁</a></li>\n  <li><a href="#units">返回列表頁</a></li>\n</ul>\n<h3>請選擇與 <span class="text-danger">');
       
         __out.push(__sanitize(this.model.getTitleString()));
       
-        __out.push('</span> 对比的卡片：</h3>\n<div class="datatable">\n  <table class="table table-striped table-hover"></table>\n</div>\n');
+        __out.push('</span> 對比的卡片：</h3>\n<div class="datatable">\n  <table class="table table-striped table-hover"></table>\n</div>\n');
       
       }).call(this);
       
@@ -42671,7 +42671,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/double_compare"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/double_compare"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42740,14 +42740,14 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('</small>\n        </h2>\n      </div>\n    </div>\n\n    <div class="clearfix col-xs-12"></div>\n    <div class="col-xs-6">\n      ');
       
-        __out.push(_.renderTemplate("templates/desktop/pages/units/part_compare", {
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/pages/units/part_compare", {
           model: this.collection[1],
           other_model: this.collection[0]
         }));
       
         __out.push('\n    </div>\n    <div class="col-xs-6">\n      ');
       
-        __out.push(_.renderTemplate("templates/desktop/pages/units/part_compare", {
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/pages/units/part_compare", {
           model: this.collection[0],
           other_model: this.collection[1]
         }));
@@ -42769,7 +42769,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/edit"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/edit"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -42876,7 +42876,7 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>风</option>\n            <option value="4" ');
+        __out.push('>風</option>\n            <option value="4" ');
       
         if (this.model.get("element") === 4) {
           __out.push(__sanitize("selected"));
@@ -42904,19 +42904,19 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>斩击</option>\n            <option value="2" ');
+        __out.push('>斬擊</option>\n            <option value="2" ');
       
         if (this.model.get("weapon") === 2) {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>突击</option>\n            <option value="3" ');
+        __out.push('>突擊</option>\n            <option value="3" ');
       
         if (this.model.get("weapon") === 3) {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>打击</option>\n            <option value="4" ');
+        __out.push('>打擊</option>\n            <option value="4" ');
       
         if (this.model.get("weapon") === 4) {
           __out.push(__sanitize("selected"));
@@ -42934,13 +42934,13 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>铳弹</option>\n            <option value="7" ');
+        __out.push('>銃彈</option>\n            <option value="7" ');
       
         if (this.model.get("weapon") === 7) {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>回复</option>\n          </select>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="type" class="col-sm-4 control-label">');
+        __out.push('>恢復</option>\n          </select>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="type" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["type"]));
       
@@ -43136,7 +43136,7 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>国服</option>\n          </select>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="age" class="col-sm-4 control-label">');
+        __out.push('>國服</option>\n          </select>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="age" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["age"]));
       
@@ -43201,7 +43201,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/index"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/index"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -43249,7 +43249,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/navbar_extra"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/navbar_extra"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -43297,7 +43297,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/part_compare"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/part_compare"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -43599,7 +43599,7 @@ if (typeof String.prototype.includes != 'function') {
     return __out.join('');
   };
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["templates/desktop/pages/units/show"] = function(__obj) {
+(function() { this.JST || (this.JST = {}); this.JST["templates/desktop_zh_tw/pages/units/show"] = function(__obj) {
     if (!__obj) __obj = {};
     var __out = [], __capture = function(callback) {
       var out = __out, result;
@@ -43804,7 +43804,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push('\n    </div>\n  </div>\n\n  <div class="row">\n    <div class="col-md-offset-5 col-md-5">\n      ');
       
-        __out.push(_.renderTemplate("templates/desktop/pages/disqus", {
+        __out.push(_.renderTemplate("templates/desktop_zh_tw/pages/disqus", {
           model: this.model
         }));
       
@@ -43828,7 +43828,7 @@ if (typeof String.prototype.includes != 'function') {
       return InfoModal.__super__.constructor.apply(this, arguments);
     }
 
-    InfoModal.prototype.template = _.loadTemplate("templates/desktop/modals/info");
+    InfoModal.prototype.template = _.loadTemplate("templates/desktop_zh_tw/modals/info");
 
     InfoModal.prototype.afterRender = function(title, info) {
       this.$("#modal-title").html(title);
@@ -43851,7 +43851,7 @@ if (typeof String.prototype.includes != 'function') {
       return LoginModal.__super__.constructor.apply(this, arguments);
     }
 
-    LoginModal.prototype.template = _.loadTemplate("templates/desktop/modals/login");
+    LoginModal.prototype.template = _.loadTemplate("templates/desktop_zh_tw/modals/login");
 
     LoginModal.prototype.events = {
       "submit form": "submitForm"
@@ -43895,7 +43895,7 @@ if (typeof String.prototype.includes != 'function') {
       return Admin.__super__.constructor.apply(this, arguments);
     }
 
-    Admin.prototype.template = _.loadTemplate("templates/desktop/pages/admin/index");
+    Admin.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/admin/index");
 
     Admin.prototype.events = {
       "click .action-accept": "accept",
@@ -44025,13 +44025,13 @@ if (typeof String.prototype.includes != 'function') {
           infoEmpty: "显示第 0 至 0 项结果，共 0 项",
           infoFiltered: "(由 _MAX_ 项结果过滤)",
           infoPostFix: "",
-          search: "搜索:",
+          search: "檢索:",
           url: "",
           paginate: {
-            first: "首页",
-            previous: "上页",
-            next: "下页",
-            last: "末页"
+            first: "首頁",
+            previous: "上頁",
+            next: "下頁",
+            last: "末頁"
           }
         }
       });
@@ -44065,7 +44065,7 @@ if (typeof String.prototype.includes != 'function') {
       return AdminNavbarExtra.__super__.constructor.apply(this, arguments);
     }
 
-    AdminNavbarExtra.prototype.template = _.loadTemplate("templates/desktop/pages/admin/navbar_extra");
+    AdminNavbarExtra.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/admin/navbar_extra");
 
     AdminNavbarExtra.prototype.events = {
       "click .dropdown-submenu > a": "triggerHover",
@@ -44132,7 +44132,7 @@ if (typeof String.prototype.includes != 'function') {
       return Loading.__super__.constructor.apply(this, arguments);
     }
 
-    Loading.prototype.template = _.loadTemplate("templates/desktop/pages/loading");
+    Loading.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/loading");
 
     return Loading;
 
@@ -44150,7 +44150,7 @@ if (typeof String.prototype.includes != 'function') {
       return UnitsEdit.__super__.constructor.apply(this, arguments);
     }
 
-    UnitsEdit.prototype.template = _.loadTemplate("templates/desktop/pages/units/edit");
+    UnitsEdit.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/edit");
 
     UnitsEdit.prototype.events = {
       "submit form": "submitForm",
@@ -44213,7 +44213,7 @@ if (typeof String.prototype.includes != 'function') {
         if (this.matchValue(data, value)) {
           this.changedData.push({
             name: data.name,
-            from: value || "暂缺",
+            from: value || "暫缺",
             to: this.formatValue(data)
           });
         }
@@ -44271,7 +44271,7 @@ if (typeof String.prototype.includes != 'function') {
       return MonstersEdit.__super__.constructor.apply(this, arguments);
     }
 
-    MonstersEdit.prototype.template = _.loadTemplate("templates/desktop/pages/monsters/edit");
+    MonstersEdit.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/monsters/edit");
 
     MonstersEdit.prototype.events = _.extend(App.Pages.UnitsEdit.prototype.events, {
       "click .calculator": "showCalculatorModal",
@@ -44316,7 +44316,7 @@ if (typeof String.prototype.includes != 'function') {
       return UnitsNavbarExtra.__super__.constructor.apply(this, arguments);
     }
 
-    UnitsNavbarExtra.prototype.template = _.loadTemplate("templates/desktop/pages/units/navbar_extra");
+    UnitsNavbarExtra.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/navbar_extra");
 
     UnitsNavbarExtra.prototype.events = {
       "click #colvis li": "stopPropagation",
@@ -44372,7 +44372,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
           if (max < value) {
             return false;
           }
-      if ("暂缺" == value || "" == value || undefined == value) {
+      if ("暫缺" == value || "" == value || undefined == value) {
             return false;
           }
           return true;
@@ -44493,7 +44493,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return UnitsIndex.__super__.constructor.apply(this, arguments);
     }
 
-    UnitsIndex.prototype.template = _.loadTemplate("templates/desktop/pages/units/index");
+    UnitsIndex.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/index");
 
     UnitsIndex.prototype.navbarExtraClass = App.Pages.UnitsNavbarExtra;
 
@@ -44632,7 +44632,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
             return model.get("dps");
           }
         }, {
-          title: "总DPS",
+          title: "總DPS",
           data: function(model) {
             return model.get("mdps");
           }
@@ -44728,7 +44728,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
           infoEmpty: "顯示第 0 至 0 項結果，共 0 項",
           infoFiltered: "(由 _MAX_ 項結果過濾)",
           infoPostFix: "",
-          search: "搜索:",
+          search: "檢索:",
           url: "",
           paginate: {
             first: "首頁",
@@ -44792,7 +44792,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return MonstersNavbarExtra.__super__.constructor.apply(this, arguments);
     }
 
-    MonstersNavbarExtra.prototype.template = _.loadTemplate("templates/desktop/pages/monsters/navbar_extra");
+    MonstersNavbarExtra.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/monsters/navbar_extra");
 
     MonstersNavbarExtra.prototype.initDropdown = function() {
       var $skill, skill, skills, _i, _len, _results;
@@ -44825,7 +44825,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return MonstersIndex.__super__.constructor.apply(this, arguments);
     }
 
-    MonstersIndex.prototype.template = _.loadTemplate("templates/desktop/pages/units/index");
+    MonstersIndex.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/index");
 
     MonstersIndex.prototype.navbarExtraClass = App.Pages.MonstersNavbarExtra;
 
@@ -44950,7 +44950,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return MonstersShow.__super__.constructor.apply(this, arguments);
     }
 
-    MonstersShow.prototype.template = _.loadTemplate("templates/desktop/pages/monsters/show");
+    MonstersShow.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/monsters/show");
 
     return MonstersShow;
 
@@ -44970,7 +44970,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return UnitsCompare.__super__.constructor.apply(this, arguments);
     }
 
-    UnitsCompare.prototype.template = _.loadTemplate("templates/desktop/pages/units/compare");
+    UnitsCompare.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/compare");
 
     UnitsCompare.prototype.renderActions = function(data, type, model) {
       return "<a class='glyphicon glyphicon-stats action-compare' " + ("href='#units/" + this.model.id + "/compare/" + model.id + "' data-toggle='tooltip' ") + "data-placement='top' title='数据比较'></a>";
@@ -45002,7 +45002,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return UnitsDoubleCompare.__super__.constructor.apply(this, arguments);
     }
 
-    UnitsDoubleCompare.prototype.template = _.loadTemplate("templates/desktop/pages/units/double_compare");
+    UnitsDoubleCompare.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/double_compare");
 
     return UnitsDoubleCompare;
 
@@ -45020,7 +45020,7 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return UnitsShow.__super__.constructor.apply(this, arguments);
     }
 
-    UnitsShow.prototype.template = _.loadTemplate("templates/desktop/pages/units/show");
+    UnitsShow.prototype.template = _.loadTemplate("templates/desktop_zh_tw/pages/units/show");
 
     return UnitsShow;
 
@@ -45099,9 +45099,9 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
       return Main.__super__.constructor.apply(this, arguments);
     }
 
-    Main.prototype.template = _.loadTemplate("templates/desktop/main");
+    Main.prototype.template = _.loadTemplate("templates/desktop_zh_tw/main");
 
-    Main.prototype.navbar_links_template = _.loadTemplate("templates/desktop/navbar_links");
+    Main.prototype.navbar_links_template = _.loadTemplate("templates/desktop_zh_tw/navbar_links");
 
     Main.prototype.layout = {
       "#collectionView": App.Views.Page,
