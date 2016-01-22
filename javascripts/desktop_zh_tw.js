@@ -41805,7 +41805,7 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("class='active'"));
         }
       
-        __out.push('><a href="#monsters">魔宠</a></li>\n<li><a href="../gacha/">模拟抽卡</a></li>\n<li><a href="../mobile/">手机版</a></li>\n<li><a href="../readme/">关于</a></li>\n');
+        __out.push('><a href="#monsters">魔寵</a></li>\n<li><a href="../gacha/">模擬抽卡</a></li>\n<li><a href="../mobile_zh_tw/">手机版</a></li>\n<li><a href="../readme_zh_tw/">關於</a></li>\n');
       
       }).call(this);
       
@@ -42067,7 +42067,7 @@ if (typeof String.prototype.includes != 'function') {
     }
     (function() {
       (function() {
-        __out.push('<h2 class="loading">\n  页面加载中...\n</h2>\n');
+        __out.push('<h2 class="loading">\n  頁面加載中...\n</h2>\n');
       
       }).call(this);
       
@@ -42119,7 +42119,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('">返回详情页</a></li>\n    <li><a href="#monsters">返回列表页</a></li>\n  </ul>\n\n  <div class="col-xs-12">\n    <div class="page-header">\n      <h2>\n        ');
+        __out.push('">返回詳情頁</a></li>\n    <li><a href="#monsters">返回列表頁</a></li>\n  </ul>\n\n  <div class="col-xs-12">\n    <div class="page-header">\n      <h2>\n        ');
       
         __out.push(__sanitize(this.model.getTitleString()));
       
@@ -42131,7 +42131,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n        <small class="text-danger" id="editing-warning">已有其他人提交了相关数据，管理员正在审核中</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="name" class="col-sm-4 control-label">');
+        __out.push('</small>\n        <small class="text-danger" id="editing-warning">已有其他人提交了相關數據，管理員正在審覈...</small>\n      </h2>\n    </div>\n\n    <form class="form-horizontal">\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="name" class="col-sm-4 control-label">');
       
         __out.push(__sanitize(App.KeyMap["name"]));
       
@@ -42175,7 +42175,7 @@ if (typeof String.prototype.includes != 'function') {
           __out.push(__sanitize("selected"));
         }
       
-        __out.push('>风</option>\n            <option value="4" ');
+        __out.push('>風</option>\n            <option value="4" ');
       
         if (this.model.get("element") === 4) {
           __out.push(__sanitize("selected"));
@@ -44227,7 +44227,7 @@ if (typeof String.prototype.includes != 'function') {
         }
         return this.$confirmModal = this.$("#confirm-modal").modal();
       } else {
-        return App.main.openInfoModal("提交数据", "<p>您没有修改任何数据！</p>");
+        return App.main.openInfoModal("提交數據", "<p>您沒有修改任何數據！</p>");
       }
     };
 
@@ -44247,10 +44247,10 @@ if (typeof String.prototype.includes != 'function') {
       suggestion.set("data", this.changedData);
       return suggestion.save({
         success: function() {
-          return App.main.openInfoModal("提交数据", "<p>您提交的数据已被记录，等待管理员审核中...</p>\n<p>\n  您提交的数据在被管理员审核后，将会更新到图鉴中；<br>\n  同时您的昵称也将会加入图鉴数据提供者名单，感谢您对图鉴的热情与贡献！\n</p>");
+          return App.main.openInfoModal("提交數據", "<p>您提交的數據已被記錄，等待管理員審覈...</p>\n<p>\n  您提交的數據在被管理員審覈後，將會更新到圖鑑中；<br>\n  同時您的昵稱也將會加入圖鑑數據提供者名單。感謝您對圖鑑的熱情與貢獻！\n</p>");
         },
         error: function() {
-          return App.main.openInfoModal("提交数据", "<p>网络错误，请稍候再试...</p>");
+          return App.main.openInfoModal("提交數據", "<p>網絡錯誤，請稍候在試...</p>");
         }
       });
     };
@@ -44721,20 +44721,20 @@ UnitsNavbarExtra.prototype.initDropdown = function() {
         dom: "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-6'i><'col-sm-6'p>>",
         order: [[1, 'desc']],
         language: {
-          processing: "处理中...",
-          lengthMenu: "显示 _MENU_ 项结果",
-          zeroRecords: "没有匹配结果",
-          info: "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-          infoEmpty: "显示第 0 至 0 项结果，共 0 项",
-          infoFiltered: "(由 _MAX_ 项结果过滤)",
+          processing: "處理中...",
+          lengthMenu: "顯示 _MENU_ 項結果",
+          zeroRecords: "沒有匹配結果",
+          info: "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+          infoEmpty: "顯示第 0 至 0 項結果，共 0 項",
+          infoFiltered: "(由 _MAX_ 項結果過濾)",
           infoPostFix: "",
           search: "搜索:",
           url: "",
           paginate: {
-            first: "首页",
-            previous: "上页",
-            next: "下页",
-            last: "末页"
+            first: "首頁",
+            previous: "上頁",
+            next: "下頁",
+            last: "末頁"
           }
         }
       });
