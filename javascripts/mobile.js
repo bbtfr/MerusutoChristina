@@ -6569,9 +6569,9 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getString("hits")));
       
-        __out.push('<br>\n              部位：');
+        __out.push('<br>\n              皮肤：');
       
-        __out.push(__sanitize(this.model.getString("parts")));
+        __out.push(__sanitize(this.model.getSkinString()));
       
         __out.push('<br>\n              攻速：');
       
@@ -7097,9 +7097,9 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     
         __out.push(__sanitize(this.model.getString("hits")));
     
-    __out.push('<br>\n          部位：');
+    __out.push('<br>\n          皮肤：');
     
-        __out.push(__sanitize(this.model.getString("parts")));
+        __out.push(__sanitize(this.model.getSkinString()));
     
     __out.push('<br>\n          攻速：');
     
