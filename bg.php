@@ -1,1 +1,0 @@
-<?php readfile( "./img/" . rand(1,8) . ".png" ); ?>
