@@ -23,7 +23,7 @@ button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:poin
 input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
 input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
 textarea{overflow:auto;vertical-align:top}
-body {background: url(../download/bg.php?.png) no-repeat center top;position: relative;background-size: 100% 100%;background-attachment: fixed;}
+body {background: url(../bg.php?.png) no-repeat center top;position: relative;background-size: 100% 100%;background-attachment: fixed;}
 .clear:after{content:'.';clear:both;display:block;height:0;visibility:hidden;
 line-height:0}
 .clear{zoom:1}
@@ -68,7 +68,7 @@ line-height:0}
 
 
 /* Phone css */
-.phone {background: url(../download/img/730-2.png) no-repeat center -80px;margin:0px auto;top: 1000px;}
+.phone {background: url(../img/730-2.png) no-repeat center -80px;margin:0px auto;top: 1000px;}
 .main_body_android { width: 720px;}
 .main_body_ios {width: 640px; }
 .phone .logo {width: 600px;height: 160px;/* background: url(logo.png) no-repeat; */margin: 40px auto 0;text-indent: -99999px;}

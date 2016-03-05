@@ -268,7 +268,7 @@ input[type=email].form-error,input[type=password].form-error,input[type=text].fo
 }
 #page_login {
 	background-size:100% 100%;
-	background: url(../download/bg.php?.png) no-repeat center top;
+	background: url(../bg.php?.png) no-repeat center top;
 	position: relative;
 	background-size: 100% 100%;
 	background-attachment:fixed;
@@ -276,7 +276,7 @@ input[type=email].form-error,input[type=password].form-error,input[type=text].fo
 #page_login .center-box {
 	box-shadow:0 0 65px #222;
 	padding:30px;
-	background: url(../download/img/730.png)no-repeat right bottom;
+	background: url(../img/730.png)no-repeat right bottom;
 	background-size: 60% 82%;
 	border-radius: 10px;
 	background-color: #FFF;
@@ -771,7 +771,7 @@ div.select:hover {
 	height: 300px;
 	width: 300px;
 	background-size: 100% 100%;
-	background-image: url(http://merusuto.gq/erwm.png);
+	background-image: url(../erwm.png);
 	z-index: 19;
 	margin-left: auto;
 	margin-right: auto;
