@@ -268,7 +268,7 @@ input[type=email].form-error,input[type=password].form-error,input[type=text].fo
 }
 #page_login {
 	background-size:100% 100%;
-	background: url(../bg.php?.png) no-repeat center top;
+	background: url(http://merusutocache.coding.io/bg.php?.png) no-repeat center top;
 	position: relative;
 	background-size: 100% 100%;
 	background-attachment:fixed;
@@ -633,7 +633,7 @@ input[type=submit]:hover,button:hover,.btn:hover {
 	margin:5px 15px 15px;
 }
 #page_index {
-	background:url(http://kujiyou.coding.io/bg.php?.jpg);
+	background:url(http://merusutocache.coding.io/bg.php?.png);
 	background-size:100% 100%;
 	background-attachment:fixed;
 	color:#fff;

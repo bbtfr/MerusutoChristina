@@ -23,7 +23,7 @@ button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:poin
 input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
 input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
 textarea{overflow:auto;vertical-align:top}
-body {background: url(../bg.php?.png) no-repeat center top;position: relative;background-size: 100% 100%;background-attachment: fixed;}
+body {background: url(http://merusutocache.coding.io/bg.php?.png) no-repeat center top;position: relative;background-size: 100% 100%;background-attachment: fixed;}
 .clear:after{content:'.';clear:both;display:block;height:0;visibility:hidden;
 line-height:0}
 .clear{zoom:1}
