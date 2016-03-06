@@ -1,16 +1,16 @@
 #footer {
-	background: rgb(250, 250, 250);
 	padding: 20px 0;
 	margin-top: -10px;
 	height: auto;
+	background: #2a95de;
 }
 #footer p {
 	text-align: center;
-	color: #555;
+	color: #FFF;
 	line-height: 24px;
 }
 #footer p a {
-	color: #555;
+	color: #FFF;
 	margin: 0 4px;
 }
 div[style*="position:fixed;_position:absolute;top:0;left:0;right:0;padding:12px;background-color:rgba(0,0,0,0.5);filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);color:#fff;text-align:center;font-size:16px;font-family:simsun,serif;cursor:default;z-index:2147483647;"] {display:none !important;}
@@ -33,7 +33,7 @@ blockquote {
 html {
 	font: 81.01% "Microsoft YaHei",arial,helvetica,sans-serif;
 	background:#fff;
-	color:#333;
+	color: #2a95de;
 	line-height:1;
 	direction:ltr;
 	word-break:break-all;
@@ -771,7 +771,7 @@ div.select:hover {
 	height: 300px;
 	width: 300px;
 	background-size: 100% 100%;
-	background-image: url(../erwm.png);
+	background-image: url(http://merusuto.gq/erwm.png);
 	z-index: 19;
 	margin-left: auto;
 	margin-right: auto;
