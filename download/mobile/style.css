@@ -1,102 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
-
 html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
 html,body{margin:0;padding:0;font-family:"Microsoft YaHei",Helvetica,Arial,sans-serif;font-size:13px;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;font-weight:normal;line-height:18px;}
 h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;}
-table{border-collapse:collapse;border-spacing:0}
-ol,ul{list-style:none}
-q:before,q:after,blockquote:before,blockquote:after{content:""}
-a:focus{outline:0}
-a:hover,a:active{outline:0}
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}
-audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
-audio:not([controls]){display:none}
-sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
-sup{top:-0.5em}
-sub{bottom:-0.25em}
-img{border:0;-ms-interpolation-mode:bicubic}
-button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}
-button,input{line-height:normal;*overflow:visible}
-button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
-button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}
-input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
-input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
-textarea{overflow:auto;vertical-align:top}
 body {background: url(http://merusutocache.coding.io/bg.php?.png) no-repeat center top;position: relative;background-size: 100% 100%;background-attachment: fixed;background-color: #2a95de;}
-.clear:after{content:'.';clear:both;display:block;height:0;visibility:hidden;
-line-height:0}
-.clear{zoom:1}
-.cf57 {color: #f57;}
-.cffa0c6 {color: #ffa0c6;}
-.mgl10 { margin-left: 10px;}
-.pdl10 { padding-left: 10px;}
-.main_body { width:960px; margin:0px auto; background: url(bg.jpg) no-repeat center 60px ;}
-.logo {width: 600px;height: 160px;/* background: url(logo.png) no-repeat; */margin: 40px 0 0 0;text-indent: -99999px;}
-.downloadbox { width: 960px; margin: 0px auto; }
-.downloadbox p { width: 200px; line-height: 25px; text-align: center; color: #d95e7f;}
-.downloadbox .qr { width: 240px; height: 240px; background: url(qr.png) no-repeat; margin: 80px 140px 20px;}
-.downloadbox .btn { width: 200px; height: 70px; float: left; margin: 0 0 0 50px;}
-.downloadbox .btn a { width: 200px; height: 70px; display:block; text-indent: -99999px;}
-.downloadbox .btn .yueyu a { width: 200px; height: 25px; line-height: 25px; display: inline; text-indent: inherit; text-decoration: underline; color: #d95e7f;}
-.downloadbox .android {background: url(androidbtn.png) no-repeat;}
-.downloadbox .ios {background: url(iosbtn.png) no-repeat;}
-.downloadbox .wp {background: url(wpbtn.png) no-repeat;}
-.downloadbox .coming {background: url(comingbtn.png) no-repeat;}
-.weibobox { width: 960px; margin: 70px auto 50px; }
-.weibo { width: 232px; height: 50px; float: left; line-height: 50px; background: #e1e1e1;}
-.weibo a { width: 232px; height: 50px; display: block; line-height: 50px; text-align: center; color: #aaa; text-decoration: none;}
-.weibo a:hover { background: #fdb4c8; color: #fff;}
-.quotebox { margin: 10px 0;}
-.data h1 { margin: 10px 0; font-size: 18px; font-weight: bolder; color: #7f7f7f;}
-.data p { line-height: 25px; color: #666;font-weight: bold;}
-.data .quote {background:#F9F9F9 url(icon_quote_s.gif) no-repeat 20px 6px; padding-bottom: 5px; margin: 10px 0; padding: 10px 10px 10px 65px; }
-.data .quote blockquote { margin: 0px; padding: 0 65px 5px 0; background: url(icon_quote_e.gif) no-repeat 100% 100%;line-height:1.6em;}
-.data .quote blockquote p {font-weight: normal;	}
-.data .quote a { color: #e0719e; text-decoration: underline;}
-.datatab {}
-.datatab ul li { width: 320px; height: 100px; float: left; background: #ddd;}
-.powered {background: #fff url(smg-bg.png) no-repeat 10px 13px; width: 540px; padding:10px 0px 10px 420px; text-align: left;overflow: hidden;line-height: 19px;color: #999;float: left;}
-.powered p {font-weight: normal; text-align: left;line-height: 19px;color: #999; font-size: 12px;}
-.powered .explanation {border-left: 1px solid #DDD;padding-left: 20px;}
-.history_box {width: 960px; height: 60px; margin: 0px auto 20px; background: #f9f9f9; text-align: center; line-height: 60px; color: #a2a1a0;}
-.wxdownbox { background: #efefef;}
-.wxdownbox h1 { font-size:40px; margin: 10px 0px 50px; text-align: center;}
-.wxdownbox p { font-size: 32px; margin: 10px 0px 50px; line-height: 50px; padding-left: 100px;}
-.wxdownbox p.wxtips { text-align: center; padding: 0px; margin: 20px 0px 50px; color: #aaa;}
-.wxdown {background: url(wxdown.png) no-repeat; width: 518px; height: 518px; margin: 10px auto;}
-
-
 /* Phone css */
 .phone {background: url(../img/730-2.png) no-repeat center -80px;margin:0px auto;top: 1000px;}
 .main_body_android { width: 720px;}
 .main_body_ios {width: 640px; }
-.phone .logo {width: 600px;height: 160px;/* background: url(logo.png) no-repeat; */margin: 40px auto 0;text-indent: -99999px;}
+.phone .logo {width: 600px;height: 160px;margin: 40px auto 0;text-indent: -99999px;}
 .phone .btn {width: 500px;height: 110px;margin: 400px auto;background: #1380cb;cursor:pointer;text-align: center;}
 .phone .btn a {width: 500px;height: 110px;display:block;color: #FFF;line-height: 100px;font-size: 50px;/* left: 10px; */}
-.phone .btn .yueyu a { width: 500px; height: 150px; line-height: 150px; display: block; text-indent: inherit; text-decoration: none; color: #d95e7f; text-align: center; font-size: 32px; }
-.phone .android {/* background: url(androidbtnp.png) no-repeat; */background: #1380cb;}
-.phone .ios {background: url(iosbtnp.png) no-repeat; }
-.phone .wp {background: url(wpbtnp.png) no-repeat; }
-.android_btn a {width: 500px;height: 110px;display: block;text-indent: -99999px;background: url(androidbtnp.png) no-repeat; margin: 0px auto;}
-body.join {background:url(joinbg.png) repeat-x #fff;}
-.join .top { background: url(jointop.png) center 10px no-repeat; padding-top: 394px;}
-.section {border: 1px solid #e3e0e7;border-radius: 6px;margin: 0px 20px 40px ;padding: 2em;padding-top: 30px; background: #fff;}
-.section h1 { font-weight: bolder; font-size: 3em; margin-bottom: 30px; color: #5281b8;}
-.section p {font-size: 2em; line-height: 2em;}
-.section strong { font-weight: bolder;}
-.phone_join { margin: 0px auto;}
-.showbtn { background: url(showbtn.png) no-repeat; width: 26px; height: 26px; margin: 0px auto; background-size: 26px auto;display: block;}
-.hidebtn {-moz-transform:scaleY(-1);-webkit-transform:scaleY(-1);-o-transform:scaleY(-1);transform:scaleY(-1);/*IE*/filter:FlipV;}
-a:link {
-text-decoration: none;
-}
-a:visited {
-text-decoration: none;
-}
-a:hover {
-text-decoration: none;
-}
-a:active {
-text-decoration: none;
-}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:active {text-decoration: none;}

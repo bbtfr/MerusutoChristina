@@ -243,7 +243,7 @@ input[type=submit],button,.btn {
 	display:inline-block;
 }
 input[type=submit]:hover,button:hover,.btn:hover {
-	background:#1380cb;
+	background: #1B87D2;
 	text-decoration:none;
 }
 input[type=email].form-error,input[type=password].form-error,input[type=text].form-error,input[type=url].form-error {
@@ -284,7 +284,7 @@ input[type=email].form-error,input[type=password].form-error,input[type=text].fo
 	background-repeat-x: no-repeat;
 }
 input[type=submit],button,.btn {
-	background: #1380cb;
+	background: #2DA5F7;
 	padding: 0 15px 0 18px;
 	height: 120px;
 	font-size: 30px;
@@ -296,7 +296,7 @@ input[type=submit],button,.btn {
 }
 input[type=submit]:hover,button:hover,.btn:hover {
 	background:r#1380cb;
-	border-color:#1380cb;
+	border-color: #1380cb;
 	box-shadow:#2c3e50 0 0 4px;
 	height: 120px;
 	width: 300px;
@@ -619,19 +619,6 @@ input[type=submit]:hover,button:hover,.btn:hover {
 .main-content input[type=text],.main-content input[type=password] {
 	width:300px;
 }
-.baidu_account img {
-	padding:2px;
-	border:2px solid #0093e1;
-	height:96px;
-	margin-right:15px;
-}
-.baidu_account p {
-	line-height:36px;
-	margin-bottom:0;
-}
-.baidu_account {
-	margin:5px 15px 15px;
-}
 #page_index {
 	background:url(http://tujian.applinzi.com/bg.php?.png);
 	background-size:100% 100%;
@@ -644,7 +631,7 @@ input[type=submit]:hover,button:hover,.btn:hover {
 }
 #page_index .sidebar {
 	background:#2a95de;
-	color:#556366; /*#2a95de*/
+	color:#556366;
 }
 #page_index h1 { background: #2F90D3;; color: #fff; padding: 0 15px; margin: -10px -15px 0; height: 50px; line-height: 50px; z-index: 5; position: relative; }
 #page_index .main-content {
