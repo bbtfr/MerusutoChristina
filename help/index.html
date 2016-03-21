@@ -12,11 +12,11 @@
     if(window.location.href.indexOf("?mobile")<0){
         try{
             if(/Android|webOS|Windows Phone|MeeGo|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
-                window.location.href="./mobile";
+                window.location.href="./mobile/";
             }else if(/iPad/i.test(navigator.userAgent)){
                 window.location.href="./index.html";
             }else{
-                window.location.href="./mobile"
+                window.location.href="./mobile/"
             }
         }catch(e){}
     }
