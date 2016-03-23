@@ -1,17 +1,1 @@
-@charset "utf-8";
-/* CSS Document */
-html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
-html,body{margin:0;padding:0;font-family:"Microsoft YaHei",Helvetica,Arial,sans-serif;font-size:13px;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;font-weight:normal;line-height:18px;}
-h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;}
-body {background: url(http://merusutocache.coding.io/bg.php?.png) no-repeat center top;position: relative;background-size: 100% 100%;background-attachment: fixed;background-color: #2a95de;}
-/* Phone css */
-.phone {background: url(../img/730-2.png) no-repeat center -80px;margin:0px auto;top: 1000px;}
-.main_body_android { width: 720px;}
-.main_body_ios {width: 640px; }
-.phone .logo {width: 600px;height: 160px;margin: 40px auto 0;text-indent: -99999px;}
-.phone .btn {width: 500px;height: 110px;margin: 400px auto;background: #1380cb;cursor:pointer;text-align: center;}
-.phone .btn a {width: 500px;height: 110px;display:block;color: #FFF;line-height: 100px;font-size: 50px;/* left: 10px; */}
-a:link {text-decoration: none;}
-a:visited {text-decoration: none;}
-a:hover {text-decoration: none;}
-a:active {text-decoration: none;}
+@charset "utf-8";html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body,html{margin:0;padding:0;font-family:"Microsoft YaHei",Helvetica,Arial,sans-serif;font-size:13px;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;font-weight:400;line-height:18px}a,abbr,acronym,address,blockquote,button,caption,cite,code,dd,del,dfn,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,img,label,legend,li,ol,p,pre,q,s,samp,small,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,tr,tt,ul,var{margin:0;padding:0;border:0;font-weight:400;font-style:normal;font-size:100%;line-height:1}body{background:url(http://merusutocache.coding.io/bg.php?.png) no-repeat center top;position:relative;background-size:100% 100%;background-attachment:fixed;background-color:#2a95de}.phone{background:url(../img/730-2.png) no-repeat center -80px;margin:0 auto;top:1000px}.main_body_android{width:720px}.main_body_ios{width:640px}.phone .logo{width:600px;height:160px;margin:40px auto 0;text-indent:-99999px}.phone .btn{width:500px;height:110px;margin:400px auto;background:#FFF;cursor:pointer;text-align:center}.phone .btn a{width:500px;height:110px;display:block;color:#333;line-height:100px;font-size:50px;border-color:#000;border-width:2px;border-style:solid}a:link{text-decoration:none}a:visited{text-decoration:none}a:hover{text-decoration:none}a:active{text-decoration:none}
