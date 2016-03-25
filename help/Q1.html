@@ -24,7 +24,7 @@
                 <div class="content-wrapper">
                     <section class="document-content">
                         <div class="document-header">
-                            <h3>Q1:安装时提示“应用未安装”？</h3>
+                            <h3>Q1:无法&nbsp;安装/更新&nbsp;图鉴？</h3>
                         </div>
                         <div class="document-body">
                             <article class="markdown">
@@ -45,9 +45,6 @@
             </div>
         </div>
     </div>
-    <div class="back-to-top" style="display: none;">
-        <a href="#branding" title="回到顶部"><img src="/help/static/img/super-monkey.gif" width="32"></a>
-    </div>
 </div>
 <script>
     jQuery("#document").ready(function () {
@@ -56,39 +53,7 @@
     });
 });
         </script>
-<script>
-    jQuery(document).ready(function () {
-
-        // hide #back-top first
-        jQuery(".back-to-top").hide();
-
-        // fade in #back-top
-        jQuery(function () {
-            jQuery(window).scroll(function () {
-                if (jQuery(this).scrollTop() > 1000) {
-                    jQuery('.back-to-top').fadeIn();
-                } else {
-                    jQuery('.back-to-top').fadeOut();
-                }
-            });
-
-            // scroll body to 0px on click
-            jQuery('.back-to-top a').click(function () {
-                jQuery('body,html,header').animate({
-                    scrollTop: 0
-                }, 800);
-                return false;
-            });
-        });
-
-    });
-    var doSearch = function () {
-        $("#search-form").submit();
-    }
-</script>
-
 </div>
-
 <div id="footer">
 <div class="main">
 <p>
