@@ -30,7 +30,7 @@ a,abbr,acronym,address,blockquote,button,caption,cite,code,dd,del,dfn,dl,dt,em,f
 
 body {
 	position: relative;
-	background: url(http://tujian.applinzi.com/bg.php?.png) no-repeat center top;
+	background: url(http://merusuto.coding.me/download/img/3.png) no-repeat center top;
 	background-color: #2a95de;
 	background-size: 100% 100%;
 	background-attachment: fixed;
@@ -72,7 +72,7 @@ body {
 	height: 110px;
 	border-color: #000;
 	border-style: solid;
-	border-width: 2px;
+	border-width: 4px;
 	color: #333;
 	font-size: 50px;
 	line-height: 100px;
