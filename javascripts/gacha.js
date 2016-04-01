@@ -9327,7 +9327,7 @@ return jQuery;
   Configuration = {
     "骑士契约书（钻石）": {
       id: 1,
-      chance: [1.25, 5.58, 23.89, 69.28],
+      chance: [69.28, 5.58, 23.89, 1.25],
       statistic: [2, 3, 4, 5],
       description: "双三星保底"
     },
