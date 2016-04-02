@@ -17,7 +17,7 @@ html {
 }
 
 body {
-transform: rotate(3deg);
+  margin: 0;
 }
 
 article,
