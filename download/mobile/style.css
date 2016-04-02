@@ -76,11 +76,6 @@ body {
 	color: #333;
 	font-size: 50px;
 	line-height: 100px;
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-	ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-	-moz-transform: rotate(-180deg);
-	-o-transform: rotate(-180deg);
-	-webkit-transform: rotate(-180deg);
 }
 
 a:link {
