@@ -242,6 +242,9 @@
 {"id":589,"atk":0,"life":0,"fire":0,"aqua":0,"wind":0,"light":0,"dark":0,"hits":0,"sklmax":0,"server":1,"name":"暂缺","rare":2,"element":5,"skin":0,"sklsp":0,"sklcd":0,"anum":0,"mspd":0,"aarea":0,"aspd":0,"tenacity":0,"skill":"暂缺。","obtain":"ごちそう神さまとはらぺこ怪物 全域でドロップ","remark":"","parts":1,"sarea":0},
 {"id":590,"atk":0,"life":0,"fire":0,"aqua":0,"wind":0,"light":0,"dark":0,"hits":0,"sklmax":0,"server":1,"name":"ホイッパー","rare":3,"element":3,"skin":2,"sklsp":860,"sklcd":12.3,"anum":1,"mspd":66,"aarea":60,"aspd":2.22,"tenacity":38,"skill":"パライズアサルツ","obtain":"ごちそう神さまとはらぺこ怪物 異形の森「食べちゃいたい」","remark":"","parts":1,"sarea":0},
 {"id":591,"atk":0,"life":0,"fire":0,"aqua":0,"wind":0,"light":0,"dark":0,"hits":0,"sklmax":0,"server":1,"name":"モグマグミ","rare":4,"element":2,"skin":4,"sklsp":600,"sklcd":10.0,"anum":4,"mspd":55,"aarea":70,"aspd":3.20,"tenacity":61,"skill":"ブレイク系 出撃中のユニットの対水属性補正を上昇させる。ユニット当たり5回上限でブレイク系スキルは効果発動し、戦闘不能になるまで効果持続。","obtain":"ごちそう神さまとはらぺこ怪物 ゼラチンタウン「無垢なる飢餓」","remark":"","parts":1,"sarea":0},
+{"id":579,"atk":0,"life":0,"fire":0,"aqua":0,"wind":0,"light":0,"dark":0,"hits":0,"sklmax":0,"server":1,"name":"ヨルノロンド","rare":4,"element":5,"skin":2,"sklsp":570,"sklcd":12.2,"anum":5,"mspd":46,"aarea":90,"aspd":2.82,"tenacity":36,"skill":"イクリーズ系 ダークイクリーズ：出現するすべてのユニットとモンスターの闇属性補正を増加させる(回復行動を除く)。重ね掛け不可で、他のイクリーズ系スキルが発動された場合、効果は上書きされる。","obtain":"暴走モンスター:暴走モンスター ヨルノロンド出現！","remark":"攻击范围125","parts":1,"sarea":0},
+
+
 
 
 {"id":100000,"atk":0,"life":0,"fire":0,"aqua":0,"wind":0,"light":0,"dark":0,"hits":0,"name":"㊥魔·芽衣","rare":4,"element":5,"skin":1,"sklsp":570,"sklcd":12,"anum":3,"mspd":50,"aspd":3.0,"aarea":50,"tenacity":50,"skill":"麻痹：使现身的怪物进入麻痹状态，持续N秒，不能行动。技能效果1Wave只能发动1次。","obtain":"讨厌的胡萝卜：？森「劝慰」/？森「重逢」","remark":"\n被爱人琪亚娜激怒之后魔化的少女，因为某个契机从崩坏的世界来到了梅露可他们身边。\n因为魔化的缘故已经无法正常思维和说话，但浑身还是散发着难以言喻的魅力。","contributors":["荆棘","凛凛蝶"],"parts":1,"sarea":135},
