@@ -1,0 +1,88 @@
+<html><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>使用指南</title>
+  <link rel="shortcut icon" href="/help/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+<header id="header">
+    <div id="top-menu">     
+    <a class="logo clearfix " target="_self">
+        </a><a class="navbar-brand" href="#">&nbsp;&nbsp;梅露可图鉴</a>    
+    </div>
+ </header>
+<div class="main-container">
+    <div class="help-container">
+    <div class="container-wrapper clearfix">       
+        <div class="help-content">
+            
+            <div class="content-body clearfix">
+                <div class="content-wrapper">
+                    <section class="document-content">
+                        <div class="document-header">
+                            <h3>Q5:发现人物DPS排序出错了？</h3>
+                        </div>
+                        <div class="document-body">
+                            <article class="markdown">
+                                <h2>解决方法：</h2>
+                                <p>请确认是否已经点击“等级”--“满觉满级”。</p>
+                            </article>
+                        </div>
+                    </section>
+                    <div class="unfixed clearfix">
+                        <div class="pull-right">
+                            
+                            <a href="../mobile/" class="ask-help">返回帮助列表</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="back-to-top" style="display: none;">
+        <a href="#branding" title="回到顶部"><img src="/help/static/img/super-monkey.gif" width="32"></a>
+    </div>
+</div>
+<script>
+    jQuery("#document").ready(function () {
+    jQuery(".markdown pre code").each(function (i, e) {
+        hljs.highlightBlock(e);
+    });
+});
+        </script>
+<script>
+    jQuery(document).ready(function () {
+
+        // hide #back-top first
+        jQuery(".back-to-top").hide();
+
+        // fade in #back-top
+        jQuery(function () {
+            jQuery(window).scroll(function () {
+                if (jQuery(this).scrollTop() > 1000) {
+                    jQuery('.back-to-top').fadeIn();
+                } else {
+                    jQuery('.back-to-top').fadeOut();
+                }
+            });
+
+            // scroll body to 0px on click
+            jQuery('.back-to-top a').click(function () {
+                jQuery('body,html,header').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+        });
+
+    });
+    var doSearch = function () {
+        $("#search-form").submit();
+    }
+</script>
+
+</div>
+</body>
+</html>
