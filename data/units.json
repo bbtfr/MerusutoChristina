@@ -1005,7 +1005,7 @@
 {"id":1016,"server":1,"title":"[樹声の聴き手]","name":"エイシー","country":"植物之国","rare":4,"element":5,"weapon":2,"type":2,"anum":1,"life":2216,"atk":2293,"mspd":70,"aspd":1.36,"aarea":11,"tenacity":56,"fire":0.86,"aqua":0.86,"wind":0.86,"light":1.7,"dark":1,"hits":0,"age":"16","gender":3,"career":"格闘家","interest":"体を動かすこと","nature":"やさしい","obtain":"\n進化「樹招く苗床」エイシー"},
 {"id":1017,"server":1,"title":"[溺恋の焔術師]","name":"ルカ","country":"魔法之国","rare":3,"element":1,"weapon":5,"type":2,"anum":3,"life":1060,"atk":2260,"mspd":48,"aspd":2.98,"aarea":165,"tenacity":35,"fire":1,"aqua":0.59,"wind":1.7,"light":1,"dark":1,"hits":0,"age":"19","gender":2,"career":"魔法使い","interest":"読書、工作","nature":"きまぐれ","obtain":"\n進化「盲恋の魔術師」ルカ"},
 {"id":1018,"server":1,"title":"[機甲拳の殴手]","name":"ディアン","country":"机械之国","rare":3,"element":4,"weapon":2,"type":3,"anum":1,"life":1770,"atk":2070,"mspd":57,"aspd":1.77,"aarea":13,"tenacity":65,"fire":0.85,"aqua":0.85,"wind":0.85,"light":1,"dark":1.8,"hits":4,"age":"19","gender":3,"career":"格闘家","interest":"機械いじり","nature":"きまぐれ","obtain":"\n進化「機甲の格闘家」ディアン"},
-{"id":1019,"server":1,"title":"[墨潤う妙筆]","name":"きららまる","country":"和之国","rare":4,"element":2,"weapon":4,"type":3,"anum":1,"life":2060,"atk":5071,"mspd":60,"aspd":2.46,"aarea":140,"tenacity":46,"fire":1.5,"aqua":1,"wind":0.67,"light":1,"dark":1,"hits":2,"age":"14","gender":2,"obtain":"\nダイヤ限定★4スカウトフェス「墨潤う妙筆 きららまる」"},
+{"id":1019,"server":1,"title":"[墨潤う妙筆]","name":"きららまる","country":"和之国","rare":4,"element":2,"weapon":4,"type":3,"anum":1,"life":2060,"atk":3560,"mspd":60,"aspd":2.46,"aarea":140,"tenacity":46,"fire":1.5,"aqua":1,"wind":0.67,"light":1,"dark":1,"hits":2,"age":"14","gender":2,"obtain":"\nダイヤ限定★4スカウトフェス「墨潤う妙筆 きららまる」"},
  
  
  
