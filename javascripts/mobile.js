@@ -135,7 +135,7 @@ var Zepto = (function() {
     if (singleTagRE.test(html)) dom = $(document.createElement(RegExp.$1))
 
     if (!dom) {
-      if (html.replace) html = html.replace(tagExpanderRE, "<$1><$2>")
+      if (html.replace) html = html.replace(tagExpanderRE, "<$1></$2>")
       if (name === undefined) name = fragmentRE.test(html) && RegExp.$1
       if (!(name in containers)) name = '*'
 
@@ -2964,12 +2964,12 @@ window.$ === undefined && (window.$ = Zepto)
 
    // List of HTML entities for escaping.
   var escapeMap = {
-    '&': '&',
-    '<': '<',
-    '>': '>',
-    '"': '"',
-    "'": ''',
-    '`': '`'
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '`': '&#x60;'
   };
   var unescapeMap = _.invert(escapeMap);
 
@@ -6299,10 +6299,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6353,10 +6353,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6405,10 +6405,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6471,10 +6471,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6519,10 +6519,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6653,10 +6653,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6865,10 +6865,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6913,10 +6913,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -6965,10 +6965,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -7015,10 +7015,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -7191,10 +7191,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -7243,10 +7243,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -7293,10 +7293,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
@@ -7445,10 +7445,10 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&')
+          .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '>')
-          .replace(/"/g, '"');
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       };
     }
     (function() {
