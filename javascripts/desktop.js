@@ -5112,7 +5112,7 @@ jQuery.extend({
           // Deserialize a standard representation
           tag = ( rtagName.exec( elem ) || [ "", "" ] )[ 1 ].toLowerCase();
           wrap = wrapMap[ tag ] || wrapMap._default;
-          tmp.innerHTML = wrap[ 1 ] + elem.replace( rxhtmlTag, "<$1></$2>" ) + wrap[ 2 ];
+          tmp.innerHTML = wrap[ 1 ] + elem.replace( rxhtmlTag, "<$1><$2>" ) + wrap[ 2 ];
 
           // Descend through wrappers to the right content
           j = wrap[ 0 ];
@@ -5311,7 +5311,7 @@ jQuery.fn.extend({
       if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
         !wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
-        value = value.replace( rxhtmlTag, "<$1></$2>" );
+        value = value.replace( rxhtmlTag, "<$1><$2>" );
 
         try {
           for ( ; i < l; i++ ) {
@@ -41598,7 +41598,7 @@ if (typeof String.prototype.includes != 'function') {
     (function() {
       (function() {
         if (!(location.href.includes("coding") || location.href.includes("merusuto") || (typeof localStorage !== "undefined" && localStorage !== null ? localStorage["mirror-info-disabled"] : void 0))) {
-          __out.push('\n  <div class="container-fluid">\n    <div class="alert alert-info alert-dismissible fade in" id="mirror-alert">\n      <button type="button" class="close" data-dismiss="alert"><span>×</span></button>\n      <h4>梅露可图鉴 国内镜像</h4>\n      <p>为保证服务质量，梅露可图鉴在国内服务器上部属了一份镜像网站，国内用户访问更快更稳定，避免网站偶尔由于不可抗力访问不到！</p>\n      <p>\n        <a href="http://merusuto.coding.me/desktop/" class="btn btn-info">访问国内镜像</a>\n        <button type="button" class="btn btn-default" id="mirror-disable-button">不再显示这条消息</button>\n      </p>\n    </div>\n  </div>\n\n  <script type="text/javascript">\n    $("#mirror-disable-button").click(function() {\n      $("#mirror-alert").alert("close");\n      if (_.isObject(localStorage)) {\n        localStorage["mirror-info-disabled"] = true\n      }\n    })\n  </script>\n');
+          __out.push('\n  <div class="container-fluid">\n    <div class="alert alert-info alert-dismissible fade in" id="mirror-alert">\n      <button type="button" class="close" data-dismiss="alert"><span>×</span></button>\n      <h4>梅露可图鉴 国内镜像</h4>\n      <p>为保证服务质量，梅露可图鉴在国内服务器上部属了一份镜像网站，国内用户访问更快更稳定，避免网站偶尔由于不可抗力访问不到！</p>\n      <p>\n        <a href="http://rhym997.oschina.io/merusuto/desktop/" class="btn btn-info">访问国内镜像</a>\n        <button type="button" class="btn btn-default" id="mirror-disable-button">不再显示这条消息</button>\n      </p>\n    </div>\n  </div>\n\n  <script type="text/javascript">\n    $("#mirror-disable-button").click(function() {\n      $("#mirror-alert").alert("close");\n      if (_.isObject(localStorage)) {\n        localStorage["mirror-info-disabled"] = true\n      }\n    })\n  </script>\n');
         }
       
         __out.push('\n');
@@ -41641,15 +41641,15 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
       (function() {
-        __out.push('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>\n      <h4 class="modal-title" id="modal-title"></h4>\n    </div>\n    <div class="modal-body" id="modal-body"></div>\n    <div class="modal-footer">\n      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n');
+        __out.push('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title" id="modal-title"></h4>\n    </div>\n    <div class="modal-body" id="modal-body"></div>\n    <div class="modal-footer">\n      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>\n    </div>\n  </div><!-- /.modal-content -->\n</div><!-- /.modal-dialog -->\n');
       
       }).call(this);
       
@@ -41689,15 +41689,15 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
       (function() {
-        __out.push('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n      <h4 class="modal-title">用户登录</h4>\n    </div>\n    <form class="form-horizontal">\n      <div class="modal-body">\n        <div class="form-group">\n          <label for="username" class="col-sm-2 control-label">用户名</label>\n          <div class="col-sm-10">\n            <input type="text" class="form-control" id="username" placeholder="用户名">\n          </div>\n        </div>\n        <div class="form-group">\n          <label for="password" class="col-sm-2 control-label">登录密码</label>\n          <div class="col-sm-10">\n            <input type="password" class="form-control" id="password" placeholder="登录密码">\n          </div>\n        </div>\n      </div>\n      <div class="modal-footer">\n        <button type="submit" class="btn btn-primary">登录</button>\n      </div>\n    </form>\n  </div>\n</div>\n');
+        __out.push('<div class="modal-dialog">\n  <div class="modal-content">\n    <div class="modal-header">\n      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\n      <h4 class="modal-title">用户登录</h4>\n    </div>\n    <form class="form-horizontal">\n      <div class="modal-body">\n        <div class="form-group">\n          <label for="username" class="col-sm-2 control-label">用户名</label>\n          <div class="col-sm-10">\n            <input type="text" class="form-control" id="username" placeholder="用户名">\n          </div>\n        </div>\n        <div class="form-group">\n          <label for="password" class="col-sm-2 control-label">登录密码</label>\n          <div class="col-sm-10">\n            <input type="password" class="form-control" id="password" placeholder="登录密码">\n          </div>\n        </div>\n      </div>\n      <div class="modal-footer">\n        <button type="submit" class="btn btn-primary">登录</button>\n      </div>\n    </form>\n  </div>\n</div>\n');
       
       }).call(this);
       
@@ -41737,10 +41737,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -41785,10 +41785,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -41845,10 +41845,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -41893,10 +41893,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -41941,10 +41941,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -41997,10 +41997,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42059,10 +42059,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42107,10 +42107,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42363,7 +42363,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.get("remark")));
       
-        __out.push('</textarea>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="nickname" class="col-sm-4 control-label">数据提供者</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="nickname" id="nickname">\n          <span class="help-block">此处昵称将出现在数据提供者名单中。</span>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="contact" class="col-sm-4 control-label">联系方式</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="contact" id="contact">\n          <span class="help-block">QQ或邮箱，用于问题反馈。</span>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <div class="col-sm-offset-4 col-sm-8">\n          <button type="submit" class="btn btn-primary">提交数据</button>\n        </div>\n      </div>\n    </form>\n  </div>\n\n  <div class="modal fade" id="confirm-modal">\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>\n          <h4 class="modal-title">提交数据</h4>\n        </div>\n        <div class="modal-body">\n          <p>\n            您提交的数据在被管理员审核后，将会更新到图鉴中；同时您的昵称也将会加入图鉴数据提供者名单，感谢您对图鉴的热情与贡献！\n          </p>\n          <p class="text-danger">\n            图鉴数据通常以<a href="http://xn--cckza4aydug8bd3l.gamerch.com/">日文Wiki</a>为准，如果您提交的数据与Wiki上的数据不符，且管理员无法验证数据的正确性时（指您提交的攻击力、血量等数据与Wiki上的数据不同，不包含角色年龄、兴趣、备注等额外数据），会拒绝您提交的数据。<br>\n            想要了解您提交数据的审核状态，请加QQ群：431278467\n          </p>\n          <p>您本次提交的修改包括：</p>\n          <ul id="changelog"></ul>\n          <p>您确定要提交这些修改么？</p>\n        </div>\n        <div class="modal-footer">\n          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\n          <button type="button" class="btn btn-primary" id="confirm-button">确认提交</button>\n        </div>\n      </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n  </div><!-- /.modal -->\n\n  <div class="modal fade" id="calculator-modal">\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>\n          <h4 class="modal-title">魔宠计算器</h4>\n        </div>\n        <div class="modal-body form-horizontal">\n          <div class="form-group">\n            <label for="csize" class="col-xs-3 control-label">体型</label>\n            <div class="col-xs-5">\n              <input type="number" step="any" class="form-control" id="csize">\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="clife" class="col-xs-3 control-label">生命</label>\n            <div class="col-xs-5">\n              <input type="number" class="form-control" id="clife">\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="catk" class="col-xs-3 control-label">攻击</label>\n            <div class="col-xs-5">\n              <input type="number" class="form-control" id="catk">\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="rlife" class="col-xs-3 control-label">初始生命</label>\n            <div class="col-xs-5">\n              <input type="text" class="form-control" id="rlife" readonly>\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="ratk" class="col-xs-3 control-label">初始攻击</label>\n            <div class="col-xs-5">\n              <input type="text" class="form-control" id="ratk" readonly>\n            </div>\n          </div>\n        </div>\n        <div class="modal-footer">\n          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\n          <button type="button" class="btn btn-primary" id="insert-button">插入数据</button>\n        </div>\n      </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n  </div><!-- /.modal -->\n</div>\n\n');
+        __out.push('</textarea>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="nickname" class="col-sm-4 control-label">数据提供者</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="nickname" id="nickname">\n          <span class="help-block">此处昵称将出现在数据提供者名单中。</span>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="contact" class="col-sm-4 control-label">联系方式</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="contact" id="contact">\n          <span class="help-block">QQ或邮箱，用于问题反馈。</span>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <div class="col-sm-offset-4 col-sm-8">\n          <button type="submit" class="btn btn-primary">提交数据</button>\n        </div>\n      </div>\n    </form>\n  </div>\n\n  <div class="modal fade" id="confirm-modal">\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>\n          <h4 class="modal-title">提交数据</h4>\n        </div>\n        <div class="modal-body">\n          <p>\n            您提交的数据在被管理员审核后，将会更新到图鉴中；同时您的昵称也将会加入图鉴数据提供者名单，感谢您对图鉴的热情与贡献！\n          </p>\n          <p class="text-danger">\n            图鉴数据通常以<a href="http://xn--cckza4aydug8bd3l.gamerch.com/">日文Wiki</a>为准，如果您提交的数据与Wiki上的数据不符，且管理员无法验证数据的正确性时（指您提交的攻击力、血量等数据与Wiki上的数据不同，不包含角色年龄、兴趣、备注等额外数据），会拒绝您提交的数据。<br>\n            想要了解您提交数据的审核状态，请加QQ群：431278467\n          </p>\n          <p>您本次提交的修改包括：</p>\n          <ul id="changelog"></ul>\n          <p>您确定要提交这些修改么？</p>\n        </div>\n        <div class="modal-footer">\n          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\n          <button type="button" class="btn btn-primary" id="confirm-button">确认提交</button>\n        </div>\n      </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n  </div><!-- /.modal -->\n\n  <div class="modal fade" id="calculator-modal">\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>\n          <h4 class="modal-title">魔宠计算器</h4>\n        </div>\n        <div class="modal-body form-horizontal">\n          <div class="form-group">\n            <label for="csize" class="col-xs-3 control-label">体型</label>\n            <div class="col-xs-5">\n              <input type="number" step="any" class="form-control" id="csize">\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="clife" class="col-xs-3 control-label">生命</label>\n            <div class="col-xs-5">\n              <input type="number" class="form-control" id="clife">\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="catk" class="col-xs-3 control-label">攻击</label>\n            <div class="col-xs-5">\n              <input type="number" class="form-control" id="catk">\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="rlife" class="col-xs-3 control-label">初始生命</label>\n            <div class="col-xs-5">\n              <input type="text" class="form-control" id="rlife" readonly>\n            </div>\n          </div>\n          <div class="form-group">\n            <label for="ratk" class="col-xs-3 control-label">初始攻击</label>\n            <div class="col-xs-5">\n              <input type="text" class="form-control" id="ratk" readonly>\n            </div>\n          </div>\n        </div>\n        <div class="modal-footer">\n          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\n          <button type="button" class="btn btn-primary" id="insert-button">插入数据</button>\n        </div>\n      </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n  </div><!-- /.modal -->\n</div>\n\n');
       
       }).call(this);
       
@@ -42403,10 +42403,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42451,10 +42451,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42499,10 +42499,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42646,10 +42646,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42702,10 +42702,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -42800,10 +42800,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -43192,7 +43192,7 @@ if (typeof String.prototype.includes != 'function') {
       
         __out.push(__sanitize(this.model.get("remark")));
       
-        __out.push('</textarea>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="nickname" class="col-sm-4 control-label">数据提供者</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="nickname" id="nickname">\n          <span class="help-block">此处昵称将出现在数据提供者名单中。</span>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="contact" class="col-sm-4 control-label">联系方式</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="contact" id="contact">\n          <span class="help-block">QQ或邮箱，用于问题反馈。</span>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <div class="col-sm-offset-4 col-sm-8">\n          <button type="submit" class="btn btn-primary">提交数据</button>\n        </div>\n      </div>\n    </form>\n  </div>\n\n  <div class="modal fade" id="confirm-modal">\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>\n          <h4 class="modal-title">提交数据</h4>\n        </div>\n        <div class="modal-body">\n          <p>\n            您提交的数据在被管理员审核后，将会更新到图鉴中；同时您的昵称也将会加入图鉴数据提供者名单，感谢您对图鉴的热情与贡献！\n          </p>\n          <p class="text-danger">\n            图鉴数据通常以<a href="http://xn--cckza4aydug8bd3l.gamerch.com/">日文Wiki</a>为准，如果您提交的数据与Wiki上的数据不符，且管理员无法验证数据的正确性时（指您提交的攻击力、血量等数据与Wiki上的数据不同，不包含角色年龄、兴趣、备注等额外数据），会拒绝您提交的数据。<br>\n            想要了解您提交数据的审核状态，请加QQ群：431278467\n          </p>\n          <p>您本次提交的修改包括：</p>\n          <ul id="changelog"></ul>\n          <p>您确定要提交这些修改么？</p>\n        </div>\n        <div class="modal-footer">\n          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\n          <button type="button" class="btn btn-primary" id="confirm-button">确认提交</button>\n        </div>\n      </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n  </div><!-- /.modal -->\n</div>\n\n');
+        __out.push('</textarea>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="nickname" class="col-sm-4 control-label">数据提供者</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="nickname" id="nickname">\n          <span class="help-block">此处昵称将出现在数据提供者名单中。</span>\n        </div>\n      </div>\n      <div class="form-group col-sm-6 col-md-4">\n        <label for="contact" class="col-sm-4 control-label">联系方式</label>\n        <div class="col-sm-8">\n          <input type="text" class="form-control" name="contact" id="contact">\n          <span class="help-block">QQ或邮箱，用于问题反馈。</span>\n        </div>\n      </div>\n      <hr class="col-sm-11">\n\n      <div class="form-group col-sm-6 col-md-4">\n        <div class="col-sm-offset-4 col-sm-8">\n          <button type="submit" class="btn btn-primary">提交数据</button>\n        </div>\n      </div>\n    </form>\n  </div>\n\n  <div class="modal fade" id="confirm-modal">\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>\n          <h4 class="modal-title">提交数据</h4>\n        </div>\n        <div class="modal-body">\n          <p>\n            您提交的数据在被管理员审核后，将会更新到图鉴中；同时您的昵称也将会加入图鉴数据提供者名单，感谢您对图鉴的热情与贡献！\n          </p>\n          <p class="text-danger">\n            图鉴数据通常以<a href="http://xn--cckza4aydug8bd3l.gamerch.com/">日文Wiki</a>为准，如果您提交的数据与Wiki上的数据不符，且管理员无法验证数据的正确性时（指您提交的攻击力、血量等数据与Wiki上的数据不同，不包含角色年龄、兴趣、备注等额外数据），会拒绝您提交的数据。<br>\n            想要了解您提交数据的审核状态，请加QQ群：431278467\n          </p>\n          <p>您本次提交的修改包括：</p>\n          <ul id="changelog"></ul>\n          <p>您确定要提交这些修改么？</p>\n        </div>\n        <div class="modal-footer">\n          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>\n          <button type="button" class="btn btn-primary" id="confirm-button">确认提交</button>\n        </div>\n      </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n  </div><!-- /.modal -->\n</div>\n\n');
       
       }).call(this);
       
@@ -43232,10 +43232,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -43280,10 +43280,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -43328,10 +43328,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
@@ -43630,10 +43630,10 @@ if (typeof String.prototype.includes != 'function') {
     if (!__escape) {
       __escape = __obj.escape = function(value) {
         return ('' + value)
-          .replace(/&/g, '&amp;')
+          .replace(/&/g, '&')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/>/g, '>')
+          .replace(/"/g, '"');
       };
     }
     (function() {
