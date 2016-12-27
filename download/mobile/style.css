@@ -30,7 +30,7 @@ a,abbr,acronym,address,blockquote,button,caption,cite,code,dd,del,dfn,dl,dt,em,f
 
 body {
 	position: relative;
-	background: url(http://git.oschina.net/rhym997/merusuto/raw/coding-pages/download/img/3.png) no-repeat center top;
+	background: url(http://rhym997.oschina.io/merusuto/download/img/3.png) no-repeat center top;
 	background-color: #2a95de;
 	background-size: 100% 100%;
 	background-attachment: fixed;
@@ -39,7 +39,7 @@ body {
 .phone {
 	top: 1000px;
 	margin: 0 auto;
-	background: url(http://git.oschina.net/rhym997/merusuto/raw/coding-pages/download/img/730-2.png) no-repeat center -80px;
+	background: url(http://rhym997.oschina.io/merusuto/download/img/730-2.png) no-repeat center -80px;
 }
 
 .main_body_android {
