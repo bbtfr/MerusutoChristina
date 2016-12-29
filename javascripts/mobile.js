@@ -1,4 +1,4 @@
-//     Zepto.js
+ï»¿//     Zepto.js
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
@@ -1712,7 +1712,7 @@ window.$ === undefined && (window.$ = Zepto)
   };
 
   // A mostly-internal function to generate callbacks that can be applied
-  // to each element in a collection, returning the desired result ¡ª either
+  // to each element in a collection, returning the desired result â€” either
   // identity, an arbitrary callback, a property matcher, or a property accessor.
   var cb = function(value, context, argCount) {
     if (value == null) return _.identity;
@@ -1976,7 +1976,7 @@ window.$ === undefined && (window.$ = Zepto)
   };
 
   // Shuffle a collection, using the modern version of the
-  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher¨CYates_shuffle).
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisherâ€“Yates_shuffle).
   _.shuffle = function(obj) {
     var set = isArrayLike(obj) ? obj : _.values(obj);
     var length = set.length;
@@ -5831,43 +5831,43 @@ Backbone.Collection.prototype.where = function(attrs, first) {
 }).call(this);
 (function() {
   App.KeyMap = {
-    title: "³ÆºÅ",
-    name: "ĞÕÃû",
-    rare: "Ï¡ÓĞ¶È",
-    country: "¹ú¼Ò",
-    gender: "ĞÔ±ğ",
-    server: "·şÎñÆ÷",
-    age: "ÄêÁä",
-    career: "Ö°Òµ",
-    interest: "ĞËÈ¤",
-    nature: "ĞÔ¸ñ",
-    element: "ÔªËØ",
-    weapon: "ÎäÆ÷ÀàĞÍ",
-    arms: "ÎäÆ÷",
-    type: "³É³¤",
-    skin: "Æ¤·ô",
-    sarea: "½¦Éä¾àÀë",
-    parts: "²¿Î»",
-    life: "³õÊ¼ÉúÃü",
-    atk: "³õÊ¼¹¥»÷",
-    aarea: "¹¥¾à",
-    anum: "¹¥Êı",
-    aspd: "¹¥ËÙ",
-    tenacity: "ÈÍĞÔ",
-    mspd: "ÒÆËÙ",
-    fire: "»ğ",
-    aqua: "Ë®",
-    wind: "·ç",
-    light: "¹â",
-    dark: "°µ",
-    story: "Í¬°é¹ÊÊÂ",
-    skill: "¼¼ÄÜ",
-    sklcd: "¼¼ÄÜCD",
-    sklsp: "¼¼ÄÜÏûºÄ",
-  sklmax: "¼«ÏŞÖµ",
-    obtain: "»ñÈ¡·½Ê½",
-    remark: "±¸×¢",
-    hits: "¶à¶Î¹¥»÷"
+    title: "ç§°å·",
+    name: "å§“å",
+    rare: "ç¨€æœ‰åº¦",
+    country: "å›½å®¶",
+    gender: "æ€§åˆ«",
+    server: "æœåŠ¡å™¨",
+    age: "å¹´é¾„",
+    career: "èŒä¸š",
+    interest: "å…´è¶£",
+    nature: "æ€§æ ¼",
+    element: "å…ƒç´ ",
+    weapon: "æ­¦å™¨ç±»å‹",
+    arms: "æ­¦å™¨",
+    type: "æˆé•¿",
+    skin: "çš®è‚¤",
+    sarea: "æº…å°„è·ç¦»",
+    parts: "éƒ¨ä½",
+    life: "åˆå§‹ç”Ÿå‘½",
+    atk: "åˆå§‹æ”»å‡»",
+    aarea: "æ”»è·",
+    anum: "æ”»æ•°",
+    aspd: "æ”»é€Ÿ",
+    tenacity: "éŸ§æ€§",
+    mspd: "ç§»é€Ÿ",
+    fire: "ç«",
+    aqua: "æ°´",
+    wind: "é£",
+    light: "å…‰",
+    dark: "æš—",
+    story: "åŒä¼´æ•…äº‹",
+    skill: "æŠ€èƒ½",
+    sklcd: "æŠ€èƒ½CD",
+    sklsp: "æŠ€èƒ½æ¶ˆè€—",
+  sklmax: "æé™å€¼",
+    obtain: "è·å–æ–¹å¼",
+    remark: "å¤‡æ³¨",
+    hits: "å¤šæ®µæ”»å‡»"
   };
 
 }).call(this);
@@ -6044,11 +6044,11 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     };
 
     Unit.prototype.getIndexString = function(strs, key) {
-      return strs[this.get(key) - 1] || "ÔİÈ±";
+      return strs[this.get(key) - 1] || "æš‚ç¼º";
     };
 
     Unit.prototype.getRareString = function() {
-      return this.getIndexString(["¡ï", "¡ï¡ï", "¡ï¡ï¡ï", "¡ï¡ï¡ï¡ï", "¡ï¡ï¡ï¡ï¡ï"], "rare");
+      return this.getIndexString(["â˜…", "â˜…â˜…", "â˜…â˜…â˜…", "â˜…â˜…â˜…â˜…", "â˜…â˜…â˜…â˜…â˜…"], "rare");
     };
 
     Unit.prototype.getElementKey = function() {
@@ -6056,19 +6056,19 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     };
 
     Unit.prototype.getElementString = function() {
-      return this.getIndexString(["»ğ", "Ë®", "·ç", "¹â", "°µ"], "element");
+      return this.getIndexString(["ç«", "æ°´", "é£", "å…‰", "æš—"], "element");
     };
 
     Unit.prototype.getWeaponString = function() {
-      return this.getIndexString(["Õ¶»÷", "Í»»÷", "´ò»÷", "¹­¼ı", "Ä§·¨", "ï¥µ¯", "»Ø¸´"], "weapon");
+      return this.getIndexString(["æ–©å‡»", "çªå‡»", "æ‰“å‡»", "å¼“ç®­", "é­”æ³•", "é“³å¼¹", "å›å¤"], "weapon");
     };
 
     Unit.prototype.getTypeString = function() {
-      return this.getIndexString(["ÔçÊì", "Æ½¾ù", "Íí³É"], "type");
+      return this.getIndexString(["æ—©ç†Ÿ", "å¹³å‡", "æ™šæˆ"], "type");
     };
 
     Unit.prototype.getGenderString = function() {
-      return this.getIndexString(["²»Ã÷", "ÄĞ", "Å®"], "gender");
+      return this.getIndexString(["ä¸æ˜", "ç”·", "å¥³"], "gender");
     };
 
     Unit.prototype.getElementPercentString = function(element) {
@@ -6077,7 +6077,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       if (_.isNumber(value)) {
         return "" + (Math.round(value * 100)) + "%";
       } else {
-        return "ÔİÈ±";
+        return "æš‚ç¼º";
       }
     };
 
@@ -6085,14 +6085,14 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       var value;
       value = this.get("age");
       if (_.isNumber(value)) {
-        return "" + value + "Ëê";
+        return "" + value + "å²";
       } else {
-        return "ÔİÈ±";
+        return "æš‚ç¼º";
       }
     };
 
     Unit.prototype.getString = function(key) {
-      return this.get(key) || "ÔİÈ±";
+      return this.get(key) || "æš‚ç¼º";
     };
 
     Unit.prototype.getFormatString = function(key) {
@@ -6200,7 +6200,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     };
 
     Monster.prototype.getSkinString = function() {
-      return this.getIndexString(["¼áÓ²", "³£¹æ", "ÈáÈí", "¼«Èí", "¼«Ó²"], "skin");
+      return this.getIndexString(["åšç¡¬", "å¸¸è§„", "æŸ”è½¯", "æè½¯", "æç¡¬"], "skin");
     };
   
   Monster.prototype.getSklmaxString = function() {
@@ -6209,12 +6209,12 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       if (_.isNumber(value)) {
         return "" + (Math.round(value * 10) / 10) + "%";
       } else {
-        return "ÔİÈ±";
+        return "æš‚ç¼º";
       }
     };
 
     Monster.prototype.getSkillShortString = function() {
-      return this.get("skill").split("£º")[0].split(/\s/g)[0];
+      return this.get("skill").split("ï¼š")[0].split(/\s/g)[0];
     };
 
     return Monster;
@@ -6362,7 +6362,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     (function() {
       (function() {
         if (!(location.href.indexOf("oschina") >= 0 || location.href.indexOf("merusuto") >= 0 || (typeof localStorage !== "undefined" && localStorage !== null ? localStorage["mirror-info-disabled"] : void 0))) {
-          __out.push('\n  <div class="alert alert-dismissible fade in" id="mirror-alert">\n    <button type="button" class="close" data-dismiss="alert" id="mirror-dismiss-button"><span>¡Á</span></button>\n    <h4>Ã·Â¶¿ÉÍ¼¼ø ¹úÄÚ¾µÏñ</h4>\n    <p>Îª±£Ö¤·şÎñÖÊÁ¿£¬Ã·Â¶¿ÉÍ¼¼øÔÚ¹úÄÚ·şÎñÆ÷ÉÏ²¿ÊôÁËÒ»·İ¾µÏñÍøÕ¾£¬¹úÄÚÓÃ»§·ÃÎÊ¸ü¿ì¸üÎÈ¶¨£¬±ÜÃâÍøÕ¾Å¼¶ûÓÉÓÚ²»¿É¿¹Á¦·ÃÎÊ²»µ½£¡</p>\n    <p>\n      <a href="http://rhym997.oschina.io/merusuto/mobile/" class="btn btn-primary">·ÃÎÊ¹úÄÚ¾µÏñ</a>\n      <button type="button" class="btn" id="mirror-disable-button">²»ÔÙÏÔÊ¾ÕâÌõÏûÏ¢</button>\n    </p>\n  </div>\n\n  <script type="text/javascript">\n    $("#mirror-disable-button").click(function() {\n      $("#mirror-alert").hide();\n      if (_.isObject(localStorage)) {\n        localStorage["mirror-info-disabled"] = true\n      }\n    })\n    $("#mirror-dismiss-button").click(function() {\n      $("#mirror-alert").hide();\n    })\n  </script>\n');
+          __out.push('\n  <div class="alert alert-dismissible fade in" id="mirror-alert">\n    <button type="button" class="close" data-dismiss="alert" id="mirror-dismiss-button"><span>Ã—</span></button>\n    <h4>æ¢…éœ²å¯å›¾é‰´ å›½å†…é•œåƒ</h4>\n    <p>ä¸ºä¿è¯æœåŠ¡è´¨é‡ï¼Œæ¢…éœ²å¯å›¾é‰´åœ¨å›½å†…æœåŠ¡å™¨ä¸Šéƒ¨å±äº†ä¸€ä»½é•œåƒç½‘ç«™ï¼Œå›½å†…ç”¨æˆ·è®¿é—®æ›´å¿«æ›´ç¨³å®šï¼Œé¿å…ç½‘ç«™å¶å°”ç”±äºä¸å¯æŠ—åŠ›è®¿é—®ä¸åˆ°ï¼</p>\n    <p>\n      <a href="http://rhym997.oschina.io/merusuto/mobile/" class="btn btn-primary">è®¿é—®å›½å†…é•œåƒ</a>\n      <button type="button" class="btn" id="mirror-disable-button">ä¸å†æ˜¾ç¤ºè¿™æ¡æ¶ˆæ¯</button>\n    </p>\n  </div>\n\n  <script type="text/javascript">\n    $("#mirror-disable-button").click(function() {\n      $("#mirror-alert").hide();\n      if (_.isObject(localStorage)) {\n        localStorage["mirror-info-disabled"] = true\n      }\n    })\n    $("#mirror-dismiss-button").click(function() {\n      $("#mirror-alert").hide();\n    })\n  </script>\n');
         }
       
         __out.push('\n');
@@ -6545,58 +6545,58 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.get("id")));
       
-        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              ¹¥¾à£º');
+        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              æ”»è·ï¼š');
       
         __out.push(__sanitize(this.model.getString("aarea")));
       
-        __out.push('<br>\n              ÈÍĞÔ£º');
+        __out.push('<br>\n              éŸ§æ€§ï¼š');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
-        __out.push('<br>\n              ÒÆËÙ£º');
+        __out.push('<br>\n              ç§»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n              ½¦Éä¾àÀë£º');
+        __out.push('<br>\n              æº…å°„è·ç¦»ï¼š');
       
         __out.push(__sanitize(this.model.getString("sarea")));
       
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              ¹¥Êı£º');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              æ”»æ•°ï¼š');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
-        __out.push('<br>\n              ¶à¶Î£º');
+        __out.push('<br>\n              å¤šæ®µï¼š');
       
         __out.push(__sanitize(this.model.getString("hits")));
       
-        __out.push('<br>\n              Æ¤·ô£º');
+        __out.push('<br>\n              çš®è‚¤ï¼š');
       
         __out.push(__sanitize(this.model.getSkinString()));
       
-        __out.push('<br>\n              ¹¥ËÙ£º');
+        __out.push('<br>\n              æ”»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n            </p>\n          </div>\n                   <div class="media-info-title">¼¼ÄÜ</div>\n          <p class="media-info">\n            ');
+        __out.push('<br>\n            </p>\n          </div>\n                   <div class="media-info-title">æŠ€èƒ½</div>\n          <p class="media-info">\n            ');
       
         __out.push(__sanitize(this.model.getString("skill")));
       
-        __out.push('<br><br>\n            ¼¼ÄÜÏûºÄ£º');
+        __out.push('<br><br>\n            æŠ€èƒ½æ¶ˆè€—ï¼š');
       
         __out.push(__sanitize(this.model.getString("sklsp")));
       
-        __out.push('<br>\n            ¼¼ÄÜCD£º');
+        __out.push('<br>\n            æŠ€èƒ½CDï¼š');
       
         __out.push(__sanitize(this.model.getString("sklcd")));
       
-        __out.push('<br>\n          </p>\n          <div class="media-info-title">»ñÈ¡·½Ê½</div>\n          <p class="media-info">\n            ');
+        __out.push('<br>\n          </p>\n          <div class="media-info-title">è·å–æ–¹å¼</div>\n          <p class="media-info">\n            ');
       
         __out.push(__sanitize(this.model.getString('obtain')));
       
         __out.push('\n          </p>\n\n          ');
       
         if (this.model.get('remark')) {
-          __out.push('\n            <div class="media-info-title">¼ò½é</div>\n            <p class="media-info">\n              ');
+          __out.push('\n            <div class="media-info-title">ç®€ä»‹</div>\n            <p class="media-info">\n              ');
           __out.push(__sanitize(this.model.get("remark")));
           __out.push('\n            </p>\n          ');
         }
@@ -6604,8 +6604,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         __out.push('\n\n          ');
       
         if (this.model.get('contributors')) {
-          __out.push('\n            <div class="media-info-title">Êı¾İÌá¹©Õß</div>\n            <p class="media-info">\n              ');
-          __out.push(__sanitize(this.model.get('contributors').join("¡¢")));
+          __out.push('\n            <div class="media-info-title">æ•°æ®æä¾›è€…</div>\n            <p class="media-info">\n              ');
+          __out.push(__sanitize(this.model.get('contributors').join("ã€")));
           __out.push('\n            </p>\n          ');
         }
       
@@ -6613,7 +6613,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('/edit">Êı¾İÓĞÎó£¿µã»÷ÕâÀï</a>\n        </div>\n      </div>\n    </div>\n    <div class="slide-handler">\n      <span class="icon icon-right-nav slide-next"></span>\n      <span class="icon icon-left-nav slide-prev"></span>\n    </div>\n  </div>\n</div>\n');
+        __out.push('/edit">æ•°æ®æœ‰è¯¯ï¼Ÿç‚¹å‡»è¿™é‡Œ</a>\n        </div>\n      </div>\n    </div>\n    <div class="slide-handler">\n      <span class="icon icon-right-nav slide-next"></span>\n      <span class="icon icon-left-nav slide-prev"></span>\n    </div>\n  </div>\n</div>\n');
       
       }).call(this);
       
@@ -6679,134 +6679,134 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getString("id")));
       
-        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              ³õÊ¼ÉúÃü£º');
+        __out.push('</small>\n          </h4>\n          <div class="media-info-group">\n            <p class="media-info">\n              åˆå§‹ç”Ÿå‘½ï¼š');
       
         __out.push(__sanitize(this.model.origin.life));
       
-        __out.push('<br>\n              Âú¼¶ÉúÃü£º');
+        __out.push('<br>\n              æ»¡çº§ç”Ÿå‘½ï¼š');
       
         __out.push(__sanitize(this.model.calcMaxLv('life')));
       
-        __out.push('<br>\n              Âú¾õÉúÃü£º');
+        __out.push('<br>\n              æ»¡è§‰ç”Ÿå‘½ï¼š');
       
         __out.push(__sanitize(this.model.calcMaxLvAndGrow('life')));
       
-        __out.push('<br>\n              ³õÊ¼¹¥»÷£º');
+        __out.push('<br>\n              åˆå§‹æ”»å‡»ï¼š');
       
         __out.push(__sanitize(this.model.origin.atk));
       
-        __out.push('<br>\n              Âú¼¶¹¥»÷£º');
+        __out.push('<br>\n              æ»¡çº§æ”»å‡»ï¼š');
       
         __out.push(__sanitize(this.model.calcMaxLv('atk')));
       
-        __out.push('<br>\n              Âú¾õ¹¥»÷£º');
+        __out.push('<br>\n              æ»¡è§‰æ”»å‡»ï¼š');
       
         __out.push(__sanitize(this.model.calcMaxLvAndGrow('atk')));
       
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              ¹¥¾à£º');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              æ”»è·ï¼š');
       
         __out.push(__sanitize(this.model.getString("aarea")));
       
-        __out.push('<br>\n              ¹¥Êı£º');
+        __out.push('<br>\n              æ”»æ•°ï¼š');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
-        __out.push('<br>\n              ¹¥ËÙ£º');
+        __out.push('<br>\n              æ”»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n              ÈÍĞÔ£º');
+        __out.push('<br>\n              éŸ§æ€§ï¼š');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
-        __out.push('<br>\n              ÒÆËÙ£º');
+        __out.push('<br>\n              ç§»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n              ¶à¶Î£º');
+        __out.push('<br>\n              å¤šæ®µï¼š');
       
         __out.push(__sanitize(this.model.getString("hits")));
       
-        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              ³õÊ¼DPS£º');
+        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              åˆå§‹DPSï¼š');
       
         __out.push(__sanitize(Math.round(this.model.origin.dps)));
       
-        __out.push('<br>\n              Âú¼¶DPS£º');
+        __out.push('<br>\n              æ»¡çº§DPSï¼š');
       
         __out.push(__sanitize(Math.round(this.model.calcMaxLv('dps'))));
       
-        __out.push('<br>\n              Âú¾õDPS£º');
+        __out.push('<br>\n              æ»¡è§‰DPSï¼š');
       
         __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrowDPS())));
       
-        __out.push('<br>\n              ³õÊ¼×ÜDPS£º');
+        __out.push('<br>\n              åˆå§‹æ€»DPSï¼š');
       
         __out.push(__sanitize(Math.round(this.model.origin.mdps)));
       
-        __out.push('<br>\n              Âú¼¶×ÜDPS£º');
+        __out.push('<br>\n              æ»¡çº§æ€»DPSï¼š');
       
         __out.push(__sanitize(Math.round(this.model.calcMaxLv('mdps'))));
       
-        __out.push('<br>\n              Âú¾õ×ÜDPS£º');
+        __out.push('<br>\n              æ»¡è§‰æ€»DPSï¼š');
       
         __out.push(__sanitize(Math.round(this.model.calcMaxLvAndGrowMDPS())));
       
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              ³É³¤£º');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              æˆé•¿ï¼š');
       
         __out.push(__sanitize(this.model.getTypeString()));
       
-        __out.push('<br>\n              »ğ£º');
+        __out.push('<br>\n              ç«ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
-        __out.push('<br>\n              Ë®£º');
+        __out.push('<br>\n              æ°´ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("aqua")));
       
-        __out.push('<br>\n              ·ç£º');
+        __out.push('<br>\n              é£ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("wind")));
       
-        __out.push('<br>\n              ¹â£º');
+        __out.push('<br>\n              å…‰ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("light")));
       
-        __out.push('<br>\n              °µ£º');
+        __out.push('<br>\n              æš—ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("dark")));
       
-        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              ¹ú¼Ò£º');
+        __out.push('<br>\n            </p>\n          </div>\n          <div class="media-info-group">\n            <p class="media-info">\n              å›½å®¶ï¼š');
       
         __out.push(__sanitize(this.model.getString('country')));
       
-        __out.push('<br>\n              ĞÔ±ğ£º');
+        __out.push('<br>\n              æ€§åˆ«ï¼š');
       
         __out.push(__sanitize(this.model.getGenderString()));
       
-        __out.push('<br>\n              ÄêÁä£º');
+        __out.push('<br>\n              å¹´é¾„ï¼š');
       
         __out.push(__sanitize(this.model.getString('age')));
       
-        __out.push('<br>\n            </p>\n            <p class="media-info">\n              Ö°Òµ£º');
+        __out.push('<br>\n            </p>\n            <p class="media-info">\n              èŒä¸šï¼š');
       
         __out.push(__sanitize(this.model.getString('career')));
       
-        __out.push('<br>\n              ĞËÈ¤£º');
+        __out.push('<br>\n              å…´è¶£ï¼š');
       
         __out.push(__sanitize(this.model.getString('interest')));
       
-        __out.push('<br>\n              ĞÔ¸ñ£º');
+        __out.push('<br>\n              æ€§æ ¼ï¼š');
       
         __out.push(__sanitize(this.model.getString('nature')));
       
-        __out.push('<br>\n            </p>\n          </div>\n\n          <div class="media-info-title">»ñÈ¡·½Ê½</div>\n          <p class="media-info">\n            ');
+        __out.push('<br>\n            </p>\n          </div>\n\n          <div class="media-info-title">è·å–æ–¹å¼</div>\n          <p class="media-info">\n            ');
       
         __out.push(__sanitize(this.model.getString('obtain')));
       
         __out.push('\n          </p>\n\n          ');
       
         if (this.model.get('remark')) {
-          __out.push('\n            <div class="media-info-title">±¸×¢</div>\n            <p class="media-info">\n              ');
+          __out.push('\n            <div class="media-info-title">å¤‡æ³¨</div>\n            <p class="media-info">\n              ');
           __out.push(__sanitize(this.model.get("remark")));
           __out.push('\n            </p>\n          ');
         }
@@ -6814,8 +6814,8 @@ Backbone.Collection.prototype.where = function(attrs, first) {
         __out.push('\n\n          ');
       
         if (this.model.get('contributors')) {
-          __out.push('\n            <div class="media-info-title">Êı¾İÌá¹©Õß</div>\n            <p class="media-info">\n              ');
-          __out.push(__sanitize(this.model.get('contributors').join("¡¢")));
+          __out.push('\n            <div class="media-info-title">æ•°æ®æä¾›è€…</div>\n            <p class="media-info">\n              ');
+          __out.push(__sanitize(this.model.get('contributors').join("ã€")));
           __out.push('\n            </p>\n          ');
         }
       
@@ -6823,7 +6823,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.id));
       
-        __out.push('/edit">Êı¾İÓĞÎó£¿µã»÷ÕâÀï</a>\n        </div>\n      </div>\n      <!-- <div class="slide disqus">\n        ');
+        __out.push('/edit">æ•°æ®æœ‰è¯¯ï¼Ÿç‚¹å‡»è¿™é‡Œ</a>\n        </div>\n      </div>\n      <!-- <div class="slide disqus">\n        ');
       
         __out.push('\n      </div> -->\n    </div>\n    <div class="slide-handler">\n      <span class="icon icon-right-nav slide-next"></span>\n      <span class="icon icon-left-nav slide-prev"></span>\n    </div>\n  </div>\n</div>\n');
       
@@ -6921,7 +6921,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     }
     (function() {
       (function() {
-        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      É¸Ñ¡\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">Ï¡ÓĞ¶È</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">È«²¿</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">¡ï¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">¡ï¡ï¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="[3,4]">¡ï¡ï¡ïÒÔÉÏ</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">ÔªËØ</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">È«²¿</a></li>\n          <li><a class="filter" data-key="element" data-value="1">»ğ</a></li>\n          <li><a class="filter" data-key="element" data-value="2">Ë®</a></li>\n          <li><a class="filter" data-key="element" data-value="3">·ç</a></li>\n          <li><a class="filter" data-key="element" data-value="4">¹â</a></li>\n          <li><a class="filter" data-key="element" data-value="5">°µ</a></li>\n          <li><a class="filter" data-key="element" data-value="[1,2,3]">»ğ/Ë®/·ç</a></li>\n   </ul>\n      </li> <li class="dropdown-submenu pull-left">\n        <a class="">Æ¤·ô</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="skin">È«²¿</a></li>\n          <li><a class="filter" data-key="skin" data-value="1">¼áÓ²</a></li>\n          <li><a class="filter" data-key="skin" data-value="2">³£¹æ</a></li>\n          <li><a class="filter" data-key="skin" data-value="3">ÈáÈí</a></li>\n          <li><a class="filter" data-key="skin" data-value="4">¼«Èí</a></li>\n          <li><a class="filter" data-key="skin" data-value="5">¼«Ó²</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">¼¼ÄÜ</a>\n        <ul class="dropdown-menu" id="skill">\n          <li><a class="filter-reset" data-key="skill-sc">È«²¿</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">ĞÂÆ·ÉÏ¼Ü</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="server">È«²¿</a></li>\n          <li><a class="filter" data-key="server" data-value="1">ÈÕ·ş</a></li>\n          <li><a class="filter" data-key="server" data-value="2">¹ú·ş</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">ÖØÖÃ</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      ÅÅĞò\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">Ï¡ÓĞ¶È</a></li>\n      <li><a class="sort-mode" data-key="dps">µ¥ÌåDPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">¶àÌåDPS</a></li>\n      <li><a class="sort-mode" data-key="life">ÉúÃüÁ¦</a></li>\n      <li><a class="sort-mode" data-key="atk">¹¥»÷</a></li>\n      <li><a class="sort-mode" data-key="aarea">¹¥»÷¾àÀë</a></li>\n      <li><a class="sort-mode" data-key="anum">¹¥»÷ÊıÁ¿</a></li>\n      <li><a class="sort-mode" data-key="aspd">¹¥»÷ËÙ¶È</a></li>\n      <li><a class="sort-mode" data-key="tenacity">ÈÍĞÔ</a></li>\n      <li><a class="sort-mode" data-key="mspd">ÒÆ¶¯ËÙ¶È</a></li>\n      <li><a class="sort-mode" data-key="sklmax">¼«ÏŞÖµ</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
+        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      ç­›é€‰\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">ç¨€æœ‰åº¦</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">â˜…â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">â˜…â˜…â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="[3,4]">â˜…â˜…â˜…ä»¥ä¸Š</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">å…ƒç´ </a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="element" data-value="1">ç«</a></li>\n          <li><a class="filter" data-key="element" data-value="2">æ°´</a></li>\n          <li><a class="filter" data-key="element" data-value="3">é£</a></li>\n          <li><a class="filter" data-key="element" data-value="4">å…‰</a></li>\n          <li><a class="filter" data-key="element" data-value="5">æš—</a></li>\n          <li><a class="filter" data-key="element" data-value="[1,2,3]">ç«/æ°´/é£</a></li>\n   </ul>\n      </li> <li class="dropdown-submenu pull-left">\n        <a class="">çš®è‚¤</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="skin">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="skin" data-value="1">åšç¡¬</a></li>\n          <li><a class="filter" data-key="skin" data-value="2">å¸¸è§„</a></li>\n          <li><a class="filter" data-key="skin" data-value="3">æŸ”è½¯</a></li>\n          <li><a class="filter" data-key="skin" data-value="4">æè½¯</a></li>\n          <li><a class="filter" data-key="skin" data-value="5">æç¡¬</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æŠ€èƒ½</a>\n        <ul class="dropdown-menu" id="skill">\n          <li><a class="filter-reset" data-key="skill-sc">å…¨éƒ¨</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æ–°å“ä¸Šæ¶</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="server">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="server" data-value="1">æ—¥æœ</a></li>\n          <li><a class="filter" data-key="server" data-value="2">å›½æœ</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">é‡ç½®</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      æ’åº\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">ç¨€æœ‰åº¦</a></li>\n      <li><a class="sort-mode" data-key="dps">å•ä½“DPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">å¤šä½“DPS</a></li>\n      <li><a class="sort-mode" data-key="life">ç”Ÿå‘½åŠ›</a></li>\n      <li><a class="sort-mode" data-key="atk">æ”»å‡»</a></li>\n      <li><a class="sort-mode" data-key="aarea">æ”»å‡»è·ç¦»</a></li>\n      <li><a class="sort-mode" data-key="anum">æ”»å‡»æ•°é‡</a></li>\n      <li><a class="sort-mode" data-key="aspd">æ”»å‡»é€Ÿåº¦</a></li>\n      <li><a class="sort-mode" data-key="tenacity">éŸ§æ€§</a></li>\n      <li><a class="sort-mode" data-key="mspd">ç§»åŠ¨é€Ÿåº¦</a></li>\n      <li><a class="sort-mode" data-key="sklmax">æé™å€¼</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
       
         __out.push(__sanitize(this.title));
       
@@ -7071,75 +7071,75 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.get("atk")));
       
-        __out.push('</span>          ¹¥¾à£º');
+        __out.push('</span>          æ”»è·ï¼š');
 
         __out.push(__sanitize(this.model.getString("aarea")));
     
-    __out.push('<br>\n          ÈÍĞÔ£º');
+    __out.push('<br>\n          éŸ§æ€§ï¼š');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
-        __out.push('<br>\n          ÒÆËÙ£º');
+        __out.push('<br>\n          ç§»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n          ½¦Éä¾àÀë£º');
+        __out.push('<br>\n          æº…å°„è·ç¦»ï¼š');
       
         __out.push(__sanitize(this.model.getString("sarea")));
       
         __out.push('<br>\n        </p>\n        <p class="media-info">');
     
-    __out.push('          ¹¥Êı£º');
+    __out.push('          æ”»æ•°ï¼š');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
-    __out.push('<br>\n          ¶à¶Î£º');
+    __out.push('<br>\n          å¤šæ®µï¼š');
     
         __out.push(__sanitize(this.model.getString("hits")));
     
-    __out.push('<br>\n          Æ¤·ô£º');
+    __out.push('<br>\n          çš®è‚¤ï¼š');
     
         __out.push(__sanitize(this.model.getSkinString()));
     
-    __out.push('<br>\n          ¹¥ËÙ£º');
+    __out.push('<br>\n          æ”»é€Ÿï¼š');
     
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n        </p>\n        <p style="display: none;" class="media-info hidden-xs">\n          »ğ£º');
+        __out.push('<br>\n        </p>\n        <p style="display: none;" class="media-info hidden-xs">\n          ç«ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
-        __out.push('<br>\n          Ë®£º');
+        __out.push('<br>\n          æ°´ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("aqua")));
       
-        __out.push('<br>\n          ·ç£º');
+        __out.push('<br>\n          é£ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("wind")));
       
-        __out.push('<br>\n          ¹â£º');
+        __out.push('<br>\n          å…‰ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("light")));
       
         __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">');
     
-        //__out.push('          Æ¤·ô£º');
+        //__out.push('          çš®è‚¤ï¼š');
       
         //__out.push(__sanitize(this.model.getSkinString()));
     
-    __out.push('          ¼«ÏŞÖµ£º');
+    __out.push('          æé™å€¼ï¼š');
       
         __out.push(__sanitize(this.model.getSklmaxString()));
     
-        __out.push('<br>\n          ¼¼ÄÜ£º');
+        __out.push('<br>\n          æŠ€èƒ½ï¼š');
       
         __out.push(__sanitize(this.model.getString("skill-sc")));
     
-    __out.push('<br>\n          ¼¼ÄÜCD£º');
+    __out.push('<br>\n          æŠ€èƒ½CDï¼š');
       
         __out.push(__sanitize(this.model.getString("sklcd")));
     
-    __out.push('<br>\n          ¼¼ÄÜSP£º');
+    __out.push('<br>\n          æŠ€èƒ½SPï¼š');
       
         __out.push(__sanitize(this.model.getString("sklsp")));
       
@@ -7199,7 +7199,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     }
     (function() {
       (function() {
-        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      É¸Ñ¡\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">Ï¡ÓĞ¶È</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">È«²¿</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">¡ï¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">¡ï¡ï¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="5">¡ï¡ï¡ï¡ï¡ï</a></li>\n          <li><a class="filter" data-key="rare" data-value="[3,4,5]">¡ï¡ï¡ïÒÔÉÏ</a></li>\n          <li><a class="filter" data-key="rare" data-value="[4,5]">¡ï¡ï¡ï¡ïÒÔÉÏ</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">ÔªËØ</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">È«²¿</a></li>\n          <li><a class="filter" data-key="element" data-value="1">»ğ</a></li>\n          <li><a class="filter" data-key="element" data-value="2">Ë®</a></li>\n          <li><a class="filter" data-key="element" data-value="3">·ç</a></li>\n          <li><a class="filter" data-key="element" data-value="4">¹â</a></li>\n          <li><a class="filter" data-key="element" data-value="5">°µ</a></li>\n          <li><a class="filter" data-key="element" data-value="[1,2,3]">»ğ/Ë®/·ç</a></li>\n          <li><a class="filter" data-key="element" data-value="[4,5]">¹â/°µ</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">ÎäÆ÷</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="weapon">È«²¿</a></li>\n          <li><a class="filter" data-key="weapon" data-value="1">Õ¶»÷</a></li>\n          <li><a class="filter" data-key="weapon" data-value="2">Í»»÷</a></li>\n          <li><a class="filter" data-key="weapon" data-value="3">´ò»÷</a></li>\n          <li><a class="filter" data-key="weapon" data-value="4">¹­¼ı</a></li>\n          <li><a class="filter" data-key="weapon" data-value="5">Ä§·¨</a></li>\n          <li><a class="filter" data-key="weapon" data-value="6">ï¥µ¯</a></li>\n          <li><a class="filter" data-key="weapon" data-value="7">»Ø¸´</a></li>\n          <li><a class="filter" data-key="weapon" data-value="[1,2,3]">Õ¶/Í»/´ò</a></li>\n          <li><a class="filter" data-key="weapon" data-value="[4,5,6]">¹­/Ä§/ï¥</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">³É³¤</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="type">È«²¿</a></li>\n          <li><a class="filter" data-key="type" data-value="1">ÔçÊì</a></li>\n          <li><a class="filter" data-key="type" data-value="2">Æ½¾ù</a></li>\n          <li><a class="filter" data-key="type" data-value="3">Íí³É</a></li>\n        </ul>\n      </li>\n    <li class="dropdown-submenu pull-left">\n        <a class="">ÄêÁä</a>\n        <ul class="dropdown-menu" id="age">\n          <li><a class="filter-reset" data-key="age">È«²¿</a></li>\n          <li><a class="filter" data-key="age" data-value="0-10">10ËêÒÔÏÂ</a></li>\n          <li><a class="filter" data-key="age" data-value="11-15">11ÖÁ15Ëê</a></li>\n          <li><a class="filter" data-key="age" data-value="16-20">16ÖÁ20Ëê</a></li>\n          <li><a class="filter" data-key="age" data-value="21-25">21ÖÁ25Ëê</a></li>\n          <li><a class="filter" data-key="age" data-value="26-30">26ÖÁ30Ëê</a></li>\n          <li><a class="filter" data-key="age" data-value="31-35">31ÖÁ35Ëê</a></li>\n          <li><a class="filter" data-key="age" data-value="36-40">36ÖÁ40Ëê</a></li>\n          <li><a class="filter" data-key="age" data-value="41-1000">40ËêÒÔÉÏ</a></li>\n        </ul>\n      </li>\n    <li class="dropdown-submenu pull-left">\n        <a class="">¹¥»÷¾àÀë</a>\n        <ul class="dropdown-menu" id="aarea">\n          <li><a class="filter-reset" data-key="aarea">È«²¿</a></li>\n          <li><a class="filter" data-key="aarea" data-value="0-50">½ü³Ì</a></li>\n          <li><a class="filter" data-key="aarea" data-value="50-150">ÖĞ³Ì</a></li>\n          <li><a class="filter" data-key="aarea" data-value="150-500">Ô¶³Ì</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">¹¥»÷ÊıÁ¿</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="anum">È«²¿</a></li>\n          <li><a class="filter" data-key="anum" data-value="1">1Ìå</a></li>\n          <li><a class="filter" data-key="anum" data-value="2">2Ìå</a></li>\n          <li><a class="filter" data-key="anum" data-value="3">3Ìå</a></li>\n          <li><a class="filter" data-key="anum" data-value="4">4Ìå</a></li>\n          <li><a class="filter" data-key="anum" data-value="5">5Ìå</a></li>\n          <li><a class="filter" data-key="anum" data-value="[2,3]">2/3Ìå</a></li>\n          <li><a class="filter" data-key="anum" data-value="[4,5]">4/5Ìå</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">ĞÔ±ğ</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="gender">È«²¿</a></li>\n          <li><a class="filter" data-key="gender" data-value="1">²»Ã÷</a></li>\n          <li><a class="filter" data-key="gender" data-value="2">ÄĞ</a></li>\n          <li><a class="filter" data-key="gender" data-value="3">Å®</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">ĞÂÆ·ÉÏ¼Ü</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="server">È«²¿</a></li>\n          <li><a class="filter" data-key="server" data-value="1">ÈÕ·ş</a></li>\n          <li><a class="filter" data-key="server" data-value="2">¹ú·ş</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">½»»»Ëù</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="exchange">È«²¿</a></li>\n          <li><a class="filter" data-key="exchange" data-value="1">Àú´ú½»»»ËùÈËÎï</a></li>\n          <li><a class="filter" data-key="exchange" data-value="2">Àú´ú»î¶¯ÈËÎï</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">¹ú±ğ</a>\n        <ul class="dropdown-menu" id="country">\n          <li><a class="filter-reset" data-key="country">È«²¿</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">ÖØÖÃ</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      ÅÅĞò\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">Ï¡ÓĞ¶È</a></li>\n      <li><a class="sort-mode" data-key="dps">µ¥ÌåDPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">¶àÌåDPS</a></li>\n      <li><a class="sort-mode" data-key="life">ÉúÃüÁ¦</a></li>\n      <li><a class="sort-mode" data-key="atk">¹¥»÷</a></li>\n      <li><a class="sort-mode" data-key="aarea">¹¥»÷¾àÀë</a></li>\n      <li><a class="sort-mode" data-key="anum">¹¥»÷ÊıÁ¿</a></li>\n      <li><a class="sort-mode" data-key="aspd">¹¥»÷ËÙ¶È</a></li>\n      <li><a class="sort-mode" data-key="tenacity">ÈÍĞÔ</a></li>\n      <li><a class="sort-mode" data-key="mspd">ÒÆ¶¯ËÙ¶È</a></li>\n      <li><a class="sort-mode" data-key="hits">¶à¶Î¹¥»÷</a></li>\n      <li><a class="sort-mode" data-key="sklmax">ĞÂÆ·ÉÏ¼Ü</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      µÈ¼¶\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="level-mode" data-key="zero">Áã¾õÁã¼¶</a></li>\n      <li><a class="level-mode" data-key="mxlv">Áã¾õÂú¼¶</a></li>\n      <li><a class="level-mode" data-key="mxlvgr">Âú¾õÂú¼¶</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
+        __out.push('<header class="bar bar-nav">\n\n  <div class="input-icon input-search" style="display:none;">\n    <span class="icon icon-search"></span>\n    <input type="search" placeholder="Search">\n    <a class="icon icon-close pull-right search-close"></a>\n  </div>\n\n  <a class="icon icon-bars pull-left" sref="#toggle-sidebar"></a>\n  <a class="icon icon-search pull-right search-open"></a>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      ç­›é€‰\n    </a>\n    <ul class="dropdown-menu">\n      <li class="dropdown-submenu pull-left">\n        <a class="">ç¨€æœ‰åº¦</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="rare">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="rare" data-value="1">â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="2">â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="3">â˜…â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="4">â˜…â˜…â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="5">â˜…â˜…â˜…â˜…â˜…</a></li>\n          <li><a class="filter" data-key="rare" data-value="[3,4,5]">â˜…â˜…â˜…ä»¥ä¸Š</a></li>\n          <li><a class="filter" data-key="rare" data-value="[4,5]">â˜…â˜…â˜…â˜…ä»¥ä¸Š</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">å…ƒç´ </a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="element">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="element" data-value="1">ç«</a></li>\n          <li><a class="filter" data-key="element" data-value="2">æ°´</a></li>\n          <li><a class="filter" data-key="element" data-value="3">é£</a></li>\n          <li><a class="filter" data-key="element" data-value="4">å…‰</a></li>\n          <li><a class="filter" data-key="element" data-value="5">æš—</a></li>\n          <li><a class="filter" data-key="element" data-value="[1,2,3]">ç«/æ°´/é£</a></li>\n          <li><a class="filter" data-key="element" data-value="[4,5]">å…‰/æš—</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æ­¦å™¨</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="weapon">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="weapon" data-value="1">æ–©å‡»</a></li>\n          <li><a class="filter" data-key="weapon" data-value="2">çªå‡»</a></li>\n          <li><a class="filter" data-key="weapon" data-value="3">æ‰“å‡»</a></li>\n          <li><a class="filter" data-key="weapon" data-value="4">å¼“ç®­</a></li>\n          <li><a class="filter" data-key="weapon" data-value="5">é­”æ³•</a></li>\n          <li><a class="filter" data-key="weapon" data-value="6">é“³å¼¹</a></li>\n          <li><a class="filter" data-key="weapon" data-value="7">å›å¤</a></li>\n          <li><a class="filter" data-key="weapon" data-value="[1,2,3]">æ–©/çª/æ‰“</a></li>\n          <li><a class="filter" data-key="weapon" data-value="[4,5,6]">å¼“/é­”/é“³</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æˆé•¿</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="type">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="type" data-value="1">æ—©ç†Ÿ</a></li>\n          <li><a class="filter" data-key="type" data-value="2">å¹³å‡</a></li>\n          <li><a class="filter" data-key="type" data-value="3">æ™šæˆ</a></li>\n        </ul>\n      </li>\n    <li class="dropdown-submenu pull-left">\n        <a class="">å¹´é¾„</a>\n        <ul class="dropdown-menu" id="age">\n          <li><a class="filter-reset" data-key="age">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="age" data-value="0-10">10å²ä»¥ä¸‹</a></li>\n          <li><a class="filter" data-key="age" data-value="11-15">11è‡³15å²</a></li>\n          <li><a class="filter" data-key="age" data-value="16-20">16è‡³20å²</a></li>\n          <li><a class="filter" data-key="age" data-value="21-25">21è‡³25å²</a></li>\n          <li><a class="filter" data-key="age" data-value="26-30">26è‡³30å²</a></li>\n          <li><a class="filter" data-key="age" data-value="31-35">31è‡³35å²</a></li>\n          <li><a class="filter" data-key="age" data-value="36-40">36è‡³40å²</a></li>\n          <li><a class="filter" data-key="age" data-value="41-1000">40å²ä»¥ä¸Š</a></li>\n        </ul>\n      </li>\n    <li class="dropdown-submenu pull-left">\n        <a class="">æ”»å‡»è·ç¦»</a>\n        <ul class="dropdown-menu" id="aarea">\n          <li><a class="filter-reset" data-key="aarea">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="aarea" data-value="0-50">è¿‘ç¨‹</a></li>\n          <li><a class="filter" data-key="aarea" data-value="50-150">ä¸­ç¨‹</a></li>\n          <li><a class="filter" data-key="aarea" data-value="150-500">è¿œç¨‹</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æ”»å‡»æ•°é‡</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="anum">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="anum" data-value="1">1ä½“</a></li>\n          <li><a class="filter" data-key="anum" data-value="2">2ä½“</a></li>\n          <li><a class="filter" data-key="anum" data-value="3">3ä½“</a></li>\n          <li><a class="filter" data-key="anum" data-value="4">4ä½“</a></li>\n          <li><a class="filter" data-key="anum" data-value="5">5ä½“</a></li>\n          <li><a class="filter" data-key="anum" data-value="[2,3]">2/3ä½“</a></li>\n          <li><a class="filter" data-key="anum" data-value="[4,5]">4/5ä½“</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æ€§åˆ«</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="gender">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="gender" data-value="1">ä¸æ˜</a></li>\n          <li><a class="filter" data-key="gender" data-value="2">ç”·</a></li>\n          <li><a class="filter" data-key="gender" data-value="3">å¥³</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">æ–°å“ä¸Šæ¶</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="server">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="server" data-value="1">æ—¥æœ</a></li>\n          <li><a class="filter" data-key="server" data-value="2">å›½æœ</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">äº¤æ¢æ‰€</a>\n        <ul class="dropdown-menu">\n          <li><a class="filter-reset" data-key="exchange">å…¨éƒ¨</a></li>\n          <li><a class="filter" data-key="exchange" data-value="1">å†ä»£äº¤æ¢æ‰€äººç‰©</a></li>\n          <li><a class="filter" data-key="exchange" data-value="2">å†ä»£æ´»åŠ¨äººç‰©</a></li>\n        </ul>\n      </li>\n      <li class="dropdown-submenu pull-left">\n        <a class="">å›½åˆ«</a>\n        <ul class="dropdown-menu" id="country">\n          <li><a class="filter-reset" data-key="country">å…¨éƒ¨</a></li>\n        </ul>\n      </li>\n      <li class="divider"></li>\n      <li><a class="filter-reset">é‡ç½®</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      æ’åº\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="sort-mode" data-key="rare">ç¨€æœ‰åº¦</a></li>\n      <li><a class="sort-mode" data-key="dps">å•ä½“DPS</a></li>\n      <li><a class="sort-mode" data-key="mdps">å¤šä½“DPS</a></li>\n      <li><a class="sort-mode" data-key="life">ç”Ÿå‘½åŠ›</a></li>\n      <li><a class="sort-mode" data-key="atk">æ”»å‡»</a></li>\n      <li><a class="sort-mode" data-key="aarea">æ”»å‡»è·ç¦»</a></li>\n      <li><a class="sort-mode" data-key="anum">æ”»å‡»æ•°é‡</a></li>\n      <li><a class="sort-mode" data-key="aspd">æ”»å‡»é€Ÿåº¦</a></li>\n      <li><a class="sort-mode" data-key="tenacity">éŸ§æ€§</a></li>\n      <li><a class="sort-mode" data-key="mspd">ç§»åŠ¨é€Ÿåº¦</a></li>\n      <li><a class="sort-mode" data-key="hits">å¤šæ®µæ”»å‡»</a></li>\n      <li><a class="sort-mode" data-key="sklmax">æ–°å“ä¸Šæ¶</a></li>\n    </ul>\n  </div>\n  <div class="dropdown pull-right">\n    <a class="btn btn-link dropdown-toggle">\n      ç­‰çº§\n    </a>\n    <ul class="dropdown-menu">\n      <li class="active"><a class="level-mode" data-key="zero">é›¶è§‰é›¶çº§</a></li>\n      <li><a class="level-mode" data-key="mxlv">é›¶è§‰æ»¡çº§</a></li>\n      <li><a class="level-mode" data-key="mxlvgr">æ»¡è§‰æ»¡çº§</a></li>\n    </ul>\n  </div>\n  <h1 class="title">');
       
         __out.push(__sanitize(this.title));
       
@@ -7341,67 +7341,67 @@ Backbone.Collection.prototype.where = function(attrs, first) {
       
         __out.push(__sanitize(this.model.getRareString()));
       
-        __out.push('</small>\n      </h4>\n      <div class="media-info-group">\n        <p class="media-info">\n          ÉúÃü£º<span id="life">');
+        __out.push('</small>\n      </h4>\n      <div class="media-info-group">\n        <p class="media-info">\n          ç”Ÿå‘½ï¼š<span id="life">');
       
         __out.push(__sanitize(this.model.get("life")));
       
-        __out.push('</span><br>\n          ¹¥»÷£º<span id="atk">');
+        __out.push('</span><br>\n          æ”»å‡»ï¼š<span id="atk">');
       
         __out.push(__sanitize(this.model.get("atk")));
       
-        __out.push('</span><br>\n          ¹¥¾à£º');
+        __out.push('</span><br>\n          æ”»è·ï¼š');
       
         __out.push(__sanitize(this.model.getString("aarea")));
       
-        __out.push('<br>\n          ¹¥Êı£º');
+        __out.push('<br>\n          æ”»æ•°ï¼š');
       
         __out.push(__sanitize(this.model.getString("anum")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info">\n          ¹¥ËÙ£º');
+        __out.push('<br>\n        </p>\n        <p class="media-info">\n          æ”»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("aspd")));
       
-        __out.push('<br>\n          ÈÍĞÔ£º');
+        __out.push('<br>\n          éŸ§æ€§ï¼š');
       
         __out.push(__sanitize(this.model.getString("tenacity")));
       
-        __out.push('<br>\n          ÒÆËÙ£º');
+        __out.push('<br>\n          ç§»é€Ÿï¼š');
       
         __out.push(__sanitize(this.model.getString("mspd")));
       
-        __out.push('<br>\n          ¶à¶Î£º');
+        __out.push('<br>\n          å¤šæ®µï¼š');
       
         __out.push(__sanitize(this.model.getString("hits")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info hidden-xs">\n          ³É³¤£º');
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-xs">\n          æˆé•¿ï¼š');
       
         __out.push(__sanitize(this.model.getTypeString()));
       
-        __out.push('<br>\n          »ğ£º');
+        __out.push('<br>\n          ç«ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("fire")));
       
-        __out.push('<br>\n          Ë®£º');
+        __out.push('<br>\n          æ°´ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("aqua")));
       
-        __out.push('<br>\n          ·ç£º');
+        __out.push('<br>\n          é£ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("wind")));
       
-        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">\n          ¹â£º');
+        __out.push('<br>\n        </p>\n        <p class="media-info hidden-sm">\n          å…‰ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("light")));
       
-        __out.push('<br>\n          °µ£º');
+        __out.push('<br>\n          æš—ï¼š');
       
         __out.push(__sanitize(this.model.getElementPercentString("dark")));
       
-        __out.push('<br>\n          DPS£º<span id="dps">');
+        __out.push('<br>\n          DPSï¼š<span id="dps">');
       
         __out.push(__sanitize(this.model.get("dps")));
       
-        __out.push('</span><br>\n          ×ÜDPS£º<span id="mdps">');
+        __out.push('</span><br>\n          æ€»DPSï¼š<span id="mdps">');
       
         __out.push(__sanitize(this.model.get("mdps")));
       
@@ -7453,7 +7453,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
     }
     (function() {
       (function() {
-        __out.push('<sidebar class="content sidebar">\n  <ul class="table-view">\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="#units">\n        <span class="media-object pull-left icon icon-person"></span>\n        <div class="media-body">\n          Í¬°é\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="#monsters">\n        <span class="media-object pull-left icon icon-gear"></span>\n        <div class="media-body">\n          Ä§³è\n        </div>\n      </a>\n    </li>\n  </ul>\n  <ul class="table-view">\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../gacha/">\n        <span class="media-object pull-left icon icon-pages"></span>\n        <div class="media-body">\n          Ä£Äâ³é¿¨\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../desktop/">\n        <span class="media-object pull-left icon icon-home"></span>\n        <div class="media-body">\n          ×ÀÃæ°æ\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../download/">\n        <span class="media-object pull-left icon icon-download"></span>\n        <div class="media-body">\n          ¿Í»§¶ËÏÂÔØ\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../jump/about.html">\n        <span class="media-object pull-left icon icon-info"></span>\n        <div class="media-body">\n          °ïÖú\n        </div>\n      </a>\n    </li>\n  </ul>\n</sidebar>\n');
+        __out.push('<sidebar class="content sidebar">\n  <ul class="table-view">\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="#units">\n        <span class="media-object pull-left icon icon-person"></span>\n        <div class="media-body">\n          åŒä¼´\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="#monsters">\n        <span class="media-object pull-left icon icon-gear"></span>\n        <div class="media-body">\n          é­”å® \n        </div>\n      </a>\n    </li>\n  </ul>\n  <ul class="table-view">\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../gacha/">\n        <span class="media-object pull-left icon icon-pages"></span>\n        <div class="media-body">\n          æ¨¡æ‹ŸæŠ½å¡\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../desktop/">\n        <span class="media-object pull-left icon icon-home"></span>\n        <div class="media-body">\n          æ¡Œé¢ç‰ˆ\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../download/">\n        <span class="media-object pull-left icon icon-download"></span>\n        <div class="media-body">\n          å®¢æˆ·ç«¯ä¸‹è½½\n        </div>\n      </a>\n    </li>\n    <li class="table-view-cell media">\n      <a class="navigate-right" href="../jump/about.html">\n        <span class="media-object pull-left icon icon-info"></span>\n        <div class="media-body">\n          å¸®åŠ©\n        </div>\n      </a>\n    </li>\n  </ul>\n</sidebar>\n');
       
       }).call(this);
       
@@ -7551,7 +7551,7 @@ Backbone.Collection.prototype.where = function(attrs, first) {
           if (max < value) {
             return false;
           }
-      if ("ÔİÈ±" == value || "??" == value || "" == value || undefined == value) {
+      if ("æš‚ç¼º" == value || "??" == value || "" == value || undefined == value) {
             return false;
           }
           return true;
