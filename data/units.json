@@ -1032,7 +1032,7 @@
 {"id":1045,"server":1,"title":"[無瀬の旋嵐斧]","name":"ガロデ","country":"常夏之国","rare":4,"element":2,"weapon":3,"type":1,"anum":2,"life":3190,"atk":2790,"mspd":49,"aspd":2.99,"aarea":30,"tenacity":59,"fire":1.35,"aqua":1,"wind":0.74,"light":1,"dark":1,"hits":0,"age":"27","gender":2,"career":"重戦士","interest":"酒、風呂","nature":"だいたん","obtain":"\nメダル交換所"},
 {"id":1046,"server":1,"title":"[愛逢の裁縫箱]","name":"メルレッティ","country":"雪之国","rare":5,"element":5,"weapon":5,"type":2,"anum":5,"life":2111,"atk":3111,"mspd":44,"aspd":3.21,"aarea":175,"tenacity":34,"fire":0.86,"aqua":0.86,"wind":0.86,"light":1.75,"dark":1,"hits":2,"age":"24","gender":3,"career":"デザイナー","interest":"洋服作り、おしゃれ","nature":"だいたん","obtain":"\nダイヤ限定★5スカウトフェス「愛逢の裁縫箱 メルレッティ」"},
 {"id":1055,"server":1,"title":"[冬想の届け人]","name":"スヴィー","country":"雪之国","rare":4,"element":1,"weapon":3,"type":3,"anum":2,"life":1818,"atk":2828,"mspd":54,"aspd":2.42,"aarea":110,"tenacity":45,"fire":1,"aqua":0.67,"wind":1.5,"light":1,"dark":1,"hits":2,"age":"?","gender":3,"career":"小間使い","interest":"ヴェロニカの観察","nature":"れいせい","obtain":"\nスヴィー民族衣装(レアメダル衣装)"},
-
+{"id":1047,"server":1,"title":"[盈ち溢る心扉]","name":"イライアス","country":"王国","rare":5,"element":2,"weapon":5,"type":1,"anum":5,"life":2332,"atk":5445,"mspd":45,"aspd":2.5,"aarea":190,"tenacity":35,"fire":1.8,"aqua":1,"wind":0.56,"light":1,"dark":1,"hits":6,"age":"19","gender":2,"career":"魔法使い","interest":"家の改造、ゲーム集め","nature":"むじゃき","obtain":"\nダイヤ限定★5スカウトフェス「盈ち溢る心扉 イライアス」"},
 
 
 
