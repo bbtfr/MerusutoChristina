@@ -955,7 +955,7 @@
 {"id":983,"title":"❤[缺消的冰华]","age":0,"gender":3,"name":"帕幽","country":"雪之国","rare":5,"element":2,"type":2,"weapon":5,"anum":4,"life":2666,"mspd":40,"aarea":135,"atk":3333,"aspd":3.45,"tenacity":25,"hits":0,"fire":2,"aqua":1,"wind":0.5,"light":1,"dark":1,"obtain":"稀有章兑换景品"},
 {"id":984,"title":"❤[刚毛的恋系刀]","name":"巴尔特洛梅","country":"雪之国","rare":5,"element":2,"weapon":1,"type":3,"anum":1,"life":4020,"atk":3500,"mspd":58,"aspd":2.47,"aarea":35,"tenacity":65,"fire":1.6,"aqua":1.0,"wind":0.63,"light":1.0,"dark":1.0,"remark":"边境调查队第五番队的队长。","obtain":"稀有章兑换景品","gender":2,"career":"第五队队长","interest":"耍流氓、锻炼男子气概","nature":"淘气","age":23},
 {"id":980,"title":"[闪穗的猎手]","name":"菈玖拉","country":"恐龙之国","rare":3,"element":4,"weapon":2,"type":1,"anum":1,"life":3160,"atk":1940,"mspd":46,"aspd":2.24,"aarea":15,"tenacity":75,"fire":0.94,"aqua":0.94,"wind":0.94,"light":1,"dark":1.2,"hits":0,"age":"16","gender":3,"obtain":"\n11月新同伴追加活动2016"},
-{"id":981,"title":"[机排忧之信徒]","name":"赛尔多娜","country":"魔法之国","rare":3,"element":5,"weapon":4,"type":3,"anum":1,"life":1470,"atk":3330,"mspd":51,"aspd":2.58,"aarea":150,"tenacity":33,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1.4,"dark":1,"hits":0,"age":"12","gender":3,"obtain":"\n11月新同伴追加活动2016"},
+{"id":981,"title":"[机排忧之信徒]","name":"赛尔多娜","country":"魔法之国","rare":3,"element":5,"weapon":6,"type":3,"anum":1,"life":1470,"atk":3330,"mspd":51,"aspd":2.58,"aarea":150,"tenacity":33,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1.4,"dark":1,"hits":0,"age":"12","gender":3,"obtain":"\n11月新同伴追加活动2016"},
 {"id":982,"title":"[泰然副寮长]","name":"兰索尼","country":"死者之国","rare":4,"element":4,"weapon":5,"type":2,"anum":2,"life":1550,"atk":3500,"mspd":50,"aspd":2.70,"aarea":165,"tenacity":37,"fire":0.84,"aqua":0.84,"wind":0.84,"light":1,"dark":1.9,"hits":3,"age":"18","gender":2,"obtain":"\n11月新同伴追加活动2016"},
 {"id":985,"server":2,"title":"[优美的紫华]","name":"罗泽莉娜","country":"王国","rare":4,"element":5,"weapon":2,"type":1,"anum":2,"life":3660,"atk":2330,"mspd":52,"aspd":2.55,"aarea":15,"tenacity":79,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1.4,"dark":1,"hits":0,"age":"0","gender":3,"obtain":"\n钻石限定★4招募活动「优美的紫华 罗泽莉娜」"},
 {"id":986,"server":2,"title":"[糖杖的魔术师]","name":"瓦尼菈","country":"点心之国","rare":2,"element":1,"weapon":5,"type":1,"anum":2,"life":910,"atk":2210,"mspd":46,"aspd":2.89,"aarea":175,"tenacity":32,"fire":1,"aqua":0.63,"wind":1.6,"light":1,"dark":1,"hits":0,"age":20,"gender":3,"obtain":"\n荣耀之路③"},
@@ -1205,11 +1205,18 @@
 {"id":150095,"title":"㊥[创世的魔法师]","name":"乔安娜","country":"王国","rare":3,"element":4,"weapon":5,"type":3,"anum":2,"life":1459,"atk":2358,"mspd":50,"aspd":2.45,"aarea":160,"tenacity":45,"fire":0.86,"aqua":0.86,"wind":0.86,"light":1,"dark":1.7,"hits":0,"age":"15","gender":3,"career":"魔术师","interest":"魔术、魔法","nature":"淘气","obtain":"\n进化「年轻魔术师」乔安娜"},
 {"id":150096,"title":"㊥[弹弓守护]","name":"蜜糖","country":"雪之国","rare":3,"element":2,"weapon":4,"type":2,"anum":3,"life":1302,"atk":2288,"mspd":52,"aspd":2.47,"aarea":180,"tenacity":22,"fire":1.3,"aqua":1,"wind":0.77,"light":1,"dark":1,"hits":0,"age":"12","gender":3,"career":"学生","interest":"骑马、弹弓","nature":"淘气","obtain":"\n进化「顽皮的弹弓手」蜜糖"},
 {"id":150097,"title":"㊥[穿刺之眼]","name":"麦尔斯","country":"沙漠之国","rare":3,"element":2,"weapon":4,"type":1,"anum":1,"life":1462,"atk":3062,"mspd":50,"aspd":2.32,"aarea":160,"tenacity":33,"fire":1.2,"aqua":1,"wind":0.83,"light":1,"dark":1,"hits":0,"age":"27","gender":2,"career":"侍卫","interest":"狩猎","nature":"认真","obtain":"\n进化「法老侍卫」 麦尔斯"},
-{"id":150098,"title":"㊥[水光潋滟]","name":"晴方","country":"华夏之国","rare":5,"element":2,"weapon":5,"type":3,"anum":2,"life":1890,"atk":3782,"mspd":48,"aspd":2.45,"aarea":180,"tenacity":24,"fire":1.9,"aqua":1,"wind":0.53,"light":1,"dark":1,"hits":5,"age":"24","gender":3,"career":"琴师","interest":"弹奏古琴","nature":"温柔","obtain":"\n2016年11月17日钻石限定★5招募活动"},
+{"id":150098,"title":"㊥[水光潋滟]","name":"晴方","country":"华夏之国","rare":5,"element":2,"weapon":5,"type":3,"anum":2,"life":1890,"atk":3982,"mspd":48,"aspd":2.45,"aarea":180,"tenacity":24,"fire":1.9,"aqua":1,"wind":0.53,"light":1,"dark":1,"hits":5,"age":24,"gender":3,"career":"琴师","interest":"弹奏古琴","nature":"温柔","obtain":"\n2016年11月17日钻石限定★5招募活动","remark":"\n2017年1月26日将基础攻击力3782变更为3982"},
 {"id":150099,"title":"㊥[战场双马尾]","name":"伊芙","country":"二次元之国","rare":4,"element":4,"weapon":2,"type":3,"anum":4,"life":3120,"atk":1896,"mspd":69,"aspd":2.35,"aarea":90,"tenacity":49,"fire":0.92,"aqua":0.92,"wind":0.92,"light":1,"dark":1.3,"hits":0,"age":"12","gender":3,"career":"警员","interest":"维持秩序","nature":"正直","obtain":"\n世界寻迹「出发！闪光勋章的寻迹之旅！」终排奖励"},
- 
- 
- 
+{"id":150100,"server":2,"title":"㊥[空灵鸟语者]","name":"希路尔","country":"","rare":4,"element":2,"weapon":7,"type":0,"anum":0,"life":0,"atk":0,"mspd":0,"aspd":0,"aarea":0,"tenacity":0,"fire":1,"aqua":1,"wind":1,"light":1,"dark":1,"hits":0,"age":0,"gender":3,"career":"","interest":"","nature":"","obtain":"\n世界寻迹「出发！回忆曲谱的寻迹之旅！」终排奖励"},
+{"id":150101,"server":2,"title":"㊥[杂戏龙舞者]","name":"科梅迪尔","country":"王国","rare":5,"element":5,"weapon":6,"type":3,"anum":2,"life":1866,"atk":3598,"mspd":46,"aspd":2.35,"aarea":160,"tenacity":35,"fire":0.9,"aqua":0.9,"wind":0.9,"light":1.4,"dark":1,"hits":0,"age":11,"gender":2,"career":"演艺人","interest":"恶作剧","nature":"纯洁","obtain":"\n钻石限定★5招募活动「杂戏龙舞者 科梅迪尔」"},
+
+
+
+
+
+
+
+
 
 {"id":200001,"title":"[甜心奶茶妹]","name":"波波妞","country":"科学之国","rare":4,"element":4,"weapon":6,"type":3,"anum":2,"life":1750,"atk":3450,"mspd":60,"aspd":2.75,"aarea":165,"tenacity":37,"fire":1,"aqua":1,"wind":1,"light":1,"dark":1,"gender":3,"age":18,"career":"美食科學家","interest":"研製珍奶燃料","nature":"傲嬌","obtain":"暂无","contributors":["暂无"]}
 ]
